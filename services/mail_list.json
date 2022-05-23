@@ -1,0 +1,65 @@
+[
+  {
+    "id": "231",
+    "team": "TEAM A",
+    "dept": "PAINT",
+    "to": ["kanvithareddy.n@oscarfx.com","sunil.m@oscarfx.com"],
+    "cc": ["srinivas.r@oscarfx.com","ganeshbabu.g@oscarfx.com", "harish.r@oscarfx.com", "madhusudhan.p@oscarfx.com"]
+  },
+  {
+    "id": "106",
+    "team": "TEAM B",
+    "dept": "PAINT",
+    "to": ["kanvithareddy.n@oscarfx.com","sunil.milkuri@oscarfx.com"],
+    "cc": ["srinivas.r@oscarfx.com","venkatesh.l@oscarfx.com", "balasuresh.y@oscarfx.com", "saikiran.r@oscarfx.com"]
+  },
+  {
+    "id": "14",
+    "team": "TEAM C",
+    "dept": "PAINT",
+    "to": ["kanvithareddy.n@oscarfx.com","sunil.milkuri@oscarfx.com"],
+    "cc": ["srinivas.r@oscarfx.com","sivamani.t@oscarfx.com", "kirankumar.m@oscarfx.com", "praneethkumar.m@oscarfx.com"]
+  },
+  {
+     "id": "104",
+    "team": "TEAM D",
+    "dept": "PAINT",
+    "to": ["kanvithareddy.n@oscarfx.com","sunil.milkuri@oscarfx.com"],
+    "cc": ["srinivas.r@oscarfx.com","achutkumarreddy.s@oscarfx.com", "naveen.n@oscarfx.com", "naresh.k@oscarfx.com"]
+  },
+  {
+    "id": "57",
+    "team": "TEAM A",
+    "dept": "ROTO",
+    "to": ["shravani.a@oscarfx.com","sunil.milkuri@oscarfx.com"],
+    "cc": ["praveen.g@oscarfx.com","prasanth.v@oscarfx.com", "shiva.b@oscarfx.com", "gangadhar.v@oscarfx.com"]
+  },
+  {
+    "id": "39",
+    "team": "TEAM B",
+    "dept": "ROTO",
+    "to": ["shravani.a@oscarfx.com","sunil.milkuri@oscarfx.com"],
+    "cc": ["praveen.g@oscarfx.com","amarsakshi.v@oscarfx.com", "pranaykumar.b@oscarfx.com", "vinod.a@oscarfx.com"]
+  },
+  {
+    "id": "50",
+    "team": "TEAM C",
+    "dept": "ROTO",
+    "to": ["shravani.a@oscarfx.com","sunil.milkuri@oscarfx.com"],
+    "cc": ["praveen.g@oscarfx.com","manjithkumar@oscarfx.com", "mukesh.k@oscarfx.com", "vijay.k@oscarfx.com"]
+  },
+  {
+    "id": "156",
+    "team": "TEAM D",
+    "dept": "ROTO",
+    "to": ["shravani.a@oscarfx.com","sunil.milkuri@oscarfx.com"],
+    "cc": ["praveen.g@oscarfx.com","bharathreddy.p@oscarfx.com", "ravindrababu.p@oscarfx.com", "waseemakram.shaik@oscarfx.com"]
+  },
+  {
+    "id": "79",
+    "team": "TEAM E",
+    "dept": "ROTO",
+    "to": ["shravani.a@oscarfx.com","sunil.milkuri@oscarfx.com"],
+    "cc": ["praveen.g@oscarfx.com","srisailam.m@oscarfx.com", "sukumar.k@oscarfx.com", "ramakrishnachari.s@oscarfx.com"]
+  }
+]
