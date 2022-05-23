@@ -29,13 +29,13 @@ VSVersionInfo(
       [
       StringTable(
         u'040904b0',
-        [StringStruct(u'CompanyName', u'Oscarfx PVT LTD'),
-        StringStruct(u'ProductName', u'SHOT BUZZ'),
+        [StringStruct(u'CompanyName', u'COGVFX PVT LTD'),
+        StringStruct(u'ProductName', u'Tendrill'),
         StringStruct(u'ProductVersion', u'4.5265'), #<- should be same as filevers
-        StringStruct(u'OriginalFilename', u'shot_buzz.exe'),
+        StringStruct(u'OriginalFilename', u'tendrill.exe'),
         StringStruct(u'FileDescription', u'Production Management Application'),
         StringStruct(u'LegalCopyright', u'NARENDAR REDDY G'),
-        StringStruct(u'LegalTrademarks', u'OSCARFX PVT LTD'),])
+        StringStruct(u'LegalTrademarks', u'COGVFX PVT LTD'),])
       ]),
     VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
   ]
