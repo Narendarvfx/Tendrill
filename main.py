@@ -68,44 +68,44 @@ class LoginWindow(QMainWindow):
         self.login_ui.login_btn.clicked.connect(lambda: self.LoginClicked())
 
         #TODO: Enable this code block before deploying to production to display login window
-        self.show()
+        # self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
-        # supervisor = {
-        #     'username': 'supervisor',
-        #     'password': 'ofx@12345'
-        # }
-        # teamlead = {
-        #     'username': 'teamlead1',
-        #     'password': 'ofx@12345'
-        # }
-        # qc = {
-        #     'username': 'qc1',
-        #     'password': 'ofx@12345'
-        # }
-        # manager = {
-        #     'username': 'manager',
-        #     'password': 'ofx@12345'
-        # }
-        # artist = {
-        #     'username': 'artist1',
-        #     'password': 'ofx@12345'
-        # }
-        # dataio = {
-        #     'username': 'dataio',
-        #     'password': 'ofx@12345'
-        # }
-        # user_data = {
-        #     'username': 'ganeshbabu.g',
-        #     'password': 'Ofx@1234'
-        # }
-        # my_data = {
-        #     'username': 'admin',
-        #     'password': 'Tomato@123'
-        # }
-        # response = requests.post(url, data=manager, verify=False)
-        # MainWindow(response.json())
+        supervisor = {
+            'username': 'supervisor',
+            'password': 'ofx@12345'
+        }
+        teamlead = {
+            'username': 'teamlead1',
+            'password': 'ofx@12345'
+        }
+        qc = {
+            'username': 'qc1',
+            'password': 'ofx@12345'
+        }
+        manager = {
+            'username': 'manager',
+            'password': 'ofx@12345'
+        }
+        artist = {
+            'username': 'artist1',
+            'password': 'Ofx@12345'
+        }
+        dataio = {
+            'username': 'dataio',
+            'password': 'ofx@12345'
+        }
+        user_data = {
+            'username': 'ganeshbabu.g',
+            'password': 'Ofx@1234'
+        }
+        my_data = {
+            'username': 'admin',
+            'password': 'Tomato@123'
+        }
+        response = requests.post(url, data=artist, verify=False)
+        MainWindow(response.json())
 
     @Slot()
     def LoginClicked(self):
@@ -118,9 +118,7 @@ class LoginWindow(QMainWindow):
             'username': userName,
             'password': passWord
         }
-        print(data)
         response = requests.post(url, data=data, verify=False)
-        print(response)
         if response.status_code == 400:
             msg = QMessageBox()
             msg.setText("Wrong Password \n Please try Again ")
@@ -162,26 +160,12 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.login_data = login_data
         self.employee_details = api.get_employee_data(login_data['id'])
-        # self.logger.debug("LoggedIn Succesfully: {}".format(self.employee_details['fullName']))
-        # self.permissions = api.rolePermissions(str(16))
+
         self.main_timer = QTimer()
-        # self.client = QtWebSockets.QWebSocket("", QtWebSockets.QWebSocketProtocol.Version13, None)
-        # self.sockets_host = "{}{}/ws/emp/".format(api.config['SOCKETS']['host'], api.config['SOCKETS']['port'])
-        # ws_Url = QUrl(self.sockets_host + str(self.employee_details['id'])+"/")
-        # # self.client.error.connect(self.error)
-        # # self.client.open(ws_Url)
-        # # self.client.textMessageReceived.connect(self.processTextMessage)
+
         self.team_lead = False
         self.team_lead_id =None
-        # my_logger = logging.getLogger('ShotBuzz')
-        # my_logger.setLevel(logging.INFO)
-        # handler = SysLogHandler(address=('192.168.10.15', 514))
-        # formatter = logging.Formatter(
-        #     'SB_Login: { "%(message)s", "%(lineno)d", "%(msecs)d ms" }')
-        #
-        # handler.formatter = formatter
-        # my_logger.addHandler(handler)
-        # my_logger.info("LoggedIn Succesfully: {}".format(self.employee_details['fullName']))
+
         ########################################################################
         ## START - WINDOW ATTRIBUTES
         ########################################################################

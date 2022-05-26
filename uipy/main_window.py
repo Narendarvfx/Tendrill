@@ -13,7 +13,6 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 import files_rc
-
 from PySide2 import QtCore
 from PySide2.QtWidgets import QComboBox
 
@@ -1955,7 +1954,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.chat_area_widget = QWidget()
         self.chat_area_widget.setObjectName(u"chat_area_widget")
-        self.chat_area_widget.setGeometry(QRect(0, 0, 100, 30))
+        self.chat_area_widget.setGeometry(QRect(0, 0, 434, 554))
         self.chat_area_widget.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.chat_area_widget)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -2640,13 +2639,6 @@ class Ui_MainWindow(object):
         self.gridLayout_17.setHorizontalSpacing(0)
         self.gridLayout_17.setVerticalSpacing(7)
         self.gridLayout_17.setContentsMargins(0, 0, 0, 0)
-        self.line_9 = QFrame(self.frame_43)
-        self.line_9.setObjectName(u"line_9")
-        self.line_9.setFrameShape(QFrame.HLine)
-        self.line_9.setFrameShadow(QFrame.Sunken)
-
-        self.gridLayout_17.addWidget(self.line_9, 5, 0, 1, 1)
-
         self.frame_44 = QFrame(self.frame_43)
         self.frame_44.setObjectName(u"frame_44")
         self.frame_44.setFrameShape(QFrame.StyledPanel)
@@ -2697,6 +2689,20 @@ class Ui_MainWindow(object):
 
         self.gridLayout_17.addWidget(self.frame_44, 0, 0, 1, 1)
 
+        self.line_9 = QFrame(self.frame_43)
+        self.line_9.setObjectName(u"line_9")
+        self.line_9.setFrameShape(QFrame.HLine)
+        self.line_9.setFrameShadow(QFrame.Sunken)
+
+        self.gridLayout_17.addWidget(self.line_9, 5, 0, 1, 1)
+
+        self.line_14 = QFrame(self.frame_43)
+        self.line_14.setObjectName(u"line_14")
+        self.line_14.setFrameShape(QFrame.HLine)
+        self.line_14.setFrameShadow(QFrame.Sunken)
+
+        self.gridLayout_17.addWidget(self.line_14, 9, 0, 1, 1)
+
         self.stat_filter_cb = CustomComboBox(self.frame_43)
         self.stat_filter_cb.addItem("")
         self.stat_filter_cb.addItem("")
@@ -2704,44 +2710,11 @@ class Ui_MainWindow(object):
         self.stat_filter_cb.setObjectName(u"stat_filter_cb")
         self.stat_filter_cb.setFont(font1)
 
-        self.gridLayout_17.addWidget(self.stat_filter_cb, 10, 0, 1, 1)
+        self.gridLayout_17.addWidget(self.stat_filter_cb, 7, 0, 1, 1)
 
-        self.project_label_frame = QFrame(self.frame_43)
-        self.project_label_frame.setObjectName(u"project_label_frame")
-        self.project_label_frame.setStyleSheet(u"QFrame{\n"
-"	background-color: rgb(59, 65, 80);\n"
-"border : 1px solid rgb(22, 22, 22);\n"
-"border-radius : 5px\n"
-"}\n"
-"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"padding : 2px;\n"
-"	background-color: rgb(22, 22, 22);\n"
-"border : 1px solid rgb(22, 22, 22);\n"
-"border-radius : 5px\n"
-"}")
-        self.project_label_frame.setFrameShape(QFrame.StyledPanel)
-        self.project_label_frame.setFrameShadow(QFrame.Raised)
-        self.project_layout = QGridLayout(self.project_label_frame)
-        self.project_layout.setObjectName(u"project_layout")
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_17.addWidget(self.project_label_frame, 9, 0, 1, 1)
-
-        self.line_14 = QFrame(self.frame_43)
-        self.line_14.setObjectName(u"line_14")
-        self.line_14.setFrameShape(QFrame.HLine)
-        self.line_14.setFrameShadow(QFrame.Sunken)
-
-        self.gridLayout_17.addWidget(self.line_14, 13, 0, 1, 1)
-
-        self.cli_filter_cb = CustomComboBox(self.frame_43)
-        self.cli_filter_cb.addItem("")
-        self.cli_filter_cb.addItem("")
-        self.cli_filter_cb.addItem("")
-        self.cli_filter_cb.setObjectName(u"cli_filter_cb")
-        self.cli_filter_cb.setFont(font1)
-
-        self.gridLayout_17.addWidget(self.cli_filter_cb, 6, 0, 1, 1)
+        self.gridLayout_17.addItem(self.verticalSpacer_4, 8, 0, 1, 1)
 
         self.pro_filter_cb = CustomComboBox(self.frame_43)
         self.pro_filter_cb.addItem("")
@@ -2750,53 +2723,7 @@ class Ui_MainWindow(object):
         self.pro_filter_cb.setObjectName(u"pro_filter_cb")
         self.pro_filter_cb.setFont(font1)
 
-        self.gridLayout_17.addWidget(self.pro_filter_cb, 8, 0, 1, 1)
-
-        self.status_label_frame = QFrame(self.frame_43)
-        self.status_label_frame.setObjectName(u"status_label_frame")
-        self.status_label_frame.setStyleSheet(u"QFrame{\n"
-"	background-color: rgb(59, 65, 80);\n"
-"border : 1px solid rgb(22, 22, 22);\n"
-"border-radius : 5px\n"
-"}\n"
-"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"padding : 2px;\n"
-"	background-color: rgb(22, 22, 22);\n"
-"border : 1px solid rgb(22, 22, 22);\n"
-"border-radius : 5px\n"
-"}")
-        self.status_label_frame.setFrameShape(QFrame.StyledPanel)
-        self.status_label_frame.setFrameShadow(QFrame.Raised)
-        self.status_layout = QGridLayout(self.status_label_frame)
-        self.status_layout.setObjectName(u"status_layout")
-
-        self.gridLayout_17.addWidget(self.status_label_frame, 11, 0, 1, 1)
-
-        self.client_label_frame = QFrame(self.frame_43)
-        self.client_label_frame.setObjectName(u"client_label_frame")
-        self.client_label_frame.setStyleSheet(u"QFrame{\n"
-"	background-color: rgb(59, 65, 80);\n"
-"border : 1px solid rgb(22, 22, 22);\n"
-"border-radius : 5px\n"
-"}\n"
-"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"padding : 2px;\n"
-"	background-color: rgb(109, 109, 109);\n"
-"border : 1px solid rgb(22, 22, 22);\n"
-"border-radius : 5px\n"
-"}")
-        self.client_label_frame.setFrameShape(QFrame.StyledPanel)
-        self.client_label_frame.setFrameShadow(QFrame.Raised)
-        self.client_layout = QGridLayout(self.client_label_frame)
-        self.client_layout.setObjectName(u"client_layout")
-
-        self.gridLayout_17.addWidget(self.client_label_frame, 7, 0, 1, 1)
-
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_17.addItem(self.verticalSpacer_4, 12, 0, 1, 1)
+        self.gridLayout_17.addWidget(self.pro_filter_cb, 6, 0, 1, 1)
 
 
         self.gridLayout_65.addWidget(self.frame_43, 0, 0, 1, 1)
@@ -4224,10 +4151,6 @@ class Ui_MainWindow(object):
         self.stat_filter_cb.setItemText(0, QCoreApplication.translate("MainWindow", u"Status", None))
         self.stat_filter_cb.setItemText(1, QCoreApplication.translate("MainWindow", u"Status2", None))
         self.stat_filter_cb.setItemText(2, QCoreApplication.translate("MainWindow", u"Status3", None))
-
-        self.cli_filter_cb.setItemText(0, QCoreApplication.translate("MainWindow", u"Client1", None))
-        self.cli_filter_cb.setItemText(1, QCoreApplication.translate("MainWindow", u"Client2", None))
-        self.cli_filter_cb.setItemText(2, QCoreApplication.translate("MainWindow", u"Client3", None))
 
         self.pro_filter_cb.setItemText(0, QCoreApplication.translate("MainWindow", u"Project01", None))
         self.pro_filter_cb.setItemText(1, QCoreApplication.translate("MainWindow", u"Project02", None))
