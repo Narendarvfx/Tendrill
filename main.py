@@ -107,7 +107,7 @@ class LoginWindow(QMainWindow):
             'username': 'admin',
             'password': 'Tomato@123'
         }
-        response = requests.post(url, data=dataio, verify=False)
+        response = requests.post(url, data=supervisor, verify=False)
         MainWindow(response.json())
 
     @Slot()
@@ -121,9 +121,7 @@ class LoginWindow(QMainWindow):
             'username': userName,
             'password': passWord
         }
-        print(data)
         response = requests.post(url, data=data, verify=False)
-        print(response)
         if response.status_code == 400:
             msg = QMessageBox()
             msg.setText("Wrong Password \n Please try Again ")
@@ -244,7 +242,6 @@ class MainWindow(QMainWindow):
         role = self.employee_details['role']
         if role == "DATA I/O":
             self.ui.clients_pb.show()
-
             self.ui.all_shots_pb.show()
             self.ui.shots_ingest_pb.show()
             self.ui.stackedWidget.setCurrentWidget(self.ui.projects_page)

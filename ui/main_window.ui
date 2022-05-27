@@ -1232,7 +1232,7 @@ QPushButton:pressed {
 border-radius: 5px;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>3</number>
+                      <number>5</number>
                      </property>
                      <widget class="QWidget" name="clients_page">
                       <layout class="QGridLayout" name="gridLayout_2">

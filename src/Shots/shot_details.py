@@ -462,10 +462,8 @@ class Shot_Details(QTreeWidget):
 
         scan_folder = 'scans'
 
-        self.base_Path = r"{}\{}\{}\{}\{}\{}".format(self.config['STORAGE']['storage_url'],
+        self.base_Path = r"{}\{}\{}\{}\{}".format(self.config['STORAGE']['storage_url'],
                                                        self.config['STORAGE']['parent_directory'],
-                                                       self.shot_details['sequence']['project'][
-                                                           'client']['name'],
                                                        self.shot_details['sequence']['project']['name'],
                                                        self.shot_details['sequence']['name'],
                                                        self.shot_details['name'])

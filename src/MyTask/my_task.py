@@ -52,11 +52,11 @@ class My_Task(object):
             self.main_window.ui.task_completed_tableWid.cellDoubleClicked.disconnect()
         except:
             pass
-        self.main_window.ui.approved_btn.hide()
-        self.main_window.ui.retake_btn.hide()
-        self.main_window.ui.hold_btn.hide()
-        self.main_window.ui.client_retake_btn.hide()
-        self.main_window.ui.assign_btn.hide()
+        # self.main_window.ui.approved_btn.hide()
+        # self.main_window.ui.retake_btn.hide()
+        # self.main_window.ui.hold_btn.hide()
+        # self.main_window.ui.client_retake_btn.hide()
+        # self.main_window.ui.assign_btn.hide()
         self.main_window.ui.task_tabWid.currentChanged.connect(lambda : self.taskTabClicked())
         if self.main_window.ui.task_tabWid.currentIndex() == 0:
             Pending_Task(self)
