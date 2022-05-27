@@ -6,7 +6,7 @@ import os
 import subprocess
 import sys
 import webbrowser
-
+from pprint import pprint
 from PySide2 import QtWidgets, QtGui, QtCore, QtWebSockets
 from PySide2.QtCore import QUrl, QSize, QRect, QTimer, QEasingCurve, QAbstractAnimation, QThreadPool
 from PySide2.QtGui import QColor, QFont, Qt
@@ -28,6 +28,7 @@ from src.Shots.output_folder import Output_Folder
 from src.Shots.pre_renders_folder import PreRenders_Folder
 from src.Shots.qc_folder import Qc_Folder
 from src.Shots.scripts_folder import Scripts_Folder
+from src.Shots.annotations_folder import Annotations_Folder
 from src.Shots.team_page import Team_Page
 from src.Shots.versions import Versions
 from src.Versions.Versions_Page import Versions_Page
@@ -127,13 +128,13 @@ class Shot_Details(QTreeWidget):
         start_date = None
         end_date = None
         self.threadpool = QThreadPool()
-        self.main_window.ui.start_btn.hide()
-        self.main_window.ui.qc_btn.hide()
-        self.main_window.ui.comp_btn.hide()
-        self.main_window.ui.approved_btn.hide()
-        self.main_window.ui.retake_btn.hide()
-        self.main_window.ui.hold_btn.hide()
-        self.main_window.ui.client_retake_btn.hide()
+        # self.main_window.ui.start_btn.hide()
+        # self.main_window.ui.qc_btn.hide()
+        # self.main_window.ui.comp_btn.hide()
+        # self.main_window.ui.approved_btn.hide()
+        # self.main_window.ui.retake_btn.hide()
+        # self.main_window.ui.hold_btn.hide()
+        # self.main_window.ui.client_retake_btn.hide()
         # self.main_window.ui.taskHelp_btn.hide()
         # self.main_window.ui.nuke_btn.hide()
         # self.main_window.ui.nukeX_btn.hide()
@@ -205,11 +206,13 @@ class Shot_Details(QTreeWidget):
         self.main_window.ui.totalBids_lbl.setText(str(bid_days))
         self.main_window.ui.input_TreeWid.clear()
         self.add_InputsTree_widget()
+        Annotations_Folder.addTask_Annotation_widget(self)
+        Annotations_Folder.addFeedback_Annotation_widget(self)
         self.main_window.ui.dep_tabWidget.currentChanged.connect(lambda: self.tabChanged())
         self.main_window.ui.shot_details_tabWidget.currentChanged.connect(lambda: self.shotDetailsTabClicked())
         if self.shot_details['task_type'] == 'PAINT':
             self.main_window.ui.dep_tabWidget.setCurrentIndex(0)
-            # timer.timeout.connect(Scripts_Folder.addPScriptsTree_widget(self))
+            timer.timeout.connect(Scripts_Folder.addPScriptsTree_widget(self))
             # timer.timeout.connect(PreRenders_Folder.Ppre_renders_folder(self))
             # timer.timeout.connect(Output_Folder.Poutput_folder(self))
             # timer.timeout.connect(Qc_Folder.Pqc_Folder(self))
@@ -227,10 +230,10 @@ class Shot_Details(QTreeWidget):
 
         # self.client.open(QUrl(sockets_host + str(self.shot_details['id']) + "/"))
         # self.client.textMessageReceived.connect(self.processTextMessage)
-        self.assign_btn = self.main_window.ui.assign_btn.clicked.connect(lambda: self.assignModal())
-        self.main_window.ui.start_btn.clicked.connect(lambda: self.task_status_update("WIP"))
-        self.main_window.ui.comp_btn.clicked.connect(lambda: self.task_status_update("STC"))
-        self.main_window.ui.qc_btn.clicked.connect(lambda: self.task_status_update("STQ"))
+        # self.assign_btn = self.main_window.ui.assign_btn.clicked.connect(lambda: self.assignModal())
+        # self.main_window.ui.start_btn.clicked.connect(lambda: self.task_status_update("WIP"))
+        # self.main_window.ui.comp_btn.clicked.connect(lambda: self.task_status_update("STC"))
+        # self.main_window.ui.qc_btn.clicked.connect(lambda: self.task_status_update("STQ"))
         approve_status = ""
         retake_status = ""
         client_retake_status = ""
@@ -245,12 +248,12 @@ class Shot_Details(QTreeWidget):
             retake_status = "IRT"
             client_retake_status = "CRT"
             hold_status = "HLD"
-        self.main_window.ui.approved_btn.clicked.connect(lambda: self.shot_status_update(approve_status))
-        self.main_window.ui.retake_btn.clicked.connect(lambda: self.shot_status_update(retake_status))
-        self.main_window.ui.client_retake_btn.clicked.connect(lambda: self.shot_status_update(client_retake_status))
-        self.main_window.ui.hold_btn.clicked.connect(lambda: self.shot_status_update(hold_status))
-
-        self.main_window.ui.send_btn.clicked.connect(lambda: self.message_function())
+        # self.main_window.ui.approved_btn.clicked.connect(lambda: self.shot_status_update(approve_status))
+        # self.main_window.ui.retake_btn.clicked.connect(lambda: self.shot_status_update(retake_status))
+        # self.main_window.ui.client_retake_btn.clicked.connect(lambda: self.shot_status_update(client_retake_status))
+        # self.main_window.ui.hold_btn.clicked.connect(lambda: self.shot_status_update(hold_status))
+        #
+        # self.main_window.ui.send_btn.clicked.connect(lambda: self.message_function())
 
         bar = self.main_window.ui.scrollArea.verticalScrollBar()
         bar.rangeChanged.connect(lambda x, y: bar.setValue(y))
@@ -397,7 +400,7 @@ class Shot_Details(QTreeWidget):
             print(newEnv)
             # subprocess.Popen(['B:\\Nuke11.3v4\\Nuke11.3.exe'], env=newEnv)
         except Exception as e:
-            print(e)
+            print("EXCEPTION ::",e)
             pass
 
     def launch_nukeX(self):
@@ -455,86 +458,51 @@ class Shot_Details(QTreeWidget):
         header = self.main_window.ui.input_TreeWid.header()
         header.setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
         header.setStretchLastSection(False)
-        header.hide()
-        # shot_folders = ['Plates', 'Annotations', 'Proxy', 'Elements', 'MOV']
-        # folder_icon = QtGui.QIcon()
-        # folder_icon.addPixmap(QtGui.QPixmap(":/custom/icons/custom/folder-icon.png"))
+        # header.hide()
 
-        # QApplication.processEvents()
-        # for folder_name in shot_folders:
-        #     item_0 = QTreeWidgetItem([folder_name])
-        #     self.main_window.ui.input_TreeWid.addTopLevelItem(item_0)
-        #     item_0.setIcon(1, folder_icon)
-        #     item_0.setSizeHint(1, QtCore.QSize(24, 24))
+        scan_folder = 'scans'
 
-        # self.base_Path = r"{}\{}\{}\{}\{}\{}\\".format(self.config['STORAGE']['storage_url'],
-        #                                                self.config['STORAGE']['parent_directory'],
-        #                                                self.shot_details['sequence']['project'][
-        #                                                    'client'],
-        #                                                self.shot_details['sequence']['project']['name'],
-        #                                                self.shot_details['sequence']['name'],
-        #                                                self.shot_details['name'])
-        # ii = 1
-        # Inputs_lookup_Paths = ['_annotations', '_scans\\proxy', '_scans\\elements', '_scans\\mov']
-        # try:
-        #     for folders in Inputs_lookup_Paths:
-        #         if not os.listdir(os.path.join(self.base_Path, folders)) == []:
-        #             for file in os.listdir(os.path.join(self.base_Path, folders)):
-        #                 item = QTreeWidgetItem([file, ''])
-        #                 self.main_window.ui.input_TreeWid.topLevelItem(ii).addChild(item)
-        #         ii += 1
-        # except Exception as e:
-        #     pass
+        self.base_Path = r"{}\{}\{}\{}\{}".format(self.config['STORAGE']['storage_url'],
+                                                       self.config['STORAGE']['parent_directory'],
+                                                       self.shot_details['sequence']['project']['name'],
+                                                       self.shot_details['sequence']['name'],
+                                                       self.shot_details['name'])
 
-        # self.main_window.ui.input_TreeWid.itemClicked.connect(lambda: self.inputItemClicked())
+        self.main_window.ui.input_TreeWid.clear()
+        # self.main_window.ui.input_TreeWid.columnCount(5)
+        self.main_window.ui.input_TreeWid.setHeaderLabel("folder")
+        input_folders = os.path.join(self.base_Path, scan_folder)# C:\jfx\client_01\KIS\BOO_GKB\BOO_GKB_0080_fg01_v002\scans
+        if os.path.exists(input_folders):
+            for folder_name in os.listdir(input_folders): #[denoise, plates]
+                item_0 = QTreeWidgetItem([folder_name.upper()])
+                self.main_window.ui.input_TreeWid.addTopLevelItem(item_0)
+                item_0.setData(0,Qt.UserRole,os.path.join(input_folders, folder_name))
+                item_0.setTextColor(0, Qt.darkYellow)
+                item_0.setFont(0, QFont('Arial', 10, QFont.Bold))
+                sub_folders = os.listdir(os.path.join(input_folders,folder_name))
+
+                for sub_folder in sub_folders:
+                    sub_folder_path = os.path.join(input_folders,folder_name, sub_folder)
+                    if os.path.isdir(sub_folder_path):
+                        sub = QTreeWidgetItem(item_0, [sub_folder])
+                        # sub.setForeground(Qt.red)
+                        sub.setTextColor(0,Qt.darkGreen)
+                        sub.setData(0,Qt.UserRole,sub_folder_path)
+
+
+
+        self.main_window.ui.input_TreeWid.expandToDepth(0)
+        self.main_window.ui.input_TreeWid.itemClicked.connect(lambda: self.inputItemClicked())
 
     def inputItemClicked(self):
         it = self.main_window.ui.input_TreeWid.currentItem()
-        currentIndex = self.main_window.ui.input_TreeWid.currentIndex()
-        col = currentIndex.column()
-        self.result = ''
-        # Check if top level item is selected or child selected
-        if self.main_window.ui.input_TreeWid.indexOfTopLevelItem(self.main_window.ui.input_TreeWid.currentItem()) == -1:
-            self.result = self.main_window.ui.input_TreeWid.currentIndex().parent().row()
-        else:
-            self.result = self.main_window.ui.input_TreeWid.currentItem(), -1
-        child_row = self.main_window.ui.input_TreeWid.currentIndex().parent()
-        child_row_index = child_row.sibling(child_row.row(), 1)
-        parent_row = self.main_window.ui.input_TreeWid.currentIndex()
-        if (parent_row.row() == 0 and col == 1 and child_row_index.row() < 0):
-            path = self.base_Path + "_scans\\plates\\"
-            webbrowser.open(path)
-        elif (parent_row.row() == 1 and col == 1 and child_row_index.row() < 0):
-            path = self.base_Path + "_annotations\\"
-            webbrowser.open(path)
-        elif (parent_row.row() == 2 and col == 1 and child_row_index.row() < 0):
-            path = self.base_Path + "_scans\\proxy\\"
-            webbrowser.open(path)
-        elif (parent_row.row() == 3 and col == 1 and child_row_index.row() < 0):
-            path = self.base_Path + "_scans\\elements\\"
-            webbrowser.open(path)
-        elif (parent_row.row() == 4 and col == 1 and child_row_index.row() < 0):
-            path = self.base_Path + "_scans\\mov\\"
-            webbrowser.open(path)
-        else:
-            if (self.result == 1):
-                path = self.base_Path + "_annotations\\"
-                os.startfile(path + it.text(col))
-            elif (self.result == 2):
-                path = self.base_Path + "_scans\\proxy\\"
-                os.startfile(path + it.text(col))
-            elif (self.result == 3):
-                path = self.base_Path + "_scans\\elements\\"
-                os.startfile(path + it.text(col))
-            elif (self.result == 4):
-                path = self.base_Path + "_scans\\mov\\"
-                os.startfile(path + it.text(col))
+        os.startfile(it.data(0, Qt.UserRole))
 
     def tabChanged(self):
         currentIndex = self.main_window.ui.dep_tabWidget.currentIndex()
         if currentIndex == 0:
             self.main_window.ui.Pscripts_treeWid.clear()
-            # Scripts_Folder.addPScriptsTree_widget(self)
+            Scripts_Folder.addPScriptsTree_widget(self)
             # PreRenders_Folder.Ppre_renders_folder(self)
             # Output_Folder.Poutput_folder(self)
             # Qc_Folder.Pqc_Folder(self)

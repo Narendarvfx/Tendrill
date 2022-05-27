@@ -168,7 +168,7 @@ class All_Shots(object):
     def status_check(self, status):
         self.current_row = self.main_window.ui.all_shots_tbWidget.currentRow()
         shot_details = self.main_window.ui.all_shots_tbWidget.item(self.current_row, 1).data(1)
-        if self.role == "TEAM LEAD":
+        if self.role == "TEAM LEAD" or self.role == "SUPERVISOR":
             if shot_details['status']['code'] == "STQ":
                 self.shot_status_update(status)
             else:

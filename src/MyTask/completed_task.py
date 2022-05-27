@@ -115,7 +115,7 @@ class Completed_Task(object):
             data = self.task_filtered_data
         self.completed_task_page(data)
         if self.sel_cli_id is not None:
-            self.projects = api.get_client_projects(self.sel_cli_id)
+            self.projects = api.get_client_projects()
 
         self.main_window.ui.t_pro_sel_cb.clear()
         self.main_window.ui.t_pro_sel_cb.addItem("Select", None)
