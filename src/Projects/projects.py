@@ -27,7 +27,7 @@ class proDailog(QDialog):
         self.animation.setEndValue(1.0)
         self.animation.start(QAbstractAnimation.DeleteWhenStopped)
         self.animMove.start(QAbstractAnimation.DeleteWhenStopped)
-        self.ui.cli_name_label.setText(instance.obj.c_data['name'])
+
         self.ui.pro_save_btn.setDisabled(True)
         self.ui.pro_name_text.textChanged.connect(lambda: self.textChanged())
         self.ui.pro_save_btn.clicked.connect(lambda: self.save_client())
@@ -52,7 +52,7 @@ class Projects(object):
     def __init__(self, obj):
         super(Projects, self).__init__()
         self.obj = obj
-        self.main_window = obj.main_window
+        self.main_window = obj
         self.show_projects()
         try:
             self.main_window.ui.pro_add_btn.clicked.disconnect()
@@ -62,7 +62,7 @@ class Projects(object):
         self.main_window.ui.pro_add_btn.clicked.connect(lambda: self.add_project())
 
     def show_projects(self):
-        self.project_data = api.get_client_projects(self.obj.c_data['id'])
+        self.project_data = api.get_client_projects()
         self.pro_table = self.main_window.ui.pro_table
         self.pro_table.setShowGrid(False)
         # Row Count
@@ -70,8 +70,9 @@ class Projects(object):
         for i, data in enumerate(self.project_data):
             pro_Item = QTableWidgetItem()
             pro_Item.setData(1, data)
-            pro_Item.setText(data['client']['name'])
-            self.pro_table.setItem(i, 0, pro_Item)
+
+            pro_Item.setText(data['client'])
+            # self.pro_table.setItem(i, 0, pro_Item)
             self.pro_table.setItem(i, 1, QTableWidgetItem(data['name']))
             self.pro_table.setItem(i, 2, QTableWidgetItem(str(data['status'])))
 

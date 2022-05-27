@@ -72,7 +72,7 @@ class All_Shots(object):
         except Exception as e:
             pass
         #Clear Block
-        self.main_window.ui.input_TreeWid.clear()
+        # self.main_window.ui.input_TreeWid.clear()
         self.main_window.ui.Pscripts_treeWid.clear()
         self.main_window.ui.Rscripts_treeWid.clear()
         self.main_window.ui.Mscripts_treeWid.clear()

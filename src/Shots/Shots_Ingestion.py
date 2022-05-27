@@ -40,8 +40,8 @@ class Shots_Ingestion(object):
         super(Shots_Ingestion, self).__init__()
         self.main_window = obj
         self.main_window.ui.shot_import_table.setRowCount(0)
-        self.main_window.ui.sh_import_btn.setEnabled(False)
         self.main_window.ui.sh_selected_file_name.setText("")
+
         try:
             self.main_window.ui.sh_file_btn.clicked.disconnect()
             self.main_window.ui.sel_all_shots_chkBox.toggled.disconnect()
@@ -58,45 +58,45 @@ class Shots_Ingestion(object):
         header = self.main_window.ui.shot_import_table.horizontalHeader()
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
         self.main_window.ui.sh_import_progressBar.hide()
-        self.clients_data = api.get_all_clients()
-        self.main_window.ui.sh_up_Client.clear()
-        self.main_window.ui.sh_up_Client.addItem("", None)
-        self.main_window.ui.sh_up_Client.setItemText(0,
-                                                     QtWidgets.QApplication.translate("MainWindow", "Select Client",
-                                                                                      None, -1))
-        for c, clients in enumerate(self.clients_data):
-            self.main_window.ui.sh_up_Client.addItem("", clients['id'])
-            self.main_window.ui.sh_up_Client.setItemText(c + 1,
-                                                         QtWidgets.QApplication.translate("MainWindow", clients['name'],
-                                                                                          None, -1))
+        # self.clients_data = api.get_all_clients()
+        # self.main_window.ui.sh_up_Client.clear()
+        # self.main_window.ui.sh_up_Client.addItem("", None)
+        # self.main_window.ui.sh_up_Client.setItemText(0,
+        #                                              QtWidgets.QApplication.translate("MainWindow", "Select Client",
+        #                                                                               None, -1))
+        # for c, clients in enumerate(self.clients_data):
+        #     self.main_window.ui.sh_up_Client.addItem("", clients['id'])
+        #     self.main_window.ui.sh_up_Client.setItemText(c + 1,
+        #                                                  QtWidgets.QApplication.translate("MainWindow", clients['name'],
+        #                                                                                   None, -1))
         self.main_window.ui.sh_up_Project.clear()
         self.main_window.ui.sh_up_Project.addItem("", None)
         self.main_window.ui.sh_up_Project.setItemText(0,
                                                      QtWidgets.QApplication.translate("MainWindow", "Select Project",
                                                                                       None, -1))
-        self.main_window.ui.sh_up_Client.activated.connect(self.getProject)
+        self.getProject()
         self.config = api.config
 
-    def getProject(self, index):
+    def getProject(self):
         try:
             self.main_window.ui.sh_up_Project.activated.disconnect()
         except:
             pass
-        self.sel_client_id = self.main_window.ui.sh_up_Client.itemData(index)
+
         self.main_window.ui.sh_up_Project.clear()
         self.main_window.ui.sh_up_Project.addItem("", None)
         self.main_window.ui.sh_up_Project.setItemText(0,
                                                       QtWidgets.QApplication.translate("MainWindow", "Select Project",
                                                                                        None, -1))
         self.main_window.ui.sh_file_btn.setEnabled(False)
-        if self.sel_client_id is not None:
-            self.projects_data = api.get_client_projects(self.sel_client_id)
-            for p, projects in enumerate(self.projects_data):
-                self.main_window.ui.sh_up_Project.addItem("", projects['id'])
-                self.main_window.ui.sh_up_Project.setItemText(p + 1,
-                                                              QtWidgets.QApplication.translate("MainWindow",
-                                                                                               projects['name'],
-                                                                                               None, -1))
+
+        self.projects_data = api.get_client_projects()
+        for p, projects in enumerate(self.projects_data):
+            self.main_window.ui.sh_up_Project.addItem("", projects['id'])
+            self.main_window.ui.sh_up_Project.setItemText(p + 1,
+                                                          QtWidgets.QApplication.translate("MainWindow",
+                                                                                           projects['name'],
+                                                                                           None, -1))
         self.main_window.ui.sh_up_Project.activated.connect(self.projectData)
 
     def projectData(self, index):
@@ -113,14 +113,15 @@ class Shots_Ingestion(object):
         self.file_name = os.path.basename(self.dlg[0])
         self.main_window.ui.sh_selected_file_name.setText(self.file_name)
         if self.file:
-            # self.numline = len(self.file.readlines())
-            self.main_window.ui.sh_import_btn.setEnabled(True)
-        del self.file
-        try:
-            self.main_window.ui.sh_import_btn.clicked.disconnect()
-        except:
-            pass
-        self.main_window.ui.sh_import_btn.clicked.connect(lambda: self.import_csv_file())
+        #     # self.numline = len(self.file.readlines())
+        #     self.main_window.ui.sh_import_btn.setEnabled(True)
+        # del self.file
+        # try:
+        #     self.main_window.ui.sh_import_btn.clicked.disconnect()
+        # except:
+        #     pass
+        # self.main_window.ui.sh_import_btn.clicked.connect(lambda: self.import_csv_file())
+            self.import_csv_file()
 
     def import_csv_file(self):
         self.seq_name = []

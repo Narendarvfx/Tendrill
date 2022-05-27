@@ -43,6 +43,7 @@ class Filters_Panel_Modal(QObject):
             self.main_window.ui.cli_filter_cb.setItemText(c, QtWidgets.QApplication.translate("MainWindow", client['name'],
                                                                                       None, -1))
             self.main_window.ui.cli_filter_cb.setItemChecked(c, False)
+
             for _cid in G_CLIENTS_LIST:
                 if _cid['id'] == client['id']:
                     self.main_window.ui.cli_filter_cb.setItemChecked(c, True)

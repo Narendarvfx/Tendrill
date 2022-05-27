@@ -251,6 +251,8 @@
     <file>icons/16x16/cil-zoom-out.png</file>
   </qresource>
   <qresource prefix="custom">
+    <file>baseline_library_add_white_24dp.png</file>
+    <file>icons/custom/addtodb.png</file>
     <file>icons/custom/tendril.png</file>
     <file>icons/custom/baseline_file_upload_white_24dp.png</file>
     <file>icons/custom/baseline_lock_white_24dp.png</file>
@@ -275,6 +277,16 @@
     <file>icons/custom/sfx.png</file>
   </qresource>
   <qresource prefix="24x24">
+    <file>icons/baseline_note_add_white_24dp.png</file>
+    <file>icons/password_change.png</file>
+    <file>icons/twotone_change_circle_white_24dp.png</file>
+    <file>icons/twotone_get_app_white_24dp.png</file>
+    <file>icons/twotone_home_white_24dp.png</file>
+    <file>icons/twotone_line_weight_white_24dp.png</file>
+    <file>icons/twotone_military_tech_white_24dp.png</file>
+    <file>icons/twotone_note_add_white_24dp.png</file>
+    <file>icons/twotone_password_white_24dp.png</file>
+    <file>icons/twotone_restore_page_white_24dp.png</file>
     <file>icons/24x24/password_change.png</file>
     <file>icons/24x24/cil-bell.png</file>
     <file>icons/24x24/cil-share.png</file>

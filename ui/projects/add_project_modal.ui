@@ -80,37 +80,7 @@ QPushButton:pressed {
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <widget class="QLabel" name="cli_name_label">
-           <property name="font">
-            <font>
-             <family>Segoe UI</family>
-             <pointsize>13</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>clientName</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label">
-           <property name="font">
-            <font>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Name</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
           <widget class="QLineEdit" name="pro_name_text">
            <property name="font">
             <font>
@@ -122,6 +92,18 @@ QPushButton:pressed {
            </property>
            <property name="placeholderText">
             <string>Enter Project Name..</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Name</string>
            </property>
           </widget>
          </item>
@@ -176,7 +158,7 @@ QPushButton:pressed {
          <string>Save</string>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="../../files.qrc">
           <normaloff>:/16x16/icons/16x16/cil-save.png</normaloff>:/16x16/icons/16x16/cil-save.png</iconset>
         </property>
        </widget>
@@ -198,7 +180,7 @@ QPushButton:pressed {
          <string>Cancel</string>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="../../files.qrc">
           <normaloff>:/16x16/icons/16x16/cil-x.png</normaloff>:/16x16/icons/16x16/cil-x.png</iconset>
         </property>
        </widget>
