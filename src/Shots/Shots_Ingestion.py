@@ -40,8 +40,8 @@ class Shots_Ingestion(object):
         super(Shots_Ingestion, self).__init__()
         self.main_window = obj
         self.main_window.ui.shot_import_table.setRowCount(0)
+        # self.main_window.ui.sh_import_btn.setEnabled(False)
         self.main_window.ui.sh_selected_file_name.setText("")
-
         try:
             self.main_window.ui.sh_file_btn.clicked.disconnect()
             self.main_window.ui.sel_all_shots_chkBox.toggled.disconnect()

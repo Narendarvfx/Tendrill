@@ -204,14 +204,12 @@ class Shot_Details(QTreeWidget):
                 status_color))
         self.main_window.ui.eta_lbl.setText(str(eta))
         self.main_window.ui.totalBids_lbl.setText(str(bid_days))
-        # self.main_window.ui.input_TreeWid.clear()
+        self.main_window.ui.input_TreeWid.clear()
         self.add_InputsTree_widget()
         Annotations_Folder.addTask_Annotation_widget(self)
         Annotations_Folder.addFeedback_Annotation_widget(self)
         self.main_window.ui.dep_tabWidget.currentChanged.connect(lambda: self.tabChanged())
         self.main_window.ui.shot_details_tabWidget.currentChanged.connect(lambda: self.shotDetailsTabClicked())
-
-
         if self.shot_details['task_type'] == 'PAINT':
             self.main_window.ui.dep_tabWidget.setCurrentIndex(0)
             timer.timeout.connect(Scripts_Folder.addPScriptsTree_widget(self))
@@ -476,21 +474,22 @@ class Shot_Details(QTreeWidget):
         # self.main_window.ui.input_TreeWid.columnCount(5)
         self.main_window.ui.input_TreeWid.setHeaderLabel("folder")
         input_folders = os.path.join(self.base_Path, scan_folder)# C:\jfx\client_01\KIS\BOO_GKB\BOO_GKB_0080_fg01_v002\scans
-        for folder_name in os.listdir(input_folders): #[denoise, plates]
-            item_0 = QTreeWidgetItem([folder_name.upper()])
-            self.main_window.ui.input_TreeWid.addTopLevelItem(item_0)
-            item_0.setData(0,Qt.UserRole,os.path.join(input_folders, folder_name))
-            item_0.setTextColor(0, Qt.darkYellow)
-            item_0.setFont(0, QFont('Arial', 10, QFont.Bold))
-            sub_folders = os.listdir(os.path.join(input_folders,folder_name))
+        if os.path.exists(input_folders):
+            for folder_name in os.listdir(input_folders): #[denoise, plates]
+                item_0 = QTreeWidgetItem([folder_name.upper()])
+                self.main_window.ui.input_TreeWid.addTopLevelItem(item_0)
+                item_0.setData(0,Qt.UserRole,os.path.join(input_folders, folder_name))
+                item_0.setTextColor(0, Qt.darkYellow)
+                item_0.setFont(0, QFont('Arial', 10, QFont.Bold))
+                sub_folders = os.listdir(os.path.join(input_folders,folder_name))
 
-            for sub_folder in sub_folders:
-                sub_folder_path = os.path.join(input_folders,folder_name, sub_folder)
-                if os.path.isdir(sub_folder_path):
-                    sub = QTreeWidgetItem(item_0, [sub_folder])
-                    # sub.setForeground(Qt.red)
-                    sub.setTextColor(0,Qt.darkGreen)
-                    sub.setData(0,Qt.UserRole,sub_folder_path)
+                for sub_folder in sub_folders:
+                    sub_folder_path = os.path.join(input_folders,folder_name, sub_folder)
+                    if os.path.isdir(sub_folder_path):
+                        sub = QTreeWidgetItem(item_0, [sub_folder])
+                        # sub.setForeground(Qt.red)
+                        sub.setTextColor(0,Qt.darkGreen)
+                        sub.setData(0,Qt.UserRole,sub_folder_path)
 
 
 
@@ -528,7 +527,7 @@ class Shot_Details(QTreeWidget):
             pass
         elif index == 1:
             Versions_Page.int_ver_table(self)
-            # Versions_Page.qc_ver_table(self)
+            Versions_Page.qc_ver_table(self)
             pass
         elif index == 2:
             Team_Page(self)
