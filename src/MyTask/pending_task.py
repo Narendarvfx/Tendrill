@@ -1,13 +1,14 @@
 import datetime
 
-from PySide2 import QtGui, QtWidgets
+from PySide2 import QtGui, QtWidgets, QtCore
 from PySide2.QtCore import QCoreApplication, Qt, QSize
-from PySide2.QtGui import QFont, QColor, QPixmap
+from PySide2.QtGui import QFont, QColor, QPixmap, QIcon
 from PySide2.QtWidgets import QTableWidgetItem, QApplication, QGraphicsDropShadowEffect, QProgressBar, QHBoxLayout, \
-    QWidget, QLabel
+    QWidget, QLabel, QMessageBox
 
 import api
 from src.Shots.shot_details import Shot_Details
+from src.Shots.versions import Versions
 
 
 class Pending_Task(object):
@@ -15,6 +16,7 @@ class Pending_Task(object):
         super(Pending_Task, self).__init__()
         self.main_window = instance.main_window
         try:
+            self.main_window.ui.task_pending_tableWid.customContextMenuRequested.disconnect()
             self.main_window.ui.task_search_btn.clicked.disconnect()
             self.main_window.ui.task_pending_tableWid.cellDoubleClicked.disconnect()
             self.main_window.ui.task_completed_tableWid.cellDoubleClicked.disconnect()
@@ -22,7 +24,6 @@ class Pending_Task(object):
         except:
             pass
         task_data = api.get_artist_shots(str(self.main_window.employee_details['id']))
-        print(task_data)
         self.task_filtered_data = [x for x in task_data if
                               (x['task_status']['code'] != "CAP" and x['task_status']['code'] != 'IAP' and
                                x['task_status']['code'] != 'HLD' and x['task_status']['code'] != 'OMT' and x['task_status']['code'] != 'IRT')]
@@ -60,6 +61,87 @@ class Pending_Task(object):
         self.main_window.ui.t_cli_sel_cb.activated.connect(self.filterByClient)
         self.main_window.ui.t_pro_sel_cb.activated.connect(self.filterByProject)
         self.main_window.ui.t_status_sel_cb.activated.connect(self.filterByStatus)
+        self.main_window.ui.task_pending_tableWid.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.main_window.ui.task_pending_tableWid.customContextMenuRequested.connect(self.on_customContextMenuRequested)
+
+    def on_customContextMenuRequested(self, pos):
+        it = self.main_window.ui.task_pending_tableWid.itemAt(pos)
+        if it is None: return
+        # c = it.column()
+        # item_range = QtWidgets.QTableWidgetSelectionRange(0, c, self.main_window.ui.all_shots_tbWidget.rowCount() - 1, c)
+        # self.main_window.ui.all_shots_tbWidget.setRangeSelected(item_range, True)
+
+        menu = QtWidgets.QMenu()
+        menu.setStyleSheet(u"QMenu {\n"
+                           "background-color: #ABABAB; /* sets background of the menu */\n"
+                           "border-radius: 5px;\n"
+                           "border: 1px solid black;\n"
+                           "margin:2px;\n"
+                           "}\n"
+
+                           "QMenu::item {\n"
+                           "/* sets background of menu item. set this to something non-transparent\n"
+                           "if you want menu color and menu item color to be different */\n"
+                           "background-color: transparent;\n"
+                           "padding: 2px 25px 2px 2px;\n"
+                           "border: 1px solid transparent;\n"
+                           "}\n"
+
+                           "QMenu::item:selected { /* when user selects item using mouse or keyboard */\n"
+                           "background-color: rgba(100, 100, 100, 150);\n"
+                           "border-color: darkblue;\n"
+                           "}")
+        font1 = QFont()
+        font1.setPointSize(12)
+        menu.setFont(font1)
+        wip_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&WIP")
+        current_row = self.main_window.ui.task_pending_tableWid.currentRow()
+        self.task_details = self.main_window.ui.task_pending_tableWid.item(current_row, 0).data(1)
+        if self.task_details['compiler'] == 2 or self.task_details['compiler'] == 0:
+            stq_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to QC")
+        else:
+            stc_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to Compiler")
+
+        action = menu.exec_(self.main_window.ui.task_pending_tableWid.viewport().mapToGlobal(pos))
+        try:
+            if action == wip_action:
+                self.task_status_update("WIP")
+            elif action == stq_action:
+                self.status_check("STQ")
+            elif action == stc_action:
+                self.status_check("STC")
+        except Exception as e:
+            pass
+
+    def status_check(self, status):
+        if self.task_details['shot']['status']['code'] == "WIP":
+            self.task_status_update(status)
+        else:
+            msg = QMessageBox()
+            msg.setText("Shot not in progress\n")
+            msg.setWindowTitle("Error")
+            msg.setIcon(QMessageBox.Critical)
+            msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+            msg.exec_()
+
+    def task_status_update(self, status):
+        data = {
+            'task_status': status
+        }
+        qm = QMessageBox()
+        result = qm.question(self.main_window , 'Tendrill Application', "Are you sure with {}".format(status), qm.Yes | qm.No)
+        if result == qm.Yes:
+            response = api.updateTask(str(self.task_details['id']), data)
+            if response.status_code == 201:
+                shot_data = {
+                    'status': status
+                }
+                if status != "STC":
+                    api.update_ShotStatus(str(self.task_details['shot']['id']), shot_data)
+                if status == "STQ":
+                    Versions.create_version(self)
+
+
 
     def perform_search(self):
         text = self.main_window.ui.task_search_lineEdit.text()
@@ -114,7 +196,7 @@ class Pending_Task(object):
             data = self.task_filtered_data
         self.pending_task_page(data)
         if self.sel_cli_id is not None:
-            self.projects = api.get_client_projects(self.sel_cli_id)
+            self.projects = api.get_client_projects()
 
         self.main_window.ui.t_pro_sel_cb.clear()
         self.main_window.ui.t_pro_sel_cb.addItem("Select", None)

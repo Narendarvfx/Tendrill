@@ -18,10 +18,8 @@ class Filters_Panel_Modal(QObject):
         super(Filters_Panel_Modal, self).__init__()
         self.display = instance
         self.main_window = instance.main_window
-        self.main_window.ui.cli_filter_cb.activated.connect(self.client_cb_clicked)
         self.main_window.ui.pro_filter_cb.activated.connect(self.project_cb_clicked)
         self.main_window.ui.stat_filter_cb.activated.connect(self.status_cb_clicked)
-        self.main_window.ui.cli_filter_cb.wheelEvent = lambda event: None
         self.main_window.ui.pro_filter_cb.wheelEvent = lambda event: None
         self.main_window.ui.stat_filter_cb.wheelEvent = lambda event: None
         try:
@@ -36,17 +34,6 @@ class Filters_Panel_Modal(QObject):
         self.setup_filters()
 
     def setup_filters(self):
-        self.clients = api.get_all_clients()
-        self.main_window.ui.cli_filter_cb.clear()
-        for c, client in enumerate(self.clients):
-            self.main_window.ui.cli_filter_cb.addItem("", client['id'])
-            self.main_window.ui.cli_filter_cb.setItemText(c, QtWidgets.QApplication.translate("MainWindow", client['name'],
-                                                                                      None, -1))
-            self.main_window.ui.cli_filter_cb.setItemChecked(c, False)
-            for _cid in G_CLIENTS_LIST:
-                if _cid['id'] == client['id']:
-                    self.main_window.ui.cli_filter_cb.setItemChecked(c, True)
-
         self.projects = api.get_all_projects()
         self.main_window.ui.pro_filter_cb.clear()
         for p, project in enumerate(self.projects):
@@ -69,9 +56,9 @@ class Filters_Panel_Modal(QObject):
                 if _sid['id'] == status['id']:
                     self.main_window.ui.stat_filter_cb.setItemChecked(s, True)
 
-        self.init_Client_Labels()
-        self.init_Project_Labels()
-        self.init_Status_Labels()
+        # self.init_Client_Labels()
+        # self.init_Project_Labels()
+        # self.init_Status_Labels()
 
     def getRandomCol(self):
 
@@ -81,22 +68,6 @@ class Filters_Panel_Modal(QObject):
 
         random_col = '#' + r + g + b
         return random_col
-
-    def client_cb_clicked(self, index):
-        self.sel_cli_id = self.main_window.ui.cli_filter_cb.itemData(index)
-        self.sel_client = self.main_window.ui.cli_filter_cb.currentText()
-        if self.sel_cli_id in G_CLIENTS_ID_LIST:
-            G_CLIENTS_ID_LIST.remove(self.sel_cli_id)
-            for i, client in enumerate(G_CLIENTS_LIST):
-                if client['id'] == self.sel_cli_id:
-                    G_CLIENTS_LIST.pop(i)
-        else:
-            G_CLIENTS_ID_LIST.append(self.sel_cli_id)
-            color = self.getRandomCol()
-            dat = {'id':self.sel_cli_id,'client':self.sel_client,'color':color}
-            G_CLIENTS_LIST.append(dat)
-
-        self.init_Client_Labels()
 
     def project_cb_clicked(self, index):
         self.sel_pro_id = self.main_window.ui.pro_filter_cb.itemData(index)
@@ -111,7 +82,7 @@ class Filters_Panel_Modal(QObject):
             color = self.getRandomCol()
             dat = {'id': self.sel_pro_id, 'project': self.sel_project, 'color': color}
             G_PROJECTS_LIST.append(dat)
-        self.init_Project_Labels()
+        # self.init_Project_Labels()
 
     def status_cb_clicked(self, index):
         self.sel_status_id = self.main_window.ui.stat_filter_cb.itemData(index)
@@ -127,7 +98,7 @@ class Filters_Panel_Modal(QObject):
             dat = {'id':self.sel_status_id,'status':self.sel_status,'color':color}
             G_STATUS_LIST.append(dat)
 
-        self.init_Status_Labels()
+        # self.init_Status_Labels()
 
     def init_Client_Labels(self):
         row = 0
@@ -194,7 +165,7 @@ class Filters_Panel_Modal(QObject):
         self.display.display_table(_get_data)
 
     def set_defaults(self):
-        _d = {'clients':G_CLIENTS_LIST, 'projects':G_PROJECTS_LIST, 'status':G_STATUS_LIST}
+        _d = {'projects':G_PROJECTS_LIST, 'status':G_STATUS_LIST}
         with open(FILTERS_FILE, 'w') as yaml_file:
             yaml.dump(_d, yaml_file, default_flow_style=False)
 
@@ -220,15 +191,12 @@ class Filters_Panel_Modal(QObject):
         qm.setStyleSheet("background-color: rgb(195, 56, 56);color:'white'")
         result = qm.question(self.main_window, 'Shot Buzz Application', "Are you sure to clear the filters", qm.Yes | qm.No)
         if result == qm.Yes:
-            G_CLIENTS_ID_LIST.clear()
-            G_CLIENTS_LIST.clear()
             G_PROJECTS_LIST.clear()
             G_PROJECTS_ID_LIST.clear()
             G_STATUS_LIST.clear()
             G_STATUS_ID_LIST.clear()
             _data = []
-            for i in reversed(range(self.main_window.ui.client_layout.count())):
-                self.main_window.ui.client_layout.itemAt(i).widget().deleteLater()
+
             for j in reversed(range(self.main_window.ui.project_layout.count())):
                 self.main_window.ui.project_layout.itemAt(j).widget().deleteLater()
             for k in reversed(range(self.main_window.ui.status_layout.count())):

@@ -7,8 +7,8 @@ import urllib3
 urllib3.disable_warnings()
 config = configparser.ConfigParser()
 # TODO: Change config file location while building
-config.read(r'\\10.0.0.102\justvfx_data\testing\Pipeline\Repo_Settings\settings.ini')
-# config.read(r'D:\Repo_Settings\settings.ini')
+# config.read(r'\\10.0.0.102\justvfx_data\testing\Pipeline\Repo_Settings\settings.ini')
+config.read(r'C:\Repo_Settings\settings.ini')
 
 base_url = "{}{}".format(config['API']['hostname'], config['API']['port'])
 token = config['API']['token']
@@ -94,8 +94,8 @@ def save_project(data):
     return post_data
 
 
-def get_client_projects(client_id):
-    projects_url = base_url + "/api/production/projects/" + str(client_id)
+def get_client_projects():
+    projects_url = base_url + "/api/production/projects/"
     projects_data = session.get(projects_url, headers={'Authorization': 'token {}'.format(token)}, verify=False)
     return projects_data.json()
 

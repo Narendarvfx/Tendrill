@@ -20,6 +20,8 @@ import logging.handlers
 from logging.handlers import SysLogHandler
 import shutil
 import sys
+import datetime
+
 import getpass
 from os.path import exists
 
@@ -49,6 +51,7 @@ from uipy.change_password_modal import Ui_CP_Dialog
 from uipy.login_window import Ui_Form
 from uipy.main_window import Ui_MainWindow
 from src.Clients.clients import Clients
+from src.Projects.projects import Projects
 from src.MyTask.my_task import My_Task
 from src.Notifications.notifications import popup
 from src.Shots.all_shots_table import All_Shots
@@ -68,44 +71,44 @@ class LoginWindow(QMainWindow):
         self.login_ui.login_btn.clicked.connect(lambda: self.LoginClicked())
 
         #TODO: Enable this code block before deploying to production to display login window
-        self.show()
+        # self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
-        # supervisor = {
-        #     'username': 'supervisor',
-        #     'password': 'ofx@12345'
-        # }
-        # teamlead = {
-        #     'username': 'teamlead1',
-        #     'password': 'ofx@12345'
-        # }
-        # qc = {
-        #     'username': 'qc1',
-        #     'password': 'ofx@12345'
-        # }
-        # manager = {
-        #     'username': 'manager',
-        #     'password': 'ofx@12345'
-        # }
-        # artist = {
-        #     'username': 'artist1',
-        #     'password': 'ofx@12345'
-        # }
-        # dataio = {
-        #     'username': 'dataio',
-        #     'password': 'ofx@12345'
-        # }
-        # user_data = {
-        #     'username': 'ganeshbabu.g',
-        #     'password': 'Ofx@1234'
-        # }
-        # my_data = {
-        #     'username': 'admin',
-        #     'password': 'Tomato@123'
-        # }
-        # response = requests.post(url, data=manager, verify=False)
-        # MainWindow(response.json())
+        supervisor = {
+            'username': 'supervisor',
+            'password': 'ofx@12345'
+        }
+        teamlead = {
+            'username': 'teamlead1',
+            'password': 'ofx@12345'
+        }
+        qc = {
+            'username': 'qc1',
+            'password': 'ofx@12345'
+        }
+        manager = {
+            'username': 'manager',
+            'password': 'ofx@12345'
+        }
+        artist = {
+            'username': 'artist1',
+            'password': 'ofx@12345'
+        }
+        dataio = {
+            'username': 'dataio',
+            'password': 'ofx@12345'
+        }
+        user_data = {
+            'username': 'ganeshbabu.g',
+            'password': 'Ofx@1234'
+        }
+        my_data = {
+            'username': 'admin',
+            'password': 'Tomato@123'
+        }
+        response = requests.post(url, data=supervisor, verify=False)
+        MainWindow(response.json())
 
     @Slot()
     def LoginClicked(self):
@@ -118,9 +121,7 @@ class LoginWindow(QMainWindow):
             'username': userName,
             'password': passWord
         }
-        print(data)
         response = requests.post(url, data=data, verify=False)
-        print(response)
         if response.status_code == 400:
             msg = QMessageBox()
             msg.setText("Wrong Password \n Please try Again ")
@@ -192,8 +193,8 @@ class MainWindow(QMainWindow):
 
         ## SET ==> WINDOW TITLE
         self.start_time = 1
-        self.setWindowTitle(' TENDRILL')
-        UIFunctions.labelTitle(self, 'TENDRILL')
+        # self.setWindowTitle(' TENDRILL')
+        # UIFunctions.labelTitle(self, 'TENDRILL')
         UIFunctions.labelDescription(self, 'Welcome ' + self.employee_details['fullName'])
         # UIFunctions.labelPage(self, "Clients")
         ## ==> END ##
@@ -243,8 +244,9 @@ class MainWindow(QMainWindow):
             self.ui.clients_pb.show()
             self.ui.all_shots_pb.show()
             self.ui.shots_ingest_pb.show()
-            self.ui.stackedWidget.setCurrentWidget(self.ui.clients_page)
-            Clients(self)
+            self.ui.stackedWidget.setCurrentWidget(self.ui.projects_page)
+            Projects(self)
+
 
         elif role == "TEAM LEAD" or role == "AST TEAM LEAD" or role == "QC" or role == "AST QC" or role == "SUPERVISOR" or role == "AST SUPERVISOR" or role == "PRODUCTION MANAGER" or role == "AST PRODUCTION MANAGER":
             self.ui.all_shots_pb.show()
@@ -564,8 +566,8 @@ class MainWindow(QMainWindow):
     ############################## ---/--/--- ##############################
 
     def client_btn(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.clients_page)
-        Clients(self)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.projects_page)
+        Projects(self)
 
     def all_shots_btn(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.all_shots_page)
@@ -592,9 +594,37 @@ class MainWindow(QMainWindow):
             window.show()
 
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
-    QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
-    window = LoginWindow()
-    sys.exit(app.exec_())
+
+
+def date_difference(date1, date2):
+    val = 0
+    if not date1 == '-' and not date1 == '-':
+        tokens1 = date1.split('-')
+        tokens2 = date2.split('-')
+        tokens1[2] = tokens1[2].split(' ')[0]
+        if len(tokens1) == 3 and len(tokens2) == 3:
+            d0 = datetime.date(int(tokens1[2]), int(tokens1[1]), int(tokens1[0]))
+            d1 = datetime.date(int(tokens2[2]), int(tokens2[1]), int(tokens2[0]))
+            delta = d0 - d1
+        val = delta.days
+    return val
+
+if __name__ == '__main__':
+    status_today = str(datetime.date.today().day) + '-' + str(datetime.date.today().month) + '-' + str(datetime.date.today().year)
+    ex_date = '30-06-2022'
+    status_days_left = int(date_difference(ex_date, status_today))
+    print ('Tendril Demo will be Expired on ',ex_date)
+    print (status_days_left)
+    if status_days_left>=0:
+        app = QApplication(sys.argv)
+        QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
+        QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
+        window = LoginWindow()
+        sys.exit(app.exec_())
+    else:
+        print ('Tendril Demo version is expired')
+        v = input()
+        #w = QWidget()
+        #QMessageBox.information(w, "Message", "Oops ...  Stark Demo version is expired ..!!!")
+        sys.exit()
+

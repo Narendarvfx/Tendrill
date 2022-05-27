@@ -19,7 +19,7 @@ class Ui_Pro_Dialog(object):
         if not Pro_Dialog.objectName():
             Pro_Dialog.setObjectName(u"Pro_Dialog")
         Pro_Dialog.setWindowModality(Qt.ApplicationModal)
-        Pro_Dialog.resize(359, 260)
+        Pro_Dialog.resize(355, 251)
         Pro_Dialog.setStyleSheet(u"QDialog{\n"
 "	background-color: rgb(27, 29, 35);\n"
 "border:1px solid rgba(255, 170, 0,0.5);\n"
@@ -70,17 +70,14 @@ class Ui_Pro_Dialog(object):
         self.frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_2 = QGridLayout(self.frame)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.cli_name_label = QLabel(self.frame)
-        self.cli_name_label.setObjectName(u"cli_name_label")
+        self.pro_name_text = QLineEdit(self.frame)
+        self.pro_name_text.setObjectName(u"pro_name_text")
         font1 = QFont()
-        font1.setFamily(u"Segoe UI")
-        font1.setPointSize(13)
-        font1.setBold(True)
-        font1.setWeight(75)
-        self.cli_name_label.setFont(font1)
-        self.cli_name_label.setAlignment(Qt.AlignCenter)
+        font1.setPointSize(12)
+        self.pro_name_text.setFont(font1)
+        self.pro_name_text.setStyleSheet(u"padding:5px;")
 
-        self.gridLayout_2.addWidget(self.cli_name_label, 0, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.pro_name_text, 1, 0, 1, 1)
 
         self.label = QLabel(self.frame)
         self.label.setObjectName(u"label")
@@ -88,16 +85,7 @@ class Ui_Pro_Dialog(object):
         font2.setPointSize(13)
         self.label.setFont(font2)
 
-        self.gridLayout_2.addWidget(self.label, 1, 0, 1, 1)
-
-        self.pro_name_text = QLineEdit(self.frame)
-        self.pro_name_text.setObjectName(u"pro_name_text")
-        font3 = QFont()
-        font3.setPointSize(12)
-        self.pro_name_text.setFont(font3)
-        self.pro_name_text.setStyleSheet(u"padding:5px;")
-
-        self.gridLayout_2.addWidget(self.pro_name_text, 2, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1)
 
 
         self.gridLayout.addWidget(self.frame, 4, 0, 1, 1)
@@ -119,9 +107,9 @@ class Ui_Pro_Dialog(object):
         self.pro_save_btn = QPushButton(self.frame_2)
         self.pro_save_btn.setObjectName(u"pro_save_btn")
         self.pro_save_btn.setMinimumSize(QSize(120, 30))
-        font4 = QFont()
-        font4.setPointSize(9)
-        self.pro_save_btn.setFont(font4)
+        font3 = QFont()
+        font3.setPointSize(9)
+        self.pro_save_btn.setFont(font3)
         icon = QIcon()
         icon.addFile(u":/16x16/icons/16x16/cil-save.png", QSize(), QIcon.Normal, QIcon.Off)
         self.pro_save_btn.setIcon(icon)
@@ -131,7 +119,7 @@ class Ui_Pro_Dialog(object):
         self.pro_cancel_btn = QPushButton(self.frame_2)
         self.pro_cancel_btn.setObjectName(u"pro_cancel_btn")
         self.pro_cancel_btn.setMinimumSize(QSize(120, 30))
-        self.pro_cancel_btn.setFont(font4)
+        self.pro_cancel_btn.setFont(font3)
         icon1 = QIcon()
         icon1.addFile(u":/16x16/icons/16x16/cil-x.png", QSize(), QIcon.Normal, QIcon.Off)
         self.pro_cancel_btn.setIcon(icon1)
@@ -150,9 +138,8 @@ class Ui_Pro_Dialog(object):
     def retranslateUi(self, Pro_Dialog):
         Pro_Dialog.setWindowTitle(QCoreApplication.translate("Pro_Dialog", u"Dialog", None))
         self.groupBox.setTitle(QCoreApplication.translate("Pro_Dialog", u"Add Project", None))
-        self.cli_name_label.setText(QCoreApplication.translate("Pro_Dialog", u"clientName", None))
-        self.label.setText(QCoreApplication.translate("Pro_Dialog", u"Name", None))
         self.pro_name_text.setPlaceholderText(QCoreApplication.translate("Pro_Dialog", u"Enter Project Name..", None))
+        self.label.setText(QCoreApplication.translate("Pro_Dialog", u"Name", None))
         self.pro_save_btn.setText(QCoreApplication.translate("Pro_Dialog", u"Save", None))
         self.pro_cancel_btn.setText(QCoreApplication.translate("Pro_Dialog", u"Cancel", None))
     # retranslateUi

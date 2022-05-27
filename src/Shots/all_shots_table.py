@@ -3,7 +3,7 @@ import datetime
 import pytz
 from PySide2 import QtWidgets, QtCore
 from PySide2.QtCore import QSize, QThreadPool, Slot, QDateTime, QDate
-from PySide2.QtGui import QColor, QFont, QPixmap, Qt
+from PySide2.QtGui import QColor, QFont, QPixmap, Qt, QIcon
 from PySide2.QtWidgets import QApplication, QGraphicsDropShadowEffect, QHBoxLayout, QLabel, QMessageBox, QProgressBar, \
     QTableWidgetItem, QWidget, QComboBox
 
@@ -14,10 +14,13 @@ from src.Shots.assign_modal import Assign_Modal
 from src.Shots.client_version import CVersions
 from src.Shots.downloads import DownloadModal
 from src.Shots.lead_assign_modal import LeadAssignModal
+from src.Shots.lead_versions import LVersions
+from src.Shots.output_path_modal import OutputPathModal
 from src.Shots.retake_path_modal import RetakePathModal
 from src.Shots.shot_details import Shot_Details
 from src.Shots.shots_edit_modal import Shots_Edit_Modal
 from src.Shots.team_list_modal import Team_List_Modal
+from src.Shots.versions import Versions
 
 from src.filtered_data import get_filtered_data
 from src.filters_panel import Filters_Panel_Modal
@@ -93,6 +96,8 @@ class All_Shots(object):
         # self.main_window.ui.shot_search_btn.clicked.connect(lambda: self.perform_search())
         self.main_window.ui.sel_all_shtTable_chkBox.toggled.connect(lambda: self.select_all_shots())
         self.main_window.ui.assign_leads_btn.clicked.connect(lambda: self.assign_leads())
+        self.main_window.ui.all_shots_tbWidget.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.main_window.ui.all_shots_tbWidget.customContextMenuRequested.connect(self.on_customContextMenuRequested)
         # self.main_window.ui.download_btn.clicked.connect(lambda: self.download_shots())
         # self.main_window.ui.cli_approve_btn.clicked.connect(lambda: self.client_approve_update("CAP"))
         # self.main_window.ui.cli_retake_btn.clicked.connect(lambda: self.client_status_update("CRT"))
@@ -109,6 +114,139 @@ class All_Shots(object):
     def refresh_all(self):
         self.check_roles()
 
+    # @QtCore.pyqtSlot(QtCore.QPoint)
+    def on_customContextMenuRequested(self, pos):
+        it = self.main_window.ui.all_shots_tbWidget.itemAt(pos)
+        if it is None: return
+        # c = it.column()
+        # item_range = QtWidgets.QTableWidgetSelectionRange(0, c, self.main_window.ui.all_shots_tbWidget.rowCount() - 1, c)
+        # self.main_window.ui.all_shots_tbWidget.setRangeSelected(item_range, True)
+
+        menu = QtWidgets.QMenu()
+        menu.setStyleSheet(u"QMenu {\n"
+    "background-color: #ABABAB; /* sets background of the menu */\n"
+                           "border-radius: 5px;\n"
+    "border: 1px solid black;\n"
+                           "margin:2px;\n"
+"}\n"
+
+"QMenu::item {\n"
+    "/* sets background of menu item. set this to something non-transparent\n"
+        "if you want menu color and menu item color to be different */\n"
+    "background-color: transparent;\n"
+                           "padding: 2px 25px 2px 2px;\n"
+    "border: 1px solid transparent;\n"
+"}\n"
+
+"QMenu::item:selected { /* when user selects item using mouse or keyboard */\n"
+    "background-color: rgba(100, 100, 100, 150);\n"
+                           "border-color: darkblue;\n"
+"}")
+        font1 = QFont()
+        font1.setPointSize(12)
+        menu.setFont(font1)
+        if self.role == 'TEAM LEAD' or self.role == 'SUPERVISOR' or self.role == 'QC':
+            assign_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Assign")
+            approve_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Approve")
+            reject_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Reject")
+        team_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Team")
+
+        action = menu.exec_(self.main_window.ui.all_shots_tbWidget.viewport().mapToGlobal(pos))
+        try:
+            if action == approve_action:
+                self.status_check(self.approve_status)
+            elif action == reject_action:
+                self.status_check(self.retake_status)
+            elif action == assign_action:
+                self.assign_modal()
+            elif action == team_action:
+                self.team_list_modal()
+        except Exception as e:
+            pass
+            # self.main_window.ui.all_shots_tbWidget.removeColumn(c)
+
+    def status_check(self, status):
+        self.current_row = self.main_window.ui.all_shots_tbWidget.currentRow()
+        shot_details = self.main_window.ui.all_shots_tbWidget.item(self.current_row, 1).data(1)
+        if self.role == "TEAM LEAD" or self.role == "SUPERVISOR":
+            if shot_details['status']['code'] == "STQ":
+                self.shot_status_update(status)
+            else:
+                msg = QMessageBox()
+                msg.setText("Shot not submitted Qc\n")
+                msg.setWindowTitle("Error")
+                msg.setIcon(QMessageBox.Critical)
+                msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+                msg.exec_()
+        if self.role == "QC":
+            if shot_details['status']['code'] == "LAP":
+                self.shot_status_update(status)
+            else:
+                msg = QMessageBox()
+                msg.setText("Shot not submitted Qc\n")
+                msg.setWindowTitle("Error")
+                msg.setIcon(QMessageBox.Critical)
+                msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+                msg.exec_()
+
+    def shot_status_update(self, status):
+        if status == "IAP":
+            modal = OutputPathModal(self)
+            if modal.exec_():
+                output_path = modal.get_output_path()
+                data = {
+                    'status': status,
+                    'output_path': output_path
+                }
+            else:
+                pass
+        else:
+            data = {
+                'status': status
+            }
+        qm = QMessageBox()
+        result = qm.question(self.main_window, 'Shot Buzz Application', "Are you sure with {}".format(status), qm.Yes | qm.No)
+        if result == qm.Yes:
+            self.current_row = self.main_window.ui.all_shots_tbWidget.currentRow()
+            column = self.main_window.ui.all_shots_tbWidget.currentColumn()
+            shot_response = api.update_ShotStatus(str(self.main_window.ui.all_shots_tbWidget.item(self.current_row, 1).data(1)['id']), data)
+            if shot_response.status_code == 201:
+                if status == "LAP":
+                    # Lead Approval
+                    Versions.update_ver_status(self, status)
+                    LVersions.create_version(self)
+                elif status == "LRT":
+                    # Lead Rejected
+                    Versions.update_ver_status(self, status)
+                elif status == "IAP" or status == "IRT" or status == "CRT":
+                    # Versions.update_ver_status(self, status)
+                    LVersions.update_ver_status(self, status)
+                    if status == "IAP":
+                        CVersions.create_version(self)
+                    # if status == "IAP":
+                    #     worker = Worker(self.send_email)  # Any other args, kwargs are passed to the run function
+                    #     self.threadpool.start(worker)
+
+                if status != "HRT" or status != "CRT" or status != "HLD":
+                    task_api = api.getArtlistByShotId(shot_response.json()['id'])
+                    for task in task_api:
+                        task_data = {
+                            'task_status': status
+                        }
+                        response = api.updateTask(str(task['id']), task_data)
+                    if status == "CRT":
+                        CVersions.update_ver_status(self, status)
+                self.main_window.ui.status_btn.setText(shot_response.json()['status']['code'])
+                self.main_window.ui.status_btn.setStyleSheet(
+                    'color:"#3b3839";background-color:{};padding-left:15px;padding-right:15px;padding-top:5px;padding-bottom:5px'.format(
+                        shot_response.json()['status']['color']))
+                self.shadow = QGraphicsDropShadowEffect()
+                self.shadow.setBlurRadius(5)
+                self.shadow.setXOffset(0)
+                self.shadow.setYOffset(0)
+                self.shadow.setColor(QColor(shot_response.json()['status']['color']))
+                self.main_window.ui.shot_details_top_frame.setGraphicsEffect(self.shadow)
+
     def filter_panel(self):
         filter_pan = Filters_Panel_Modal(self)
         if filter_pan.exec_():
@@ -117,15 +255,25 @@ class All_Shots(object):
             pass
 
     def check_roles(self):
+        self.approve_status = ""
+        self.retake_status = ""
+        self.client_retake_status = ""
+        self.hold_status = ""
         self.role = self.main_window.employee_details['role']
         self.department = self.main_window.employee_details['department']
         if self.role == 'SUPERVISOR' or self.role == 'AST SUPERVISOR':
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(16, True)
             G_DEPARTMENT_LIST.append(self.department)
+            self.approve_status = "LAP"
+            self.retake_status = "LRT"
         elif self.role == 'PRODUCTION MANAGER' or self.role == 'AST PRODUCTION MANAGER':
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(16, True)
 
             G_DEPARTMENT_LIST.extend(['PAINT', 'ROTO', 'MM', 'COMP'])
+            self.approve_status = "IAP"
+            self.retake_status = "IRT"
+            self.client_retake_status = "CRT"
+            self.hold_status = "HLD"
         elif self.role == 'TEAM LEAD':
             self.main_window.ui.assign_leads_btn.hide()
             self.main_window.ui.sel_all_shtTable_chkBox.hide()
@@ -135,6 +283,8 @@ class All_Shots(object):
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(16, True)
             self.main_window.team_lead = True
             self.main_window.team_lead_id = self.main_window.employee_details['id']
+            self.approve_status = "LAP"
+            self.retake_status = "LRT"
         elif self.role == 'QC':
             self.main_window.ui.assign_leads_btn.hide()
             self.main_window.ui.sel_all_shtTable_chkBox.hide()
@@ -143,6 +293,10 @@ class All_Shots(object):
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(0, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(16, True)
             G_DEPARTMENT_LIST.append(self.department)
+            self.approve_status = "IAP"
+            self.retake_status = "IRT"
+            self.client_retake_status = "CRT"
+            self.hold_status = "HLD"
         elif self.role == 'DATA I/O':
             self.main_window.ui.assign_leads_btn.hide()
             # self.main_window.ui.download_btn.show()
@@ -184,6 +338,7 @@ class All_Shots(object):
 
     def disconnect_slots(self):
         try:
+            self.main_window.ui.all_shots_tbWidget.customContextMenuRequested.disconnect()
             self.main_window.ui.refresh_btn.clicked.disconnect()
             # self.main_window.ui.tl_sel_cb.activated.disconnect()
             self.main_window.ui.all_shots_tbWidget.cellDoubleClicked.disconnect()
