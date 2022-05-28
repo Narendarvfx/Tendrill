@@ -71,7 +71,7 @@ class LoginWindow(QMainWindow):
         self.login_ui.login_btn.clicked.connect(lambda: self.LoginClicked())
 
         #TODO: Enable this code block before deploying to production to display login window
-        # self.show()
+        self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
@@ -108,7 +108,7 @@ class LoginWindow(QMainWindow):
             'password': 'Tomato@123'
         }
         response = requests.post(url, data=supervisor, verify=False)
-        MainWindow(response.json())
+        # MainWindow(response.json())
 
     @Slot()
     def LoginClicked(self):
@@ -218,9 +218,9 @@ class MainWindow(QMainWindow):
             # Read YAML file
             with open(FILTERS_FILE, 'r') as stream:
                 self.filters_loaded = yaml.safe_load(stream)
-            for _cid in self.filters_loaded['clients']:
-                G_CLIENTS_ID_LIST.append(_cid['id'])
-                G_CLIENTS_LIST.append(_cid)
+            # for _cid in self.filters_loaded['clients']:
+            #     G_CLIENTS_ID_LIST.append(_cid['id'])
+            #     G_CLIENTS_LIST.append(_cid)
             for _pid in self.filters_loaded['projects']:
                 G_PROJECTS_ID_LIST.append(_pid['id'])
                 G_PROJECTS_LIST.append(_pid)
@@ -229,7 +229,7 @@ class MainWindow(QMainWindow):
                 G_STATUS_LIST.append(_sid)
         else:
             # Write YAML file
-            d = {'clients': G_CLIENTS_LIST, 'projects': G_PROJECTS_LIST, 'status': G_STATUS_LIST}
+            d = {'projects': G_PROJECTS_LIST, 'status': G_STATUS_LIST}
             with open(FILTERS_FILE, 'w') as yaml_file:
                 yaml.dump(d, yaml_file, default_flow_style=False)
 

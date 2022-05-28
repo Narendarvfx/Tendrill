@@ -125,9 +125,8 @@ class All_Shots(object):
         menu = QtWidgets.QMenu()
         menu.setStyleSheet(u"QMenu {\n"
     "background-color: #ABABAB; /* sets background of the menu */\n"
-                           "border-radius: 5px;\n"
-    "border: 1px solid black;\n"
-                           "margin:2px;\n"
+                           "border-radius: 0px;\n"
+
 "}\n"
 
 "QMenu::item {\n"
@@ -146,10 +145,10 @@ class All_Shots(object):
         font1.setPointSize(12)
         menu.setFont(font1)
         if self.role == 'TEAM LEAD' or self.role == 'SUPERVISOR' or self.role == 'QC':
-            assign_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Assign")
-            approve_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Approve")
-            reject_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Reject")
-        team_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Team")
+            assign_action = menu.addAction("&Assign")
+            approve_action = menu.addAction("&Approve")
+            reject_action = menu.addAction("&Reject")
+        team_action = menu.addAction( "&Team")
 
         action = menu.exec_(self.main_window.ui.all_shots_tbWidget.viewport().mapToGlobal(pos))
         try:

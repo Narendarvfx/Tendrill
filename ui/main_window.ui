@@ -576,12 +576,12 @@ QSlider::handle:vertical:pressed {
                        </spacer>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="clients_pb">
+                       <widget class="QPushButton" name="projects_pb">
                         <property name="cursor">
                          <cursorShape>PointingHandCursor</cursorShape>
                         </property>
                         <property name="toolTip">
-                         <string>Clients</string>
+                         <string>Projects</string>
                         </property>
                         <property name="layoutDirection">
                          <enum>Qt::LeftToRight</enum>
@@ -1232,7 +1232,7 @@ QPushButton:pressed {
 border-radius: 5px;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>5</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="clients_page">
                       <layout class="QGridLayout" name="gridLayout_2">
@@ -1689,6 +1689,13 @@ border-radius: 5px;</string>
                              </item>
                              <item>
                               <widget class="QPushButton" name="pro_add_btn">
+                               <property name="font">
+                                <font>
+                                 <pointsize>12</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
                                <property name="cursor">
                                 <cursorShape>PointingHandCursor</cursorShape>
                                </property>
@@ -1696,7 +1703,7 @@ border-radius: 5px;</string>
                                 <string>Add Project</string>
                                </property>
                                <property name="text">
-                                <string/>
+                                <string>Add Project</string>
                                </property>
                                <property name="icon">
                                 <iconset resource="../files.qrc">
@@ -1720,7 +1727,7 @@ border-radius: 5px;</string>
                            <widget class="QTableWidget" name="pro_table">
                             <property name="font">
                              <font>
-                              <pointsize>12</pointsize>
+                              <pointsize>10</pointsize>
                              </font>
                             </property>
                             <property name="focusPolicy">
@@ -1808,7 +1815,7 @@ QHeaderView::section:vertical
                             </attribute>
                             <column>
                              <property name="text">
-                              <string>CLIENT</string>
+                              <string>STATUS</string>
                              </property>
                             </column>
                             <column>
@@ -4139,8 +4146,8 @@ QHeaderView::section:vertical
                                              <rect>
                                               <x>0</x>
                                               <y>0</y>
-                                              <width>434</width>
-                                              <height>554</height>
+                                              <width>100</width>
+                                              <height>30</height>
                                              </rect>
                                             </property>
                                             <property name="styleSheet">
@@ -5773,7 +5780,7 @@ QTableWidget::item:selected{
 QScrollBar:horizontal {
     border: none;
     background: rgb(52, 59, 72);
-    height: 14px;
+    height: 7px;
     margin: 0px 21px 0 21px;
 	border-radius: 0px;
 }
@@ -5846,11 +5853,6 @@ QHeaderView::section:vertical
                                <column>
                                 <property name="text">
                                  <string/>
-                                </property>
-                               </column>
-                               <column>
-                                <property name="text">
-                                 <string>CLIENT</string>
                                 </property>
                                </column>
                                <column>
@@ -7542,6 +7544,7 @@ QPushButton::pressed{
  </widget>
  <resources>
   <include location="../files.qrc"/>
+  <include location="../../../../Users/admin/.designer/files.qrc"/>
  </resources>
  <connections/>
 </ui>
