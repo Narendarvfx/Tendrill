@@ -235,13 +235,13 @@ class MainWindow(QMainWindow):
 
         # TODO: Change version before production build
         self.ui.label_version.setText("V01.5262")
-        self.ui.clients_pb.hide()
+        self.ui.projects_pb.hide()
         self.ui.all_shots_pb.hide()
         self.ui.shots_ingest_pb.hide()
         self.ui.my_task_pb.hide()
         role = self.employee_details['role']
         if role == "DATA I/O":
-            self.ui.clients_pb.show()
+            self.ui.projects_pb.show()
             self.ui.all_shots_pb.show()
             self.ui.shots_ingest_pb.show()
             self.ui.stackedWidget.setCurrentWidget(self.ui.projects_page)
@@ -280,7 +280,7 @@ class MainWindow(QMainWindow):
         user = getpass.getuser()
         UIFunctions.userIcon(self, user.split(".")[-1].upper() + user[0], "", True)
 
-        self.ui.clients_pb.clicked.connect(self.client_btn)
+        self.ui.projects_pb.clicked.connect(self.client_btn)
         self.ui.all_shots_pb.clicked.connect(self.all_shots_btn)
         self.ui.shots_ingest_pb.clicked.connect(self.shots_ingest_btn)
         self.ui.my_task_pb.clicked.connect(self.my_task_btn)
@@ -423,12 +423,12 @@ class MainWindow(QMainWindow):
         # GET BT CLICKED
         btnWidget = button
         self.browser = QWebEngineView()
-        if btnWidget.objectName() == "clients":
-            self.ui.stackedWidget.setCurrentWidget(self.ui.clients_page)
-            UIFunctions.resetStyle(self, "clients")
-            UIFunctions.labelPage(self, "Clients")
+        if btnWidget.objectName() == "projects":
+            self.ui.stackedWidget.setCurrentWidget(self.ui.projects_page)
+            UIFunctions.resetStyle(self, "projects")
+            UIFunctions.labelPage(self, "Projects")
             btnWidget.setStyleSheet(UIFunctions.selectMenu(btnWidget.styleSheet()))
-            Clients(self)
+            Projects(self)
 
         # PAGE NEW USER
         elif btnWidget.objectName() == "shots":

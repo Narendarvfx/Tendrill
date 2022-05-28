@@ -378,17 +378,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_41.addItem(self.horizontalSpacer_10)
 
-        self.clients_pb = QPushButton(self.frame_42)
-        self.clients_pb.setObjectName(u"clients_pb")
-        self.clients_pb.setCursor(QCursor(Qt.PointingHandCursor))
-        self.clients_pb.setLayoutDirection(Qt.LeftToRight)
+        self.projects_pb = QPushButton(self.frame_42)
+        self.projects_pb.setObjectName(u"projects_pb")
+        self.projects_pb.setCursor(QCursor(Qt.PointingHandCursor))
+        self.projects_pb.setLayoutDirection(Qt.LeftToRight)
         icon1 = QIcon()
         icon1.addFile(u":/24x24/icons/twotone_home_white_24dp.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.clients_pb.setIcon(icon1)
-        self.clients_pb.setIconSize(QSize(32, 32))
-        self.clients_pb.setFlat(True)
+        self.projects_pb.setIcon(icon1)
+        self.projects_pb.setIconSize(QSize(32, 32))
+        self.projects_pb.setFlat(True)
 
-        self.horizontalLayout_41.addWidget(self.clients_pb)
+        self.horizontalLayout_41.addWidget(self.projects_pb)
 
         self.shots_ingest_pb = QPushButton(self.frame_42)
         self.shots_ingest_pb.setObjectName(u"shots_ingest_pb")
@@ -903,6 +903,11 @@ class Ui_MainWindow(object):
 
         self.pro_add_btn = QPushButton(self.pro_top_frame)
         self.pro_add_btn.setObjectName(u"pro_add_btn")
+        font8 = QFont()
+        font8.setPointSize(12)
+        font8.setBold(True)
+        font8.setWeight(75)
+        self.pro_add_btn.setFont(font8)
         self.pro_add_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon12 = QIcon()
         icon12.addFile(u":/24x24/icons/24x24/cil-medical-cross.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -923,7 +928,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem16 = QTableWidgetItem()
         self.pro_table.setHorizontalHeaderItem(1, __qtablewidgetitem16)
         self.pro_table.setObjectName(u"pro_table")
-        self.pro_table.setFont(font5)
+        self.pro_table.setFont(font1)
         self.pro_table.setFocusPolicy(Qt.NoFocus)
         self.pro_table.setStyleSheet(u"QTableWidget {	\n"
 "	background-color: rgb(39, 44, 54);\n"
@@ -1051,12 +1056,12 @@ class Ui_MainWindow(object):
         self.formLayout_2.setObjectName(u"formLayout_2")
         self.label_17 = QLabel(self.frame_7)
         self.label_17.setObjectName(u"label_17")
-        font8 = QFont()
-        font8.setFamily(u"Segoe UI")
-        font8.setPointSize(12)
-        font8.setBold(True)
-        font8.setWeight(75)
-        self.label_17.setFont(font8)
+        font9 = QFont()
+        font9.setFamily(u"Segoe UI")
+        font9.setPointSize(12)
+        font9.setBold(True)
+        font9.setWeight(75)
+        self.label_17.setFont(font9)
 
         self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.label_17)
 
@@ -1072,9 +1077,9 @@ class Ui_MainWindow(object):
         self.line_7 = QFrame(self.frame_7)
         self.line_7.setObjectName(u"line_7")
         self.line_7.setMaximumSize(QSize(1, 16777215))
-        font9 = QFont()
-        font9.setPointSize(11)
-        self.line_7.setFont(font9)
+        font10 = QFont()
+        font10.setPointSize(11)
+        self.line_7.setFont(font10)
         self.line_7.setStyleSheet(u"background-color: rgb(45, 51, 63);")
         self.line_7.setFrameShape(QFrame.VLine)
         self.line_7.setFrameShadow(QFrame.Sunken)
@@ -1083,7 +1088,7 @@ class Ui_MainWindow(object):
 
         self.label_22 = QLabel(self.frame_7)
         self.label_22.setObjectName(u"label_22")
-        self.label_22.setFont(font8)
+        self.label_22.setFont(font9)
 
         self.formLayout_2.setWidget(2, QFormLayout.LabelRole, self.label_22)
 
@@ -1094,12 +1099,12 @@ class Ui_MainWindow(object):
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.status_btn.sizePolicy().hasHeightForWidth())
         self.status_btn.setSizePolicy(sizePolicy4)
-        font10 = QFont()
-        font10.setFamily(u"MS Shell Dlg 2")
-        font10.setPointSize(10)
-        font10.setBold(False)
-        font10.setWeight(50)
-        self.status_btn.setFont(font10)
+        font11 = QFont()
+        font11.setFamily(u"MS Shell Dlg 2")
+        font11.setPointSize(10)
+        font11.setBold(False)
+        font11.setWeight(50)
+        self.status_btn.setFont(font11)
         self.status_btn.setLayoutDirection(Qt.LeftToRight)
         self.status_btn.setStyleSheet(u"")
         self.status_btn.setFlat(True)
@@ -1108,7 +1113,7 @@ class Ui_MainWindow(object):
 
         self.label_23 = QLabel(self.frame_7)
         self.label_23.setObjectName(u"label_23")
-        self.label_23.setFont(font8)
+        self.label_23.setFont(font9)
 
         self.formLayout_2.setWidget(4, QFormLayout.LabelRole, self.label_23)
 
@@ -1120,7 +1125,7 @@ class Ui_MainWindow(object):
 
         self.label_27 = QLabel(self.frame_7)
         self.label_27.setObjectName(u"label_27")
-        self.label_27.setFont(font8)
+        self.label_27.setFont(font9)
         self.label_27.setCursor(QCursor(Qt.ArrowCursor))
 
         self.formLayout_2.setWidget(6, QFormLayout.LabelRole, self.label_27)
@@ -1133,7 +1138,7 @@ class Ui_MainWindow(object):
 
         self.label_29 = QLabel(self.frame_7)
         self.label_29.setObjectName(u"label_29")
-        self.label_29.setFont(font8)
+        self.label_29.setFont(font9)
 
         self.formLayout_2.setWidget(8, QFormLayout.LabelRole, self.label_29)
 
@@ -1145,7 +1150,7 @@ class Ui_MainWindow(object):
 
         self.label_30 = QLabel(self.frame_7)
         self.label_30.setObjectName(u"label_30")
-        self.label_30.setFont(font8)
+        self.label_30.setFont(font9)
 
         self.formLayout_2.setWidget(10, QFormLayout.LabelRole, self.label_30)
 
@@ -1157,7 +1162,7 @@ class Ui_MainWindow(object):
 
         self.label_31 = QLabel(self.frame_7)
         self.label_31.setObjectName(u"label_31")
-        self.label_31.setFont(font8)
+        self.label_31.setFont(font9)
 
         self.formLayout_2.setWidget(12, QFormLayout.LabelRole, self.label_31)
 
@@ -1169,7 +1174,7 @@ class Ui_MainWindow(object):
 
         self.label_33 = QLabel(self.frame_7)
         self.label_33.setObjectName(u"label_33")
-        self.label_33.setFont(font8)
+        self.label_33.setFont(font9)
 
         self.formLayout_2.setWidget(14, QFormLayout.LabelRole, self.label_33)
 
@@ -1181,7 +1186,7 @@ class Ui_MainWindow(object):
 
         self.label_34 = QLabel(self.frame_7)
         self.label_34.setObjectName(u"label_34")
-        self.label_34.setFont(font8)
+        self.label_34.setFont(font9)
 
         self.formLayout_2.setWidget(16, QFormLayout.LabelRole, self.label_34)
 
@@ -1193,13 +1198,13 @@ class Ui_MainWindow(object):
 
         self.label_35 = QLabel(self.frame_7)
         self.label_35.setObjectName(u"label_35")
-        font11 = QFont()
-        font11.setFamily(u"Segoe UI")
-        font11.setPointSize(12)
-        font11.setBold(True)
-        font11.setItalic(False)
-        font11.setWeight(75)
-        self.label_35.setFont(font11)
+        font12 = QFont()
+        font12.setFamily(u"Segoe UI")
+        font12.setPointSize(12)
+        font12.setBold(True)
+        font12.setItalic(False)
+        font12.setWeight(75)
+        self.label_35.setFont(font12)
 
         self.formLayout_2.setWidget(18, QFormLayout.LabelRole, self.label_35)
 
@@ -1211,7 +1216,7 @@ class Ui_MainWindow(object):
 
         self.label_36 = QLabel(self.frame_7)
         self.label_36.setObjectName(u"label_36")
-        self.label_36.setFont(font8)
+        self.label_36.setFont(font9)
 
         self.formLayout_2.setWidget(20, QFormLayout.LabelRole, self.label_36)
 
@@ -1223,7 +1228,7 @@ class Ui_MainWindow(object):
 
         self.label_38 = QLabel(self.frame_7)
         self.label_38.setObjectName(u"label_38")
-        self.label_38.setFont(font8)
+        self.label_38.setFont(font9)
 
         self.formLayout_2.setWidget(22, QFormLayout.LabelRole, self.label_38)
 
@@ -1278,11 +1283,11 @@ class Ui_MainWindow(object):
         self.input_label_2 = QLabel(self.tab)
         self.input_label_2.setObjectName(u"input_label_2")
         self.input_label_2.setMinimumSize(QSize(10, 0))
-        font12 = QFont()
-        font12.setPointSize(16)
-        font12.setBold(True)
-        font12.setWeight(75)
-        self.input_label_2.setFont(font12)
+        font13 = QFont()
+        font13.setPointSize(16)
+        font13.setBold(True)
+        font13.setWeight(75)
+        self.input_label_2.setFont(font13)
         self.input_label_2.setLayoutDirection(Qt.LeftToRight)
         self.input_label_2.setAlignment(Qt.AlignCenter)
 
@@ -1306,7 +1311,7 @@ class Ui_MainWindow(object):
         self.input_label_3 = QLabel(self.tab)
         self.input_label_3.setObjectName(u"input_label_3")
         self.input_label_3.setMinimumSize(QSize(10, 0))
-        self.input_label_3.setFont(font12)
+        self.input_label_3.setFont(font13)
         self.input_label_3.setLayoutDirection(Qt.LeftToRight)
         self.input_label_3.setAlignment(Qt.AlignCenter)
 
@@ -1401,7 +1406,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.setContentsMargins(7, 0, 7, 0)
         self.scripts_label = QLabel(self.scripts_label_frame)
         self.scripts_label.setObjectName(u"scripts_label")
-        self.scripts_label.setFont(font9)
+        self.scripts_label.setFont(font10)
         self.scripts_label.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_14.addWidget(self.scripts_label)
@@ -1462,7 +1467,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.setContentsMargins(7, 0, 7, 0)
         self.preren_label = QLabel(self.preren_label_frame)
         self.preren_label.setObjectName(u"preren_label")
-        self.preren_label.setFont(font9)
+        self.preren_label.setFont(font10)
         self.preren_label.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_15.addWidget(self.preren_label)
@@ -1539,7 +1544,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.setContentsMargins(7, 0, 7, 0)
         self.scripts_label_2 = QLabel(self.scripts_label_frame_2)
         self.scripts_label_2.setObjectName(u"scripts_label_2")
-        self.scripts_label_2.setFont(font9)
+        self.scripts_label_2.setFont(font10)
         self.scripts_label_2.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_26.addWidget(self.scripts_label_2)
@@ -1586,7 +1591,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_28.setContentsMargins(7, 0, 7, 0)
         self.preren_label_2 = QLabel(self.preren_label_frame_2)
         self.preren_label_2.setObjectName(u"preren_label_2")
-        self.preren_label_2.setFont(font9)
+        self.preren_label_2.setFont(font10)
         self.preren_label_2.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_28.addWidget(self.preren_label_2)
@@ -1661,7 +1666,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_34.setContentsMargins(7, 0, 7, 0)
         self.scripts_label_3 = QLabel(self.scripts_label_frame_3)
         self.scripts_label_3.setObjectName(u"scripts_label_3")
-        self.scripts_label_3.setFont(font9)
+        self.scripts_label_3.setFont(font10)
         self.scripts_label_3.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_34.addWidget(self.scripts_label_3)
@@ -1708,7 +1713,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_36.setContentsMargins(7, 0, 7, 0)
         self.preren_label_3 = QLabel(self.preren_label_frame_3)
         self.preren_label_3.setObjectName(u"preren_label_3")
-        self.preren_label_3.setFont(font9)
+        self.preren_label_3.setFont(font10)
         self.preren_label_3.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_36.addWidget(self.preren_label_3)
@@ -1784,7 +1789,7 @@ class Ui_MainWindow(object):
         self.input_label = QLabel(self.input_label_frame)
         self.input_label.setObjectName(u"input_label")
         self.input_label.setMinimumSize(QSize(10, 0))
-        self.input_label.setFont(font9)
+        self.input_label.setFont(font10)
         self.input_label.setLayoutDirection(Qt.LeftToRight)
         self.input_label.setAlignment(Qt.AlignCenter)
 
@@ -1948,7 +1953,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.chat_area_widget = QWidget()
         self.chat_area_widget.setObjectName(u"chat_area_widget")
-        self.chat_area_widget.setGeometry(QRect(0, 0, 434, 554))
+        self.chat_area_widget.setGeometry(QRect(0, 0, 100, 30))
         self.chat_area_widget.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.chat_area_widget)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -2446,12 +2451,12 @@ class Ui_MainWindow(object):
         self.sh_import_progressBar.setEnabled(True)
         self.sh_import_progressBar.setMinimumSize(QSize(0, 20))
         self.sh_import_progressBar.setMaximumSize(QSize(16777215, 30))
-        font13 = QFont()
-        font13.setFamily(u"Nirmala UI")
-        font13.setPointSize(16)
-        font13.setBold(True)
-        font13.setWeight(75)
-        self.sh_import_progressBar.setFont(font13)
+        font14 = QFont()
+        font14.setFamily(u"Nirmala UI")
+        font14.setPointSize(16)
+        font14.setBold(True)
+        font14.setWeight(75)
+        self.sh_import_progressBar.setFont(font14)
         self.sh_import_progressBar.setAutoFillBackground(False)
         self.sh_import_progressBar.setStyleSheet(u"QProgressBar::chunk {\n"
 "	text-align: center;\n"
@@ -2738,12 +2743,12 @@ class Ui_MainWindow(object):
         self.set_default_btn = QPushButton(self.frame_45)
         self.set_default_btn.setObjectName(u"set_default_btn")
         self.set_default_btn.setMinimumSize(QSize(30, 30))
-        font14 = QFont()
-        font14.setFamily(u"Segoe UI")
-        font14.setPointSize(8)
-        font14.setBold(True)
-        font14.setWeight(75)
-        self.set_default_btn.setFont(font14)
+        font15 = QFont()
+        font15.setFamily(u"Segoe UI")
+        font15.setPointSize(8)
+        font15.setBold(True)
+        font15.setWeight(75)
+        self.set_default_btn.setFont(font15)
         self.set_default_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon17 = QIcon()
         icon17.addFile(u":/24x24/icons/24x24/cil-camera-roll.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -2755,11 +2760,11 @@ class Ui_MainWindow(object):
         self.clear_filter_btn = QPushButton(self.frame_45)
         self.clear_filter_btn.setObjectName(u"clear_filter_btn")
         self.clear_filter_btn.setMinimumSize(QSize(80, 30))
-        font15 = QFont()
-        font15.setPointSize(8)
-        font15.setBold(True)
-        font15.setWeight(75)
-        self.clear_filter_btn.setFont(font15)
+        font16 = QFont()
+        font16.setPointSize(8)
+        font16.setBold(True)
+        font16.setWeight(75)
+        self.clear_filter_btn.setFont(font16)
         self.clear_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon18 = QIcon()
         icon18.addFile(u":/24x24/icons/24x24/cil-x.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -2771,7 +2776,7 @@ class Ui_MainWindow(object):
         self.apply_filter_btn = QPushButton(self.frame_45)
         self.apply_filter_btn.setObjectName(u"apply_filter_btn")
         self.apply_filter_btn.setMinimumSize(QSize(80, 30))
-        self.apply_filter_btn.setFont(font14)
+        self.apply_filter_btn.setFont(font15)
         self.apply_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon19 = QIcon()
         icon19.addFile(u":/24x24/icons/24x24/cil-check-alt.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -2795,8 +2800,8 @@ class Ui_MainWindow(object):
         self.gridLayout_32.setObjectName(u"gridLayout_32")
         self.gridLayout_32.setContentsMargins(0, 0, 0, 0)
         self.all_shots_tbWidget = QTableWidget(self.frame_22)
-        if (self.all_shots_tbWidget.columnCount() < 17):
-            self.all_shots_tbWidget.setColumnCount(17)
+        if (self.all_shots_tbWidget.columnCount() < 16):
+            self.all_shots_tbWidget.setColumnCount(16)
         __qtablewidgetitem52 = QTableWidgetItem()
         self.all_shots_tbWidget.setHorizontalHeaderItem(0, __qtablewidgetitem52)
         __qtablewidgetitem53 = QTableWidgetItem()
@@ -2829,8 +2834,6 @@ class Ui_MainWindow(object):
         self.all_shots_tbWidget.setHorizontalHeaderItem(14, __qtablewidgetitem66)
         __qtablewidgetitem67 = QTableWidgetItem()
         self.all_shots_tbWidget.setHorizontalHeaderItem(15, __qtablewidgetitem67)
-        __qtablewidgetitem68 = QTableWidgetItem()
-        self.all_shots_tbWidget.setHorizontalHeaderItem(16, __qtablewidgetitem68)
         self.all_shots_tbWidget.setObjectName(u"all_shots_tbWidget")
         self.all_shots_tbWidget.setFont(font1)
         self.all_shots_tbWidget.setFocusPolicy(Qt.NoFocus)
@@ -2851,7 +2854,7 @@ class Ui_MainWindow(object):
 "QScrollBar:horizontal {\n"
 "    border: none;\n"
 "    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
+"    height: 7px;\n"
 "    margin: 0px 21px 0 21px;\n"
 "	border-radius: 0px;\n"
 "}\n"
@@ -3023,30 +3026,30 @@ class Ui_MainWindow(object):
         self.task_pending_tableWid = QTableWidget(self.pending_task)
         if (self.task_pending_tableWid.columnCount() < 12):
             self.task_pending_tableWid.setColumnCount(12)
+        __qtablewidgetitem68 = QTableWidgetItem()
+        self.task_pending_tableWid.setHorizontalHeaderItem(0, __qtablewidgetitem68)
         __qtablewidgetitem69 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(0, __qtablewidgetitem69)
+        self.task_pending_tableWid.setHorizontalHeaderItem(1, __qtablewidgetitem69)
         __qtablewidgetitem70 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(1, __qtablewidgetitem70)
+        self.task_pending_tableWid.setHorizontalHeaderItem(2, __qtablewidgetitem70)
         __qtablewidgetitem71 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(2, __qtablewidgetitem71)
+        self.task_pending_tableWid.setHorizontalHeaderItem(3, __qtablewidgetitem71)
         __qtablewidgetitem72 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(3, __qtablewidgetitem72)
+        self.task_pending_tableWid.setHorizontalHeaderItem(4, __qtablewidgetitem72)
         __qtablewidgetitem73 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(4, __qtablewidgetitem73)
+        self.task_pending_tableWid.setHorizontalHeaderItem(5, __qtablewidgetitem73)
         __qtablewidgetitem74 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(5, __qtablewidgetitem74)
+        self.task_pending_tableWid.setHorizontalHeaderItem(6, __qtablewidgetitem74)
         __qtablewidgetitem75 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(6, __qtablewidgetitem75)
+        self.task_pending_tableWid.setHorizontalHeaderItem(7, __qtablewidgetitem75)
         __qtablewidgetitem76 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(7, __qtablewidgetitem76)
+        self.task_pending_tableWid.setHorizontalHeaderItem(8, __qtablewidgetitem76)
         __qtablewidgetitem77 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(8, __qtablewidgetitem77)
+        self.task_pending_tableWid.setHorizontalHeaderItem(9, __qtablewidgetitem77)
         __qtablewidgetitem78 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(9, __qtablewidgetitem78)
+        self.task_pending_tableWid.setHorizontalHeaderItem(10, __qtablewidgetitem78)
         __qtablewidgetitem79 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(10, __qtablewidgetitem79)
-        __qtablewidgetitem80 = QTableWidgetItem()
-        self.task_pending_tableWid.setHorizontalHeaderItem(11, __qtablewidgetitem80)
+        self.task_pending_tableWid.setHorizontalHeaderItem(11, __qtablewidgetitem79)
         self.task_pending_tableWid.setObjectName(u"task_pending_tableWid")
         self.task_pending_tableWid.setStyleSheet(u"QTableWidget {	\n"
 "	background-color: rgb(39, 44, 54);\n"
@@ -3124,30 +3127,30 @@ class Ui_MainWindow(object):
         self.task_completed_tableWid = QTableWidget(self.completed)
         if (self.task_completed_tableWid.columnCount() < 12):
             self.task_completed_tableWid.setColumnCount(12)
+        __qtablewidgetitem80 = QTableWidgetItem()
+        self.task_completed_tableWid.setHorizontalHeaderItem(0, __qtablewidgetitem80)
         __qtablewidgetitem81 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(0, __qtablewidgetitem81)
+        self.task_completed_tableWid.setHorizontalHeaderItem(1, __qtablewidgetitem81)
         __qtablewidgetitem82 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(1, __qtablewidgetitem82)
+        self.task_completed_tableWid.setHorizontalHeaderItem(2, __qtablewidgetitem82)
         __qtablewidgetitem83 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(2, __qtablewidgetitem83)
+        self.task_completed_tableWid.setHorizontalHeaderItem(3, __qtablewidgetitem83)
         __qtablewidgetitem84 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(3, __qtablewidgetitem84)
+        self.task_completed_tableWid.setHorizontalHeaderItem(4, __qtablewidgetitem84)
         __qtablewidgetitem85 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(4, __qtablewidgetitem85)
+        self.task_completed_tableWid.setHorizontalHeaderItem(5, __qtablewidgetitem85)
         __qtablewidgetitem86 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(5, __qtablewidgetitem86)
+        self.task_completed_tableWid.setHorizontalHeaderItem(6, __qtablewidgetitem86)
         __qtablewidgetitem87 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(6, __qtablewidgetitem87)
+        self.task_completed_tableWid.setHorizontalHeaderItem(7, __qtablewidgetitem87)
         __qtablewidgetitem88 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(7, __qtablewidgetitem88)
+        self.task_completed_tableWid.setHorizontalHeaderItem(8, __qtablewidgetitem88)
         __qtablewidgetitem89 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(8, __qtablewidgetitem89)
+        self.task_completed_tableWid.setHorizontalHeaderItem(9, __qtablewidgetitem89)
         __qtablewidgetitem90 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(9, __qtablewidgetitem90)
+        self.task_completed_tableWid.setHorizontalHeaderItem(10, __qtablewidgetitem90)
         __qtablewidgetitem91 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(10, __qtablewidgetitem91)
-        __qtablewidgetitem92 = QTableWidgetItem()
-        self.task_completed_tableWid.setHorizontalHeaderItem(11, __qtablewidgetitem92)
+        self.task_completed_tableWid.setHorizontalHeaderItem(11, __qtablewidgetitem91)
         self.task_completed_tableWid.setObjectName(u"task_completed_tableWid")
         self.task_completed_tableWid.setStyleSheet(u"QTableWidget {	\n"
 "	background-color: rgb(39, 44, 54);\n"
@@ -3250,10 +3253,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setContentsMargins(11, -1, -1, -1)
         self.sr_shows_lbl = QLabel(self.frame_6)
         self.sr_shows_lbl.setObjectName(u"sr_shows_lbl")
-        font16 = QFont()
-        font16.setFamily(u"Segoe UI")
-        font16.setPointSize(59)
-        self.sr_shows_lbl.setFont(font16)
+        font17 = QFont()
+        font17.setFamily(u"Segoe UI")
+        font17.setPointSize(59)
+        self.sr_shows_lbl.setFont(font17)
         self.sr_shows_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_8.addWidget(self.sr_shows_lbl)
@@ -3294,7 +3297,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.sr_delta_lbl = QLabel(self.frame_30)
         self.sr_delta_lbl.setObjectName(u"sr_delta_lbl")
-        self.sr_delta_lbl.setFont(font16)
+        self.sr_delta_lbl.setFont(font17)
         self.sr_delta_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_15.addWidget(self.sr_delta_lbl)
@@ -3332,7 +3335,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.sr_ach_mandays_lbl = QLabel(self.frame_29)
         self.sr_ach_mandays_lbl.setObjectName(u"sr_ach_mandays_lbl")
-        self.sr_ach_mandays_lbl.setFont(font16)
+        self.sr_ach_mandays_lbl.setFont(font17)
         self.sr_ach_mandays_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_14.addWidget(self.sr_ach_mandays_lbl)
@@ -3372,7 +3375,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.sr_clients_lbl = QLabel(self.frame_4)
         self.sr_clients_lbl.setObjectName(u"sr_clients_lbl")
-        self.sr_clients_lbl.setFont(font16)
+        self.sr_clients_lbl.setFont(font17)
         self.sr_clients_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_7.addWidget(self.sr_clients_lbl)
@@ -3409,7 +3412,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.sr_actmandays_lbl = QLabel(self.frame_10)
         self.sr_actmandays_lbl.setObjectName(u"sr_actmandays_lbl")
-        self.sr_actmandays_lbl.setFont(font16)
+        self.sr_actmandays_lbl.setFont(font17)
         self.sr_actmandays_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_13.addWidget(self.sr_actmandays_lbl)
@@ -3443,22 +3446,22 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_13 = QLabel(self.frame_31)
         self.label_13.setObjectName(u"label_13")
-        font17 = QFont()
-        font17.setFamily(u"Segoe UI")
-        font17.setPointSize(13)
-        font17.setBold(True)
-        font17.setWeight(75)
-        self.label_13.setFont(font17)
+        font18 = QFont()
+        font18.setFamily(u"Segoe UI")
+        font18.setPointSize(13)
+        font18.setBold(True)
+        font18.setWeight(75)
+        self.label_13.setFont(font18)
         self.label_13.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_16.addWidget(self.label_13)
 
         self.sr_yts_lbl = QLabel(self.frame_31)
         self.sr_yts_lbl.setObjectName(u"sr_yts_lbl")
-        font18 = QFont()
-        font18.setFamily(u"Segoe UI")
-        font18.setPointSize(30)
-        self.sr_yts_lbl.setFont(font18)
+        font19 = QFont()
+        font19.setFamily(u"Segoe UI")
+        font19.setPointSize(30)
+        self.sr_yts_lbl.setFont(font19)
         self.sr_yts_lbl.setStyleSheet(u"color: rgb(85, 85, 255);")
         self.sr_yts_lbl.setAlignment(Qt.AlignCenter)
 
@@ -3475,14 +3478,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.label_18 = QLabel(self.frame_32)
         self.label_18.setObjectName(u"label_18")
-        self.label_18.setFont(font17)
+        self.label_18.setFont(font18)
         self.label_18.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_17.addWidget(self.label_18)
 
         self.sr_wip_lbl = QLabel(self.frame_32)
         self.sr_wip_lbl.setObjectName(u"sr_wip_lbl")
-        self.sr_wip_lbl.setFont(font18)
+        self.sr_wip_lbl.setFont(font19)
         self.sr_wip_lbl.setStyleSheet(u"color: rgb(255, 170, 0);")
         self.sr_wip_lbl.setAlignment(Qt.AlignCenter)
 
@@ -3499,14 +3502,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.label_20 = QLabel(self.frame_35)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setFont(font17)
+        self.label_20.setFont(font18)
         self.label_20.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_18.addWidget(self.label_20)
 
         self.sr_rtk_lbl = QLabel(self.frame_35)
         self.sr_rtk_lbl.setObjectName(u"sr_rtk_lbl")
-        self.sr_rtk_lbl.setFont(font18)
+        self.sr_rtk_lbl.setFont(font19)
         self.sr_rtk_lbl.setStyleSheet(u"color: rgb(222, 54, 20);")
         self.sr_rtk_lbl.setAlignment(Qt.AlignCenter)
 
@@ -3523,14 +3526,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
         self.label_19 = QLabel(self.frame_33)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setFont(font17)
+        self.label_19.setFont(font18)
         self.label_19.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_19.addWidget(self.label_19)
 
         self.sr_cmp_lbl = QLabel(self.frame_33)
         self.sr_cmp_lbl.setObjectName(u"sr_cmp_lbl")
-        self.sr_cmp_lbl.setFont(font18)
+        self.sr_cmp_lbl.setFont(font19)
         self.sr_cmp_lbl.setStyleSheet(u"color: rgb(85, 170, 0);")
         self.sr_cmp_lbl.setAlignment(Qt.AlignCenter)
 
@@ -3560,7 +3563,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.sr_shots_lbl = QLabel(self.frame_9)
         self.sr_shots_lbl.setObjectName(u"sr_shots_lbl")
-        self.sr_shots_lbl.setFont(font16)
+        self.sr_shots_lbl.setFont(font17)
         self.sr_shots_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_9.addWidget(self.sr_shots_lbl)
@@ -3588,7 +3591,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
         self.label_37 = QLabel(self.frame_36)
         self.label_37.setObjectName(u"label_37")
-        self.label_37.setFont(font18)
+        self.label_37.setFont(font19)
 
         self.horizontalLayout_39.addWidget(self.label_37)
 
@@ -3598,11 +3601,11 @@ class Ui_MainWindow(object):
 
         self.sr_download_btn = QPushButton(self.frame_36)
         self.sr_download_btn.setObjectName(u"sr_download_btn")
-        font19 = QFont()
-        font19.setPointSize(10)
-        font19.setBold(True)
-        font19.setWeight(75)
-        self.sr_download_btn.setFont(font19)
+        font20 = QFont()
+        font20.setPointSize(10)
+        font20.setBold(True)
+        font20.setWeight(75)
+        self.sr_download_btn.setFont(font20)
         self.sr_download_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.sr_download_btn.setStyleSheet(u"QPushButton{\n"
 "padding:8px;\n"
@@ -3686,9 +3689,9 @@ class Ui_MainWindow(object):
 
         self.label_25 = QLabel(self.frame_41)
         self.label_25.setObjectName(u"label_25")
-        font20 = QFont()
-        font20.setPointSize(14)
-        self.label_25.setFont(font20)
+        font21 = QFont()
+        font21.setPointSize(14)
+        self.label_25.setFont(font21)
         self.label_25.setStyleSheet(u"border: None;")
         self.label_25.setAlignment(Qt.AlignCenter)
 
@@ -3747,7 +3750,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(4)
         self.shot_details_tabWidget.setCurrentIndex(0)
         self.dep_tabWidget.setCurrentIndex(0)
         self.task_tabWid.setCurrentIndex(0)
@@ -3760,9 +3763,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"TENDRILL", None))
         self.label_title_bar_top.setText("")
 #if QT_CONFIG(tooltip)
-        self.clients_pb.setToolTip(QCoreApplication.translate("MainWindow", u"Clients", None))
+        self.projects_pb.setToolTip(QCoreApplication.translate("MainWindow", u"Projects", None))
 #endif // QT_CONFIG(tooltip)
-        self.clients_pb.setText("")
+        self.projects_pb.setText("")
 #if QT_CONFIG(tooltip)
         self.shots_ingest_pb.setToolTip(QCoreApplication.translate("MainWindow", u"Shots Ingest", None))
 #endif // QT_CONFIG(tooltip)
@@ -3845,9 +3848,9 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.pro_add_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Add Project", None))
 #endif // QT_CONFIG(tooltip)
-        self.pro_add_btn.setText("")
+        self.pro_add_btn.setText(QCoreApplication.translate("MainWindow", u"Add Project", None))
         ___qtablewidgetitem15 = self.pro_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindow", u"CLIENT", None));
+        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindow", u"STATUS", None));
         ___qtablewidgetitem16 = self.pro_table.horizontalHeaderItem(1)
         ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"Shot:", None))
@@ -4071,31 +4074,29 @@ class Ui_MainWindow(object):
         self.clear_filter_btn.setText(QCoreApplication.translate("MainWindow", u"Clear", None))
         self.apply_filter_btn.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
         ___qtablewidgetitem51 = self.all_shots_tbWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem51.setText(QCoreApplication.translate("MainWindow", u"CLIENT", None));
+        ___qtablewidgetitem51.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
         ___qtablewidgetitem52 = self.all_shots_tbWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem52.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
+        ___qtablewidgetitem52.setText(QCoreApplication.translate("MainWindow", u"SEQUENCE", None));
         ___qtablewidgetitem53 = self.all_shots_tbWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"SEQUENCE", None));
+        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"SHOT", None));
         ___qtablewidgetitem54 = self.all_shots_tbWidget.horizontalHeaderItem(4)
-        ___qtablewidgetitem54.setText(QCoreApplication.translate("MainWindow", u"SHOT", None));
+        ___qtablewidgetitem54.setText(QCoreApplication.translate("MainWindow", u"DEPT", None));
         ___qtablewidgetitem55 = self.all_shots_tbWidget.horizontalHeaderItem(5)
-        ___qtablewidgetitem55.setText(QCoreApplication.translate("MainWindow", u"DEPT", None));
+        ___qtablewidgetitem55.setText(QCoreApplication.translate("MainWindow", u"STATUS", None));
         ___qtablewidgetitem56 = self.all_shots_tbWidget.horizontalHeaderItem(6)
-        ___qtablewidgetitem56.setText(QCoreApplication.translate("MainWindow", u"STATUS", None));
+        ___qtablewidgetitem56.setText(QCoreApplication.translate("MainWindow", u"ARTIST", None));
         ___qtablewidgetitem57 = self.all_shots_tbWidget.horizontalHeaderItem(7)
-        ___qtablewidgetitem57.setText(QCoreApplication.translate("MainWindow", u"ARTIST", None));
+        ___qtablewidgetitem57.setText(QCoreApplication.translate("MainWindow", u"TEAM LEAD", None));
         ___qtablewidgetitem58 = self.all_shots_tbWidget.horizontalHeaderItem(8)
-        ___qtablewidgetitem58.setText(QCoreApplication.translate("MainWindow", u"TEAM LEAD", None));
+        ___qtablewidgetitem58.setText(QCoreApplication.translate("MainWindow", u"CUT IN", None));
         ___qtablewidgetitem59 = self.all_shots_tbWidget.horizontalHeaderItem(9)
-        ___qtablewidgetitem59.setText(QCoreApplication.translate("MainWindow", u"CUT IN", None));
+        ___qtablewidgetitem59.setText(QCoreApplication.translate("MainWindow", u"CUT OUT", None));
         ___qtablewidgetitem60 = self.all_shots_tbWidget.horizontalHeaderItem(10)
-        ___qtablewidgetitem60.setText(QCoreApplication.translate("MainWindow", u"CUT OUT", None));
+        ___qtablewidgetitem60.setText(QCoreApplication.translate("MainWindow", u"DURATION", None));
         ___qtablewidgetitem61 = self.all_shots_tbWidget.horizontalHeaderItem(11)
-        ___qtablewidgetitem61.setText(QCoreApplication.translate("MainWindow", u"DURATION", None));
+        ___qtablewidgetitem61.setText(QCoreApplication.translate("MainWindow", u"BIDS", None));
         ___qtablewidgetitem62 = self.all_shots_tbWidget.horizontalHeaderItem(12)
-        ___qtablewidgetitem62.setText(QCoreApplication.translate("MainWindow", u"BIDS", None));
-        ___qtablewidgetitem63 = self.all_shots_tbWidget.horizontalHeaderItem(13)
-        ___qtablewidgetitem63.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
+        ___qtablewidgetitem62.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
         self.t_cli_sel_cb.setItemText(0, QCoreApplication.translate("MainWindow", u"Client", None))
 
 #if QT_CONFIG(tooltip)
@@ -4116,55 +4117,55 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(shortcut)
         self.task_search_btn.setShortcut(QCoreApplication.translate("MainWindow", u"Return", None))
 #endif // QT_CONFIG(shortcut)
-        ___qtablewidgetitem64 = self.task_pending_tableWid.horizontalHeaderItem(0)
-        ___qtablewidgetitem64.setText(QCoreApplication.translate("MainWindow", u"CLIENT", None));
-        ___qtablewidgetitem65 = self.task_pending_tableWid.horizontalHeaderItem(1)
-        ___qtablewidgetitem65.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
-        ___qtablewidgetitem66 = self.task_pending_tableWid.horizontalHeaderItem(2)
-        ___qtablewidgetitem66.setText(QCoreApplication.translate("MainWindow", u"SEQUENCE", None));
-        ___qtablewidgetitem67 = self.task_pending_tableWid.horizontalHeaderItem(3)
-        ___qtablewidgetitem67.setText(QCoreApplication.translate("MainWindow", u"SHOT", None));
-        ___qtablewidgetitem68 = self.task_pending_tableWid.horizontalHeaderItem(4)
-        ___qtablewidgetitem68.setText(QCoreApplication.translate("MainWindow", u"TYPE", None));
-        ___qtablewidgetitem69 = self.task_pending_tableWid.horizontalHeaderItem(5)
-        ___qtablewidgetitem69.setText(QCoreApplication.translate("MainWindow", u"FRAME IN", None));
-        ___qtablewidgetitem70 = self.task_pending_tableWid.horizontalHeaderItem(6)
-        ___qtablewidgetitem70.setText(QCoreApplication.translate("MainWindow", u"FRAME OUT", None));
-        ___qtablewidgetitem71 = self.task_pending_tableWid.horizontalHeaderItem(7)
-        ___qtablewidgetitem71.setText(QCoreApplication.translate("MainWindow", u"TOTAL FRAMES", None));
-        ___qtablewidgetitem72 = self.task_pending_tableWid.horizontalHeaderItem(8)
-        ___qtablewidgetitem72.setText(QCoreApplication.translate("MainWindow", u"STATUS", None));
-        ___qtablewidgetitem73 = self.task_pending_tableWid.horizontalHeaderItem(9)
-        ___qtablewidgetitem73.setText(QCoreApplication.translate("MainWindow", u"BIDS", None));
-        ___qtablewidgetitem74 = self.task_pending_tableWid.horizontalHeaderItem(10)
-        ___qtablewidgetitem74.setText(QCoreApplication.translate("MainWindow", u"PROGRESS", None));
-        ___qtablewidgetitem75 = self.task_pending_tableWid.horizontalHeaderItem(11)
-        ___qtablewidgetitem75.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
+        ___qtablewidgetitem63 = self.task_pending_tableWid.horizontalHeaderItem(0)
+        ___qtablewidgetitem63.setText(QCoreApplication.translate("MainWindow", u"CLIENT", None));
+        ___qtablewidgetitem64 = self.task_pending_tableWid.horizontalHeaderItem(1)
+        ___qtablewidgetitem64.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
+        ___qtablewidgetitem65 = self.task_pending_tableWid.horizontalHeaderItem(2)
+        ___qtablewidgetitem65.setText(QCoreApplication.translate("MainWindow", u"SEQUENCE", None));
+        ___qtablewidgetitem66 = self.task_pending_tableWid.horizontalHeaderItem(3)
+        ___qtablewidgetitem66.setText(QCoreApplication.translate("MainWindow", u"SHOT", None));
+        ___qtablewidgetitem67 = self.task_pending_tableWid.horizontalHeaderItem(4)
+        ___qtablewidgetitem67.setText(QCoreApplication.translate("MainWindow", u"TYPE", None));
+        ___qtablewidgetitem68 = self.task_pending_tableWid.horizontalHeaderItem(5)
+        ___qtablewidgetitem68.setText(QCoreApplication.translate("MainWindow", u"FRAME IN", None));
+        ___qtablewidgetitem69 = self.task_pending_tableWid.horizontalHeaderItem(6)
+        ___qtablewidgetitem69.setText(QCoreApplication.translate("MainWindow", u"FRAME OUT", None));
+        ___qtablewidgetitem70 = self.task_pending_tableWid.horizontalHeaderItem(7)
+        ___qtablewidgetitem70.setText(QCoreApplication.translate("MainWindow", u"TOTAL FRAMES", None));
+        ___qtablewidgetitem71 = self.task_pending_tableWid.horizontalHeaderItem(8)
+        ___qtablewidgetitem71.setText(QCoreApplication.translate("MainWindow", u"STATUS", None));
+        ___qtablewidgetitem72 = self.task_pending_tableWid.horizontalHeaderItem(9)
+        ___qtablewidgetitem72.setText(QCoreApplication.translate("MainWindow", u"BIDS", None));
+        ___qtablewidgetitem73 = self.task_pending_tableWid.horizontalHeaderItem(10)
+        ___qtablewidgetitem73.setText(QCoreApplication.translate("MainWindow", u"PROGRESS", None));
+        ___qtablewidgetitem74 = self.task_pending_tableWid.horizontalHeaderItem(11)
+        ___qtablewidgetitem74.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
         self.task_tabWid.setTabText(self.task_tabWid.indexOf(self.pending_task), QCoreApplication.translate("MainWindow", u"Pending", None))
-        ___qtablewidgetitem76 = self.task_completed_tableWid.horizontalHeaderItem(0)
-        ___qtablewidgetitem76.setText(QCoreApplication.translate("MainWindow", u"CLIENT", None));
-        ___qtablewidgetitem77 = self.task_completed_tableWid.horizontalHeaderItem(1)
-        ___qtablewidgetitem77.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
-        ___qtablewidgetitem78 = self.task_completed_tableWid.horizontalHeaderItem(2)
-        ___qtablewidgetitem78.setText(QCoreApplication.translate("MainWindow", u"SEQUENCE", None));
-        ___qtablewidgetitem79 = self.task_completed_tableWid.horizontalHeaderItem(3)
-        ___qtablewidgetitem79.setText(QCoreApplication.translate("MainWindow", u"SHOT", None));
-        ___qtablewidgetitem80 = self.task_completed_tableWid.horizontalHeaderItem(4)
-        ___qtablewidgetitem80.setText(QCoreApplication.translate("MainWindow", u"TYPE", None));
-        ___qtablewidgetitem81 = self.task_completed_tableWid.horizontalHeaderItem(5)
-        ___qtablewidgetitem81.setText(QCoreApplication.translate("MainWindow", u"FRAME IN", None));
-        ___qtablewidgetitem82 = self.task_completed_tableWid.horizontalHeaderItem(6)
-        ___qtablewidgetitem82.setText(QCoreApplication.translate("MainWindow", u"FRAME OUT", None));
-        ___qtablewidgetitem83 = self.task_completed_tableWid.horizontalHeaderItem(7)
-        ___qtablewidgetitem83.setText(QCoreApplication.translate("MainWindow", u"TOTAL FRAMES", None));
-        ___qtablewidgetitem84 = self.task_completed_tableWid.horizontalHeaderItem(8)
-        ___qtablewidgetitem84.setText(QCoreApplication.translate("MainWindow", u"STATUS", None));
-        ___qtablewidgetitem85 = self.task_completed_tableWid.horizontalHeaderItem(9)
-        ___qtablewidgetitem85.setText(QCoreApplication.translate("MainWindow", u"BIDS", None));
-        ___qtablewidgetitem86 = self.task_completed_tableWid.horizontalHeaderItem(10)
-        ___qtablewidgetitem86.setText(QCoreApplication.translate("MainWindow", u"PROGRESS", None));
-        ___qtablewidgetitem87 = self.task_completed_tableWid.horizontalHeaderItem(11)
-        ___qtablewidgetitem87.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
+        ___qtablewidgetitem75 = self.task_completed_tableWid.horizontalHeaderItem(0)
+        ___qtablewidgetitem75.setText(QCoreApplication.translate("MainWindow", u"CLIENT", None));
+        ___qtablewidgetitem76 = self.task_completed_tableWid.horizontalHeaderItem(1)
+        ___qtablewidgetitem76.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
+        ___qtablewidgetitem77 = self.task_completed_tableWid.horizontalHeaderItem(2)
+        ___qtablewidgetitem77.setText(QCoreApplication.translate("MainWindow", u"SEQUENCE", None));
+        ___qtablewidgetitem78 = self.task_completed_tableWid.horizontalHeaderItem(3)
+        ___qtablewidgetitem78.setText(QCoreApplication.translate("MainWindow", u"SHOT", None));
+        ___qtablewidgetitem79 = self.task_completed_tableWid.horizontalHeaderItem(4)
+        ___qtablewidgetitem79.setText(QCoreApplication.translate("MainWindow", u"TYPE", None));
+        ___qtablewidgetitem80 = self.task_completed_tableWid.horizontalHeaderItem(5)
+        ___qtablewidgetitem80.setText(QCoreApplication.translate("MainWindow", u"FRAME IN", None));
+        ___qtablewidgetitem81 = self.task_completed_tableWid.horizontalHeaderItem(6)
+        ___qtablewidgetitem81.setText(QCoreApplication.translate("MainWindow", u"FRAME OUT", None));
+        ___qtablewidgetitem82 = self.task_completed_tableWid.horizontalHeaderItem(7)
+        ___qtablewidgetitem82.setText(QCoreApplication.translate("MainWindow", u"TOTAL FRAMES", None));
+        ___qtablewidgetitem83 = self.task_completed_tableWid.horizontalHeaderItem(8)
+        ___qtablewidgetitem83.setText(QCoreApplication.translate("MainWindow", u"STATUS", None));
+        ___qtablewidgetitem84 = self.task_completed_tableWid.horizontalHeaderItem(9)
+        ___qtablewidgetitem84.setText(QCoreApplication.translate("MainWindow", u"BIDS", None));
+        ___qtablewidgetitem85 = self.task_completed_tableWid.horizontalHeaderItem(10)
+        ___qtablewidgetitem85.setText(QCoreApplication.translate("MainWindow", u"PROGRESS", None));
+        ___qtablewidgetitem86 = self.task_completed_tableWid.horizontalHeaderItem(11)
+        ___qtablewidgetitem86.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
         self.task_tabWid.setTabText(self.task_tabWid.indexOf(self.completed), QCoreApplication.translate("MainWindow", u"Completed", None))
         self.sr_shows_lbl.setText(QCoreApplication.translate("MainWindow", u"N/A", None))
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"Total Shows", None))

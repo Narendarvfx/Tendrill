@@ -36,22 +36,28 @@ class Filters_Panel_Modal(QObject):
     def setup_filters(self):
         self.projects = api.get_all_projects()
         self.main_window.ui.pro_filter_cb.clear()
+        self.main_window.ui.pro_filter_cb.addItem("", 0)
+        self.main_window.ui.pro_filter_cb.setItemText(0, QtWidgets.QApplication.translate("MainWindow", "Select Project",
+                                                                                          None, -1))
         for p, project in enumerate(self.projects):
             self.main_window.ui.pro_filter_cb.addItem("", project['id'])
-            self.main_window.ui.pro_filter_cb.setItemText(p, QtWidgets.QApplication.translate("MainWindow", project['name'],
+            self.main_window.ui.pro_filter_cb.setItemText(p+1, QtWidgets.QApplication.translate("MainWindow", project['name'],
                                                                                         None, -1))
-            self.main_window.ui.pro_filter_cb.setItemChecked(p, False)
+            self.main_window.ui.pro_filter_cb.setItemChecked(p+1, False)
             for _pid in G_PROJECTS_LIST:
                 if _pid['id'] == project['id']:
                     self.main_window.ui.pro_filter_cb.setItemChecked(p, True)
 
         self.status = api.get_all_status()
         self.main_window.ui.stat_filter_cb.clear()
+        self.main_window.ui.stat_filter_cb.addItem("", 0)
+        self.main_window.ui.stat_filter_cb.setItemText(0, QtWidgets.QApplication.translate("MainWindow", 'Select Status',
+                                                                                           None, -1))
         for s, status in enumerate(self.status):
             self.main_window.ui.stat_filter_cb.addItem("", status['id'])
-            self.main_window.ui.stat_filter_cb.setItemText(s, QtWidgets.QApplication.translate("MainWindow", status['name'],
+            self.main_window.ui.stat_filter_cb.setItemText(s+1, QtWidgets.QApplication.translate("MainWindow", status['name'],
                                                                                            None, -1))
-            self.main_window.ui.stat_filter_cb.setItemChecked(s, False)
+            self.main_window.ui.stat_filter_cb.setItemChecked(s+1, False)
             for _sid in G_STATUS_LIST:
                 if _sid['id'] == status['id']:
                     self.main_window.ui.stat_filter_cb.setItemChecked(s, True)

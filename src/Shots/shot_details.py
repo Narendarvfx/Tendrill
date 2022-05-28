@@ -462,8 +462,7 @@ class Shot_Details(QTreeWidget):
 
         scan_folder = 'scans'
 
-        self.base_Path = r"{}\{}\{}\{}\{}".format(self.config['STORAGE']['storage_url'],
-                                                       self.config['STORAGE']['parent_directory'],
+        self.base_Path = r"{}\{}\{}\{}".format(self.config['STORAGE']['storage_url'],
                                                        self.shot_details['sequence']['project']['name'],
                                                        self.shot_details['sequence']['name'],
                                                        self.shot_details['name'])
@@ -656,7 +655,6 @@ class Shot_Details(QTreeWidget):
         msg['To'] = to_addr
         task_type = '_'+self.shot_details['task_type']
         path = os.path.join(self.config['STORAGE']['storage_url'],
-                self.config['STORAGE']['parent_directory'],
                                                        self.shot_details['sequence']['project'][
                                                            'client']['name'],
                                                        self.shot_details['sequence']['project']['name'],

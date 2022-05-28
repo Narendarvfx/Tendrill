@@ -86,9 +86,9 @@ class All_Shots(object):
         self.main_window.ui.sel_all_shtTable_chkBox.setChecked(False)
         header = self.main_window.ui.all_shots_tbWidget.horizontalHeader()
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(13, QtWidgets.QHeaderView.ResizeToContents)
         header.setSectionResizeMode(14, QtWidgets.QHeaderView.ResizeToContents)
         header.setSectionResizeMode(15, QtWidgets.QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(16, QtWidgets.QHeaderView.ResizeToContents)
         self.shots_list = []
         self.default_list = []
         self.check_roles()
@@ -262,12 +262,12 @@ class All_Shots(object):
         self.role = self.main_window.employee_details['role']
         self.department = self.main_window.employee_details['department']
         if self.role == 'SUPERVISOR' or self.role == 'AST SUPERVISOR':
-            self.main_window.ui.all_shots_tbWidget.setColumnHidden(16, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
             G_DEPARTMENT_LIST.append(self.department)
             self.approve_status = "LAP"
             self.retake_status = "LRT"
         elif self.role == 'PRODUCTION MANAGER' or self.role == 'AST PRODUCTION MANAGER':
-            self.main_window.ui.all_shots_tbWidget.setColumnHidden(16, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
 
             G_DEPARTMENT_LIST.extend(['PAINT', 'ROTO', 'MM', 'COMP'])
             self.approve_status = "IAP"
@@ -280,7 +280,7 @@ class All_Shots(object):
             # self.main_window.ui.tl_sel_cb.hide()
             # self.main_window.ui.export_btn.hide()
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(0, True)
-            self.main_window.ui.all_shots_tbWidget.setColumnHidden(16, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
             self.main_window.team_lead = True
             self.main_window.team_lead_id = self.main_window.employee_details['id']
             self.approve_status = "LAP"
@@ -291,7 +291,7 @@ class All_Shots(object):
             # self.main_window.ui.tl_sel_cb.hide()
             # self.main_window.ui.export_btn.hide()
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(0, True)
-            self.main_window.ui.all_shots_tbWidget.setColumnHidden(16, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
             G_DEPARTMENT_LIST.append(self.department)
             self.approve_status = "IAP"
             self.retake_status = "IRT"
@@ -303,8 +303,8 @@ class All_Shots(object):
             # self.main_window.ui.dtc_btn.show()
             # self.main_window.ui.cli_retake_btn.show()
             # self.main_window.ui.cli_approve_btn.show()
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
-            self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
             G_DEPARTMENT_LIST.extend(['PAINT', 'ROTO', 'MM', 'COMP'])
         self._data = get_filtered_data(team_lead=self.main_window.team_lead, teamlead_id=self.main_window.team_lead_id)
         self.display_table(self._data)
@@ -353,16 +353,9 @@ class All_Shots(object):
             # self.main_window.ui.taskHelp_btn.clicked.disconnect()
             # self.main_window.ui.add_per_btn.clicked.disconnect()
 
-            self.main_window.ui.send_btn.clicked.disconnect()
             self.main_window.ui.dep_tabWidget.currentChanged.disconnect()
             self.main_window.ui.shot_details_tabWidget.currentChanged.disconnect()
             self.main_window.ui.assign_btn.clicked.disconnect()
-            self.main_window.ui.start_btn.clicked.disconnect()
-            self.main_window.ui.qc_btn.clicked.disconnect()
-            self.main_window.ui.comp_btn.clicked.disconnect()
-            self.main_window.ui.retake_btn.clicked.disconnect()
-            self.main_window.ui.approved_btn.clicked.disconnect()
-            self.main_window.ui.hold_btn.clicked.disconnect()
 
             ### Folders Disconnect
             # self.main_window.ui.input_TreeWid.itemClicked.disconnect()
@@ -388,7 +381,6 @@ class All_Shots(object):
     def display_table(self, shots_data):
         try:
             self.main_window.ui.all_shots_tbWidget.cellDoubleClicked.disconnect()
-            self.main_window.ui.send_btn.clicked.disconnect()
         except:
             pass
         self.main_window.ui.all_shots_tbWidget.setRowCount(0)
@@ -431,10 +423,9 @@ class All_Shots(object):
             checkbox.setStyleSheet('QWidget{background-color:none}')
             self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 0, checkbox)
             self.main_window.ui.all_shots_tbWidget.setItem(i, 1, row_Item)
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 2, QTableWidgetItem(shots['sequence']['project']['name']))
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 3, QTableWidgetItem(shots['sequence']['name']))
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 4, QTableWidgetItem(shots['name']))
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 5, QTableWidgetItem(shots['task_type']))
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 2, QTableWidgetItem(shots['sequence']['name']))
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 3, QTableWidgetItem(shots['name']))
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 4, QTableWidgetItem(shots['task_type']))
             stWidget = QWidget();
             st_label = QLabel();
             st_label.setMaximumSize(QSize(32, 32));
@@ -454,18 +445,18 @@ class All_Shots(object):
                 'QWidget{margin-top:5px;margin-bottom:5px;color:white;background-color:' + shots['status'][
                     'color'] + '}')
             stWidget.setToolTip(shots['status']['name'])
-            self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 6, stWidget)
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 7, QTableWidgetItem(self.artist))
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 8, QTableWidgetItem(self.team_lead))
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 9, QTableWidgetItem(str(shots['actual_start_frame'])))
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 10, QTableWidgetItem(str(shots['actual_end_frame'])))
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 11, QTableWidgetItem(str(shots['actual_end_frame']-shots['actual_start_frame']+1)))
+            self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 5, stWidget)
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 6, QTableWidgetItem(self.artist))
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 7, QTableWidgetItem(self.team_lead))
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 8, QTableWidgetItem(str(shots['actual_start_frame'])))
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 9, QTableWidgetItem(str(shots['actual_end_frame'])))
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 10, QTableWidgetItem(str(shots['actual_end_frame']-shots['actual_start_frame']+1)))
 
             bid_item = QTableWidgetItem()
             bid_item.setText(str(shots['bid_days']))
             bid_item.setTextAlignment(Qt.AlignCenter)
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 12, bid_item)
-            self.main_window.ui.all_shots_tbWidget.setItem(i, 13, eta_item)
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 11, bid_item)
+            self.main_window.ui.all_shots_tbWidget.setItem(i, 12, eta_item)
             self.aWidget = QWidget();
             self.assign_label = QLabel();
             self.assign_label.setMaximumSize(QSize(32, 32));
@@ -478,7 +469,7 @@ class All_Shots(object):
             self.aWidget.setLayout(self.aLayout);
             self.aWidget.setStyleSheet('QWidget{background-color:none}')
             self.aWidget.setToolTip('Assign')
-            self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 14, self.aWidget)
+            self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 13, self.aWidget)
             lWidget = QWidget();
             l_label = QLabel();
             l_label.setMaximumSize(QSize(32, 32));
@@ -492,7 +483,7 @@ class All_Shots(object):
             lWidget.setStyleSheet('QWidget{background-color:none}')
             lWidget.setToolTip("Assignees")
 
-            self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 15, lWidget)
+            self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 14, lWidget)
             eWidget = QWidget();
             e_label = QLabel();
             e_label.setMaximumSize(QSize(32, 32));
@@ -506,7 +497,7 @@ class All_Shots(object):
             eWidget.setStyleSheet('QWidget{background-color:none}')
             eWidget.setToolTip("Edit")
 
-            self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 16, eWidget)
+            self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 15, eWidget)
             self.main_window.ui.all_shots_tbWidget.setSortingEnabled(True)
 
     def cellClicked(self):
