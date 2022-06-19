@@ -77,6 +77,7 @@ class LoginWindow(QMainWindow):
         #TODO: Enable this code block before deploying to production to display login window
         # self.show()
 
+
         # #  ##TODO: Comment this code block before deploying to production
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
         supervisor = {
@@ -111,7 +112,7 @@ class LoginWindow(QMainWindow):
             'username': 'admin',
             'password': 'Tomato@123'
         }
-        response = requests.post(url, data=my_data, verify=False)
+        response = requests.post(url, data=artist, verify=False)
         MainWindow(response.json())
 
     @Slot()
@@ -166,6 +167,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.login_data = login_data
+
         self.employee_details = api.get_employee_data(login_data['id'])
         # self.logger.debug("LoggedIn Succesfully: {}".format(self.employee_details['fullName']))
         # self.permissions = api.rolePermissions(str(16))
@@ -190,6 +192,11 @@ class MainWindow(QMainWindow):
         ########################################################################
         ## START - WINDOW ATTRIBUTES
         ########################################################################
+
+        # app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2'))
+        # app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
+
+
 
         ## REMOVE ==> STANDARD TITLE BAR
         UIFunctions.removeTitleBar(True)
@@ -243,9 +250,11 @@ class MainWindow(QMainWindow):
         self.ui.all_shots_pb.hide()
         self.ui.shots_ingest_pb.hide()
         self.ui.my_task_pb.hide()
+
         role = self.employee_details['role']
         if role == "DATA I/O":
             self.ui.all_shots_pb.show()
+
             self.ui.projects_pb.show()
             self.ui.shots_ingest_pb.show()
             self.ui.stackedWidget.setCurrentWidget(self.ui.projects_page)
@@ -290,12 +299,13 @@ class MainWindow(QMainWindow):
         self.ui.my_task_pb.clicked.connect(self.my_task_btn)
         self.ui.chng_pwd_pb.clicked.connect(self.change_password_btn)
         self.ui.log_out_btn.clicked.connect(lambda: self.logOut())
+        self.ui.toggle_pb.clicked.connect(self.toogle_modes)
 
         ## ==> END ##
 
         ## ==> MOVE WINDOW / MAXIMIZE / RESTORE
         ########################################################################
-
+        # self.ui.projects_pb.clicked()
         def moveWindow(event):
             # IF MAXIMIZED CHANGE TO NORMAL
             if UIFunctions.returStatus(self) == 1:
@@ -350,6 +360,22 @@ class MainWindow(QMainWindow):
         # self.get_storage_space()
         # mp3_play()
         ## ==> END ##
+
+    def toogle_modes(self):
+        if self.ui.toggle_pb.isChecked():
+
+            icon = QIcon()
+            icon.addFile(u":/24x24/C:/Users/admin/Downloads/2x/twotone_light_mode_white_24dp.png", QSize(),
+                          QIcon.Normal, QIcon.Off)
+            self.ui.toggle_pb.setIcon(icon)
+            app.setStyleSheet(qdarkstyle.load_stylesheet(palette=DarkPalette))
+        else:
+
+            icon = QIcon()
+            icon.addFile(u":/24x24/C:/Users/admin/Downloads/2x/twotone_dark_mode_white_24dp.png", QSize(),
+                          QIcon.Normal, QIcon.Off)
+            self.ui.toggle_pb.setIcon(icon)
+            app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
 
     def convert_bytes(self,bytes_number):
         tags = ["Byte", "KB", "MB", "GB", "TB"]
@@ -412,31 +438,6 @@ class MainWindow(QMainWindow):
         print("error code: {}".format(error_code))
         print(self.client.errorString())
 
-    def create_piechart(self):
-        series = QtChart.QPieSeries()
-        series.append("Python", 80)
-        series.append("C++", 70)
-        series.append("Java", 50)
-        series.append("C#", 40)
-        series.append("PHP", 30)
-        series.setLabelsVisible(True)
-        series.setLabelsPosition(QtChart.QPieSlice.LabelOutside)
-        for slice in series.slices():
-            slice.setLabel("{:.2f}%".format(100 * slice.percentage()))
-
-        chart = QChart()
-        chart.legend()
-        chart.addSeries(series)
-        chart.createDefaultAxes()
-        chart.setAnimationOptions(QChart.SeriesAnimations)
-        chart.setTitle("Pie Chart Example")
-
-        chart.legend().setVisible(True)
-        chart.legend().setAlignment(Qt.AlignBottom)
-        chartview = QChartView(chart)
-        chartview.setRenderHint(QPainter.Antialiasing)
-
-        self.setCentralWidget(chartview)
 
         ########################################################################
     ## MENUS ==> DYNAMIC MENUS FUNCTIONS
@@ -650,10 +651,9 @@ if __name__ == '__main__':
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
 
-
-        app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2'))
-
+        app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
         window = LoginWindow()
+
         sys.exit(app.exec_())
     else:
         print ('Tendril Demo version is expired')

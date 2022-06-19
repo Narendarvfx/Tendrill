@@ -51,7 +51,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(2051, 859)
+        MainWindow.resize(1672, 1105)
         palette = QPalette()
         brush = QBrush(QColor(0, 0, 0, 0))
         brush.setStyle(Qt.SolidPattern)
@@ -457,6 +457,19 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_41.addWidget(self.log_out_btn)
 
+        self.toggle_pb = QPushButton(self.frame_42)
+        self.toggle_pb.setObjectName(u"toggle_pb")
+        self.toggle_pb.setCursor(QCursor(Qt.PointingHandCursor))
+        self.toggle_pb.setLayoutDirection(Qt.LeftToRight)
+        icon8 = QIcon()
+        icon8.addFile(u":/24x24/C:/Users/admin/Downloads/2x/twotone_dark_mode_white_24dp.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.toggle_pb.setIcon(icon8)
+        self.toggle_pb.setIconSize(QSize(32, 32))
+        self.toggle_pb.setCheckable(True)
+        self.toggle_pb.setFlat(True)
+
+        self.horizontalLayout_41.addWidget(self.toggle_pb)
+
 
         self.horizontalLayout_9.addWidget(self.frame_42)
 
@@ -496,9 +509,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {	\n"
 "	background-color: rgb(85, 170, 255);\n"
 "}")
-        icon8 = QIcon()
-        icon8.addFile(u":/16x16/icons/16x16/cil-window-minimize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_minimize.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u":/16x16/icons/16x16/cil-window-minimize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_minimize.setIcon(icon9)
 
         self.horizontalLayout_5.addWidget(self.btn_minimize)
 
@@ -518,9 +531,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {	\n"
 "	background-color: rgb(85, 170, 255);\n"
 "}")
-        icon9 = QIcon()
-        icon9.addFile(u":/16x16/icons/16x16/cil-window-maximize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_maximize_restore.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u":/16x16/icons/16x16/cil-window-maximize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_maximize_restore.setIcon(icon10)
 
         self.horizontalLayout_5.addWidget(self.btn_maximize_restore)
 
@@ -540,9 +553,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {	\n"
 "	background-color: rgb(255, 10, 46);\n"
 "}")
-        icon10 = QIcon()
-        icon10.addFile(u":/16x16/icons/16x16/cil-x.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_close.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u":/16x16/icons/16x16/cil-x.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_close.setIcon(icon11)
 
         self.horizontalLayout_5.addWidget(self.btn_close)
 
@@ -660,9 +673,9 @@ class Ui_MainWindow(object):
         self.cli_add_btn = QPushButton(self.clients_top_frame)
         self.cli_add_btn.setObjectName(u"cli_add_btn")
         self.cli_add_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon11 = QIcon()
-        icon11.addFile(u":/24x24/baseline_note_add_white_24dp.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.cli_add_btn.setIcon(icon11)
+        icon12 = QIcon()
+        icon12.addFile(u":/24x24/baseline_note_add_white_24dp.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.cli_add_btn.setIcon(icon12)
         self.cli_add_btn.setIconSize(QSize(24, 24))
         self.cli_add_btn.setFlat(True)
 
@@ -841,9 +854,9 @@ class Ui_MainWindow(object):
         font7.setWeight(75)
         self.pro_add_btn.setFont(font7)
         self.pro_add_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon12 = QIcon()
-        icon12.addFile(u":/24x24/icons/24x24/cil-medical-cross.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pro_add_btn.setIcon(icon12)
+        icon13 = QIcon()
+        icon13.addFile(u":/24x24/icons/24x24/cil-medical-cross.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pro_add_btn.setIcon(icon13)
         self.pro_add_btn.setIconSize(QSize(24, 24))
         self.pro_add_btn.setFlat(True)
 
@@ -977,8 +990,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.frame_7 = QFrame(self.frame_17)
         self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setMinimumSize(QSize(100, 0))
-        self.frame_7.setMaximumSize(QSize(200, 16777215))
+        self.frame_7.setMinimumSize(QSize(120, 0))
+        self.frame_7.setMaximumSize(QSize(201, 16777215))
         self.frame_7.setStyleSheet(u"QLabel{\n"
 "	color: rgb(167, 167, 167);\n"
 "}")
@@ -986,15 +999,18 @@ class Ui_MainWindow(object):
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.formLayout_2 = QFormLayout(self.frame_7)
         self.formLayout_2.setObjectName(u"formLayout_2")
-        self.formLayout_2.setContentsMargins(0, -1, -1, 0)
+        self.formLayout_2.setHorizontalSpacing(0)
+        self.formLayout_2.setVerticalSpacing(5)
+        self.formLayout_2.setContentsMargins(0, -1, 0, 0)
         self.frame = QFrame(self.frame_7)
         self.frame.setObjectName(u"frame")
         self.frame.setMinimumSize(QSize(200, 150))
         self.frame.setMaximumSize(QSize(200, 150))
         self.frame.setStyleSheet(u"border-color: rgb(85, 170, 255);\n"
-"image: url(:/custom/icons/custom/Dark Full Hd Wallpaper.jpg);\n"
+"image: url(:/custom/C:/Users/admin/Desktop/nothumbnail.JPG);\n"
 "border-size: 5px;\n"
-"background-color: rgb(126, 126, 126);")
+"background-color: rgb(0, 0, 0) ;\n"
+"")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
 
@@ -1339,10 +1355,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
         self.horizontalLayout_13.setContentsMargins(0, 8, 0, 8)
         self.Pscripts_treeWid = QTreeWidget(self.scripts_frame)
-        __qtreewidgetitem = QTreeWidgetItem()
-        __qtreewidgetitem.setText(6, u"7");
-        __qtreewidgetitem.setText(5, u"6");
-        self.Pscripts_treeWid.setHeaderItem(__qtreewidgetitem)
         self.Pscripts_treeWid.setObjectName(u"Pscripts_treeWid")
         self.Pscripts_treeWid.setFont(font1)
         self.Pscripts_treeWid.setStyleSheet(u"alternate-background-color: rgb(32, 36, 45);")
@@ -1353,7 +1365,7 @@ class Ui_MainWindow(object):
         self.Pscripts_treeWid.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.Pscripts_treeWid.setAlternatingRowColors(True)
         self.Pscripts_treeWid.setAnimated(True)
-        self.Pscripts_treeWid.setColumnCount(7)
+        self.Pscripts_treeWid.setColumnCount(5)
         self.Pscripts_treeWid.header().setVisible(False)
 
         self.horizontalLayout_13.addWidget(self.Pscripts_treeWid)
@@ -1583,15 +1595,6 @@ class Ui_MainWindow(object):
         self.gridLayout_21.setObjectName(u"gridLayout_21")
         self.gridLayout_21.setContentsMargins(0, 8, 0, 8)
         self.input_TreeWid = QTreeWidget(self.intput_treeWid_frame)
-        __qtreewidgetitem1 = QTreeWidgetItem()
-        __qtreewidgetitem1.setText(2, u"3");
-        __qtreewidgetitem1.setText(1, u"2");
-        __qtreewidgetitem1.setText(0, u"1");
-        self.input_TreeWid.setHeaderItem(__qtreewidgetitem1)
-        __qtreewidgetitem2 = QTreeWidgetItem(self.input_TreeWid)
-        QTreeWidgetItem(__qtreewidgetitem2)
-        __qtreewidgetitem3 = QTreeWidgetItem(self.input_TreeWid)
-        QTreeWidgetItem(__qtreewidgetitem3)
         self.input_TreeWid.setObjectName(u"input_TreeWid")
         self.input_TreeWid.setMinimumSize(QSize(200, 0))
         self.input_TreeWid.setFont(font1)
@@ -1654,7 +1657,7 @@ class Ui_MainWindow(object):
         self.input_TreeWid.setFrameShape(QFrame.NoFrame)
         self.input_TreeWid.setFrameShadow(QFrame.Sunken)
         self.input_TreeWid.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
-        self.input_TreeWid.setColumnCount(3)
+        self.input_TreeWid.setColumnCount(0)
         self.input_TreeWid.header().setVisible(False)
         self.input_TreeWid.header().setCascadingSectionResizes(False)
 
@@ -1674,7 +1677,8 @@ class Ui_MainWindow(object):
         self.input_label.setObjectName(u"input_label")
         self.input_label.setMinimumSize(QSize(10, 0))
         font12 = QFont()
-        font12.setPointSize(11)
+        font12.setFamily(u"Second World Demo")
+        font12.setPointSize(14)
         self.input_label.setFont(font12)
         self.input_label.setLayoutDirection(Qt.LeftToRight)
         self.input_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1693,85 +1697,110 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.assets_main_frame, 0, 0, 1, 1)
 
-        self.discussion_frame = QFrame(self.assests)
-        self.discussion_frame.setObjectName(u"discussion_frame")
-        self.discussion_frame.setMinimumSize(QSize(350, 0))
-        self.discussion_frame.setMaximumSize(QSize(450, 16777215))
-        self.discussion_frame.setStyleSheet(u"background-color: rgb(30, 34, 42);")
-        self.discussion_frame.setFrameShape(QFrame.StyledPanel)
-        self.discussion_frame.setFrameShadow(QFrame.Raised)
-        self.gridLayout_8 = QGridLayout(self.discussion_frame)
-        self.gridLayout_8.setObjectName(u"gridLayout_8")
-        self.gridLayout_8.setHorizontalSpacing(7)
-        self.gridLayout_8.setContentsMargins(8, 0, 8, 0)
-        self.text_type_frame = QFrame(self.discussion_frame)
-        self.text_type_frame.setObjectName(u"text_type_frame")
-        self.text_type_frame.setMaximumSize(QSize(16777215, 60))
-        self.text_type_frame.setFrameShape(QFrame.StyledPanel)
-        self.text_type_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_20 = QHBoxLayout(self.text_type_frame)
-        self.horizontalLayout_20.setSpacing(3)
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.horizontalLayout_20.setContentsMargins(2, 0, 2, 2)
-        self.text_type_edit = QTextEdit(self.text_type_frame)
-        self.text_type_edit.setObjectName(u"text_type_edit")
-        self.text_type_edit.setFont(font1)
-        self.text_type_edit.setStyleSheet(u"border: 1px solid rgba(39, 44, 54, 0.5);")
-        self.text_type_edit.setLineWrapColumnOrWidth(1)
+        self.frame_8 = QFrame(self.assests)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setMinimumSize(QSize(500, 0))
+        self.frame_8.setFrameShape(QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QFrame.Raised)
+        self.frame_13 = QFrame(self.frame_8)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setGeometry(QRect(20, 10, 471, 31))
+        self.frame_13.setFrameShape(QFrame.StyledPanel)
+        self.frame_13.setFrameShadow(QFrame.Raised)
+        self.input_TreeWid_2 = QTreeWidget(self.frame_8)
+        self.input_TreeWid_2.setObjectName(u"input_TreeWid_2")
+        self.input_TreeWid_2.setGeometry(QRect(0, 30, 491, 621))
+        self.input_TreeWid_2.setMinimumSize(QSize(200, 0))
+        self.input_TreeWid_2.setFont(font1)
+        self.input_TreeWid_2.setStyleSheet(u"QTableWidget {	\n"
+"	background-color: rgb(39, 44, 54);\n"
+"	padding: 10px;\n"
+"	border-radius: 5px;\n"
+"	gridline-color: rgb(44, 49, 60);\n"
+"	border-bottom: 1px solid rgb(44, 49, 60);\n"
+"}\n"
+"QTableWidget::item{\n"
+"	border-top: 1px solid red;\n"
+"	border-color: rgb(44, 49, 60);\n"
+"	padding-left: 5px;\n"
+"	padding-right: 5px;\n"
+"	gridline-color: rgb(44, 49, 60);\n"
+"}\n"
+"QTableWidget::item:selected{\n"
+"	background-color: rgb(85, 170, 255);\n"
+"}\n"
+"QScrollBar:horizontal {\n"
+"    border: none;\n"
+"    background: rgb(52, 59, 72);\n"
+"    height: 14px;\n"
+"    margin: 0px 21px 0 21px;\n"
+"	border-radius: 0px;\n"
+"}\n"
+" QScrollBar:vertical {\n"
+"	border: none;\n"
+"    background: rgb(52, 59, 72);\n"
+"    width: 14px;\n"
+"    margin: 21px 0 21px 0;\n"
+"	border-radius: 0px;\n"
+" }\n"
+"QHeaderView::section{\n"
+"	Background-color: rgb(39, 44, 54);\n"
+"	max-width: 30px;\n"
+"	border: 1px solid rgb(44, 49, 60);\n"
+"	border-style: none;\n"
+"    border-bottom: 1px solid rgb(44, 49, 60);\n"
+"    border-right: 1p"
+                        "x solid rgb(44, 49, 60);\n"
+"}\n"
+"QTableWidget::horizontalHeader {	\n"
+"	background-color: rgb(81, 255, 0);\n"
+"}\n"
+"QHeaderView::section:horizontal\n"
+"{\n"
+"    border: 1px solid rgb(32, 34, 42);\n"
+"	background-color: rgb(27, 29, 35);\n"
+"	padding: 3px;\n"
+"	border-top-left-radius: 7px;\n"
+"    border-top-right-radius: 7px;\n"
+"}\n"
+"QHeaderView::section:vertical\n"
+"{\n"
+"    border: 1px solid rgb(44, 49, 60);\n"
+"}\n"
+"")
+        self.input_TreeWid_2.setFrameShape(QFrame.NoFrame)
+        self.input_TreeWid_2.setFrameShadow(QFrame.Sunken)
+        self.input_TreeWid_2.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
+        self.input_TreeWid_2.setColumnCount(0)
+        self.input_TreeWid_2.header().setVisible(False)
+        self.input_TreeWid_2.header().setCascadingSectionResizes(False)
+        self.line_13 = QFrame(self.frame_8)
+        self.line_13.setObjectName(u"line_13")
+        self.line_13.setGeometry(QRect(-10, 0, 20, 671))
+        self.line_13.setFrameShape(QFrame.VLine)
+        self.line_13.setFrameShadow(QFrame.Sunken)
+        self.input_label_frame_2 = QFrame(self.frame_8)
+        self.input_label_frame_2.setObjectName(u"input_label_frame_2")
+        self.input_label_frame_2.setGeometry(QRect(10, 10, 481, 20))
+        self.input_label_frame_2.setMinimumSize(QSize(10, 0))
+        self.input_label_frame_2.setStyleSheet(u"background-color: rgb(39, 44, 54);")
+        self.input_label_frame_2.setFrameShape(QFrame.StyledPanel)
+        self.input_label_frame_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.input_label_frame_2)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(7, 0, 7, 0)
+        self.input_label_4 = QLabel(self.input_label_frame_2)
+        self.input_label_4.setObjectName(u"input_label_4")
+        self.input_label_4.setMinimumSize(QSize(10, 0))
+        self.input_label_4.setFont(font12)
+        self.input_label_4.setLayoutDirection(Qt.LeftToRight)
+        self.input_label_4.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.horizontalLayout_20.addWidget(self.text_type_edit)
-
-        self.send_btn = QToolButton(self.text_type_frame)
-        self.send_btn.setObjectName(u"send_btn")
-        icon13 = QIcon()
-        icon13.addFile(u":/20x20/icons/20x20/cil-cursor.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.send_btn.setIcon(icon13)
-
-        self.horizontalLayout_20.addWidget(self.send_btn)
+        self.horizontalLayout_11.addWidget(self.input_label_4)
 
 
-        self.gridLayout_8.addWidget(self.text_type_frame, 2, 0, 1, 1)
-
-        self.dis_label_frame = QFrame(self.discussion_frame)
-        self.dis_label_frame.setObjectName(u"dis_label_frame")
-        self.dis_label_frame.setStyleSheet(u"background-color: rgba(0, 97, 145, 0.5);")
-        self.dis_label_frame.setFrameShape(QFrame.NoFrame)
-        self.dis_label_frame.setFrameShadow(QFrame.Raised)
-        self.dis_label_frame.setLineWidth(1)
-        self.gridLayout_9 = QGridLayout(self.dis_label_frame)
-        self.gridLayout_9.setObjectName(u"gridLayout_9")
-        self.gridLayout_9.setContentsMargins(0, 5, 0, 5)
-        self.dis_label = QLabel(self.dis_label_frame)
-        self.dis_label.setObjectName(u"dis_label")
-        self.dis_label.setFont(font4)
-        self.dis_label.setStyleSheet(u"background:none;")
-        self.dis_label.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_9.addWidget(self.dis_label, 0, 0, 1, 1)
-
-
-        self.gridLayout_8.addWidget(self.dis_label_frame, 0, 0, 1, 1)
-
-        self.scrollArea = QScrollArea(self.discussion_frame)
-        self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setFont(font1)
-        self.scrollArea.setStyleSheet(u"border:none;")
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.scrollArea.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-        self.scrollArea.setWidgetResizable(True)
-        self.chat_area_widget = QWidget()
-        self.chat_area_widget.setObjectName(u"chat_area_widget")
-        self.chat_area_widget.setGeometry(QRect(0, 0, 432, 570))
-        self.chat_area_widget.setStyleSheet(u"")
-        self.verticalLayout = QVBoxLayout(self.chat_area_widget)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, -1)
-        self.scrollArea.setWidget(self.chat_area_widget)
-
-        self.gridLayout_8.addWidget(self.scrollArea, 1, 0, 1, 1)
-
-
-        self.gridLayout_4.addWidget(self.discussion_frame, 0, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.frame_8, 0, 1, 1, 1)
 
         self.shot_details_tabWidget.addTab(self.assests, "")
         self.versions_page = QWidget()
@@ -2732,66 +2761,6 @@ class Ui_MainWindow(object):
         self.gridLayout_49.setSpacing(0)
         self.gridLayout_49.setObjectName(u"gridLayout_49")
         self.gridLayout_49.setContentsMargins(0, 0, 0, 0)
-        self.all_shots_topFrame_2 = QFrame(self.frame_23)
-        self.all_shots_topFrame_2.setObjectName(u"all_shots_topFrame_2")
-        self.all_shots_topFrame_2.setFrameShape(QFrame.StyledPanel)
-        self.all_shots_topFrame_2.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_11 = QHBoxLayout(self.all_shots_topFrame_2)
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.t_pro_sel_cb = QComboBox(self.all_shots_topFrame_2)
-        self.t_pro_sel_cb.addItem("")
-        self.t_pro_sel_cb.setObjectName(u"t_pro_sel_cb")
-        self.t_pro_sel_cb.setFont(font1)
-
-        self.horizontalLayout_11.addWidget(self.t_pro_sel_cb)
-
-        self.t_status_sel_cb = QComboBox(self.all_shots_topFrame_2)
-        self.t_status_sel_cb.addItem("")
-        self.t_status_sel_cb.setObjectName(u"t_status_sel_cb")
-        self.t_status_sel_cb.setMinimumSize(QSize(150, 0))
-        self.t_status_sel_cb.setFont(font1)
-
-        self.horizontalLayout_11.addWidget(self.t_status_sel_cb)
-
-        self.task_search_lineEdit = QLineEdit(self.all_shots_topFrame_2)
-        self.task_search_lineEdit.setObjectName(u"task_search_lineEdit")
-        self.task_search_lineEdit.setMinimumSize(QSize(0, 34))
-        self.task_search_lineEdit.setFont(font4)
-        self.task_search_lineEdit.setStyleSheet(u"")
-        self.task_search_lineEdit.setFrame(True)
-
-        self.horizontalLayout_11.addWidget(self.task_search_lineEdit)
-
-        self.task_search_btn = QPushButton(self.all_shots_topFrame_2)
-        self.task_search_btn.setObjectName(u"task_search_btn")
-        self.task_search_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon20 = QIcon()
-        icon20.addFile(u":/16x16/icons/16x16/cil-find-in-page.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.task_search_btn.setIcon(icon20)
-        self.task_search_btn.setIconSize(QSize(24, 24))
-
-        self.horizontalLayout_11.addWidget(self.task_search_btn)
-
-        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_11.addItem(self.horizontalSpacer_8)
-
-        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_11.addItem(self.horizontalSpacer_9)
-
-
-        self.gridLayout_49.addWidget(self.all_shots_topFrame_2, 0, 0, 1, 1)
-
-        self.line_11 = QFrame(self.frame_23)
-        self.line_11.setObjectName(u"line_11")
-        self.line_11.setMaximumSize(QSize(16777215, 2))
-        self.line_11.setStyleSheet(u"background-color: rgb(54, 60, 74);")
-        self.line_11.setFrameShape(QFrame.HLine)
-        self.line_11.setFrameShadow(QFrame.Sunken)
-
-        self.gridLayout_49.addWidget(self.line_11, 1, 0, 1, 1)
-
         self.task_tabWid = QTabWidget(self.frame_23)
         self.task_tabWid.setObjectName(u"task_tabWid")
         font16 = QFont()
@@ -2916,6 +2885,78 @@ class Ui_MainWindow(object):
 
         self.gridLayout_48.addWidget(self.task_pending_tableWid, 0, 0, 1, 1)
 
+        self.frame_5 = QFrame(self.pending_task)
+        self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setMinimumSize(QSize(320, 0))
+        self.frame_5.setMaximumSize(QSize(320, 16777215))
+        self.frame_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_23 = QVBoxLayout(self.frame_5)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.task_search_lineEdit = QLineEdit(self.frame_5)
+        self.task_search_lineEdit.setObjectName(u"task_search_lineEdit")
+        self.task_search_lineEdit.setMinimumSize(QSize(0, 34))
+        self.task_search_lineEdit.setFont(font4)
+        self.task_search_lineEdit.setStyleSheet(u"")
+        self.task_search_lineEdit.setFrame(True)
+
+        self.horizontalLayout_8.addWidget(self.task_search_lineEdit)
+
+        self.task_search_btn = QPushButton(self.frame_5)
+        self.task_search_btn.setObjectName(u"task_search_btn")
+        self.task_search_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        icon20 = QIcon()
+        icon20.addFile(u":/16x16/icons/16x16/cil-find-in-page.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.task_search_btn.setIcon(icon20)
+        self.task_search_btn.setIconSize(QSize(24, 24))
+
+        self.horizontalLayout_8.addWidget(self.task_search_btn)
+
+
+        self.verticalLayout_23.addLayout(self.horizontalLayout_8)
+
+        self.t_pro_sel_cb = QComboBox(self.frame_5)
+        self.t_pro_sel_cb.addItem("")
+        self.t_pro_sel_cb.setObjectName(u"t_pro_sel_cb")
+        self.t_pro_sel_cb.setFont(font1)
+
+        self.verticalLayout_23.addWidget(self.t_pro_sel_cb)
+
+        self.t_status_sel_cb = QComboBox(self.frame_5)
+        self.t_status_sel_cb.addItem("")
+        self.t_status_sel_cb.setObjectName(u"t_status_sel_cb")
+        self.t_status_sel_cb.setMinimumSize(QSize(150, 0))
+        self.t_status_sel_cb.setFont(font1)
+
+        self.verticalLayout_23.addWidget(self.t_status_sel_cb)
+
+        self.frame_14 = QFrame(self.frame_5)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setMinimumSize(QSize(200, 500))
+        self.frame_14.setStyleSheet(u"background-image: url(:/custom/C:/Users/admin/Desktop/demo.png);")
+        self.frame_14.setFrameShape(QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_23.addWidget(self.frame_14)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_23.addItem(self.verticalSpacer_5)
+
+        self.line_4 = QFrame(self.frame_5)
+        self.line_4.setObjectName(u"line_4")
+        self.line_4.setMinimumSize(QSize(300, 0))
+        self.line_4.setMaximumSize(QSize(300, 16777215))
+        self.line_4.setFrameShape(QFrame.HLine)
+        self.line_4.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_23.addWidget(self.line_4)
+
+
+        self.gridLayout_48.addWidget(self.frame_5, 0, 1, 1, 1)
+
         self.task_tabWid.addTab(self.pending_task, "")
         self.completed = QWidget()
         self.completed.setObjectName(u"completed")
@@ -3013,7 +3054,7 @@ class Ui_MainWindow(object):
 
         self.task_tabWid.addTab(self.completed, "")
 
-        self.gridLayout_49.addWidget(self.task_tabWid, 2, 0, 1, 1)
+        self.gridLayout_49.addWidget(self.task_tabWid, 1, 0, 1, 1)
 
 
         self.gridLayout_50.addWidget(self.frame_23, 0, 0, 1, 1)
@@ -3511,10 +3552,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(5)
         self.shot_details_tabWidget.setCurrentIndex(1)
         self.dep_tabWidget.setCurrentIndex(0)
-        self.task_tabWid.setCurrentIndex(1)
+        self.task_tabWid.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -3549,6 +3590,10 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.log_out_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Log Out", None))
 #endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.toggle_pb.setToolTip(QCoreApplication.translate("MainWindow", u"Projects", None))
+#endif // QT_CONFIG(tooltip)
+        self.toggle_pb.setText("")
 #if QT_CONFIG(tooltip)
         self.btn_minimize.setToolTip(QCoreApplication.translate("MainWindow", u"Minimize", None))
 #endif // QT_CONFIG(tooltip)
@@ -3678,23 +3723,8 @@ class Ui_MainWindow(object):
         ___qtreewidgetitem5.setText(1, QCoreApplication.translate("MainWindow", u"New Column", None));
         ___qtreewidgetitem5.setText(0, QCoreApplication.translate("MainWindow", u"New Column", None));
         self.dep_tabWidget.setTabText(self.dep_tabWidget.indexOf(self.mm_tab), QCoreApplication.translate("MainWindow", u"MM", None))
-
-        __sortingEnabled1 = self.input_TreeWid.isSortingEnabled()
-        self.input_TreeWid.setSortingEnabled(False)
-        ___qtreewidgetitem6 = self.input_TreeWid.topLevelItem(0)
-        ___qtreewidgetitem6.setText(0, QCoreApplication.translate("MainWindow", u"news", None));
-        ___qtreewidgetitem7 = ___qtreewidgetitem6.child(0)
-        ___qtreewidgetitem7.setText(0, QCoreApplication.translate("MainWindow", u"fsdjfhh", None));
-        ___qtreewidgetitem8 = self.input_TreeWid.topLevelItem(1)
-        ___qtreewidgetitem8.setText(0, QCoreApplication.translate("MainWindow", u"slkjfkjf", None));
-        ___qtreewidgetitem9 = ___qtreewidgetitem8.child(0)
-        ___qtreewidgetitem9.setText(0, QCoreApplication.translate("MainWindow", u"sdgsdg", None));
-        self.input_TreeWid.setSortingEnabled(__sortingEnabled1)
-
         self.input_label.setText(QCoreApplication.translate("MainWindow", u"INPUTS", None))
-        self.text_type_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here...", None))
-        self.send_btn.setText("")
-        self.dis_label.setText(QCoreApplication.translate("MainWindow", u"CHAT BOX", None))
+        self.input_label_4.setText(QCoreApplication.translate("MainWindow", u"LOCAL FILE SYSTEM", None))
         self.shot_details_tabWidget.setTabText(self.shot_details_tabWidget.indexOf(self.assests), QCoreApplication.translate("MainWindow", u"FILES MANAGER", None))
         self.label_39.setText(QCoreApplication.translate("MainWindow", u"Lead Version", None))
         ___qtablewidgetitem17 = self.int_tabWid.horizontalHeaderItem(0)
@@ -3827,21 +3857,6 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem61.setText(QCoreApplication.translate("MainWindow", u"BIDS", None));
         ___qtablewidgetitem62 = self.all_shots_tbWidget.horizontalHeaderItem(12)
         ___qtablewidgetitem62.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
-        self.t_pro_sel_cb.setItemText(0, QCoreApplication.translate("MainWindow", u"Project", None))
-
-#if QT_CONFIG(tooltip)
-        self.t_pro_sel_cb.setToolTip(QCoreApplication.translate("MainWindow", u"Select Project", None))
-#endif // QT_CONFIG(tooltip)
-        self.t_status_sel_cb.setItemText(0, QCoreApplication.translate("MainWindow", u"Status", None))
-
-#if QT_CONFIG(tooltip)
-        self.t_status_sel_cb.setToolTip(QCoreApplication.translate("MainWindow", u"Select Status", None))
-#endif // QT_CONFIG(tooltip)
-        self.task_search_lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Enter Shot Name...", None))
-        self.task_search_btn.setText("")
-#if QT_CONFIG(shortcut)
-        self.task_search_btn.setShortcut(QCoreApplication.translate("MainWindow", u"Return", None))
-#endif // QT_CONFIG(shortcut)
         ___qtablewidgetitem63 = self.task_pending_tableWid.horizontalHeaderItem(0)
         ___qtablewidgetitem63.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
         ___qtablewidgetitem64 = self.task_pending_tableWid.horizontalHeaderItem(1)
@@ -3862,6 +3877,21 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem71.setText(QCoreApplication.translate("MainWindow", u"BIDS", None));
         ___qtablewidgetitem72 = self.task_pending_tableWid.horizontalHeaderItem(9)
         ___qtablewidgetitem72.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
+        self.task_search_lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Enter Shot Name...", None))
+        self.task_search_btn.setText("")
+#if QT_CONFIG(shortcut)
+        self.task_search_btn.setShortcut(QCoreApplication.translate("MainWindow", u"Return", None))
+#endif // QT_CONFIG(shortcut)
+        self.t_pro_sel_cb.setItemText(0, QCoreApplication.translate("MainWindow", u"Project", None))
+
+#if QT_CONFIG(tooltip)
+        self.t_pro_sel_cb.setToolTip(QCoreApplication.translate("MainWindow", u"Select Project", None))
+#endif // QT_CONFIG(tooltip)
+        self.t_status_sel_cb.setItemText(0, QCoreApplication.translate("MainWindow", u"Status", None))
+
+#if QT_CONFIG(tooltip)
+        self.t_status_sel_cb.setToolTip(QCoreApplication.translate("MainWindow", u"Select Status", None))
+#endif // QT_CONFIG(tooltip)
         self.task_tabWid.setTabText(self.task_tabWid.indexOf(self.pending_task), QCoreApplication.translate("MainWindow", u"Pending", None))
         ___qtablewidgetitem73 = self.task_completed_tableWid.horizontalHeaderItem(0)
         ___qtablewidgetitem73.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
