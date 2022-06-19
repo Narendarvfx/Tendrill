@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1389</width>
+    <width>1468</width>
     <height>860</height>
    </rect>
   </property>
@@ -114,11 +114,24 @@
    <iconset resource="../files.qrc">
     <normaloff>:/custom/icons/custom/tendril.png</normaloff>:/custom/icons/custom/tendril.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {background: transparent; }
+QToolTip {
+	color: #ffffff;
+	background-color: rgba(27, 29, 35, 160);
+	border: 1px solid rgb(40, 40, 40);
+	border-radius: 2px;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="font">
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;
+color: rgb(210, 210, 210);</string>
    </property>
    <layout class="QGridLayout" name="centralLayout">
     <property name="leftMargin">
@@ -142,6 +155,213 @@
        <font>
         <pointsize>10</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/* LINE EDIT */
+QLineEdit {
+	background-color: rgb(27, 29, 35);
+	border-radius: 5px;
+	border: 2px solid rgb(27, 29, 35);
+	padding-left: 10px;
+}
+QLineEdit:hover {
+	border: 2px solid rgb(64, 71, 88);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(91, 101, 124);
+}
+
+/* SCROLL BARS */
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 7px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: rgba(85, 170, 255, 100);
+    min-width: 25px;
+	border-radius: 7px
+}
+QScrollBar::add-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77);
+    width: 10px;
+	border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77rgb(85, 170, 255));
+    width: 10px;
+	border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+{
+     background: none;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+     background: none;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 7px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+ QScrollBar::handle:vertical {	
+	background: rgba(85, 170, 255, 100);
+    min-height: 25px;
+	border-radius: 7px
+ }
+ QScrollBar::add-line:vertical {
+     border: none;
+    background: rgb(55, 63, 77);
+     height: 10px;
+	border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::sub-line:vertical {
+	border: none;
+    background: rgb(55, 63, 77);
+     height: 10px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     background: none;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+
+/* CHECKBOX */
+QCheckBox::indicator {
+    border: 3px solid rgb(52, 59, 72);
+	width: 15px;
+	height: 15px;
+	border-radius: 10px;
+    background: rgb(44, 49, 60);
+}
+QCheckBox::indicator:hover {
+    border: 3px solid rgba(255, 143, 5, 0.5);
+}
+QCheckBox::indicator:checked {
+    background: 3px solid rgba(255, 143, 5, 0.5);
+	border: 3px solid rgba(255, 143, 5, 0.5);	
+	background-image: url(:/16x16/icons/16x16/cil-check-alt.png);
+}
+
+/* RADIO BUTTON */
+QRadioButton::indicator {
+    border: 3px solid rgb(52, 59, 72);
+	width: 15px;
+	height: 15px;
+	border-radius: 10px;
+    background: rgb(44, 49, 60);
+}
+QRadioButton::indicator:hover {
+    border: 3px solid rgb(58, 66, 81);
+}
+QRadioButton::indicator:checked {
+    background: 3px solid rgb(94, 106, 130);
+	border: 3px solid rgb(52, 59, 72);	
+}
+
+/* COMBOBOX */
+QComboBox{
+	background-color: rgb(27, 29, 35);
+	border-radius: 5px;
+	border: 2px solid rgb(27, 29, 35);
+	padding: 5px;
+	padding-left: 10px;
+}
+QComboBox:hover{
+	border: 2px solid rgb(64, 71, 88);
+}
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 25px; 
+	border-left-width: 3px;
+	border-left-color: rgba(39, 44, 54, 150);
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;	
+	background-image: url(:/16x16/icons/16x16/cil-arrow-bottom.png);
+	background-position: center;
+	background-repeat: no-reperat;
+ }
+QComboBox QAbstractItemView {
+	color: rgb(85, 170, 255);	
+	background-color: rgb(27, 29, 35);
+	padding: 10px;
+	selection-background-color: rgb(39, 44, 54);
+}
+
+/* SLIDERS */
+QSlider::groove:horizontal {
+    border-radius: 9px;
+    height: 18px;
+	margin: 0px;
+	background-color: rgb(52, 59, 72);
+}
+QSlider::groove:horizontal:hover {
+	background-color: rgb(55, 62, 76);
+}
+QSlider::handle:horizontal {
+    background-color: rgb(85, 170, 255);
+    border: none;
+    height: 18px;
+    width: 18px;
+    margin: 0px;
+	border-radius: 9px;
+}
+QSlider::handle:horizontal:hover {
+    background-color: rgb(105, 180, 255);
+}
+QSlider::handle:horizontal:pressed {
+    background-color: rgb(65, 130, 195);
+}
+
+QSlider::groove:vertical {
+    border-radius: 9px;
+    width: 18px;
+    margin: 0px;
+	background-color: rgb(52, 59, 72);
+}
+QSlider::groove:vertical:hover {
+	background-color: rgb(55, 62, 76);
+}
+QSlider::handle:vertical {
+    background-color: rgb(85, 170, 255);
+	border: none;
+    height: 18px;
+    width: 18px;
+    margin: 0px;
+	border-radius: 9px;
+}
+QSlider::handle:vertical:hover {
+    background-color: rgb(105, 180, 255);
+}
+QSlider::handle:vertical:pressed {
+    background-color: rgb(65, 130, 195);
+}
+
+</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
@@ -180,7 +400,7 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">background-color: rgb(27, 29, 35);</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
@@ -776,6 +996,9 @@ QPushButton:pressed {
            <pointsize>10</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(40, 44, 52);</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
          </property>
@@ -803,6 +1026,9 @@ QPushButton:pressed {
           </property>
           <item row="0" column="1">
            <widget class="QFrame" name="center_right_frame">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(44, 49, 60);</string>
+            </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
             </property>
@@ -846,7 +1072,7 @@ QPushButton:pressed {
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">background-color: rgb(33, 37, 43);</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
@@ -1002,10 +1228,11 @@ QPushButton:pressed {
                       </font>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true"/>
+                      <string notr="true">background-color: rgb(39, 44, 54);
+border-radius: 5px;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>5</number>
+                      <number>2</number>
                      </property>
                      <widget class="QWidget" name="clients_page">
                       <layout class="QGridLayout" name="gridLayout_2">
@@ -1030,6 +1257,10 @@ QPushButton:pressed {
                           <font>
                            <pointsize>10</pointsize>
                           </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(39, 44, 54);
+border-radius: 5px;</string>
                          </property>
                          <property name="frameShape">
                           <enum>QFrame::NoFrame</enum>
@@ -1153,7 +1384,59 @@ QPushButton:pressed {
                              <enum>Qt::NoFocus</enum>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true"/>
+                             <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+}
+
+QTableWidget::item{
+	padding-left: 5px;
+	padding-right: 5px;
+	border-bottom: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::item:selected{
+	background-color: rgb(28, 32, 40);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+
+</string>
                             </property>
                             <property name="frameShape">
                              <enum>QFrame::NoFrame</enum>
@@ -1315,6 +1598,10 @@ QPushButton:pressed {
                        </property>
                        <item row="0" column="0">
                         <widget class="QFrame" name="projects_frame">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(39, 44, 54);
+border-radius: 5px;</string>
+                         </property>
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
@@ -1447,7 +1734,60 @@ QPushButton:pressed {
                              <enum>Qt::NoFocus</enum>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true"/>
+                             <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+	gridline-color: rgb(44, 49, 60);
+	border-bottom: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::item{
+	padding-left: 5px;
+	padding-right: 5px;
+	gridline-color: rgb(44, 49, 60);
+}
+QTableWidget::item:selected{
+	background-color: rgb(28, 32, 40);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+
+</string>
                             </property>
                             <property name="frameShape">
                              <enum>QFrame::NoFrame</enum>
@@ -1549,6 +1889,10 @@ QPushButton:pressed {
                           </property>
                           <item row="0" column="0">
                            <widget class="QFrame" name="shot_details_top_frame">
+                            <property name="styleSheet">
+                             <string notr="true">QFrame{background-color: rgb(30, 34, 42);}
+</string>
+                            </property>
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
                             </property>
@@ -1576,6 +1920,11 @@ QPushButton:pressed {
                              </property>
                              <item row="1" column="0">
                               <widget class="QFrame" name="frame_17">
+                               <property name="styleSheet">
+                                <string notr="true">QPushButton{
+background:none
+}</string>
+                               </property>
                                <property name="frameShape">
                                 <enum>QFrame::StyledPanel</enum>
                                </property>
@@ -1589,15 +1938,20 @@ QPushButton:pressed {
                                    <widget class="QFrame" name="frame_7">
                                     <property name="minimumSize">
                                      <size>
-                                      <width>150</width>
+                                      <width>100</width>
                                       <height>0</height>
                                      </size>
                                     </property>
                                     <property name="maximumSize">
                                      <size>
-                                      <width>250</width>
+                                      <width>200</width>
                                       <height>16777215</height>
                                      </size>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">QLabel{
+	color: rgb(167, 167, 167);
+}</string>
                                     </property>
                                     <property name="frameShape">
                                      <enum>QFrame::StyledPanel</enum>
@@ -1659,21 +2013,6 @@ QPushButton:pressed {
                                        </property>
                                       </widget>
                                      </item>
-                                     <item row="2" column="0">
-                                      <widget class="QLabel" name="label_22">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>Status:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
                                      <item row="2" column="1">
                                       <widget class="QPushButton" name="status_btn">
                                        <property name="sizePolicy">
@@ -1692,6 +2031,9 @@ QPushButton:pressed {
                                        </property>
                                        <property name="layoutDirection">
                                         <enum>Qt::LeftToRight</enum>
+                                       </property>
+                                       <property name="styleSheet">
+                                        <string notr="true"/>
                                        </property>
                                        <property name="text">
                                         <string>WIP</string>
@@ -1975,6 +2317,21 @@ QPushButton:pressed {
                                        </property>
                                       </widget>
                                      </item>
+                                     <item row="2" column="0">
+                                      <widget class="QLabel" name="label_22">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>Status:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
                                     </layout>
                                    </widget>
                                   </item>
@@ -1985,6 +2342,29 @@ QPushButton:pressed {
                                       <family>Segoe UI</family>
                                       <pointsize>10</pointsize>
                                      </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">QTabWidget::pane { /* The tab widget frame */
+border-top: 2px solidrgb(85, 170, 255);
+}
+QTabWidget::tab-bar {
+left:3px; /* move to the right by 5px */
+}
+/* Style the tab using the tab sub-control. Note that it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+border-top-left-radius: 2px;
+border-top-right-radius: 2px;
+padding: 10px;
+}
+QTabBar::tab:selected {
+color: rgb(85, 170, 255);
+border-bottom: 2px solid rgb(85, 170, 255); /* same as pane color */ 
+}
+QTabBar::tab:hover {
+color: rgba(191, 127, 0,0.5);
+border-bottom: 1px solid rgba(247, 128, 23,0.2); /* same as pane color */ 
+}
+</string>
                                     </property>
                                     <property name="tabPosition">
                                      <enum>QTabWidget::North</enum>
@@ -2208,6 +2588,9 @@ QPushButton:pressed {
                                              <verstretch>0</verstretch>
                                             </sizepolicy>
                                            </property>
+                                           <property name="styleSheet">
+                                            <string notr="true"/>
+                                           </property>
                                            <property name="frameShape">
                                             <enum>QFrame::StyledPanel</enum>
                                            </property>
@@ -2238,7 +2621,7 @@ QPushButton:pressed {
                                                </font>
                                               </property>
                                               <property name="currentIndex">
-                                               <number>1</number>
+                                               <number>0</number>
                                               </property>
                                               <widget class="QWidget" name="paint_tab">
                                                <attribute name="title">
@@ -2292,6 +2675,9 @@ QPushButton:pressed {
                                                    </property>
                                                    <item>
                                                     <widget class="QFrame" name="scripts_frame">
+                                                     <property name="styleSheet">
+                                                      <string notr="true">background-color: rgb(30, 34, 42);</string>
+                                                     </property>
                                                      <property name="frameShape">
                                                       <enum>QFrame::NoFrame</enum>
                                                      </property>
@@ -2316,6 +2702,9 @@ QPushButton:pressed {
                                                       </property>
                                                       <item>
                                                        <widget class="QFrame" name="scripts_label_frame">
+                                                        <property name="styleSheet">
+                                                         <string notr="true">background-color: rgb(39, 44, 54);</string>
+                                                        </property>
                                                         <property name="frameShape">
                                                          <enum>QFrame::NoFrame</enum>
                                                         </property>
@@ -2368,6 +2757,9 @@ S</string>
                                                          <font>
                                                           <pointsize>10</pointsize>
                                                          </font>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                         <string notr="true">alternate-background-color: rgb(32, 36, 45);</string>
                                                         </property>
                                                         <property name="frameShape">
                                                          <enum>QFrame::NoFrame</enum>
@@ -2440,6 +2832,9 @@ S</string>
                                                    </item>
                                                    <item>
                                                     <widget class="Line" name="line_10">
+                                                     <property name="styleSheet">
+                                                      <string notr="true">background-color: rgb(39, 44, 54);</string>
+                                                     </property>
                                                      <property name="orientation">
                                                       <enum>Qt::Horizontal</enum>
                                                      </property>
@@ -2447,6 +2842,9 @@ S</string>
                                                    </item>
                                                    <item>
                                                     <widget class="QFrame" name="output_frame">
+                                                     <property name="styleSheet">
+                                                      <string notr="true">background-color: rgb(30, 34, 42);</string>
+                                                     </property>
                                                      <property name="frameShape">
                                                       <enum>QFrame::NoFrame</enum>
                                                      </property>
@@ -2471,6 +2869,9 @@ S</string>
                                                       </property>
                                                       <item>
                                                        <widget class="QFrame" name="preren_label_frame">
+                                                        <property name="styleSheet">
+                                                         <string notr="true">background-color: rgb(39, 44, 54);</string>
+                                                        </property>
                                                         <property name="frameShape">
                                                          <enum>QFrame::NoFrame</enum>
                                                         </property>
@@ -2513,6 +2914,9 @@ S</string>
                                                       </item>
                                                       <item>
                                                        <widget class="QTreeWidget" name="Poutput_treeWid">
+                                                        <property name="styleSheet">
+                                                         <string notr="true">alternate-background-color: rgb(32, 36, 45);</string>
+                                                        </property>
                                                         <property name="frameShape">
                                                          <enum>QFrame::NoFrame</enum>
                                                         </property>
@@ -2650,6 +3054,9 @@ S</string>
                                                    </property>
                                                    <item>
                                                     <widget class="QFrame" name="scripts_frame_2">
+                                                     <property name="styleSheet">
+                                                      <string notr="true">background-color: rgb(30, 34, 42);</string>
+                                                     </property>
                                                      <property name="frameShape">
                                                       <enum>QFrame::NoFrame</enum>
                                                      </property>
@@ -2674,6 +3081,9 @@ S</string>
                                                       </property>
                                                       <item>
                                                        <widget class="QFrame" name="scripts_label_frame_2">
+                                                        <property name="styleSheet">
+                                                         <string notr="true">background-color: rgb(39, 44, 54);</string>
+                                                        </property>
                                                         <property name="frameShape">
                                                          <enum>QFrame::NoFrame</enum>
                                                         </property>
@@ -2789,6 +3199,9 @@ S</string>
                                                    </item>
                                                    <item>
                                                     <widget class="QFrame" name="preren_frame_2">
+                                                     <property name="styleSheet">
+                                                      <string notr="true">background-color: rgb(30, 34, 42);</string>
+                                                     </property>
                                                      <property name="frameShape">
                                                       <enum>QFrame::NoFrame</enum>
                                                      </property>
@@ -2813,6 +3226,9 @@ S</string>
                                                       </property>
                                                       <item>
                                                        <widget class="QFrame" name="preren_label_frame_2">
+                                                        <property name="styleSheet">
+                                                         <string notr="true">background-color: rgb(39, 44, 54);</string>
+                                                        </property>
                                                         <property name="frameShape">
                                                          <enum>QFrame::NoFrame</enum>
                                                         </property>
@@ -2993,6 +3409,9 @@ S</string>
                                                    </property>
                                                    <item>
                                                     <widget class="QFrame" name="scripts_frame_3">
+                                                     <property name="styleSheet">
+                                                      <string notr="true">background-color: rgb(30, 34, 42);</string>
+                                                     </property>
                                                      <property name="frameShape">
                                                       <enum>QFrame::NoFrame</enum>
                                                      </property>
@@ -3017,6 +3436,9 @@ S</string>
                                                       </property>
                                                       <item>
                                                        <widget class="QFrame" name="scripts_label_frame_3">
+                                                        <property name="styleSheet">
+                                                         <string notr="true">background-color: rgb(39, 44, 54);</string>
+                                                        </property>
                                                         <property name="frameShape">
                                                          <enum>QFrame::NoFrame</enum>
                                                         </property>
@@ -3132,6 +3554,9 @@ S</string>
                                                    </item>
                                                    <item>
                                                     <widget class="QFrame" name="preren_frame_3">
+                                                     <property name="styleSheet">
+                                                      <string notr="true">background-color: rgb(30, 34, 42);</string>
+                                                     </property>
                                                      <property name="frameShape">
                                                       <enum>QFrame::NoFrame</enum>
                                                      </property>
@@ -3156,6 +3581,9 @@ S</string>
                                                       </property>
                                                       <item>
                                                        <widget class="QFrame" name="preren_label_frame_3">
+                                                        <property name="styleSheet">
+                                                         <string notr="true">background-color: rgb(39, 44, 54);</string>
+                                                        </property>
                                                         <property name="frameShape">
                                                          <enum>QFrame::NoFrame</enum>
                                                         </property>
@@ -3198,6 +3626,9 @@ S</string>
                                                       </item>
                                                       <item>
                                                        <widget class="QTreeWidget" name="Moutput_treeWid">
+                                                        <property name="styleSheet">
+                                                         <string notr="true">alternate-background-color: rgb(32, 36, 45);</string>
+                                                        </property>
                                                         <property name="frameShape">
                                                          <enum>QFrame::NoFrame</enum>
                                                         </property>
@@ -3319,7 +3750,7 @@ S</string>
                                             <item>
                                              <widget class="QFrame" name="intput_treeWid_frame">
                                               <property name="styleSheet">
-                                               <string notr="true"/>
+                                               <string notr="true">background-color: rgb(30, 34, 42);</string>
                                               </property>
                                               <property name="frameShape">
                                                <enum>QFrame::StyledPanel</enum>
@@ -3350,6 +3781,9 @@ S</string>
                                                    <width>10</width>
                                                    <height>0</height>
                                                   </size>
+                                                 </property>
+                                                 <property name="styleSheet">
+                                                  <string notr="true">background-color: rgb(39, 44, 54);</string>
                                                  </property>
                                                  <property name="frameShape">
                                                   <enum>QFrame::StyledPanel</enum>
@@ -3419,7 +3853,61 @@ S</string>
                                                   </font>
                                                  </property>
                                                  <property name="styleSheet">
-                                                  <string notr="true"/>
+                                                  <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+	gridline-color: rgb(44, 49, 60);
+	border-bottom: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::item{
+	border-top: 1px solid red;
+	border-color: rgb(44, 49, 60);
+	padding-left: 5px;
+	padding-right: 5px;
+	gridline-color: rgb(44, 49, 60);
+}
+QTableWidget::item:selected{
+	background-color: rgb(85, 170, 255);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+</string>
                                                  </property>
                                                  <property name="frameShape">
                                                   <enum>QFrame::NoFrame</enum>
@@ -3498,6 +3986,9 @@ S</string>
                                           <width>450</width>
                                           <height>16777215</height>
                                          </size>
+                                        </property>
+                                        <property name="styleSheet">
+                                         <string notr="true">background-color: rgb(30, 34, 42);</string>
                                         </property>
                                         <property name="frameShape">
                                          <enum>QFrame::StyledPanel</enum>
@@ -3655,8 +4146,8 @@ S</string>
                                              <rect>
                                               <x>0</x>
                                               <y>0</y>
-                                              <width>432</width>
-                                              <height>541</height>
+                                              <width>434</width>
+                                              <height>533</height>
                                              </rect>
                                             </property>
                                             <property name="styleSheet">
@@ -3712,6 +4203,9 @@ S</string>
                                         <layout class="QHBoxLayout" name="horizontalLayout_40">
                                          <item>
                                           <widget class="QFrame" name="frame_12">
+                                           <property name="styleSheet">
+                                            <string notr="true">background-color: rgb(30, 34, 42);</string>
+                                           </property>
                                            <property name="frameShape">
                                             <enum>QFrame::StyledPanel</enum>
                                            </property>
@@ -3739,6 +4233,9 @@ S</string>
                                             </property>
                                             <item row="0" column="0">
                                              <widget class="QFrame" name="frame_11">
+                                              <property name="styleSheet">
+                                               <string notr="true">background-color: rgb(39, 44, 54);</string>
+                                              </property>
                                               <property name="frameShape">
                                                <enum>QFrame::StyledPanel</enum>
                                               </property>
@@ -3784,6 +4281,63 @@ S</string>
                                              <widget class="QTableWidget" name="int_tabWid">
                                               <property name="focusPolicy">
                                                <enum>Qt::NoFocus</enum>
+                                              </property>
+                                              <property name="styleSheet">
+                                               <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+	gridline-color: rgb(44, 49, 60);
+	border-bottom: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::item{
+	border-top: 1px solid red;
+	border-color: rgb(44, 49, 60);
+	padding-left: 5px;
+	padding-right: 5px;
+	gridline-color: rgb(44, 49, 60);
+}
+QTableWidget::item:selected{
+	background-color: rgb(85, 170, 255);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+</string>
                                               </property>
                                               <property name="editTriggers">
                                                <set>QAbstractItemView::NoEditTriggers</set>
@@ -3831,6 +4385,9 @@ S</string>
                                          </item>
                                          <item>
                                           <widget class="QFrame" name="frame_38">
+                                           <property name="styleSheet">
+                                            <string notr="true">background-color: rgb(30, 34, 42);</string>
+                                           </property>
                                            <property name="frameShape">
                                             <enum>QFrame::StyledPanel</enum>
                                            </property>
@@ -3858,6 +4415,9 @@ S</string>
                                             </property>
                                             <item row="0" column="0">
                                              <widget class="QFrame" name="frame_39">
+                                              <property name="styleSheet">
+                                               <string notr="true">background-color: rgb(39, 44, 54);</string>
+                                              </property>
                                               <property name="frameShape">
                                                <enum>QFrame::StyledPanel</enum>
                                               </property>
@@ -3903,6 +4463,63 @@ S</string>
                                              <widget class="QTableWidget" name="qc_tabWid">
                                               <property name="focusPolicy">
                                                <enum>Qt::NoFocus</enum>
+                                              </property>
+                                              <property name="styleSheet">
+                                               <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+	gridline-color: rgb(44, 49, 60);
+	border-bottom: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::item{
+	border-top: 1px solid red;
+	border-color: rgb(44, 49, 60);
+	padding-left: 5px;
+	padding-right: 5px;
+	gridline-color: rgb(44, 49, 60);
+}
+QTableWidget::item:selected{
+	background-color: rgb(85, 170, 255);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+</string>
                                               </property>
                                               <property name="editTriggers">
                                                <set>QAbstractItemView::NoEditTriggers</set>
@@ -4027,7 +4644,58 @@ S</string>
                                                <enum>Qt::NoFocus</enum>
                                               </property>
                                               <property name="styleSheet">
-                                               <string notr="true"/>
+                                               <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+	alternate-background-color: rgb(42, 48, 59);
+}
+QTableWidget::item{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+QTableWidget::item:selected{
+	background-color: rgb(28, 32, 40);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+
+</string>
                                               </property>
                                               <property name="frameShape">
                                                <enum>QFrame::NoFrame</enum>
@@ -4472,7 +5140,61 @@ S</string>
                              <item row="0" column="0">
                               <widget class="QTableWidget" name="shot_import_table">
                                <property name="styleSheet">
-                                <string notr="true"/>
+                                <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+	gridline-color: rgb(44, 49, 60);
+	border-bottom: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::item{
+	border-top: 1px solid red;
+	border-color: rgb(44, 49, 60);
+	padding-left: 5px;
+	padding-right: 5px;
+	gridline-color: rgb(44, 49, 60);
+}
+QTableWidget::item:selected{
+	background-color: rgb(85, 170, 255);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+</string>
                                </property>
                                <property name="frameShape">
                                 <enum>QFrame::NoFrame</enum>
@@ -4628,6 +5350,11 @@ S</string>
                               <height>16777215</height>
                              </size>
                             </property>
+                            <property name="styleSheet">
+                             <string notr="true">QFrame#filter_frame {border:2px solid  rgb(54, 60, 74);
+border-radius:5px;
+}</string>
+                            </property>
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
                             </property>
@@ -4652,6 +5379,9 @@ S</string>
                              </property>
                              <item row="0" column="0">
                               <widget class="QFrame" name="frame_43">
+                               <property name="styleSheet">
+                                <string notr="true">color: rgb(193, 193, 193);</string>
+                               </property>
                                <property name="frameShape">
                                 <enum>QFrame::StyledPanel</enum>
                                </property>
@@ -4777,7 +5507,7 @@ QPushButton::pressed{
                                       <bool>true</bool>
                                      </property>
                                      <property name="placeholderText">
-                                      <string>Search Shot</string>
+                                      <string>Enter Shot Name...</string>
                                      </property>
                                     </widget>
                                    </item>
@@ -4864,6 +5594,11 @@ QPushButton::pressed{
                              </item>
                              <item row="1" column="0">
                               <widget class="QFrame" name="frame_45">
+                               <property name="styleSheet">
+                                <string notr="true">QPushButton{
+	background-color: rgb(85, 170, 255);
+}</string>
+                               </property>
                                <property name="frameShape">
                                 <enum>QFrame::StyledPanel</enum>
                                </property>
@@ -4886,6 +5621,73 @@ QPushButton::pressed{
                                 <property name="verticalSpacing">
                                  <number>7</number>
                                 </property>
+                                <item row="1" column="0" colspan="2">
+                                 <widget class="QPushButton" name="set_default_btn">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>30</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <family>Segoe UI</family>
+                                    <pointsize>8</pointsize>
+                                    <weight>75</weight>
+                                    <bold>true</bold>
+                                   </font>
+                                  </property>
+                                  <property name="cursor">
+                                   <cursorShape>PointingHandCursor</cursorShape>
+                                  </property>
+                                  <property name="text">
+                                   <string>Set Defaults</string>
+                                  </property>
+                                  <property name="icon">
+                                   <iconset resource="../files.qrc">
+                                    <normaloff>:/24x24/icons/24x24/cil-camera-roll.png</normaloff>:/24x24/icons/24x24/cil-camera-roll.png</iconset>
+                                  </property>
+                                  <property name="iconSize">
+                                   <size>
+                                    <width>13</width>
+                                    <height>13</height>
+                                   </size>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="0" column="1">
+                                 <widget class="QPushButton" name="clear_filter_btn">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>80</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>8</pointsize>
+                                    <weight>75</weight>
+                                    <bold>true</bold>
+                                   </font>
+                                  </property>
+                                  <property name="cursor">
+                                   <cursorShape>PointingHandCursor</cursorShape>
+                                  </property>
+                                  <property name="text">
+                                   <string>Clear</string>
+                                  </property>
+                                  <property name="icon">
+                                   <iconset resource="../files.qrc">
+                                    <normaloff>:/24x24/icons/24x24/cil-x.png</normaloff>:/24x24/icons/24x24/cil-x.png</iconset>
+                                  </property>
+                                  <property name="iconSize">
+                                   <size>
+                                    <width>13</width>
+                                    <height>13</height>
+                                   </size>
+                                  </property>
+                                 </widget>
+                                </item>
                                 <item row="0" column="0">
                                  <widget class="QPushButton" name="apply_filter_btn">
                                   <property name="minimumSize">
@@ -4961,7 +5763,59 @@ QPushButton::pressed{
                                 <enum>Qt::NoFocus</enum>
                                </property>
                                <property name="styleSheet">
-                                <string notr="true"/>
+                                <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+	alternate-background-color: rgb(42, 48, 59);
+}
+QTableWidget::item{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+QTableWidget::item:selected{
+	background-color: rgb(94, 94, 94);
+	color: rgb(255, 255, 255);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 7px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+
+</string>
                                </property>
                                <property name="frameShape">
                                 <enum>QFrame::NoFrame</enum>
@@ -5277,6 +6131,9 @@ QPushButton::pressed{
                               <height>2</height>
                              </size>
                             </property>
+                            <property name="styleSheet">
+                             <string notr="true">background-color: rgb(54, 60, 74);</string>
+                            </property>
                             <property name="orientation">
                              <enum>Qt::Horizontal</enum>
                             </property>
@@ -5288,6 +6145,29 @@ QPushButton::pressed{
                              <font>
                               <pointsize>10</pointsize>
                              </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QTabWidget::pane { /* The tab widget frame */
+border-top: 2px solid rgb(44, 49, 60);
+}
+QTabWidget::tab-bar {
+left:5px; /* move to the right by 5px */
+}
+/* Style the tab using the tab sub-control. Note that it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+border-top-left-radius: 2px;
+border-top-right-radius: 2px;
+padding: 10px;
+}
+QTabBar::tab:selected {
+color: rgb(191, 127, 0);
+border-bottom: 1px solid rgba(247, 128, 23,0.5); /* same as pane color */ 
+}
+QTabBar::tab:hover {
+color: rgba(191, 127, 0,0.5);
+border-bottom: 1px solid rgba(247, 128, 23,0.2); /* same as pane color */ 
+}
+</string>
                             </property>
                             <property name="currentIndex">
                              <number>0</number>
@@ -5315,7 +6195,58 @@ QPushButton::pressed{
                               <item row="0" column="0">
                                <widget class="QTableWidget" name="task_pending_tableWid">
                                 <property name="styleSheet">
-                                 <string notr="true"/>
+                                 <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+	alternate-background-color: rgb(42, 48, 59);
+}
+QTableWidget::item{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+QTableWidget::item:selected{
+	background-color: rgb(28, 32, 40);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+
+</string>
                                 </property>
                                 <property name="frameShape">
                                  <enum>QFrame::NoFrame</enum>
@@ -5433,6 +6364,60 @@ QPushButton::pressed{
                               </property>
                               <item row="0" column="0">
                                <widget class="QTableWidget" name="task_completed_tableWid">
+                                <property name="styleSheet">
+                                 <string notr="true">QTableWidget {	
+	background-color: rgb(39, 44, 54);
+	padding: 10px;
+	border-radius: 5px;
+	alternate-background-color: rgb(42, 48, 59);
+}
+QTableWidget::item{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+QTableWidget::item:selected{
+	background-color: rgb(28, 32, 40);
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+QHeaderView::section{
+	Background-color: rgb(39, 44, 54);
+	max-width: 30px;
+	border: 1px solid rgb(44, 49, 60);
+	border-style: none;
+    border-bottom: 1px solid rgb(44, 49, 60);
+    border-right: 1px solid rgb(44, 49, 60);
+}
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+QHeaderView::section:vertical
+{
+    border: 1px solid rgb(44, 49, 60);
+}
+
+</string>
+                                </property>
                                 <property name="frameShape">
                                  <enum>QFrame::NoFrame</enum>
                                 </property>
@@ -6251,6 +7236,40 @@ QLabel{
                                </size>
                               </property>
                              </spacer>
+                            </item>
+                            <item>
+                             <widget class="QPushButton" name="sr_download_btn">
+                              <property name="font">
+                               <font>
+                                <pointsize>10</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="cursor">
+                               <cursorShape>PointingHandCursor</cursorShape>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QPushButton{
+padding:8px;
+background-color: rgb(230, 123, 0);
+color:white
+}
+QPushButton::hover{
+	background-color: rgb(230, 149, 9);
+}
+QPushButton::pressed{
+	background-color: rgb(208, 111, 0);
+}</string>
+                              </property>
+                              <property name="text">
+                               <string>Download Report</string>
+                              </property>
+                              <property name="icon">
+                               <iconset resource="../files.qrc">
+                                <normaloff>:/20x20/icons/20x20/cil-arrow-bottom.png</normaloff>:/20x20/icons/20x20/cil-arrow-bottom.png</iconset>
+                              </property>
+                             </widget>
                             </item>
                            </layout>
                           </widget>

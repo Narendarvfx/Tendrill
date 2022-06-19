@@ -1,11 +1,11 @@
 import datetime
 
 import pytz
-from PySide2 import QtWidgets, QtCore, QtGui
+from PySide2 import QtWidgets, QtCore
 from PySide2.QtCore import QSize, QThreadPool, Slot, QDateTime, QDate
 from PySide2.QtGui import QColor, QFont, QPixmap, Qt, QIcon
 from PySide2.QtWidgets import QApplication, QGraphicsDropShadowEffect, QHBoxLayout, QLabel, QMessageBox, QProgressBar, \
-    QTableWidgetItem, QWidget, QComboBox, QHeaderView
+    QTableWidgetItem, QWidget, QComboBox
 
 import api
 from _globals import *
@@ -60,12 +60,6 @@ class CheckableComboBox(QComboBox):
             item.setCheckState(QtCore.Qt.Checked)
         else:
             item.setCheckState(QtCore.Qt.Unchecked)
-
-
-class AlignDelegate(QtWidgets.QItemDelegate):
-    def paint(self, painter, option, index):
-        option.displayAlignment = QtCore.Qt.AlignCenter
-        QtWidgets.QItemDelegate.paint(self, painter, option, index)
 
 class All_Shots(object):
     def __init__(self, obj):
@@ -131,8 +125,9 @@ class All_Shots(object):
         menu = QtWidgets.QMenu()
         menu.setStyleSheet(u"QMenu {\n"
     "background-color: #ABABAB; /* sets background of the menu */\n"
-                           "border-radius: 0px;\n"
-
+                           "border-radius: 5px;\n"
+    "border: 1px solid black;\n"
+                           "margin:2px;\n"
 "}\n"
 
 "QMenu::item {\n"
@@ -140,6 +135,8 @@ class All_Shots(object):
         "if you want menu color and menu item color to be different */\n"
     "background-color: transparent;\n"
                            "padding: 2px 25px 2px 2px;\n"
+    "border: 1px solid transparent;\n"
+"}\n"
 
 "QMenu::item:selected { /* when user selects item using mouse or keyboard */\n"
     "background-color: rgba(100, 100, 100, 150);\n"
@@ -149,10 +146,10 @@ class All_Shots(object):
         font1.setPointSize(12)
         menu.setFont(font1)
         if self.role == 'TEAM LEAD' or self.role == 'SUPERVISOR' or self.role == 'QC':
-            assign_action = menu.addAction("&Assign")
-            approve_action = menu.addAction("&Approve")
-            reject_action = menu.addAction("&Reject")
-        team_action = menu.addAction( "&Team")
+            assign_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Assign")
+            approve_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Approve")
+            reject_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Reject")
+        team_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Team")
 
         action = menu.exec_(self.main_window.ui.all_shots_tbWidget.viewport().mapToGlobal(pos))
         try:
@@ -167,7 +164,6 @@ class All_Shots(object):
         except Exception as e:
             pass
             # self.main_window.ui.all_shots_tbWidget.removeColumn(c)
-        self.refresh_all()
 
     def status_check(self, status):
         self.current_row = self.main_window.ui.all_shots_tbWidget.currentRow()
@@ -180,7 +176,7 @@ class All_Shots(object):
                 msg.setText("Shot not submitted Qc\n")
                 msg.setWindowTitle("Error")
                 msg.setIcon(QMessageBox.Critical)
-                # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+                msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
                 msg.exec_()
         if self.role == "QC":
             if shot_details['status']['code'] == "LAP":
@@ -190,7 +186,7 @@ class All_Shots(object):
                 msg.setText("Shot not submitted Qc\n")
                 msg.setWindowTitle("Error")
                 msg.setIcon(QMessageBox.Critical)
-                # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+                msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
                 msg.exec_()
 
     def shot_status_update(self, status):
@@ -422,16 +418,9 @@ class All_Shots(object):
                     self.artist = shots['artist']
             row_Item = QTableWidgetItem()
             row_Item.setData(1, shots)
-            row_Item.setText(shots['sequence']['project']['name'])
+            row_Item.setText(shots['sequence']['project']['client']['name'])
             checkbox = QtWidgets.QCheckBox()
             checkbox.setStyleSheet('QWidget{background-color:none}')
-
-            # thumbnail = QtGui.QPixmap(r"C:\Users\admin\Pictures\Capture1.JPG").scaled(150, 100, Qt.KeepAspectRatio,Qt.SmoothTransformation)
-
-            # self.label = QtWidgets.QLabel('HELLO')
-            # self.label.setPixmap(thumbnail)
-            # self.label.setMaximumSize(100,100)
-
             self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 0, checkbox)
             self.main_window.ui.all_shots_tbWidget.setItem(i, 1, row_Item)
             self.main_window.ui.all_shots_tbWidget.setItem(i, 2, QTableWidgetItem(shots['sequence']['name']))
@@ -442,6 +431,12 @@ class All_Shots(object):
             st_label.setMinimumSize(QSize(21, 21));
             st_label.setMaximumSize(QSize(21, 21));
             st_label.setStyleSheet("border-radius:10px;background-color:"+ shots['status']['color'])
+            # st_label.setText(shots['status']['code'])
+            # font = QFont()
+            # font.setPointSize(10)
+            # font.setFamily('Arial')
+            # font.setBold(True)
+            # st_label.setFont(font)
             st_label.setAlignment(Qt.AlignCenter)
             st_label1 = QLabel();
             st_label1.setMaximumSize(QSize(35, 35));
@@ -458,6 +453,9 @@ class All_Shots(object):
             stLayout.setAlignment(Qt.AlignCenter);
             stLayout.setContentsMargins(0, 0, 0, 0);
             stWidget.setLayout(stLayout);
+            # stWidget.setStyleSheet(
+            #     'QWidget{margin-top:5px;margin-bottom:5px;color:white; border-radius:10px;background-color:' + shots['status'][
+            #         'color'] + '}')
             stWidget.setToolTip(shots['status']['name'])
             self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 5, stWidget)
             self.main_window.ui.all_shots_tbWidget.setItem(i, 6, QTableWidgetItem(self.artist))
@@ -518,11 +516,11 @@ class All_Shots(object):
         self.current_row = self.main_window.ui.all_shots_tbWidget.currentRow()
         column = self.main_window.ui.all_shots_tbWidget.currentColumn()
         self.shot_details = self.main_window.ui.all_shots_tbWidget.item(self.current_row, 1).data(1)
-        if column == 13:
+        if column == 14:
             self.assign_modal()
-        elif column == 14:
-            self.team_list_modal()
         elif column == 15:
+            self.team_list_modal()
+        elif column == 16:
             self.shot_edit_modal()
         else:
             self.main_window.ui.stackedWidget.setCurrentWidget(self.main_window.ui.shot_details_page)
@@ -534,7 +532,6 @@ class All_Shots(object):
             self.shadow.setColor(QColor(self.shot_details['status']['color']))
             self.main_window.ui.shot_details_top_frame.setGraphicsEffect(self.shadow)
             Shot_Details(self)
-
 
     def select_all_shots(self):
         if self.main_window.ui.sel_all_shtTable_chkBox.isChecked():
@@ -560,9 +557,8 @@ class All_Shots(object):
             msg.setText("No Shots are Selected \n")
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
-            # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+            msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
             msg.exec_()
-        self.refresh_all()
 
     def assign_modal(self):
         modal = Assign_Modal(self)
@@ -622,7 +618,7 @@ class All_Shots(object):
             msg.setText("Please select atleast one shot to continue! \n")
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
-            # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+            msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
             msg.exec_()
 
     def client_status_update(self, status):

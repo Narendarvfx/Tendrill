@@ -138,6 +138,10 @@ class Shot_Details(QTreeWidget):
         # self.main_window.ui.taskHelp_btn.hide()
         # self.main_window.ui.nuke_btn.hide()
         # self.main_window.ui.nukeX_btn.hide()
+        if self.main_window.employee_details['role'] == "HEAD QC":
+            self.main_window.ui.assign_btn.hide()
+        self.client = QtWebSockets.QWebSocket("", QtWebSockets.QWebSocketProtocol.Version13, None)
+        sockets_host = "{}{}/ws/projects/".format(api.config['SOCKETS']['host'], api.config['SOCKETS']['port'])
         if type == 'task':
             self.task_details = obj.task_details
             self.shot_details = obj.task_details['shot']
@@ -152,7 +156,7 @@ class Shot_Details(QTreeWidget):
 
         else:
             self.shot_details = obj.shot_details
-            print(self.shot_details)
+
             status_code = obj.shot_details['status']['code']
             status_color = obj.shot_details['status']['color']
             bid_days = obj.shot_details['bid_days']
@@ -799,10 +803,10 @@ class Shot_Details(QTreeWidget):
         else:
             app = QtWidgets.QApplication.instance()
         w = QtWidgets.QWidget()
-        w.setWindowTitle("Tendril ")
+        w.setWindowTitle("Oscarfx Studios")
         tray_icon = SystemTrayIcon(QtGui.QIcon(":/oscarfx/icons/oscarfx/icon.png"), w)
         tray_icon.show()
-        tray_icon.showMessage('Tendril Pipeline', message)
+        tray_icon.showMessage('OscarFX Pipeline', message)
         app.exec_()
 
     def fetchShot_Messages(self):

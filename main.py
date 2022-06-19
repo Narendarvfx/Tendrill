@@ -24,18 +24,18 @@ import datetime
 
 import getpass
 from os.path import exists
+
 import qdarkstyle
-from qdarkstyle.light.palette import LightPalette
-from qdarkstyle.dark.palette import DarkPalette
 import requests
 import yaml
 from PySide2 import QtWidgets, QtGui, QtWebSockets, QtCharts, QtCore
 from PySide2.QtCore import QTimer, QSize, Qt, QUrl, Slot, QCoreApplication
-from PySide2.QtGui import QIcon, QPen, QPainter, QBrush
+from PySide2.QtGui import QIcon, QPen, QPainter, QBrush, QPalette
 from PySide2.QtWebEngineWidgets import QWebEngineView
 from PySide2.QtWidgets import QMessageBox, QApplication, QMainWindow
+from qdarkstyle import light, dark
 from win10toast import ToastNotifier
-from PySide2.QtGui import QPainter, QPen
+
 import api
 from _globals import *
 from app_modules import *
@@ -50,7 +50,7 @@ from src.filters_panel import Filters_Panel_Modal
 from src.reports.studio_report import Studio_Reports
 from uipy.change_password import Ui_CP_MainWindow
 from uipy.change_password_modal import Ui_CP_Dialog
-from uipy.login_window import Ui_LoginWindow
+from uipy.login_window import Ui_Form
 from uipy.main_window import Ui_MainWindow
 from src.Clients.clients import Clients
 from src.Projects.projects import Projects
@@ -64,20 +64,16 @@ QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True) #use h
 class LoginWindow(QMainWindow):
     def __init__(self):
         super(LoginWindow, self).__init__()
-        self.login_ui = Ui_LoginWindow()
+        self.login_ui = Ui_Form()
         self.login_ui.setupUi(self)
-
         # TODO: Change version before production build
         # self.login_ui.ver_lbl.setText("V15.5267")
         self.login_ui.password_le.returnPressed.connect(lambda: self.LoginClicked())
         # self.login_ui.password_le.installEventFilter(self)
         self.login_ui.login_btn.clicked.connect(lambda: self.LoginClicked())
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
-        self.login_ui.frame.setStyleSheet("""QFrame {border:none}""")
         #TODO: Enable this code block before deploying to production to display login window
-        self.show()
+        # self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
@@ -99,7 +95,7 @@ class LoginWindow(QMainWindow):
         }
         artist = {
             'username': 'artist1',
-            'password': 'Ofx@12345'
+            'password': 'ofx@12345'
         }
         dataio = {
             'username': 'dataio',
@@ -113,8 +109,8 @@ class LoginWindow(QMainWindow):
             'username': 'admin',
             'password': 'Tomato@123'
         }
-        response = requests.post(url, data=artist, verify=False)
-        # MainWindow(response.json())
+        response = requests.post(url, data=supervisor, verify=False)
+        MainWindow(response.json())
 
     @Slot()
     def LoginClicked(self):
@@ -225,9 +221,9 @@ class MainWindow(QMainWindow):
             # Read YAML file
             with open(FILTERS_FILE, 'r') as stream:
                 self.filters_loaded = yaml.safe_load(stream)
-            # for _cid in self.filters_loaded['clients']:
-            #     G_CLIENTS_ID_LIST.append(_cid['id'])
-            #     G_CLIENTS_LIST.append(_cid)
+            for _cid in self.filters_loaded['clients']:
+                G_CLIENTS_ID_LIST.append(_cid['id'])
+                G_CLIENTS_LIST.append(_cid)
             for _pid in self.filters_loaded['projects']:
                 G_PROJECTS_ID_LIST.append(_pid['id'])
                 G_PROJECTS_LIST.append(_pid)
@@ -236,20 +232,20 @@ class MainWindow(QMainWindow):
                 G_STATUS_LIST.append(_sid)
         else:
             # Write YAML file
-            d = {'projects': G_PROJECTS_LIST, 'status': G_STATUS_LIST}
+            d = {'clients': G_CLIENTS_LIST, 'projects': G_PROJECTS_LIST, 'status': G_STATUS_LIST}
             with open(FILTERS_FILE, 'w') as yaml_file:
                 yaml.dump(d, yaml_file, default_flow_style=False)
 
         # TODO: Change version before production build
-        # self.ui.label_version.setText("V01.5262")
+        self.ui.label_version.setText("V01.5262")
         self.ui.projects_pb.hide()
         self.ui.all_shots_pb.hide()
         self.ui.shots_ingest_pb.hide()
         self.ui.my_task_pb.hide()
         role = self.employee_details['role']
         if role == "DATA I/O":
-            self.ui.all_shots_pb.show()
             self.ui.projects_pb.show()
+            self.ui.all_shots_pb.show()
             self.ui.shots_ingest_pb.show()
             self.ui.stackedWidget.setCurrentWidget(self.ui.projects_page)
             Projects(self)
@@ -293,7 +289,6 @@ class MainWindow(QMainWindow):
         self.ui.my_task_pb.clicked.connect(self.my_task_btn)
         self.ui.chng_pwd_pb.clicked.connect(self.change_password_btn)
         self.ui.log_out_btn.clicked.connect(lambda: self.logOut())
-        self.ui.toggle_pb.clicked.connect(self.toogle_modes)
 
         ## ==> END ##
 
@@ -355,22 +350,6 @@ class MainWindow(QMainWindow):
         # mp3_play()
         ## ==> END ##
 
-    def toogle_modes(self):
-        if self.ui.toggle_pb.isChecked():
-
-            icon = QIcon()
-            icon.addFile(u":/custom/icons/custom/twotone_light_mode_white_24dp.png", QSize(),
-                          QIcon.Normal, QIcon.Off)
-            self.ui.toggle_pb.setIcon(icon)
-            app.setStyleSheet(qdarkstyle.load_stylesheet(palette=DarkPalette))
-        else:
-
-            icon = QIcon()
-            icon.addFile(u":/custom/icons/custom/twotone_dark_mode_white_24dp.png", QSize(),
-                          QIcon.Normal, QIcon.Off)
-            self.ui.toggle_pb.setIcon(icon)
-            app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
-
     def convert_bytes(self,bytes_number):
         tags = ["Byte", "KB", "MB", "GB", "TB"]
 
@@ -384,6 +363,26 @@ class MainWindow(QMainWindow):
 
         return round(double_bytes, 2), tags[i]
 
+    def get_storage_space(self):
+        stats = shutil.disk_usage(r'\\172.168.1.250\ofxstorage')
+        total = self.convert_bytes(stats.total)
+        used = self.convert_bytes(stats.used)
+        free = self.convert_bytes(stats.free)
+        self.ui.storage_bar.setMaximum(total[0])
+        self.ui.storage_bar.setMinimum(0)
+        self.ui.storage_bar.setValue(used[0])
+
+        if self.ui.storage_bar.text() < "50%":
+            self.ui.storage_bar.setStyleSheet("""QProgressBar {background-color:white;color:black;border: 1px solid white;border-bottom-right-radius:5px;border-bottom-left-radius:5px}
+                QProgressBar::chunk {background-color: green;border-bottom-right-radius:5px;border-bottom-left-radius:5px}""")
+        if self.ui.storage_bar.text() >= "80%":
+            self.ui.storage_bar.setStyleSheet("""QProgressBar {background-color:white;color:white;border: 1px solid white;border-bottom-right-radius:5px;border-bottom-left-radius:5px}
+        QProgressBar::chunk {background-color: red;border-bottom-right-radius:5px;border-bottom-left-radius:5px}""")
+
+        self.ui.storage_bar.setToolTip(QCoreApplication.translate("MainWindow", u"Total: {} {}\n"
+                                                                             "Used: {} {}\n"
+                                                                             "Free: {} {}", None).format(total[0],total[1],used[0],used[1],free[0],free[1]))
+
     def processTextMessage(self, message):
         message_json = json.loads(message)
         value = self.ui.notification_btn.text()
@@ -392,8 +391,8 @@ class MainWindow(QMainWindow):
         # create an object to ToastNotifier class
         n = ToastNotifier()
 
-        n.show_toast("TENDRILL", message_json['message'], duration=10
-                     , threaded=True)
+        n.show_toast("ShotBuzz", message_json['message'], duration=10,
+                     icon_path="D:/Native Design/Shot-Buzz/icons/oscarfx/icon.ico", threaded=True)
         # self.tray_notify(message_json['message'])
 
     def tray_notify(self, message):
@@ -412,6 +411,7 @@ class MainWindow(QMainWindow):
         print("error code: {}".format(error_code))
         print(self.client.errorString())
 
+    ########################################################################
     ## MENUS ==> DYNAMIC MENUS FUNCTIONS
     ########################################################################
 
@@ -483,7 +483,7 @@ class MainWindow(QMainWindow):
 
         # PAGE NEW SHOTS IMPORT
         elif btnWidget.objectName() == "tickets":
-            self.browser.setWindowTitle("Tendril TICKETING PORTAL")
+            self.browser.setWindowTitle("OSCARFX TICKETING PORTAL")
             ofx_icon = QIcon()
             ofx_icon.addFile(u":/oscarfx/icons/oscarfx/icon.png", QSize(), QIcon.Normal, QIcon.Off)
             self.browser.setWindowIcon(ofx_icon)
@@ -491,7 +491,7 @@ class MainWindow(QMainWindow):
             self.main_timer.timeout.connect(self.browser.show())
 
         elif btnWidget.objectName() == "mail":
-            self.browser.setWindowTitle("Tendril MAILING PORTAL")
+            self.browser.setWindowTitle("OSCARFX MAILING PORTAL")
             ofx_icon = QIcon()
             ofx_icon.addFile(u":/oscarfx/icons/oscarfx/icon.png", QSize(), QIcon.Normal, QIcon.Off)
             self.browser.setWindowIcon(ofx_icon)
@@ -590,7 +590,7 @@ class MainWindow(QMainWindow):
 
     def logOut(self):
         qm = QMessageBox()
-        result = qm.question(self, 'Tendril Application', "Logout Confirmation!", qm.Yes | qm.No)
+        result = qm.question(self, 'Shot Buzz Application', "Logout Confirmation!", qm.Yes | qm.No)
         if result == qm.Yes:
             del self.login_data
             self.hide()
@@ -623,9 +623,8 @@ if __name__ == '__main__':
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
 
-        app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
+        app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=dark.palette.DarkPalette))
         window = LoginWindow()
-
         sys.exit(app.exec_())
     else:
         print ('Tendril Demo version is expired')
