@@ -72,20 +72,11 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u":/custom/icons/custom/tendril.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet(u"QMainWindow {background: transparent; }\n"
-"QToolTip {\n"
-"	color: #ffffff;\n"
-"	background-color: rgba(27, 29, 35, 160);\n"
-"	border: 1px solid rgb(40, 40, 40);\n"
-"	border-radius: 2px;\n"
-"}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         font1 = QFont()
         font1.setPointSize(10)
         self.centralwidget.setFont(font1)
-        self.centralwidget.setStyleSheet(u"background: transparent;\n"
-"color: rgb(210, 210, 210);")
         self.centralLayout = QGridLayout(self.centralwidget)
         self.centralLayout.setObjectName(u"centralLayout")
         self.centralLayout.setHorizontalSpacing(7)
@@ -93,216 +84,6 @@ class Ui_MainWindow(object):
         self.frame_main = QFrame(self.centralwidget)
         self.frame_main.setObjectName(u"frame_main")
         self.frame_main.setFont(font1)
-        self.frame_main.setStyleSheet(u"/* LINE EDIT */\n"
-"QLineEdit {\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QLineEdit:hover {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"	border: 2px solid rgb(91, 101, 124);\n"
-"}\n"
-"\n"
-"/* SCROLL BARS */\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 7px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-"QScrollBar::handle:horizontal {\n"
-"    background: rgba(85, 170, 255, 100);\n"
-"    min-width: 25px;\n"
-"	border-radius: 7px\n"
-"}\n"
-"QScrollBar::add-line:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(55, 63, 77);\n"
-"    width: 10px;\n"
-"	border-top-right-radius: 7px;\n"
-"    border-bottom-right-radius: 7px;\n"
-"    subcontrol-position: right;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::sub-line:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(55, 63, 77rgb(85, 170, 255));"
-                        "\n"
-"    width: 10px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-bottom-left-radius: 7px;\n"
-"    subcontrol-position: left;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
-"{\n"
-"     background: none;\n"
-"}\n"
-"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
-"{\n"
-"     background: none;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 7px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-" QScrollBar::handle:vertical {	\n"
-"	background: rgba(85, 170, 255, 100);\n"
-"    min-height: 25px;\n"
-"	border-radius: 7px\n"
-" }\n"
-" QScrollBar::add-line:vertical {\n"
-"     border: none;\n"
-"    background: rgb(55, 63, 77);\n"
-"     height: 10px;\n"
-"	border-bottom-left-radius: 7px;\n"
-"    border-bottom-right-radius: 7px;\n"
-"     subcontrol-position: bottom;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-" QScrollBar::sub-line:vertical {\n"
-"	border: none;"
-                        "\n"
-"    background: rgb(55, 63, 77);\n"
-"     height: 10px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"     subcontrol-position: top;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-"/* CHECKBOX */\n"
-"QCheckBox::indicator {\n"
-"    border: 3px solid rgb(52, 59, 72);\n"
-"	width: 15px;\n"
-"	height: 15px;\n"
-"	border-radius: 10px;\n"
-"    background: rgb(44, 49, 60);\n"
-"}\n"
-"QCheckBox::indicator:hover {\n"
-"    border: 3px solid rgba(255, 143, 5, 0.5);\n"
-"}\n"
-"QCheckBox::indicator:checked {\n"
-"    background: 3px solid rgba(255, 143, 5, 0.5);\n"
-"	border: 3px solid rgba(255, 143, 5, 0.5);	\n"
-"	background-image: url(:/16x16/icons/16x16/cil-check-alt.png);\n"
-"}\n"
-"\n"
-"/* RADIO BUTTON */\n"
-"QRadioButton::indicator {\n"
-"    border: 3px solid rgb(52, 59, 72);\n"
-""
-                        "	width: 15px;\n"
-"	height: 15px;\n"
-"	border-radius: 10px;\n"
-"    background: rgb(44, 49, 60);\n"
-"}\n"
-"QRadioButton::indicator:hover {\n"
-"    border: 3px solid rgb(58, 66, 81);\n"
-"}\n"
-"QRadioButton::indicator:checked {\n"
-"    background: 3px solid rgb(94, 106, 130);\n"
-"	border: 3px solid rgb(52, 59, 72);	\n"
-"}\n"
-"\n"
-"/* COMBOBOX */\n"
-"QComboBox{\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding: 5px;\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QComboBox:hover{\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"}\n"
-"QComboBox::drop-down {\n"
-"	subcontrol-origin: padding;\n"
-"	subcontrol-position: top right;\n"
-"	width: 25px; \n"
-"	border-left-width: 3px;\n"
-"	border-left-color: rgba(39, 44, 54, 150);\n"
-"	border-left-style: solid;\n"
-"	border-top-right-radius: 3px;\n"
-"	border-bottom-right-radius: 3px;	\n"
-"	background-image: url(:/16x16/icons/16x16/cil-arrow-bottom.png);\n"
-"	background-position: center;\n"
-"	background-repeat: no-reperat;\n"
-" }"
-                        "\n"
-"QComboBox QAbstractItemView {\n"
-"	color: rgb(85, 170, 255);	\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 10px;\n"
-"	selection-background-color: rgb(39, 44, 54);\n"
-"}\n"
-"\n"
-"/* SLIDERS */\n"
-"QSlider::groove:horizontal {\n"
-"    border-radius: 9px;\n"
-"    height: 18px;\n"
-"	margin: 0px;\n"
-"	background-color: rgb(52, 59, 72);\n"
-"}\n"
-"QSlider::groove:horizontal:hover {\n"
-"	background-color: rgb(55, 62, 76);\n"
-"}\n"
-"QSlider::handle:horizontal {\n"
-"    background-color: rgb(85, 170, 255);\n"
-"    border: none;\n"
-"    height: 18px;\n"
-"    width: 18px;\n"
-"    margin: 0px;\n"
-"	border-radius: 9px;\n"
-"}\n"
-"QSlider::handle:horizontal:hover {\n"
-"    background-color: rgb(105, 180, 255);\n"
-"}\n"
-"QSlider::handle:horizontal:pressed {\n"
-"    background-color: rgb(65, 130, 195);\n"
-"}\n"
-"\n"
-"QSlider::groove:vertical {\n"
-"    border-radius: 9px;\n"
-"    width: 18px;\n"
-"    margin: 0px;\n"
-"	background-color: rgb(52, 59, 72);\n"
-"}\n"
-"QSlider::groove:vertical:hover {\n"
-"	background-colo"
-                        "r: rgb(55, 62, 76);\n"
-"}\n"
-"QSlider::handle:vertical {\n"
-"    background-color: rgb(85, 170, 255);\n"
-"	border: none;\n"
-"    height: 18px;\n"
-"    width: 18px;\n"
-"    margin: 0px;\n"
-"	border-radius: 9px;\n"
-"}\n"
-"QSlider::handle:vertical:hover {\n"
-"    background-color: rgb(105, 180, 255);\n"
-"}\n"
-"QSlider::handle:vertical:pressed {\n"
-"    background-color: rgb(65, 130, 195);\n"
-"}\n"
-"\n"
-"")
         self.frame_main.setFrameShape(QFrame.NoFrame)
         self.frame_main.setFrameShadow(QFrame.Raised)
         self.gridLayout_10 = QGridLayout(self.frame_main)
@@ -313,7 +94,7 @@ class Ui_MainWindow(object):
         self.top_frame.setObjectName(u"top_frame")
         self.top_frame.setMinimumSize(QSize(0, 65))
         self.top_frame.setMaximumSize(QSize(16777215, 65))
-        self.top_frame.setStyleSheet(u"background-color: rgb(27, 29, 35);")
+        self.top_frame.setStyleSheet(u"")
         self.top_frame.setFrameShape(QFrame.NoFrame)
         self.top_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_14 = QGridLayout(self.top_frame)
@@ -580,7 +361,6 @@ class Ui_MainWindow(object):
         self.center_frame = QFrame(self.frame_main)
         self.center_frame.setObjectName(u"center_frame")
         self.center_frame.setFont(font1)
-        self.center_frame.setStyleSheet(u"background-color: rgb(40, 44, 52);")
         self.center_frame.setFrameShape(QFrame.NoFrame)
         self.center_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_11 = QGridLayout(self.center_frame)
@@ -590,7 +370,6 @@ class Ui_MainWindow(object):
         self.gridLayout_11.setContentsMargins(0, 0, 0, 0)
         self.center_right_frame = QFrame(self.center_frame)
         self.center_right_frame.setObjectName(u"center_right_frame")
-        self.center_right_frame.setStyleSheet(u"background-color: rgb(44, 49, 60);")
         self.center_right_frame.setFrameShape(QFrame.NoFrame)
         self.center_right_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_12 = QGridLayout(self.center_right_frame)
@@ -606,7 +385,7 @@ class Ui_MainWindow(object):
         self.frame_grip.setSizePolicy(sizePolicy2)
         self.frame_grip.setMinimumSize(QSize(0, 25))
         self.frame_grip.setMaximumSize(QSize(16777215, 25))
-        self.frame_grip.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.frame_grip.setStyleSheet(u"")
         self.frame_grip.setFrameShape(QFrame.NoFrame)
         self.frame_grip.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.frame_grip)
@@ -675,8 +454,7 @@ class Ui_MainWindow(object):
         self.stackedWidget = QStackedWidget(self.frame_3)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setFont(font1)
-        self.stackedWidget.setStyleSheet(u"background-color: rgb(39, 44, 54);\n"
-"border-radius: 5px;")
+        self.stackedWidget.setStyleSheet(u"")
         self.clients_page = QWidget()
         self.clients_page.setObjectName(u"clients_page")
         self.gridLayout_2 = QGridLayout(self.clients_page)
@@ -686,8 +464,6 @@ class Ui_MainWindow(object):
         self.clients_frame = QFrame(self.clients_page)
         self.clients_frame.setObjectName(u"clients_frame")
         self.clients_frame.setFont(font1)
-        self.clients_frame.setStyleSheet(u"background-color: rgb(39, 44, 54);\n"
-"border-radius: 5px;")
         self.clients_frame.setFrameShape(QFrame.NoFrame)
         self.clients_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_18 = QGridLayout(self.clients_frame)
@@ -783,60 +559,7 @@ class Ui_MainWindow(object):
         font7.setPointSize(12)
         self.cli_table.setFont(font7)
         self.cli_table.setFocusPolicy(Qt.NoFocus)
-        self.cli_table.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"}\n"
-"\n"
-"QTableWidget::item{\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"	border-bottom: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(28, 32, 40);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:h"
-                        "orizontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"\n"
-"")
+        self.cli_table.setStyleSheet(u"")
         self.cli_table.setFrameShape(QFrame.NoFrame)
         self.cli_table.setFrameShadow(QFrame.Raised)
         self.cli_table.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
@@ -868,8 +591,6 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
         self.projects_frame = QFrame(self.projects_page)
         self.projects_frame.setObjectName(u"projects_frame")
-        self.projects_frame.setStyleSheet(u"background-color: rgb(39, 44, 54);\n"
-"border-radius: 5px;")
         self.projects_frame.setFrameShape(QFrame.StyledPanel)
         self.projects_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_20 = QGridLayout(self.projects_frame)
@@ -930,61 +651,7 @@ class Ui_MainWindow(object):
         self.pro_table.setObjectName(u"pro_table")
         self.pro_table.setFont(font1)
         self.pro_table.setFocusPolicy(Qt.NoFocus)
-        self.pro_table.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"	border-bottom: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(28, 32, 40);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-""
-                        "	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:horizontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"\n"
-"")
+        self.pro_table.setStyleSheet(u"")
         self.pro_table.setFrameShape(QFrame.NoFrame)
         self.pro_table.setFrameShadow(QFrame.Raised)
         self.pro_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -1023,8 +690,6 @@ class Ui_MainWindow(object):
         self.gridLayout_25.setContentsMargins(0, 0, 0, 0)
         self.shot_details_top_frame = QFrame(self.shot_details_main_frame)
         self.shot_details_top_frame.setObjectName(u"shot_details_top_frame")
-        self.shot_details_top_frame.setStyleSheet(u"QFrame{background-color: rgb(30, 34, 42);}\n"
-"")
         self.shot_details_top_frame.setFrameShape(QFrame.StyledPanel)
         self.shot_details_top_frame.setFrameShadow(QFrame.Raised)
         self.shot_details_top_frame.setMidLineWidth(0)
@@ -1034,9 +699,6 @@ class Ui_MainWindow(object):
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.frame_17 = QFrame(self.shot_details_top_frame)
         self.frame_17.setObjectName(u"frame_17")
-        self.frame_17.setStyleSheet(u"QPushButton{\n"
-"background:none\n"
-"}")
         self.frame_17.setFrameShape(QFrame.StyledPanel)
         self.frame_17.setFrameShadow(QFrame.Raised)
         self.gridLayout_22 = QGridLayout(self.frame_17)
@@ -1045,11 +707,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.frame_7 = QFrame(self.frame_17)
         self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setMinimumSize(QSize(100, 0))
-        self.frame_7.setMaximumSize(QSize(200, 16777215))
-        self.frame_7.setStyleSheet(u"QLabel{\n"
-"	color: rgb(167, 167, 167);\n"
-"}")
+        self.frame_7.setMinimumSize(QSize(150, 0))
+        self.frame_7.setMaximumSize(QSize(250, 16777215))
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.formLayout_2 = QFormLayout(self.frame_7)
@@ -1106,7 +765,6 @@ class Ui_MainWindow(object):
         font11.setWeight(50)
         self.status_btn.setFont(font11)
         self.status_btn.setLayoutDirection(Qt.LeftToRight)
-        self.status_btn.setStyleSheet(u"")
         self.status_btn.setFlat(True)
 
         self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.status_btn)
@@ -1244,27 +902,6 @@ class Ui_MainWindow(object):
         self.shot_details_tabWidget = QTabWidget(self.frame_17)
         self.shot_details_tabWidget.setObjectName(u"shot_details_tabWidget")
         self.shot_details_tabWidget.setFont(font)
-        self.shot_details_tabWidget.setStyleSheet(u"QTabWidget::pane { /* The tab widget frame */\n"
-"border-top: 2px solidrgb(85, 170, 255);\n"
-"}\n"
-"QTabWidget::tab-bar {\n"
-"left:3px; /* move to the right by 5px */\n"
-"}\n"
-"/* Style the tab using the tab sub-control. Note that it reads QTabBar _not_ QTabWidget */\n"
-"QTabBar::tab {\n"
-"border-top-left-radius: 2px;\n"
-"border-top-right-radius: 2px;\n"
-"padding: 10px;\n"
-"}\n"
-"QTabBar::tab:selected {\n"
-"color: rgb(85, 170, 255);\n"
-"border-bottom: 2px solid rgb(85, 170, 255); /* same as pane color */ \n"
-"}\n"
-"QTabBar::tab:hover {\n"
-"color: rgba(191, 127, 0,0.5);\n"
-"border-bottom: 1px solid rgba(247, 128, 23,0.2); /* same as pane color */ \n"
-"}\n"
-"")
         self.shot_details_tabWidget.setTabPosition(QTabWidget.North)
         self.shot_details_tabWidget.setTabShape(QTabWidget.Rounded)
         self.shot_details_tabWidget.setIconSize(QSize(20, 20))
@@ -1360,7 +997,6 @@ class Ui_MainWindow(object):
         self.assests_dep_frame.setObjectName(u"assests_dep_frame")
         sizePolicy3.setHeightForWidth(self.assests_dep_frame.sizePolicy().hasHeightForWidth())
         self.assests_dep_frame.setSizePolicy(sizePolicy3)
-        self.assests_dep_frame.setStyleSheet(u"")
         self.assests_dep_frame.setFrameShape(QFrame.StyledPanel)
         self.assests_dep_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_7 = QGridLayout(self.assests_dep_frame)
@@ -1388,7 +1024,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 8, 0)
         self.scripts_frame = QFrame(self.scripts_pre_frame)
         self.scripts_frame.setObjectName(u"scripts_frame")
-        self.scripts_frame.setStyleSheet(u"background-color: rgb(30, 34, 42);")
         self.scripts_frame.setFrameShape(QFrame.NoFrame)
         self.scripts_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_13 = QHBoxLayout(self.scripts_frame)
@@ -1397,7 +1032,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.setContentsMargins(0, 8, 0, 8)
         self.scripts_label_frame = QFrame(self.scripts_frame)
         self.scripts_label_frame.setObjectName(u"scripts_label_frame")
-        self.scripts_label_frame.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.scripts_label_frame.setFrameShape(QFrame.NoFrame)
         self.scripts_label_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_14 = QHBoxLayout(self.scripts_label_frame)
@@ -1421,7 +1055,6 @@ class Ui_MainWindow(object):
         self.Pscripts_treeWid.setHeaderItem(__qtreewidgetitem)
         self.Pscripts_treeWid.setObjectName(u"Pscripts_treeWid")
         self.Pscripts_treeWid.setFont(font1)
-        self.Pscripts_treeWid.setStyleSheet(u"alternate-background-color: rgb(32, 36, 45);")
         self.Pscripts_treeWid.setFrameShape(QFrame.NoFrame)
         self.Pscripts_treeWid.setFrameShadow(QFrame.Raised)
         self.Pscripts_treeWid.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
@@ -1441,7 +1074,6 @@ class Ui_MainWindow(object):
 
         self.line_10 = QFrame(self.scripts_pre_frame)
         self.line_10.setObjectName(u"line_10")
-        self.line_10.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.line_10.setFrameShape(QFrame.HLine)
         self.line_10.setFrameShadow(QFrame.Sunken)
 
@@ -1449,7 +1081,6 @@ class Ui_MainWindow(object):
 
         self.output_frame = QFrame(self.scripts_pre_frame)
         self.output_frame.setObjectName(u"output_frame")
-        self.output_frame.setStyleSheet(u"background-color: rgb(30, 34, 42);")
         self.output_frame.setFrameShape(QFrame.NoFrame)
         self.output_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_17 = QHBoxLayout(self.output_frame)
@@ -1458,7 +1089,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setContentsMargins(0, 8, 0, 8)
         self.preren_label_frame = QFrame(self.output_frame)
         self.preren_label_frame.setObjectName(u"preren_label_frame")
-        self.preren_label_frame.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.preren_label_frame.setFrameShape(QFrame.NoFrame)
         self.preren_label_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_15 = QHBoxLayout(self.preren_label_frame)
@@ -1477,7 +1107,6 @@ class Ui_MainWindow(object):
 
         self.Poutput_treeWid = QTreeWidget(self.output_frame)
         self.Poutput_treeWid.setObjectName(u"Poutput_treeWid")
-        self.Poutput_treeWid.setStyleSheet(u"alternate-background-color: rgb(32, 36, 45);")
         self.Poutput_treeWid.setFrameShape(QFrame.NoFrame)
         self.Poutput_treeWid.setFrameShadow(QFrame.Raised)
         self.Poutput_treeWid.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -1526,7 +1155,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setContentsMargins(0, 0, 8, 0)
         self.scripts_frame_2 = QFrame(self.scripts_pre_frame_2)
         self.scripts_frame_2.setObjectName(u"scripts_frame_2")
-        self.scripts_frame_2.setStyleSheet(u"background-color: rgb(30, 34, 42);")
         self.scripts_frame_2.setFrameShape(QFrame.NoFrame)
         self.scripts_frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_25 = QHBoxLayout(self.scripts_frame_2)
@@ -1535,7 +1163,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.setContentsMargins(0, 8, 0, 8)
         self.scripts_label_frame_2 = QFrame(self.scripts_frame_2)
         self.scripts_label_frame_2.setObjectName(u"scripts_label_frame_2")
-        self.scripts_label_frame_2.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.scripts_label_frame_2.setFrameShape(QFrame.NoFrame)
         self.scripts_label_frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_26 = QHBoxLayout(self.scripts_label_frame_2)
@@ -1573,7 +1200,6 @@ class Ui_MainWindow(object):
 
         self.preren_frame_2 = QFrame(self.scripts_pre_frame_2)
         self.preren_frame_2.setObjectName(u"preren_frame_2")
-        self.preren_frame_2.setStyleSheet(u"background-color: rgb(30, 34, 42);")
         self.preren_frame_2.setFrameShape(QFrame.NoFrame)
         self.preren_frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_27 = QHBoxLayout(self.preren_frame_2)
@@ -1582,7 +1208,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_27.setContentsMargins(0, 8, 0, 8)
         self.preren_label_frame_2 = QFrame(self.preren_frame_2)
         self.preren_label_frame_2.setObjectName(u"preren_label_frame_2")
-        self.preren_label_frame_2.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.preren_label_frame_2.setFrameShape(QFrame.NoFrame)
         self.preren_label_frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_28 = QHBoxLayout(self.preren_label_frame_2)
@@ -1648,7 +1273,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setContentsMargins(0, 0, 8, 0)
         self.scripts_frame_3 = QFrame(self.scripts_pre_frame_3)
         self.scripts_frame_3.setObjectName(u"scripts_frame_3")
-        self.scripts_frame_3.setStyleSheet(u"background-color: rgb(30, 34, 42);")
         self.scripts_frame_3.setFrameShape(QFrame.NoFrame)
         self.scripts_frame_3.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_33 = QHBoxLayout(self.scripts_frame_3)
@@ -1657,7 +1281,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_33.setContentsMargins(0, 8, 0, 8)
         self.scripts_label_frame_3 = QFrame(self.scripts_frame_3)
         self.scripts_label_frame_3.setObjectName(u"scripts_label_frame_3")
-        self.scripts_label_frame_3.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.scripts_label_frame_3.setFrameShape(QFrame.NoFrame)
         self.scripts_label_frame_3.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_34 = QHBoxLayout(self.scripts_label_frame_3)
@@ -1695,7 +1318,6 @@ class Ui_MainWindow(object):
 
         self.preren_frame_3 = QFrame(self.scripts_pre_frame_3)
         self.preren_frame_3.setObjectName(u"preren_frame_3")
-        self.preren_frame_3.setStyleSheet(u"background-color: rgb(30, 34, 42);")
         self.preren_frame_3.setFrameShape(QFrame.NoFrame)
         self.preren_frame_3.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_35 = QHBoxLayout(self.preren_frame_3)
@@ -1704,7 +1326,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_35.setContentsMargins(0, 8, 0, 8)
         self.preren_label_frame_3 = QFrame(self.preren_frame_3)
         self.preren_label_frame_3.setObjectName(u"preren_label_frame_3")
-        self.preren_label_frame_3.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.preren_label_frame_3.setFrameShape(QFrame.NoFrame)
         self.preren_label_frame_3.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_36 = QHBoxLayout(self.preren_label_frame_3)
@@ -1723,7 +1344,6 @@ class Ui_MainWindow(object):
 
         self.Moutput_treeWid = QTreeWidget(self.preren_frame_3)
         self.Moutput_treeWid.setObjectName(u"Moutput_treeWid")
-        self.Moutput_treeWid.setStyleSheet(u"alternate-background-color: rgb(32, 36, 45);")
         self.Moutput_treeWid.setFrameShape(QFrame.NoFrame)
         self.Moutput_treeWid.setFrameShadow(QFrame.Raised)
         self.Moutput_treeWid.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -1769,7 +1389,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(0, 0, 8, 0)
         self.intput_treeWid_frame = QFrame(self.inputs_frame)
         self.intput_treeWid_frame.setObjectName(u"intput_treeWid_frame")
-        self.intput_treeWid_frame.setStyleSheet(u"background-color: rgb(30, 34, 42);")
+        self.intput_treeWid_frame.setStyleSheet(u"")
         self.intput_treeWid_frame.setFrameShape(QFrame.StyledPanel)
         self.intput_treeWid_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_21 = QGridLayout(self.intput_treeWid_frame)
@@ -1779,7 +1399,6 @@ class Ui_MainWindow(object):
         self.input_label_frame = QFrame(self.intput_treeWid_frame)
         self.input_label_frame.setObjectName(u"input_label_frame")
         self.input_label_frame.setMinimumSize(QSize(10, 0))
-        self.input_label_frame.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.input_label_frame.setFrameShape(QFrame.StyledPanel)
         self.input_label_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.input_label_frame)
@@ -1811,62 +1430,7 @@ class Ui_MainWindow(object):
         self.input_TreeWid.setObjectName(u"input_TreeWid")
         self.input_TreeWid.setMinimumSize(QSize(200, 0))
         self.input_TreeWid.setFont(font1)
-        self.input_TreeWid.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"	border-bottom: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	border-top: 1px solid red;\n"
-"	border-color: rgb(44, 49, 60);\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(85, 170, 255);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1p"
-                        "x solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:horizontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"")
+        self.input_TreeWid.setStyleSheet(u"")
         self.input_TreeWid.setFrameShape(QFrame.NoFrame)
         self.input_TreeWid.setFrameShadow(QFrame.Sunken)
         self.input_TreeWid.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
@@ -1889,7 +1453,6 @@ class Ui_MainWindow(object):
         self.discussion_frame.setObjectName(u"discussion_frame")
         self.discussion_frame.setMinimumSize(QSize(350, 0))
         self.discussion_frame.setMaximumSize(QSize(450, 16777215))
-        self.discussion_frame.setStyleSheet(u"background-color: rgb(30, 34, 42);")
         self.discussion_frame.setFrameShape(QFrame.StyledPanel)
         self.discussion_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_8 = QGridLayout(self.discussion_frame)
@@ -1953,7 +1516,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.chat_area_widget = QWidget()
         self.chat_area_widget.setObjectName(u"chat_area_widget")
-        self.chat_area_widget.setGeometry(QRect(0, 0, 100, 30))
+        self.chat_area_widget.setGeometry(QRect(0, 0, 432, 541))
         self.chat_area_widget.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.chat_area_widget)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -1980,7 +1543,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
         self.frame_12 = QFrame(self.frame_2)
         self.frame_12.setObjectName(u"frame_12")
-        self.frame_12.setStyleSheet(u"background-color: rgb(30, 34, 42);")
         self.frame_12.setFrameShape(QFrame.StyledPanel)
         self.frame_12.setFrameShadow(QFrame.Raised)
         self.gridLayout_31 = QGridLayout(self.frame_12)
@@ -1990,7 +1552,6 @@ class Ui_MainWindow(object):
         self.gridLayout_31.setContentsMargins(8, 0, 8, 0)
         self.frame_11 = QFrame(self.frame_12)
         self.frame_11.setObjectName(u"frame_11")
-        self.frame_11.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.frame_11.setFrameShape(QFrame.StyledPanel)
         self.frame_11.setFrameShadow(QFrame.Raised)
         self.gridLayout_30 = QGridLayout(self.frame_11)
@@ -2024,62 +1585,6 @@ class Ui_MainWindow(object):
         self.int_tabWid.setHorizontalHeaderItem(5, __qtablewidgetitem22)
         self.int_tabWid.setObjectName(u"int_tabWid")
         self.int_tabWid.setFocusPolicy(Qt.NoFocus)
-        self.int_tabWid.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"	border-bottom: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	border-top: 1px solid red;\n"
-"	border-color: rgb(44, 49, 60);\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(85, 170, 255);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1p"
-                        "x solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:horizontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"")
         self.int_tabWid.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.int_tabWid.setShowGrid(False)
         self.int_tabWid.verticalHeader().setVisible(False)
@@ -2091,7 +1596,6 @@ class Ui_MainWindow(object):
 
         self.frame_38 = QFrame(self.frame_2)
         self.frame_38.setObjectName(u"frame_38")
-        self.frame_38.setStyleSheet(u"background-color: rgb(30, 34, 42);")
         self.frame_38.setFrameShape(QFrame.StyledPanel)
         self.frame_38.setFrameShadow(QFrame.Raised)
         self.gridLayout_33 = QGridLayout(self.frame_38)
@@ -2101,7 +1605,6 @@ class Ui_MainWindow(object):
         self.gridLayout_33.setContentsMargins(8, 0, 8, 0)
         self.frame_39 = QFrame(self.frame_38)
         self.frame_39.setObjectName(u"frame_39")
-        self.frame_39.setStyleSheet(u"background-color: rgb(39, 44, 54);")
         self.frame_39.setFrameShape(QFrame.StyledPanel)
         self.frame_39.setFrameShadow(QFrame.Raised)
         self.gridLayout_34 = QGridLayout(self.frame_39)
@@ -2135,62 +1638,6 @@ class Ui_MainWindow(object):
         self.qc_tabWid.setHorizontalHeaderItem(5, __qtablewidgetitem28)
         self.qc_tabWid.setObjectName(u"qc_tabWid")
         self.qc_tabWid.setFocusPolicy(Qt.NoFocus)
-        self.qc_tabWid.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"	border-bottom: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	border-top: 1px solid red;\n"
-"	border-color: rgb(44, 49, 60);\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(85, 170, 255);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1p"
-                        "x solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:horizontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"")
         self.qc_tabWid.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.qc_tabWid.setShowGrid(False)
         self.qc_tabWid.verticalHeader().setVisible(False)
@@ -2251,59 +1698,7 @@ class Ui_MainWindow(object):
         self.team_tableWid.setHorizontalHeaderItem(9, __qtablewidgetitem38)
         self.team_tableWid.setObjectName(u"team_tableWid")
         self.team_tableWid.setFocusPolicy(Qt.NoFocus)
-        self.team_tableWid.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	alternate-background-color: rgb(42, 48, 59);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(28, 32, 40);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:hor"
-                        "izontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"\n"
-"")
+        self.team_tableWid.setStyleSheet(u"")
         self.team_tableWid.setFrameShape(QFrame.NoFrame)
         self.team_tableWid.setFrameShadow(QFrame.Raised)
         self.team_tableWid.setEditTriggers(QAbstractItemView.DoubleClicked)
@@ -2527,62 +1922,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem51 = QTableWidgetItem()
         self.shot_import_table.setHorizontalHeaderItem(12, __qtablewidgetitem51)
         self.shot_import_table.setObjectName(u"shot_import_table")
-        self.shot_import_table.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"	border-bottom: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	border-top: 1px solid red;\n"
-"	border-color: rgb(44, 49, 60);\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(85, 170, 255);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1p"
-                        "x solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:horizontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"")
+        self.shot_import_table.setStyleSheet(u"")
         self.shot_import_table.setFrameShape(QFrame.NoFrame)
         self.shot_import_table.setFrameShadow(QFrame.Raised)
         self.shot_import_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -2619,9 +1959,6 @@ class Ui_MainWindow(object):
         self.filter_frame.setObjectName(u"filter_frame")
         self.filter_frame.setMinimumSize(QSize(300, 0))
         self.filter_frame.setMaximumSize(QSize(500, 16777215))
-        self.filter_frame.setStyleSheet(u"QFrame#filter_frame {border:2px solid  rgb(54, 60, 74);\n"
-"border-radius:5px;\n"
-"}")
         self.filter_frame.setFrameShape(QFrame.StyledPanel)
         self.filter_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_65 = QGridLayout(self.filter_frame)
@@ -2630,7 +1967,6 @@ class Ui_MainWindow(object):
         self.gridLayout_65.setContentsMargins(5, 5, 5, 5)
         self.frame_43 = QFrame(self.filter_frame)
         self.frame_43.setObjectName(u"frame_43")
-        self.frame_43.setStyleSheet(u"color: rgb(193, 193, 193);")
         self.frame_43.setFrameShape(QFrame.StyledPanel)
         self.frame_43.setFrameShadow(QFrame.Raised)
         self.gridLayout_17 = QGridLayout(self.frame_43)
@@ -2731,56 +2067,25 @@ class Ui_MainWindow(object):
 
         self.frame_45 = QFrame(self.filter_frame)
         self.frame_45.setObjectName(u"frame_45")
-        self.frame_45.setStyleSheet(u"QPushButton{\n"
-"	background-color: rgb(85, 170, 255);\n"
-"}")
         self.frame_45.setFrameShape(QFrame.StyledPanel)
         self.frame_45.setFrameShadow(QFrame.Raised)
         self.gridLayout_29 = QGridLayout(self.frame_45)
         self.gridLayout_29.setObjectName(u"gridLayout_29")
         self.gridLayout_29.setVerticalSpacing(7)
         self.gridLayout_29.setContentsMargins(5, 5, 5, 5)
-        self.set_default_btn = QPushButton(self.frame_45)
-        self.set_default_btn.setObjectName(u"set_default_btn")
-        self.set_default_btn.setMinimumSize(QSize(30, 30))
+        self.apply_filter_btn = QPushButton(self.frame_45)
+        self.apply_filter_btn.setObjectName(u"apply_filter_btn")
+        self.apply_filter_btn.setMinimumSize(QSize(80, 30))
         font15 = QFont()
         font15.setFamily(u"Segoe UI")
         font15.setPointSize(8)
         font15.setBold(True)
         font15.setWeight(75)
-        self.set_default_btn.setFont(font15)
-        self.set_default_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon17 = QIcon()
-        icon17.addFile(u":/24x24/icons/24x24/cil-camera-roll.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.set_default_btn.setIcon(icon17)
-        self.set_default_btn.setIconSize(QSize(13, 13))
-
-        self.gridLayout_29.addWidget(self.set_default_btn, 1, 0, 1, 2)
-
-        self.clear_filter_btn = QPushButton(self.frame_45)
-        self.clear_filter_btn.setObjectName(u"clear_filter_btn")
-        self.clear_filter_btn.setMinimumSize(QSize(80, 30))
-        font16 = QFont()
-        font16.setPointSize(8)
-        font16.setBold(True)
-        font16.setWeight(75)
-        self.clear_filter_btn.setFont(font16)
-        self.clear_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon18 = QIcon()
-        icon18.addFile(u":/24x24/icons/24x24/cil-x.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.clear_filter_btn.setIcon(icon18)
-        self.clear_filter_btn.setIconSize(QSize(13, 13))
-
-        self.gridLayout_29.addWidget(self.clear_filter_btn, 0, 1, 1, 1)
-
-        self.apply_filter_btn = QPushButton(self.frame_45)
-        self.apply_filter_btn.setObjectName(u"apply_filter_btn")
-        self.apply_filter_btn.setMinimumSize(QSize(80, 30))
         self.apply_filter_btn.setFont(font15)
         self.apply_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon19 = QIcon()
-        icon19.addFile(u":/24x24/icons/24x24/cil-check-alt.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.apply_filter_btn.setIcon(icon19)
+        icon17 = QIcon()
+        icon17.addFile(u":/24x24/icons/24x24/cil-check-alt.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.apply_filter_btn.setIcon(icon17)
         self.apply_filter_btn.setIconSize(QSize(13, 13))
 
         self.gridLayout_29.addWidget(self.apply_filter_btn, 0, 0, 1, 1)
@@ -2837,60 +2142,7 @@ class Ui_MainWindow(object):
         self.all_shots_tbWidget.setObjectName(u"all_shots_tbWidget")
         self.all_shots_tbWidget.setFont(font1)
         self.all_shots_tbWidget.setFocusPolicy(Qt.NoFocus)
-        self.all_shots_tbWidget.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	alternate-background-color: rgb(42, 48, 59);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(94, 94, 94);\n"
-"	color: rgb(255, 255, 255);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 7px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-""
-                        "}\n"
-"QHeaderView::section:horizontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"\n"
-"")
+        self.all_shots_tbWidget.setStyleSheet(u"")
         self.all_shots_tbWidget.setFrameShape(QFrame.NoFrame)
         self.all_shots_tbWidget.setFrameShadow(QFrame.Sunken)
         self.all_shots_tbWidget.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
@@ -2966,9 +2218,9 @@ class Ui_MainWindow(object):
         self.task_search_btn = QPushButton(self.all_shots_topFrame_2)
         self.task_search_btn.setObjectName(u"task_search_btn")
         self.task_search_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon20 = QIcon()
-        icon20.addFile(u":/16x16/icons/16x16/cil-find-in-page.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.task_search_btn.setIcon(icon20)
+        icon18 = QIcon()
+        icon18.addFile(u":/16x16/icons/16x16/cil-find-in-page.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.task_search_btn.setIcon(icon18)
         self.task_search_btn.setIconSize(QSize(24, 24))
 
         self.horizontalLayout_11.addWidget(self.task_search_btn)
@@ -2987,7 +2239,6 @@ class Ui_MainWindow(object):
         self.line_11 = QFrame(self.frame_23)
         self.line_11.setObjectName(u"line_11")
         self.line_11.setMaximumSize(QSize(16777215, 2))
-        self.line_11.setStyleSheet(u"background-color: rgb(54, 60, 74);")
         self.line_11.setFrameShape(QFrame.HLine)
         self.line_11.setFrameShadow(QFrame.Sunken)
 
@@ -2996,27 +2247,6 @@ class Ui_MainWindow(object):
         self.task_tabWid = QTabWidget(self.frame_23)
         self.task_tabWid.setObjectName(u"task_tabWid")
         self.task_tabWid.setFont(font1)
-        self.task_tabWid.setStyleSheet(u"QTabWidget::pane { /* The tab widget frame */\n"
-"border-top: 2px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTabWidget::tab-bar {\n"
-"left:5px; /* move to the right by 5px */\n"
-"}\n"
-"/* Style the tab using the tab sub-control. Note that it reads QTabBar _not_ QTabWidget */\n"
-"QTabBar::tab {\n"
-"border-top-left-radius: 2px;\n"
-"border-top-right-radius: 2px;\n"
-"padding: 10px;\n"
-"}\n"
-"QTabBar::tab:selected {\n"
-"color: rgb(191, 127, 0);\n"
-"border-bottom: 1px solid rgba(247, 128, 23,0.5); /* same as pane color */ \n"
-"}\n"
-"QTabBar::tab:hover {\n"
-"color: rgba(191, 127, 0,0.5);\n"
-"border-bottom: 1px solid rgba(247, 128, 23,0.2); /* same as pane color */ \n"
-"}\n"
-"")
         self.pending_task = QWidget()
         self.pending_task.setObjectName(u"pending_task")
         self.gridLayout_48 = QGridLayout(self.pending_task)
@@ -3051,59 +2281,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem79 = QTableWidgetItem()
         self.task_pending_tableWid.setHorizontalHeaderItem(11, __qtablewidgetitem79)
         self.task_pending_tableWid.setObjectName(u"task_pending_tableWid")
-        self.task_pending_tableWid.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	alternate-background-color: rgb(42, 48, 59);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(28, 32, 40);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:hor"
-                        "izontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"\n"
-"")
+        self.task_pending_tableWid.setStyleSheet(u"")
         self.task_pending_tableWid.setFrameShape(QFrame.NoFrame)
         self.task_pending_tableWid.setFrameShadow(QFrame.Raised)
         self.task_pending_tableWid.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -3152,59 +2330,6 @@ class Ui_MainWindow(object):
         __qtablewidgetitem91 = QTableWidgetItem()
         self.task_completed_tableWid.setHorizontalHeaderItem(11, __qtablewidgetitem91)
         self.task_completed_tableWid.setObjectName(u"task_completed_tableWid")
-        self.task_completed_tableWid.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	alternate-background-color: rgb(42, 48, 59);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(28, 32, 40);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:hor"
-                        "izontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"\n"
-"")
         self.task_completed_tableWid.setFrameShape(QFrame.NoFrame)
         self.task_completed_tableWid.setFrameShadow(QFrame.Raised)
         self.task_completed_tableWid.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -3253,10 +2378,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setContentsMargins(11, -1, -1, -1)
         self.sr_shows_lbl = QLabel(self.frame_6)
         self.sr_shows_lbl.setObjectName(u"sr_shows_lbl")
-        font17 = QFont()
-        font17.setFamily(u"Segoe UI")
-        font17.setPointSize(59)
-        self.sr_shows_lbl.setFont(font17)
+        font16 = QFont()
+        font16.setFamily(u"Segoe UI")
+        font16.setPointSize(59)
+        self.sr_shows_lbl.setFont(font16)
         self.sr_shows_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_8.addWidget(self.sr_shows_lbl)
@@ -3297,7 +2422,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.sr_delta_lbl = QLabel(self.frame_30)
         self.sr_delta_lbl.setObjectName(u"sr_delta_lbl")
-        self.sr_delta_lbl.setFont(font17)
+        self.sr_delta_lbl.setFont(font16)
         self.sr_delta_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_15.addWidget(self.sr_delta_lbl)
@@ -3335,7 +2460,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.sr_ach_mandays_lbl = QLabel(self.frame_29)
         self.sr_ach_mandays_lbl.setObjectName(u"sr_ach_mandays_lbl")
-        self.sr_ach_mandays_lbl.setFont(font17)
+        self.sr_ach_mandays_lbl.setFont(font16)
         self.sr_ach_mandays_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_14.addWidget(self.sr_ach_mandays_lbl)
@@ -3375,7 +2500,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.sr_clients_lbl = QLabel(self.frame_4)
         self.sr_clients_lbl.setObjectName(u"sr_clients_lbl")
-        self.sr_clients_lbl.setFont(font17)
+        self.sr_clients_lbl.setFont(font16)
         self.sr_clients_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_7.addWidget(self.sr_clients_lbl)
@@ -3412,7 +2537,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.sr_actmandays_lbl = QLabel(self.frame_10)
         self.sr_actmandays_lbl.setObjectName(u"sr_actmandays_lbl")
-        self.sr_actmandays_lbl.setFont(font17)
+        self.sr_actmandays_lbl.setFont(font16)
         self.sr_actmandays_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_13.addWidget(self.sr_actmandays_lbl)
@@ -3446,22 +2571,22 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_13 = QLabel(self.frame_31)
         self.label_13.setObjectName(u"label_13")
-        font18 = QFont()
-        font18.setFamily(u"Segoe UI")
-        font18.setPointSize(13)
-        font18.setBold(True)
-        font18.setWeight(75)
-        self.label_13.setFont(font18)
+        font17 = QFont()
+        font17.setFamily(u"Segoe UI")
+        font17.setPointSize(13)
+        font17.setBold(True)
+        font17.setWeight(75)
+        self.label_13.setFont(font17)
         self.label_13.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_16.addWidget(self.label_13)
 
         self.sr_yts_lbl = QLabel(self.frame_31)
         self.sr_yts_lbl.setObjectName(u"sr_yts_lbl")
-        font19 = QFont()
-        font19.setFamily(u"Segoe UI")
-        font19.setPointSize(30)
-        self.sr_yts_lbl.setFont(font19)
+        font18 = QFont()
+        font18.setFamily(u"Segoe UI")
+        font18.setPointSize(30)
+        self.sr_yts_lbl.setFont(font18)
         self.sr_yts_lbl.setStyleSheet(u"color: rgb(85, 85, 255);")
         self.sr_yts_lbl.setAlignment(Qt.AlignCenter)
 
@@ -3478,14 +2603,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.label_18 = QLabel(self.frame_32)
         self.label_18.setObjectName(u"label_18")
-        self.label_18.setFont(font18)
+        self.label_18.setFont(font17)
         self.label_18.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_17.addWidget(self.label_18)
 
         self.sr_wip_lbl = QLabel(self.frame_32)
         self.sr_wip_lbl.setObjectName(u"sr_wip_lbl")
-        self.sr_wip_lbl.setFont(font19)
+        self.sr_wip_lbl.setFont(font18)
         self.sr_wip_lbl.setStyleSheet(u"color: rgb(255, 170, 0);")
         self.sr_wip_lbl.setAlignment(Qt.AlignCenter)
 
@@ -3502,14 +2627,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.label_20 = QLabel(self.frame_35)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setFont(font18)
+        self.label_20.setFont(font17)
         self.label_20.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_18.addWidget(self.label_20)
 
         self.sr_rtk_lbl = QLabel(self.frame_35)
         self.sr_rtk_lbl.setObjectName(u"sr_rtk_lbl")
-        self.sr_rtk_lbl.setFont(font19)
+        self.sr_rtk_lbl.setFont(font18)
         self.sr_rtk_lbl.setStyleSheet(u"color: rgb(222, 54, 20);")
         self.sr_rtk_lbl.setAlignment(Qt.AlignCenter)
 
@@ -3526,14 +2651,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
         self.label_19 = QLabel(self.frame_33)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setFont(font18)
+        self.label_19.setFont(font17)
         self.label_19.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_19.addWidget(self.label_19)
 
         self.sr_cmp_lbl = QLabel(self.frame_33)
         self.sr_cmp_lbl.setObjectName(u"sr_cmp_lbl")
-        self.sr_cmp_lbl.setFont(font19)
+        self.sr_cmp_lbl.setFont(font18)
         self.sr_cmp_lbl.setStyleSheet(u"color: rgb(85, 170, 0);")
         self.sr_cmp_lbl.setAlignment(Qt.AlignCenter)
 
@@ -3563,7 +2688,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.sr_shots_lbl = QLabel(self.frame_9)
         self.sr_shots_lbl.setObjectName(u"sr_shots_lbl")
-        self.sr_shots_lbl.setFont(font17)
+        self.sr_shots_lbl.setFont(font16)
         self.sr_shots_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_9.addWidget(self.sr_shots_lbl)
@@ -3591,38 +2716,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
         self.label_37 = QLabel(self.frame_36)
         self.label_37.setObjectName(u"label_37")
-        self.label_37.setFont(font19)
+        self.label_37.setFont(font18)
 
         self.horizontalLayout_39.addWidget(self.label_37)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_39.addItem(self.horizontalSpacer_3)
-
-        self.sr_download_btn = QPushButton(self.frame_36)
-        self.sr_download_btn.setObjectName(u"sr_download_btn")
-        font20 = QFont()
-        font20.setPointSize(10)
-        font20.setBold(True)
-        font20.setWeight(75)
-        self.sr_download_btn.setFont(font20)
-        self.sr_download_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.sr_download_btn.setStyleSheet(u"QPushButton{\n"
-"padding:8px;\n"
-"background-color: rgb(230, 123, 0);\n"
-"color:white\n"
-"}\n"
-"QPushButton::hover{\n"
-"	background-color: rgb(230, 149, 9);\n"
-"}\n"
-"QPushButton::pressed{\n"
-"	background-color: rgb(208, 111, 0);\n"
-"}")
-        icon21 = QIcon()
-        icon21.addFile(u":/20x20/icons/20x20/cil-arrow-bottom.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.sr_download_btn.setIcon(icon21)
-
-        self.horizontalLayout_39.addWidget(self.sr_download_btn)
 
 
         self.browser_layout.addWidget(self.frame_36, 0, 0, 1, 6)
@@ -3689,9 +2789,9 @@ class Ui_MainWindow(object):
 
         self.label_25 = QLabel(self.frame_41)
         self.label_25.setObjectName(u"label_25")
-        font21 = QFont()
-        font21.setPointSize(14)
-        self.label_25.setFont(font21)
+        font19 = QFont()
+        font19.setPointSize(14)
+        self.label_25.setFont(font19)
         self.label_25.setStyleSheet(u"border: None;")
         self.label_25.setAlignment(Qt.AlignCenter)
 
@@ -3750,10 +2850,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
-        self.shot_details_tabWidget.setCurrentIndex(0)
-        self.dep_tabWidget.setCurrentIndex(0)
-        self.task_tabWid.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(6)
+        self.shot_details_tabWidget.setCurrentIndex(3)
+        self.dep_tabWidget.setCurrentIndex(1)
+        self.task_tabWid.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -4061,7 +3161,7 @@ class Ui_MainWindow(object):
         self.assign_leads_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Assign to Leads", None))
 #endif // QT_CONFIG(tooltip)
         self.assign_leads_btn.setText("")
-        self.shot_search_lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Enter Shot Name...", None))
+        self.shot_search_lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Shot", None))
         self.stat_filter_cb.setItemText(0, QCoreApplication.translate("MainWindow", u"Status", None))
         self.stat_filter_cb.setItemText(1, QCoreApplication.translate("MainWindow", u"Status2", None))
         self.stat_filter_cb.setItemText(2, QCoreApplication.translate("MainWindow", u"Status3", None))
@@ -4070,8 +3170,6 @@ class Ui_MainWindow(object):
         self.pro_filter_cb.setItemText(1, QCoreApplication.translate("MainWindow", u"Project02", None))
         self.pro_filter_cb.setItemText(2, QCoreApplication.translate("MainWindow", u"Project03", None))
 
-        self.set_default_btn.setText(QCoreApplication.translate("MainWindow", u"Set Defaults", None))
-        self.clear_filter_btn.setText(QCoreApplication.translate("MainWindow", u"Clear", None))
         self.apply_filter_btn.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
         ___qtablewidgetitem51 = self.all_shots_tbWidget.horizontalHeaderItem(1)
         ___qtablewidgetitem51.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));
@@ -4188,7 +3286,6 @@ class Ui_MainWindow(object):
         self.sr_shots_lbl.setText(QCoreApplication.translate("MainWindow", u"N/A", None))
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Total Shots", None))
         self.label_37.setText(QCoreApplication.translate("MainWindow", u"Studio Report", None))
-        self.sr_download_btn.setText(QCoreApplication.translate("MainWindow", u"Download Report", None))
         self.new_pwd1_le.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Enter New Password", None))
         self.new_pwd2_le.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Re Enter New Password", None))
         self.change_butt.setText(QCoreApplication.translate("MainWindow", u"Change Password", None))

@@ -428,22 +428,34 @@ class All_Shots(object):
             self.main_window.ui.all_shots_tbWidget.setItem(i, 4, QTableWidgetItem(shots['task_type']))
             stWidget = QWidget();
             st_label = QLabel();
-            st_label.setMaximumSize(QSize(32, 32));
-            st_label.setText(shots['status']['code'])
+            st_label.setMinimumSize(QSize(21, 21));
+            st_label.setMaximumSize(QSize(21, 21));
+            st_label.setStyleSheet("border-radius:10px;background-color:"+ shots['status']['color'])
+            # st_label.setText(shots['status']['code'])
+            # font = QFont()
+            # font.setPointSize(10)
+            # font.setFamily('Arial')
+            # font.setBold(True)
+            # st_label.setFont(font)
+            st_label.setAlignment(Qt.AlignCenter)
+            st_label1 = QLabel();
+            st_label1.setMaximumSize(QSize(35, 35));
+            st_label1.setText(shots['status']['code'])
             font = QFont()
             font.setPointSize(10)
             font.setFamily('Arial')
             font.setBold(True)
-            st_label.setFont(font)
-            st_label.setAlignment(Qt.AlignCenter)
+            st_label1.setFont(font)
+            st_label1.setAlignment(Qt.AlignCenter)
             stLayout = QHBoxLayout(stWidget);
             stLayout.addWidget(st_label);
+            stLayout.addWidget(st_label1);
             stLayout.setAlignment(Qt.AlignCenter);
             stLayout.setContentsMargins(0, 0, 0, 0);
             stWidget.setLayout(stLayout);
-            stWidget.setStyleSheet(
-                'QWidget{margin-top:5px;margin-bottom:5px;color:white;background-color:' + shots['status'][
-                    'color'] + '}')
+            # stWidget.setStyleSheet(
+            #     'QWidget{margin-top:5px;margin-bottom:5px;color:white; border-radius:10px;background-color:' + shots['status'][
+            #         'color'] + '}')
             stWidget.setToolTip(shots['status']['name'])
             self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 5, stWidget)
             self.main_window.ui.all_shots_tbWidget.setItem(i, 6, QTableWidgetItem(self.artist))

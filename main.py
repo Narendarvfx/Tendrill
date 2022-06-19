@@ -25,13 +25,15 @@ import datetime
 import getpass
 from os.path import exists
 
+import qdarkstyle
 import requests
 import yaml
 from PySide2 import QtWidgets, QtGui, QtWebSockets, QtCharts, QtCore
 from PySide2.QtCore import QTimer, QSize, Qt, QUrl, Slot, QCoreApplication
-from PySide2.QtGui import QIcon, QPen, QPainter, QBrush
+from PySide2.QtGui import QIcon, QPen, QPainter, QBrush, QPalette
 from PySide2.QtWebEngineWidgets import QWebEngineView
 from PySide2.QtWidgets import QMessageBox, QApplication, QMainWindow
+from qdarkstyle import light, dark
 from win10toast import ToastNotifier
 
 import api
@@ -161,6 +163,7 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.frame_main.setStyleSheet("""QFrame {border:none}""")
         self.login_data = login_data
         self.employee_details = api.get_employee_data(login_data['id'])
         # self.logger.debug("LoggedIn Succesfully: {}".format(self.employee_details['fullName']))
@@ -619,6 +622,8 @@ if __name__ == '__main__':
         app = QApplication(sys.argv)
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
+
+        app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=dark.palette.DarkPalette))
         window = LoginWindow()
         sys.exit(app.exec_())
     else:

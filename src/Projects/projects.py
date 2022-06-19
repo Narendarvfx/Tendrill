@@ -84,7 +84,7 @@ class Projects(object):
         if modal.exec_():
             data = {
                 'name': modal.getProName(),
-                'client': self.obj.c_data['id'],
+                'client': "2",
                 'status': 'YTS'
             }
             post_data = api.save_project(data)
