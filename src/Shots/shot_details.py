@@ -803,10 +803,10 @@ class Shot_Details(QTreeWidget):
         else:
             app = QtWidgets.QApplication.instance()
         w = QtWidgets.QWidget()
-        w.setWindowTitle("Oscarfx Studios")
+        w.setWindowTitle("Tendril ")
         tray_icon = SystemTrayIcon(QtGui.QIcon(":/oscarfx/icons/oscarfx/icon.png"), w)
         tray_icon.show()
-        tray_icon.showMessage('OscarFX Pipeline', message)
+        tray_icon.showMessage('Tendril Pipeline', message)
         app.exec_()
 
     def fetchShot_Messages(self):

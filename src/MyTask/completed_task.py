@@ -14,6 +14,8 @@ class Completed_Task(object):
     def __init__(self, instance):
         super(Completed_Task, self).__init__()
         self.main_window = instance.main_window
+        self.main_window.ui.task_search_lineEdit.hide()
+        self.main_window.ui.task_search_btn.hide()
         try:
             self.main_window.ui.task_search_btn.clicked.disconnect()
             self.main_window.ui.task_pending_tableWid.cellDoubleClicked.disconnect()
@@ -27,14 +29,14 @@ class Completed_Task(object):
                                x['task_status']['code'] == 'HLD' or x['task_status']['code'] == 'OMT')]
         self.completed_task_page(self.task_filtered_data)
         self.main_window.ui.task_search_btn.clicked.connect(lambda: self.perform_search())
-        self.clients = api.get_all_clients()
-        self.main_window.ui.t_cli_sel_cb.clear()
-        self.main_window.ui.t_cli_sel_cb.addItem("Select", None)
-        for c, client in enumerate(self.clients):
-            self.main_window.ui.t_cli_sel_cb.addItem("", client['id'])
-            self.main_window.ui.t_cli_sel_cb.setItemText(c + 1,
-                                                         QtWidgets.QApplication.translate("MainWindow", client['name'],
-                                                                                          None, -1))
+        # self.clients = api.get_all_clients()
+        # self.main_window.ui.t_cli_sel_cb.clear()
+        # self.main_window.ui.t_cli_sel_cb.addItem("Select", None)
+        # for c, client in enumerate(self.clients):
+        #     self.main_window.ui.t_cli_sel_cb.addItem("", client['id'])
+        #     self.main_window.ui.t_cli_sel_cb.setItemText(c + 1,
+        #                                                  QtWidgets.QApplication.translate("MainWindow", client['name'],
+        #                                                                                   None, -1))
 
         self.projects = api.get_all_projects()
         self.main_window.ui.t_pro_sel_cb.clear()
@@ -57,7 +59,7 @@ class Completed_Task(object):
 
         self.sel_cli_id = None;
         self.sel_pro = None
-        self.main_window.ui.t_cli_sel_cb.activated.connect(self.filterByClient)
+        # self.main_window.ui.t_cli_sel_cb.activated.connect(self.filterByClient)
         self.main_window.ui.t_pro_sel_cb.activated.connect(self.filterByProject)
         self.main_window.ui.t_status_sel_cb.activated.connect(self.filterByStatus)
 
@@ -213,18 +215,18 @@ class Completed_Task(object):
             row_Item = QTableWidgetItem()
             row_Item.setData(1, task)
             row_Item.setText(task['shot']['sequence']['project']['client'])
-            self.main_window.ui.task_completed_tableWid.setItem(i, 0, row_Item)
-            self.main_window.ui.task_completed_tableWid.setItem(i, 1,
+            # self.main_window.ui.task_completed_tableWid.setItem(i, 0, row_Item)
+            self.main_window.ui.task_completed_tableWid.setItem(i, 0,
                                                               QTableWidgetItem(
                                                                   task['shot']['sequence']['project']['name']))
-            self.main_window.ui.task_completed_tableWid.setItem(i, 2, QTableWidgetItem(task['shot']['sequence']['name']))
-            self.main_window.ui.task_completed_tableWid.setItem(i, 3, QTableWidgetItem(task['shot']['name']))
-            self.main_window.ui.task_completed_tableWid.setItem(i, 4, QTableWidgetItem(task['shot']['type']))
-            self.main_window.ui.task_completed_tableWid.setItem(i, 5,
+            self.main_window.ui.task_completed_tableWid.setItem(i, 1, QTableWidgetItem(task['shot']['sequence']['name']))
+            self.main_window.ui.task_completed_tableWid.setItem(i, 2, QTableWidgetItem(task['shot']['name']))
+            self.main_window.ui.task_completed_tableWid.setItem(i, 3, QTableWidgetItem(task['shot']['type']))
+            self.main_window.ui.task_completed_tableWid.setItem(i, 4,
                                                               QTableWidgetItem(str(task['shot']['actual_start_frame'])))
-            self.main_window.ui.task_completed_tableWid.setItem(i, 6,
+            self.main_window.ui.task_completed_tableWid.setItem(i, 5,
                                                               QTableWidgetItem(str(task['shot']['actual_end_frame'])))
-            self.main_window.ui.task_completed_tableWid.setItem(i, 7, QTableWidgetItem(str(0)))
+            self.main_window.ui.task_completed_tableWid.setItem(i, 6, QTableWidgetItem(str(0)))
             stWidget = QWidget();
             st_label = QLabel();
             st_label.setMaximumSize(QSize(32, 32));
@@ -244,8 +246,8 @@ class Completed_Task(object):
                 'QWidget{margin-top:5px;margin-bottom:5px;color:white;background-color:' + task['task_status'][
                     'color'] + '}')
             stWidget.setToolTip(task['task_status']['name'])
-            self.main_window.ui.task_completed_tableWid.setCellWidget(i, 8, stWidget)
-            self.main_window.ui.task_completed_tableWid.setItem(i, 9, QTableWidgetItem(str(task['assigned_bids'])))
+            self.main_window.ui.task_completed_tableWid.setCellWidget(i, 7, stWidget)
+            self.main_window.ui.task_completed_tableWid.setItem(i, 8, QTableWidgetItem(str(task['assigned_bids'])))
             progressBar = QProgressBar()
             value = task['art_percentage']
             progressBar.setValue(value)
@@ -269,8 +271,8 @@ class Completed_Task(object):
             progressBar.setStyleSheet(newStyleSheet)
             progressBar.setFont(QFont('Arial', 10))
             # progressBar.setStyleSheet("QProgressBar:horizontal {border: 1px solid gray;border-radius: 3px;background: transparent;padding: 1px;text-align: right;margin-right: 10ex;}QProgressBar::chunk:horizontal {background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5, stop: 0 green, stop: 1 white);margin-right: 2px; /* space */width: 10px;}")
-            self.main_window.ui.task_completed_tableWid.setCellWidget(i, 10, progressBar)
-            self.main_window.ui.task_completed_tableWid.setItem(i, 11, QTableWidgetItem(str(eta)))
+            # self.main_window.ui.task_completed_tableWid.setCellWidget(i, 9, progressBar)
+            self.main_window.ui.task_completed_tableWid.setItem(i, 9, QTableWidgetItem(str(eta)))
 
     def cellClicked(self):
         self.current_row = self.main_window.ui.task_completed_tableWid.currentRow()

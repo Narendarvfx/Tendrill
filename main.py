@@ -24,18 +24,19 @@ import datetime
 
 import getpass
 from os.path import exists
-
 import qdarkstyle
+from qdarkstyle.light.palette import LightPalette
+from qdarkstyle.dark.palette import DarkPalette
 import requests
 import yaml
 from PySide2 import QtWidgets, QtGui, QtWebSockets, QtCharts, QtCore
 from PySide2.QtCore import QTimer, QSize, Qt, QUrl, Slot, QCoreApplication
-from PySide2.QtGui import QIcon, QPen, QPainter, QBrush, QPalette
+from PySide2.QtGui import QIcon, QPen, QPainter, QBrush
 from PySide2.QtWebEngineWidgets import QWebEngineView
 from PySide2.QtWidgets import QMessageBox, QApplication, QMainWindow
-from qdarkstyle import light, dark
 from win10toast import ToastNotifier
-
+from PySide2.QtCharts import QChart
+from PySide2.QtGui import QPainter, QPen
 import api
 from _globals import *
 from app_modules import *
@@ -50,7 +51,7 @@ from src.filters_panel import Filters_Panel_Modal
 from src.reports.studio_report import Studio_Reports
 from uipy.change_password import Ui_CP_MainWindow
 from uipy.change_password_modal import Ui_CP_Dialog
-from uipy.login_window import Ui_Form
+from uipy.login_window import Ui_LoginWindow
 from uipy.main_window import Ui_MainWindow
 from src.Clients.clients import Clients
 from src.Projects.projects import Projects
@@ -64,16 +65,17 @@ QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True) #use h
 class LoginWindow(QMainWindow):
     def __init__(self):
         super(LoginWindow, self).__init__()
-        self.login_ui = Ui_Form()
+        self.login_ui = Ui_LoginWindow()
         self.login_ui.setupUi(self)
         # TODO: Change version before production build
         # self.login_ui.ver_lbl.setText("V15.5267")
         self.login_ui.password_le.returnPressed.connect(lambda: self.LoginClicked())
         # self.login_ui.password_le.installEventFilter(self)
         self.login_ui.login_btn.clicked.connect(lambda: self.LoginClicked())
-
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         #TODO: Enable this code block before deploying to production to display login window
-        self.show()
+        # self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
@@ -95,7 +97,7 @@ class LoginWindow(QMainWindow):
         }
         artist = {
             'username': 'artist1',
-            'password': 'ofx@12345'
+            'password': 'Ofx@12345'
         }
         dataio = {
             'username': 'dataio',
@@ -109,8 +111,8 @@ class LoginWindow(QMainWindow):
             'username': 'admin',
             'password': 'Tomato@123'
         }
-        response = requests.post(url, data=supervisor, verify=False)
-        # MainWindow(response.json())
+        response = requests.post(url, data=my_data, verify=False)
+        MainWindow(response.json())
 
     @Slot()
     def LoginClicked(self):
@@ -237,15 +239,15 @@ class MainWindow(QMainWindow):
                 yaml.dump(d, yaml_file, default_flow_style=False)
 
         # TODO: Change version before production build
-        self.ui.label_version.setText("V01.5262")
+        # self.ui.label_version.setText("V01.5262")
         self.ui.projects_pb.hide()
         self.ui.all_shots_pb.hide()
         self.ui.shots_ingest_pb.hide()
         self.ui.my_task_pb.hide()
         role = self.employee_details['role']
         if role == "DATA I/O":
-            self.ui.projects_pb.show()
             self.ui.all_shots_pb.show()
+            self.ui.projects_pb.show()
             self.ui.shots_ingest_pb.show()
             self.ui.stackedWidget.setCurrentWidget(self.ui.projects_page)
             Projects(self)
@@ -411,7 +413,6 @@ class MainWindow(QMainWindow):
         print("error code: {}".format(error_code))
         print(self.client.errorString())
 
-    ########################################################################
     ## MENUS ==> DYNAMIC MENUS FUNCTIONS
     ########################################################################
 
@@ -483,7 +484,7 @@ class MainWindow(QMainWindow):
 
         # PAGE NEW SHOTS IMPORT
         elif btnWidget.objectName() == "tickets":
-            self.browser.setWindowTitle("OSCARFX TICKETING PORTAL")
+            self.browser.setWindowTitle("Tendril TICKETING PORTAL")
             ofx_icon = QIcon()
             ofx_icon.addFile(u":/oscarfx/icons/oscarfx/icon.png", QSize(), QIcon.Normal, QIcon.Off)
             self.browser.setWindowIcon(ofx_icon)
@@ -491,7 +492,7 @@ class MainWindow(QMainWindow):
             self.main_timer.timeout.connect(self.browser.show())
 
         elif btnWidget.objectName() == "mail":
-            self.browser.setWindowTitle("OSCARFX MAILING PORTAL")
+            self.browser.setWindowTitle("Tendril MAILING PORTAL")
             ofx_icon = QIcon()
             ofx_icon.addFile(u":/oscarfx/icons/oscarfx/icon.png", QSize(), QIcon.Normal, QIcon.Off)
             self.browser.setWindowIcon(ofx_icon)
@@ -590,7 +591,7 @@ class MainWindow(QMainWindow):
 
     def logOut(self):
         qm = QMessageBox()
-        result = qm.question(self, 'Shot Buzz Application', "Logout Confirmation!", qm.Yes | qm.No)
+        result = qm.question(self, 'Tendril Application', "Logout Confirmation!", qm.Yes | qm.No)
         if result == qm.Yes:
             del self.login_data
             self.hide()
@@ -623,7 +624,9 @@ if __name__ == '__main__':
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
 
-        app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=dark.palette.DarkPalette))
+
+        app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2'))
+
         window = LoginWindow()
         sys.exit(app.exec_())
     else:

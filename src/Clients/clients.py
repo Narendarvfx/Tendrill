@@ -57,7 +57,7 @@ class cliDailog(QDialog):
             msg.setText("Please Select Locality")
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
-            msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+            # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
             msg.exec_()
 
     def cancel_btn(self):

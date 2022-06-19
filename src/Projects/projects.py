@@ -84,7 +84,7 @@ class Projects(object):
         if modal.exec_():
             data = {
                 'name': modal.getProName(),
-                'client': "2",
+                'client': '2',
                 'status': 'YTS'
             }
             post_data = api.save_project(data)
@@ -96,16 +96,16 @@ class Projects(object):
                 self.main_window.ui.pro_table.insertRow(row_count)
                 tbWid = QTableWidgetItem()
                 tbWid.setData(1, response)
-                tbWid.setText(self.obj.c_data['name'])
+                tbWid.setText(str(response['status']))
                 self.main_window.ui.pro_table.setItem(row_count, 0, tbWid)
                 self.main_window.ui.pro_table.setItem(row_count, 1, QTableWidgetItem(response['name']))
-                self.main_window.ui.pro_table.setItem(row_count, 2, QTableWidgetItem(str(response['status'])))
+                # self.main_window.ui.pro_table.setItem(row_count, 2, QTableWidgetItem(str(response['status'])))
             elif post_data.status_code == 500:
                 msg = QMessageBox()
                 msg.setText("Project Name already exists for this Client \n Please try again with different name \n")
                 msg.setWindowTitle("Error")
                 msg.setIcon(QMessageBox.Critical)
-                msg.setStyleSheet("background-color: rgb(202,0,3);")
+                # msg.setStyleSheet("background-color: rgb(202,0,3);")
                 msg.exec_()
         else:
             pass

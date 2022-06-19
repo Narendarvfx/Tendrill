@@ -6,10 +6,8 @@ import urllib3
 
 urllib3.disable_warnings()
 config = configparser.ConfigParser()
-# TODO: Change config file location while building
 
-config.read(r'\\10.0.0.102\justvfx_data\testing\Pipeline\Repo_Settings\settings.ini')
-# config.read(r'C:\Repo_Settings\settings.ini')
+config.read(r'P:\Repo_Settings\settings.ini')
 
 base_url = "{}{}".format(config['API']['hostname'], config['API']['port'])
 token = config['API']['token']

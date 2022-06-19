@@ -123,14 +123,14 @@ class Task_Help_Assign_Modal(QDialog):
             msg.setText(self.shot['name']+"\nSuccessfully Assigned to "+self.ui.sel_artists_cb.currentText())
             msg.setWindowTitle("Success")
             msg.setIcon(QMessageBox.Information)
-            msg.setStyleSheet("background-color: rgb(33,193,100);color:'white'")
+            # msg.setStyleSheet("background-color: rgb(33,193,100);color:'white'")
             msg.exec_()
         else:
             msg = QMessageBox()
             msg.setText("Something Went Wrong \n Please try Again \n or Contact Pipeline Administrator")
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
-            msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+            # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
             msg.exec_()
 
     def close_dialog(self):

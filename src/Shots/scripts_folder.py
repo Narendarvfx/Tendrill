@@ -57,11 +57,11 @@ class Scripts_Folder(object):
                             sub.setIcon(2, file_icon)
                             sub.setFont(1, QFont('Arial', 10, QFont.Bold))
                             sub.setText(3, str(os.path.getsize(file_path)))
-                            owner=  Scripts_Folder.get_owner(self,file_path)
-                            print (owner)
+                            # owner=  Scripts_Folder.get_owner(self,file_path)
+
                             date_created = datetime.datetime.fromtimestamp(os.path.getmtime(file_path))
 
-                            sub.setText(4, owner)
+                            # sub.setText(4, owner)
                             sub.setText(5, str(date_created.date()))
                             sub.setText(6, str(date_created.time()).split('.')[0])
                             # sub.setData(4, Qt.UserRole, file_path)

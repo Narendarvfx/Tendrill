@@ -46,7 +46,7 @@ class Filters_Panel_Modal(QObject):
             self.main_window.ui.pro_filter_cb.setItemChecked(p+1, False)
             for _pid in G_PROJECTS_LIST:
                 if _pid['id'] == project['id']:
-                    self.main_window.ui.pro_filter_cb.setItemChecked(p, True)
+                    self.main_window.ui.pro_filter_cb.setItemChecked(p+1, True)
 
         self.status = api.get_all_status()
         self.main_window.ui.stat_filter_cb.clear()
@@ -60,7 +60,7 @@ class Filters_Panel_Modal(QObject):
             self.main_window.ui.stat_filter_cb.setItemChecked(s+1, False)
             for _sid in G_STATUS_LIST:
                 if _sid['id'] == status['id']:
-                    self.main_window.ui.stat_filter_cb.setItemChecked(s, True)
+                    self.main_window.ui.stat_filter_cb.setItemChecked(s+1, True)
 
         # self.init_Client_Labels()
         # self.init_Project_Labels()
@@ -183,7 +183,7 @@ class Filters_Panel_Modal(QObject):
         msg.setText("Whola!.. Filters Set to Defaults")
         msg.setWindowTitle("Success")
         msg.setIcon(QMessageBox.Information)
-        msg.setStyleSheet("background-color: rgb(64, 139, 88);color:'white'")
+        # msg.setStyleSheet("background-color: rgb(64, 139, 88);color:'white'")
         msg.setFont(font)
         msg.exec_()
 
@@ -194,7 +194,7 @@ class Filters_Panel_Modal(QObject):
         font.setBold(True)
         qm = QMessageBox()
         qm.setFont(font)
-        qm.setStyleSheet("background-color: rgb(195, 56, 56);color:'white'")
+        # qm.setStyleSheet("background-color: rgb(195, 56, 56);color:'white'")
         result = qm.question(self.main_window, 'Shot Buzz Application', "Are you sure to clear the filters", qm.Yes | qm.No)
         if result == qm.Yes:
             G_PROJECTS_LIST.clear()

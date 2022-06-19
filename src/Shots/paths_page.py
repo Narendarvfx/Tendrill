@@ -12,9 +12,9 @@ class PathPage(QWidget):
             pass
         self.shot_details = instance.shot_details
         self.employee_details = instance.main_window.employee_details
-        self.main_window.ui.input_path_tb.clear()
-        self.main_window.ui.retake_path_tb.clear()
-        self.main_window.ui.output_path_tb.clear()
-        self.main_window.ui.input_path_tb.append(self.shot_details['input_path'])
-        self.main_window.ui.retake_path_tb.append(self.shot_details['retake_path'])
-        self.main_window.ui.output_path_tb.append(self.shot_details['output_path'])
+        # self.main_window.ui.input_path_tb.clear()
+        # self.main_window.ui.retake_path_tb.clear()
+        # self.main_window.ui.output_path_tb.clear()
+        # self.main_window.ui.input_path_tb.append(self.shot_details['input_path'])
+        # self.main_window.ui.retake_path_tb.append(self.shot_details['retake_path'])
+        # self.main_window.ui.output_path_tb.append(self.shot_details['output_path'])
