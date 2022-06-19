@@ -73,6 +73,11 @@ class All_Users(QMainWindow):
             users_data = api.get_employees_by_status()
         self.display_table(users_data)
         data = self.generate_statistics(users_data)
+        data = {
+            'Yts': 80,
+            "Pending": 30,
+            "completed": 20
+        }
         self.create_piechart(data, replace=True)
 
 

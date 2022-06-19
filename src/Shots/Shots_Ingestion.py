@@ -7,7 +7,7 @@ from subprocess import call
 import progressbar
 from PySide2 import QtCore, QtWidgets
 from PySide2.QtCore import Signal, QTimer, QRunnable, QObject, Slot, QThreadPool
-from PySide2.QtWidgets import QFileDialog, QTableWidgetItem, QApplication
+from PySide2.QtWidgets import QFileDialog, QTableWidgetItem, QApplication, QMessageBox
 
 import api
 import win32security
@@ -225,65 +225,83 @@ class Shots_Ingestion(object):
                     shot_res_data = response.json()
                     if response.status_code == 201:
                         api.createShot_group({'name': shot_res_data['name'] + '_' + str(shot_res_data['id'])})
-                        # self.create_directories(cli_name=self.cli_name, pro_name=self.pro_name,
-                        #                     current_seq_name=self.current_seq_name, shotName=row_data['Shot Name'],row_data = row_data)
+                        self.create_directories(cli_name=self.cli_name, pro_name=self.pro_name,
+                                            current_seq_name=self.current_seq_name, shotName=row_data['Shot Name'],row_data = row_data)
                 except Exception as e:
                     print(e)
             bar.update(i+1)
             time.sleep(0.1)
+
         bar.finish()
+        msg = QMessageBox()
+        msg.setText("Selected Data Ingested sucessfully")
+        msg.setWindowTitle("Error")
+
+        msg.setIcon(QMessageBox.Information)
+        # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+        msg.exec_()
+        # self.main_window.ui.shot_import_table.()
 
     def create_directories(self, cli_name=None, pro_name=None, current_seq_name=None, shotName=None, row_data=None):
+        print ("HELLO")
         self.base_dir = ""
         self.row_data = ""
-        self.base_dir = os.path.join(self.config['STORAGE']['storage_url'],self.config['STORAGE']['parent_directory'], cli_name, pro_name, current_seq_name, shotName)
+        self.base_dir = os.path.join(self.config['STORAGE']['storage_url'], pro_name, current_seq_name, shotName)
         self.row_data = row_data
+        print (self.base_dir)
         os.makedirs(self.base_dir, exist_ok=True)
-        job_folders = ['_annotations', '_comp', '_feedback', '_forsubmission', '_mm', '_paint', '_roto',
-                       '_scans']
-        for jb_folder in job_folders:
-            os.makedirs(os.path.join(self.base_dir,jb_folder), exist_ok=True)
-        scan_folders = ['elements', 'mov', 'plates', 'proxy']
-        for scn_folder in scan_folders:
-            os.makedirs(os.path.join(self.base_dir, '_scans',scn_folder), exist_ok=True)
-        general_folders = ['cp', 'internal_denoise', 'mattes', 'output', 'pre_renders', 'qc', 'qt', 'scripts', 'sv',
-                           'qc\\internal_retake']
-        for gnrl_folder in general_folders:
-            os.makedirs(os.path.join(self.base_dir, '_comp', gnrl_folder), exist_ok=True)
-            os.makedirs(os.path.join(self.base_dir, '_paint', gnrl_folder), exist_ok=True)
-            os.makedirs(os.path.join(self.base_dir, '_roto', gnrl_folder), exist_ok=True)
-            os.makedirs(os.path.join(self.base_dir, '_mm', gnrl_folder), exist_ok=True)
+        default_folder_structure = r'P:\Tendrill\folder_structure'
+        cmd = f'Xcopy {default_folder_structure} {self.base_dir} /E /I'
+        try:
+            os.system(cmd)
+            print ("Folder structure Created")
+        except:
+            print("Failed to create folder structure")
+        # job_folders = [ 'comp', 'mm', 'paint', 'roto','scans']
+        # for jb_folder in job_folders:
+        #     os.makedirs(os.path.join(self.base_dir,jb_folder), exist_ok=True)
+        # scan_folders = ['elements', 'mov', 'plates', 'proxy']
+        # for scn_folder in scan_folders:
+        #     os.makedirs(os.path.join(self.base_dir, '_scans',scn_folder), exist_ok=True)
+        # general_folders = ['cp', 'internal_denoise', 'mattes', 'output', 'pre_renders', 'qc', 'qt', 'scripts', 'sv',
+        #                    'qc\\internal_retake']
+        # for gnrl_folder in general_folders:
+        #     os.makedirs(os.path.join(self.base_dir, '_comp', gnrl_folder), exist_ok=True)
+        #     os.makedirs(os.path.join(self.base_dir, '_paint', gnrl_folder), exist_ok=True)
+        #     os.makedirs(os.path.join(self.base_dir, '_roto', gnrl_folder), exist_ok=True)
+        #     os.makedirs(os.path.join(self.base_dir, '_mm', gnrl_folder), exist_ok=True)
+        #
+        # scripts_folders = ['3de', 'maya', 'mocha', 'nk', 'psd', 'rv', 'sfx']
+        # for scrpt_folder in scripts_folders:
+        #     os.makedirs(os.path.join(self.base_dir,'_comp', 'scripts', scrpt_folder), exist_ok=True)
+        #     os.makedirs(os.path.join(self.base_dir, '_paint', 'scripts', scrpt_folder), exist_ok=True)
+        #     os.makedirs(os.path.join(self.base_dir, '_roto', 'scripts', scrpt_folder), exist_ok=True)
+        #     os.makedirs(os.path.join(self.base_dir, '_mm', 'scripts', scrpt_folder), exist_ok=True)
+        #
+        # dep_folders = ['_paint', '_roto', '_comp', '_mm']
+        # for dep_folder in dep_folders:
+        #     os.makedirs(os.path.join(self.base_dir, '_feedback', dep_folder), exist_ok=True)
+        #     os.makedirs(os.path.join(self.base_dir, '_forsubmission', dep_folder), exist_ok=True)
 
-        scripts_folders = ['3de', 'maya', 'mocha', 'nk', 'psd', 'rv', 'sfx']
-        for scrpt_folder in scripts_folders:
-            os.makedirs(os.path.join(self.base_dir,'_comp', 'scripts', scrpt_folder), exist_ok=True)
-            os.makedirs(os.path.join(self.base_dir, '_paint', 'scripts', scrpt_folder), exist_ok=True)
-            os.makedirs(os.path.join(self.base_dir, '_roto', 'scripts', scrpt_folder), exist_ok=True)
-            os.makedirs(os.path.join(self.base_dir, '_mm', 'scripts', scrpt_folder), exist_ok=True)
-
-        dep_folders = ['_paint', '_roto', '_comp', '_mm']
-        for dep_folder in dep_folders:
-            os.makedirs(os.path.join(self.base_dir, '_feedback', dep_folder), exist_ok=True)
-            os.makedirs(os.path.join(self.base_dir, '_forsubmission', dep_folder), exist_ok=True)
-
+        # try:
+        #     worker = Worker(self.create_permission_groups)  # Any other args, kwargs are passed to the run function
+        #     self.threadpool.start(worker)
+        # except Exception as e:
+        #     pass
+        # try:
+        #     worker = Worker(self.copy_plates)  # Any other args, kwargs are passed to the run function
+        #     self.threadpool.start(worker)
+        # except Exception as e:
+        #     pass
         try:
-            worker = Worker(self.create_permission_groups)  # Any other args, kwargs are passed to the run function
-            self.threadpool.start(worker)
+            call(['robocopy', row_data['Input Path'], os.path.join(self.base_dir, 'scans', 'plates'), "/S", "/MIR"])
         except Exception as e:
+            print (e)
             pass
-        try:
-            worker = Worker(self.copy_plates)  # Any other args, kwargs are passed to the run function
-            self.threadpool.start(worker)
-        except Exception as e:
-            pass
-        try:
-            call(['robocopy', row_data['Annotations Path'], os.path.join(self.base_dir, '_annotations'), "/S", "/MIR"])
-        except Exception as e:
-            pass
-        try:
-            call(['robocopy', row_data['Elements Path'], os.path.join(self.base_dir, '_scans', 'elements'), "/S", "/MIR"])
-        except Exception as e:
-            pass
+        # try:
+        #     call(['robocopy', row_data['Elements Path'], os.path.join(self.base_dir, '_scans', 'elements'), "/S", "/MIR"])
+        # except Exception as e:
+        #     pass
 
     def copy_plates(self):
         log_date = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M')

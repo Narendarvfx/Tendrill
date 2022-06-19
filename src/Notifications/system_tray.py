@@ -9,7 +9,7 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
     def __init__(self, icon, parent=None):
         QtWidgets.QSystemTrayIcon.__init__(self, icon, parent)
         self.application_version = 0.5
-        self.setToolTip('OscarFX Pipeline Application Build - %s' % self.application_version)
+        self.setToolTip('Tendril Pipeline Application Build - %s' % self.application_version)
         menu = QtWidgets.QMenu(parent)
 
         open_app = menu.addAction("Open Desktop App")

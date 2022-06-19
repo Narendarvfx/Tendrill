@@ -41,7 +41,7 @@ def download_success_dialog(path):
     msg.setText("Report Downloaded Successfully in following path\n\n "+path+"\n\n\n Tip: select and copy the path and open in file browser")
     msg.setWindowTitle("Success")
     msg.setIcon(QMessageBox.Information)
-    msg.setStyleSheet("background-color: rgb(33,193,100);color:'white'")
+    # msg.setStyleSheet("background-color: rgb(33,193,100);color:'white'")
     msg.setTextInteractionFlags(Qt.TextSelectableByMouse)
     msg.exec_()
 
