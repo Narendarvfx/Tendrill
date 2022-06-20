@@ -35,7 +35,6 @@ from PySide2.QtGui import QIcon, QPen, QPainter, QBrush
 from PySide2.QtWebEngineWidgets import QWebEngineView
 from PySide2.QtWidgets import QMessageBox, QApplication, QMainWindow
 from win10toast import ToastNotifier
-from PySide2.QtCharts import QChart
 from PySide2.QtGui import QPainter, QPen
 import api
 from _globals import *
@@ -111,7 +110,7 @@ class LoginWindow(QMainWindow):
             'username': 'admin',
             'password': 'Tomato@123'
         }
-        response = requests.post(url, data=my_data, verify=False)
+        response = requests.post(url, data=artist, verify=False)
         MainWindow(response.json())
 
     @Slot()
@@ -365,26 +364,6 @@ class MainWindow(QMainWindow):
 
         return round(double_bytes, 2), tags[i]
 
-    def get_storage_space(self):
-        stats = shutil.disk_usage(r'\\172.168.1.250\ofxstorage')
-        total = self.convert_bytes(stats.total)
-        used = self.convert_bytes(stats.used)
-        free = self.convert_bytes(stats.free)
-        self.ui.storage_bar.setMaximum(total[0])
-        self.ui.storage_bar.setMinimum(0)
-        self.ui.storage_bar.setValue(used[0])
-
-        if self.ui.storage_bar.text() < "50%":
-            self.ui.storage_bar.setStyleSheet("""QProgressBar {background-color:white;color:black;border: 1px solid white;border-bottom-right-radius:5px;border-bottom-left-radius:5px}
-                QProgressBar::chunk {background-color: green;border-bottom-right-radius:5px;border-bottom-left-radius:5px}""")
-        if self.ui.storage_bar.text() >= "80%":
-            self.ui.storage_bar.setStyleSheet("""QProgressBar {background-color:white;color:white;border: 1px solid white;border-bottom-right-radius:5px;border-bottom-left-radius:5px}
-        QProgressBar::chunk {background-color: red;border-bottom-right-radius:5px;border-bottom-left-radius:5px}""")
-
-        self.ui.storage_bar.setToolTip(QCoreApplication.translate("MainWindow", u"Total: {} {}\n"
-                                                                             "Used: {} {}\n"
-                                                                             "Free: {} {}", None).format(total[0],total[1],used[0],used[1],free[0],free[1]))
-
     def processTextMessage(self, message):
         message_json = json.loads(message)
         value = self.ui.notification_btn.text()
@@ -393,8 +372,8 @@ class MainWindow(QMainWindow):
         # create an object to ToastNotifier class
         n = ToastNotifier()
 
-        n.show_toast("ShotBuzz", message_json['message'], duration=10,
-                     icon_path="D:/Native Design/Shot-Buzz/icons/oscarfx/icon.ico", threaded=True)
+        n.show_toast("TENDRILL", message_json['message'], duration=10
+                     , threaded=True)
         # self.tray_notify(message_json['message'])
 
     def tray_notify(self, message):
