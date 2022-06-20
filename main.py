@@ -290,6 +290,7 @@ class MainWindow(QMainWindow):
         self.ui.my_task_pb.clicked.connect(self.my_task_btn)
         self.ui.chng_pwd_pb.clicked.connect(self.change_password_btn)
         self.ui.log_out_btn.clicked.connect(lambda: self.logOut())
+        self.ui.toggle_pb.clicked.connect(self.toogle_modes)
 
         ## ==> END ##
 
@@ -350,6 +351,22 @@ class MainWindow(QMainWindow):
         # self.get_storage_space()
         # mp3_play()
         ## ==> END ##
+
+    def toogle_modes(self):
+        if self.ui.toggle_pb.isChecked():
+
+            icon = QIcon()
+            icon.addFile(u":/custom/icons/custom/light_mode.png", QSize(),
+                          QIcon.Normal, QIcon.Off)
+            self.ui.toggle_pb.setIcon(icon)
+            app.setStyleSheet(qdarkstyle.load_stylesheet(palette=DarkPalette))
+        else:
+
+            icon = QIcon()
+            icon.addFile(u":/custom/icons/custom/dark_mode.png", QSize(),
+                          QIcon.Normal, QIcon.Off)
+            self.ui.toggle_pb.setIcon(icon)
+            app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
 
     def convert_bytes(self,bytes_number):
         tags = ["Byte", "KB", "MB", "GB", "TB"]
@@ -603,10 +620,9 @@ if __name__ == '__main__':
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
 
-
-        app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2'))
-
+        app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
         window = LoginWindow()
+
         sys.exit(app.exec_())
     else:
         print ('Tendril Demo version is expired')

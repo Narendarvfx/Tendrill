@@ -74,16 +74,14 @@ class Ui_MainWindow(object):
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        font1 = QFont()
-        font1.setPointSize(10)
-        self.centralwidget.setFont(font1)
+        self.centralwidget.setFont(font)
         self.centralLayout = QGridLayout(self.centralwidget)
         self.centralLayout.setObjectName(u"centralLayout")
         self.centralLayout.setHorizontalSpacing(7)
         self.centralLayout.setContentsMargins(10, 10, 10, 10)
         self.frame_main = QFrame(self.centralwidget)
         self.frame_main.setObjectName(u"frame_main")
-        self.frame_main.setFont(font1)
+        self.frame_main.setFont(font)
         self.frame_main.setFrameShape(QFrame.NoFrame)
         self.frame_main.setFrameShadow(QFrame.Raised)
         self.gridLayout_10 = QGridLayout(self.frame_main)
@@ -121,9 +119,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.frame_label_top_btns = QFrame(self.frame_top_btns)
         self.frame_label_top_btns.setObjectName(u"frame_label_top_btns")
-        font2 = QFont()
-        font2.setPointSize(8)
-        self.frame_label_top_btns.setFont(font2)
+        font1 = QFont()
+        font1.setPointSize(8)
+        self.frame_label_top_btns.setFont(font1)
         self.frame_label_top_btns.setStyleSheet(u"border-color:rgb(85, 170, 127);")
         self.frame_label_top_btns.setFrameShape(QFrame.StyledPanel)
         self.frame_label_top_btns.setFrameShadow(QFrame.Raised)
@@ -134,12 +132,12 @@ class Ui_MainWindow(object):
         self.label_title_bar_top = QLabel(self.frame_label_top_btns)
         self.label_title_bar_top.setObjectName(u"label_title_bar_top")
         self.label_title_bar_top.setMaximumSize(QSize(180, 16777215))
-        font3 = QFont()
-        font3.setFamily(u"Segoe UI")
-        font3.setPointSize(10)
-        font3.setBold(True)
-        font3.setWeight(75)
-        self.label_title_bar_top.setFont(font3)
+        font2 = QFont()
+        font2.setFamily(u"Segoe UI")
+        font2.setPointSize(10)
+        font2.setBold(True)
+        font2.setWeight(75)
+        self.label_title_bar_top.setFont(font2)
         self.label_title_bar_top.setStyleSheet(u"background: transparent;\n"
 "")
         self.label_title_bar_top.setPixmap(QPixmap(u":/custom/icons/custom/tendril.png"))
@@ -238,6 +236,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_41.addWidget(self.log_out_btn)
 
+        self.toggle_pb = QPushButton(self.frame_42)
+        self.toggle_pb.setObjectName(u"toggle_pb")
+        icon8 = QIcon()
+        icon8.addFile(u":/custom/icons/custom/dark_mode.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.toggle_pb.setIcon(icon8)
+        self.toggle_pb.setIconSize(QSize(32, 32))
+        self.toggle_pb.setCheckable(True)
+        self.toggle_pb.setFlat(True)
+
+        self.horizontalLayout_41.addWidget(self.toggle_pb)
+
 
         self.horizontalLayout_9.addWidget(self.frame_42)
 
@@ -277,9 +286,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {	\n"
 "	background-color: rgb(85, 170, 255);\n"
 "}")
-        icon8 = QIcon()
-        icon8.addFile(u":/16x16/icons/16x16/cil-window-minimize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_minimize.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u":/16x16/icons/16x16/cil-window-minimize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_minimize.setIcon(icon9)
 
         self.horizontalLayout_5.addWidget(self.btn_minimize)
 
@@ -299,9 +308,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {	\n"
 "	background-color: rgb(85, 170, 255);\n"
 "}")
-        icon9 = QIcon()
-        icon9.addFile(u":/16x16/icons/16x16/cil-window-maximize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_maximize_restore.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u":/16x16/icons/16x16/cil-window-maximize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_maximize_restore.setIcon(icon10)
 
         self.horizontalLayout_5.addWidget(self.btn_maximize_restore)
 
@@ -321,9 +330,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {	\n"
 "	background-color: rgb(255, 10, 46);\n"
 "}")
-        icon10 = QIcon()
-        icon10.addFile(u":/16x16/icons/16x16/cil-x.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_close.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u":/16x16/icons/16x16/cil-x.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_close.setIcon(icon11)
 
         self.horizontalLayout_5.addWidget(self.btn_close)
 
@@ -353,7 +362,7 @@ class Ui_MainWindow(object):
 
         self.center_frame = QFrame(self.frame_main)
         self.center_frame.setObjectName(u"center_frame")
-        self.center_frame.setFont(font1)
+        self.center_frame.setFont(font)
         self.center_frame.setFrameShape(QFrame.NoFrame)
         self.center_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_11 = QGridLayout(self.center_frame)
@@ -371,7 +380,7 @@ class Ui_MainWindow(object):
         self.gridLayout_12.setContentsMargins(0, 0, 0, 0)
         self.content_frame = QFrame(self.center_right_frame)
         self.content_frame.setObjectName(u"content_frame")
-        self.content_frame.setFont(font1)
+        self.content_frame.setFont(font)
         self.content_frame.setFrameShape(QFrame.NoFrame)
         self.content_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_6 = QGridLayout(self.content_frame)
@@ -386,7 +395,7 @@ class Ui_MainWindow(object):
         self.gridLayout_13.setContentsMargins(0, 0, 0, 0)
         self.stackedWidget = QStackedWidget(self.frame_3)
         self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setFont(font1)
+        self.stackedWidget.setFont(font)
         self.clients_page = QWidget()
         self.clients_page.setObjectName(u"clients_page")
         self.gridLayout_2 = QGridLayout(self.clients_page)
@@ -395,7 +404,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.clients_frame = QFrame(self.clients_page)
         self.clients_frame.setObjectName(u"clients_frame")
-        self.clients_frame.setFont(font1)
+        self.clients_frame.setFont(font)
         self.clients_frame.setFrameShape(QFrame.NoFrame)
         self.clients_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_18 = QGridLayout(self.clients_frame)
@@ -410,9 +419,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.label_3 = QLabel(self.clients_top_frame)
         self.label_3.setObjectName(u"label_3")
-        font4 = QFont()
-        font4.setPointSize(12)
-        self.label_3.setFont(font4)
+        font3 = QFont()
+        font3.setFamily(u"Segoe UI")
+        font3.setPointSize(12)
+        self.label_3.setFont(font3)
         self.label_3.setPixmap(QPixmap(u":/16x16/icons/16x16/cil-user.png"))
         self.label_3.setScaledContents(False)
 
@@ -420,10 +430,10 @@ class Ui_MainWindow(object):
 
         self.clients_label = QLabel(self.clients_top_frame)
         self.clients_label.setObjectName(u"clients_label")
-        font5 = QFont()
-        font5.setFamily(u"Segoe UI")
-        font5.setPointSize(13)
-        self.clients_label.setFont(font5)
+        font4 = QFont()
+        font4.setFamily(u"Segoe UI")
+        font4.setPointSize(13)
+        self.clients_label.setFont(font4)
 
         self.horizontalLayout_10.addWidget(self.clients_label)
 
@@ -434,9 +444,9 @@ class Ui_MainWindow(object):
         self.cli_add_btn = QPushButton(self.clients_top_frame)
         self.cli_add_btn.setObjectName(u"cli_add_btn")
         self.cli_add_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon11 = QIcon()
-        icon11.addFile(u":/24x24/baseline_note_add_white_24dp.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.cli_add_btn.setIcon(icon11)
+        icon12 = QIcon()
+        icon12.addFile(u":/24x24/baseline_note_add_white_24dp.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.cli_add_btn.setIcon(icon12)
         self.cli_add_btn.setIconSize(QSize(24, 24))
         self.cli_add_btn.setFlat(True)
 
@@ -484,10 +494,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem14 = QTableWidgetItem()
         self.cli_table.setItem(2, 2, __qtablewidgetitem14)
         self.cli_table.setObjectName(u"cli_table")
-        font6 = QFont()
-        font6.setFamily(u"Segoe UI")
-        font6.setPointSize(12)
-        self.cli_table.setFont(font6)
+        self.cli_table.setFont(font3)
         self.cli_table.setFocusPolicy(Qt.NoFocus)
         self.cli_table.setFrameShape(QFrame.NoFrame)
         self.cli_table.setFrameShadow(QFrame.Raised)
@@ -513,7 +520,7 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.clients_page)
         self.projects_page = QWidget()
         self.projects_page.setObjectName(u"projects_page")
-        self.projects_page.setFont(font1)
+        self.projects_page.setFont(font)
         self.gridLayout_3 = QGridLayout(self.projects_page)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setHorizontalSpacing(0)
@@ -541,7 +548,7 @@ class Ui_MainWindow(object):
 
         self.pro_label = QLabel(self.pro_top_frame)
         self.pro_label.setObjectName(u"pro_label")
-        self.pro_label.setFont(font5)
+        self.pro_label.setFont(font4)
         self.pro_label.setStyleSheet(u"QLabel{border:none}")
 
         self.pro_top_frameLayout.addWidget(self.pro_label)
@@ -552,15 +559,16 @@ class Ui_MainWindow(object):
 
         self.pro_add_btn = QPushButton(self.pro_top_frame)
         self.pro_add_btn.setObjectName(u"pro_add_btn")
-        font7 = QFont()
-        font7.setPointSize(12)
-        font7.setBold(True)
-        font7.setWeight(75)
-        self.pro_add_btn.setFont(font7)
+        font5 = QFont()
+        font5.setFamily(u"Segoe UI")
+        font5.setPointSize(12)
+        font5.setBold(True)
+        font5.setWeight(75)
+        self.pro_add_btn.setFont(font5)
         self.pro_add_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon12 = QIcon()
-        icon12.addFile(u":/24x24/icons/24x24/cil-medical-cross.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pro_add_btn.setIcon(icon12)
+        icon13 = QIcon()
+        icon13.addFile(u":/24x24/icons/24x24/cil-medical-cross.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pro_add_btn.setIcon(icon13)
         self.pro_add_btn.setIconSize(QSize(24, 24))
         self.pro_add_btn.setFlat(True)
 
@@ -577,7 +585,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem16 = QTableWidgetItem()
         self.pro_table.setHorizontalHeaderItem(1, __qtablewidgetitem16)
         self.pro_table.setObjectName(u"pro_table")
-        self.pro_table.setFont(font1)
+        self.pro_table.setFont(font)
         self.pro_table.setFocusPolicy(Qt.NoFocus)
         self.pro_table.setFrameShape(QFrame.NoFrame)
         self.pro_table.setFrameShadow(QFrame.Raised)
@@ -601,14 +609,14 @@ class Ui_MainWindow(object):
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.shot_details_page.sizePolicy().hasHeightForWidth())
         self.shot_details_page.setSizePolicy(sizePolicy2)
-        self.shot_details_page.setFont(font1)
+        self.shot_details_page.setFont(font)
         self.shot_details_page_2 = QGridLayout(self.shot_details_page)
         self.shot_details_page_2.setObjectName(u"shot_details_page_2")
         self.shot_details_page_2.setHorizontalSpacing(0)
         self.shot_details_page_2.setContentsMargins(0, 0, 0, 0)
         self.shot_details_main_frame = QFrame(self.shot_details_page)
         self.shot_details_main_frame.setObjectName(u"shot_details_main_frame")
-        self.shot_details_main_frame.setFont(font1)
+        self.shot_details_main_frame.setFont(font)
         self.shot_details_main_frame.setFrameShape(QFrame.StyledPanel)
         self.shot_details_main_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_25 = QGridLayout(self.shot_details_main_frame)
@@ -663,18 +671,16 @@ class Ui_MainWindow(object):
 
         self.label_17 = QLabel(self.frame_7)
         self.label_17.setObjectName(u"label_17")
-        font8 = QFont()
-        font8.setFamily(u"Segoe UI")
-        font8.setPointSize(12)
-        font8.setBold(True)
-        font8.setWeight(75)
-        self.label_17.setFont(font8)
+        self.label_17.setFont(font5)
 
         self.formLayout_2.setWidget(2, QFormLayout.LabelRole, self.label_17)
 
         self.shotName_lbl = QLabel(self.frame_7)
         self.shotName_lbl.setObjectName(u"shotName_lbl")
-        self.shotName_lbl.setFont(font1)
+        font6 = QFont()
+        font6.setFamily(u"MS Shell Dlg 2")
+        font6.setPointSize(10)
+        self.shotName_lbl.setFont(font6)
         self.shotName_lbl.setStyleSheet(u"QLabel{\n"
 "	color: rgb(167, 167, 167);\n"
 "}")
@@ -683,7 +689,7 @@ class Ui_MainWindow(object):
 
         self.label_22 = QLabel(self.frame_7)
         self.label_22.setObjectName(u"label_22")
-        self.label_22.setFont(font8)
+        self.label_22.setFont(font5)
 
         self.formLayout_2.setWidget(3, QFormLayout.LabelRole, self.label_22)
 
@@ -694,12 +700,12 @@ class Ui_MainWindow(object):
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.status_btn.sizePolicy().hasHeightForWidth())
         self.status_btn.setSizePolicy(sizePolicy3)
-        font9 = QFont()
-        font9.setFamily(u"MS Shell Dlg 2")
-        font9.setPointSize(10)
-        font9.setBold(False)
-        font9.setWeight(50)
-        self.status_btn.setFont(font9)
+        font7 = QFont()
+        font7.setFamily(u"MS Shell Dlg 2")
+        font7.setPointSize(10)
+        font7.setBold(False)
+        font7.setWeight(50)
+        self.status_btn.setFont(font7)
         self.status_btn.setLayoutDirection(Qt.LeftToRight)
         self.status_btn.setStyleSheet(u"")
         self.status_btn.setFlat(True)
@@ -708,128 +714,128 @@ class Ui_MainWindow(object):
 
         self.label_23 = QLabel(self.frame_7)
         self.label_23.setObjectName(u"label_23")
-        self.label_23.setFont(font8)
+        self.label_23.setFont(font5)
 
         self.formLayout_2.setWidget(5, QFormLayout.LabelRole, self.label_23)
 
         self.clientName_lbl = QLabel(self.frame_7)
         self.clientName_lbl.setObjectName(u"clientName_lbl")
-        self.clientName_lbl.setFont(font1)
+        self.clientName_lbl.setFont(font)
 
         self.formLayout_2.setWidget(5, QFormLayout.FieldRole, self.clientName_lbl)
 
         self.label_27 = QLabel(self.frame_7)
         self.label_27.setObjectName(u"label_27")
-        self.label_27.setFont(font8)
+        self.label_27.setFont(font5)
         self.label_27.setCursor(QCursor(Qt.ArrowCursor))
 
         self.formLayout_2.setWidget(7, QFormLayout.LabelRole, self.label_27)
 
         self.eta_lbl = QLabel(self.frame_7)
         self.eta_lbl.setObjectName(u"eta_lbl")
-        self.eta_lbl.setFont(font1)
+        self.eta_lbl.setFont(font)
 
         self.formLayout_2.setWidget(7, QFormLayout.FieldRole, self.eta_lbl)
 
         self.label_29 = QLabel(self.frame_7)
         self.label_29.setObjectName(u"label_29")
-        self.label_29.setFont(font8)
+        self.label_29.setFont(font5)
 
         self.formLayout_2.setWidget(9, QFormLayout.LabelRole, self.label_29)
 
         self.projectName_lbl = QLabel(self.frame_7)
         self.projectName_lbl.setObjectName(u"projectName_lbl")
-        self.projectName_lbl.setFont(font1)
+        self.projectName_lbl.setFont(font)
 
         self.formLayout_2.setWidget(9, QFormLayout.FieldRole, self.projectName_lbl)
 
         self.label_30 = QLabel(self.frame_7)
         self.label_30.setObjectName(u"label_30")
-        self.label_30.setFont(font8)
+        self.label_30.setFont(font5)
 
         self.formLayout_2.setWidget(11, QFormLayout.LabelRole, self.label_30)
 
         self.startDate_lbl = QLabel(self.frame_7)
         self.startDate_lbl.setObjectName(u"startDate_lbl")
-        self.startDate_lbl.setFont(font1)
+        self.startDate_lbl.setFont(font)
 
         self.formLayout_2.setWidget(11, QFormLayout.FieldRole, self.startDate_lbl)
 
         self.label_31 = QLabel(self.frame_7)
         self.label_31.setObjectName(u"label_31")
-        self.label_31.setFont(font8)
+        self.label_31.setFont(font5)
 
         self.formLayout_2.setWidget(13, QFormLayout.LabelRole, self.label_31)
 
         self.endDate_lbl = QLabel(self.frame_7)
         self.endDate_lbl.setObjectName(u"endDate_lbl")
-        self.endDate_lbl.setFont(font1)
+        self.endDate_lbl.setFont(font)
 
         self.formLayout_2.setWidget(13, QFormLayout.FieldRole, self.endDate_lbl)
 
         self.label_33 = QLabel(self.frame_7)
         self.label_33.setObjectName(u"label_33")
-        self.label_33.setFont(font8)
+        self.label_33.setFont(font5)
 
         self.formLayout_2.setWidget(15, QFormLayout.LabelRole, self.label_33)
 
         self.totalBids_lbl = QLabel(self.frame_7)
         self.totalBids_lbl.setObjectName(u"totalBids_lbl")
-        self.totalBids_lbl.setFont(font1)
+        self.totalBids_lbl.setFont(font)
 
         self.formLayout_2.setWidget(15, QFormLayout.FieldRole, self.totalBids_lbl)
 
         self.label_34 = QLabel(self.frame_7)
         self.label_34.setObjectName(u"label_34")
-        self.label_34.setFont(font8)
+        self.label_34.setFont(font5)
 
         self.formLayout_2.setWidget(17, QFormLayout.LabelRole, self.label_34)
 
         self.seqName_lbl = QLabel(self.frame_7)
         self.seqName_lbl.setObjectName(u"seqName_lbl")
-        self.seqName_lbl.setFont(font1)
+        self.seqName_lbl.setFont(font)
 
         self.formLayout_2.setWidget(17, QFormLayout.FieldRole, self.seqName_lbl)
 
         self.label_35 = QLabel(self.frame_7)
         self.label_35.setObjectName(u"label_35")
-        font10 = QFont()
-        font10.setFamily(u"Segoe UI")
-        font10.setPointSize(12)
-        font10.setBold(True)
-        font10.setItalic(False)
-        font10.setWeight(75)
-        self.label_35.setFont(font10)
+        font8 = QFont()
+        font8.setFamily(u"Segoe UI")
+        font8.setPointSize(12)
+        font8.setBold(True)
+        font8.setItalic(False)
+        font8.setWeight(75)
+        self.label_35.setFont(font8)
 
         self.formLayout_2.setWidget(19, QFormLayout.LabelRole, self.label_35)
 
         self.frameIn_lbl = QLabel(self.frame_7)
         self.frameIn_lbl.setObjectName(u"frameIn_lbl")
-        self.frameIn_lbl.setFont(font1)
+        self.frameIn_lbl.setFont(font)
 
         self.formLayout_2.setWidget(19, QFormLayout.FieldRole, self.frameIn_lbl)
 
         self.label_36 = QLabel(self.frame_7)
         self.label_36.setObjectName(u"label_36")
-        self.label_36.setFont(font8)
+        self.label_36.setFont(font5)
 
         self.formLayout_2.setWidget(21, QFormLayout.LabelRole, self.label_36)
 
         self.frameOut_lbl = QLabel(self.frame_7)
         self.frameOut_lbl.setObjectName(u"frameOut_lbl")
-        self.frameOut_lbl.setFont(font1)
+        self.frameOut_lbl.setFont(font)
 
         self.formLayout_2.setWidget(21, QFormLayout.FieldRole, self.frameOut_lbl)
 
         self.label_38 = QLabel(self.frame_7)
         self.label_38.setObjectName(u"label_38")
-        self.label_38.setFont(font8)
+        self.label_38.setFont(font5)
 
         self.formLayout_2.setWidget(23, QFormLayout.LabelRole, self.label_38)
 
         self.totalFrames_lbl = QLabel(self.frame_7)
         self.totalFrames_lbl.setObjectName(u"totalFrames_lbl")
-        self.totalFrames_lbl.setFont(font1)
+        self.totalFrames_lbl.setFont(font)
 
         self.formLayout_2.setWidget(23, QFormLayout.FieldRole, self.totalFrames_lbl)
 
@@ -857,11 +863,12 @@ class Ui_MainWindow(object):
         self.input_label_2 = QLabel(self.tab)
         self.input_label_2.setObjectName(u"input_label_2")
         self.input_label_2.setMinimumSize(QSize(10, 0))
-        font11 = QFont()
-        font11.setPointSize(16)
-        font11.setBold(True)
-        font11.setWeight(75)
-        self.input_label_2.setFont(font11)
+        font9 = QFont()
+        font9.setFamily(u"Segoe UI")
+        font9.setPointSize(16)
+        font9.setBold(True)
+        font9.setWeight(75)
+        self.input_label_2.setFont(font9)
         self.input_label_2.setLayoutDirection(Qt.LeftToRight)
         self.input_label_2.setAlignment(Qt.AlignCenter)
 
@@ -870,7 +877,7 @@ class Ui_MainWindow(object):
         self.taskann = QListWidget(self.tab)
         self.taskann.setObjectName(u"taskann")
         self.taskann.setMinimumSize(QSize(200, 0))
-        self.taskann.setFont(font1)
+        self.taskann.setFont(font)
         self.taskann.setFrameShape(QFrame.NoFrame)
         self.taskann.setFrameShadow(QFrame.Sunken)
         self.taskann.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
@@ -885,7 +892,7 @@ class Ui_MainWindow(object):
         self.input_label_3 = QLabel(self.tab)
         self.input_label_3.setObjectName(u"input_label_3")
         self.input_label_3.setMinimumSize(QSize(10, 0))
-        self.input_label_3.setFont(font11)
+        self.input_label_3.setFont(font9)
         self.input_label_3.setLayoutDirection(Qt.LeftToRight)
         self.input_label_3.setAlignment(Qt.AlignCenter)
 
@@ -894,7 +901,7 @@ class Ui_MainWindow(object):
         self.feedbackann = QListView(self.tab)
         self.feedbackann.setObjectName(u"feedbackann")
         self.feedbackann.setMinimumSize(QSize(200, 0))
-        self.feedbackann.setFont(font1)
+        self.feedbackann.setFont(font)
         self.feedbackann.setFrameShape(QFrame.NoFrame)
         self.feedbackann.setFrameShadow(QFrame.Sunken)
         self.feedbackann.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
@@ -943,7 +950,7 @@ class Ui_MainWindow(object):
         self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
         self.dep_tabWidget = QTabWidget(self.assests_dep_frame)
         self.dep_tabWidget.setObjectName(u"dep_tabWidget")
-        self.dep_tabWidget.setFont(font1)
+        self.dep_tabWidget.setFont(font)
         self.paint_tab = QWidget()
         self.paint_tab.setObjectName(u"paint_tab")
         self.gridLayout_19 = QGridLayout(self.paint_tab)
@@ -974,7 +981,7 @@ class Ui_MainWindow(object):
         __qtreewidgetitem.setText(5, u"6");
         self.Pscripts_treeWid.setHeaderItem(__qtreewidgetitem)
         self.Pscripts_treeWid.setObjectName(u"Pscripts_treeWid")
-        self.Pscripts_treeWid.setFont(font1)
+        self.Pscripts_treeWid.setFont(font)
         self.Pscripts_treeWid.setFrameShape(QFrame.NoFrame)
         self.Pscripts_treeWid.setFrameShadow(QFrame.Raised)
         self.Pscripts_treeWid.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
@@ -1043,7 +1050,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.setContentsMargins(0, 8, 0, 8)
         self.Rscripts_treeWid = QTreeWidget(self.scripts_frame_2)
         self.Rscripts_treeWid.setObjectName(u"Rscripts_treeWid")
-        self.Rscripts_treeWid.setFont(font1)
+        self.Rscripts_treeWid.setFont(font)
         self.Rscripts_treeWid.setFrameShape(QFrame.NoFrame)
         self.Rscripts_treeWid.setFrameShadow(QFrame.Raised)
         self.Rscripts_treeWid.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
@@ -1123,7 +1130,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_33.setContentsMargins(0, 8, 0, 8)
         self.Mscripts_treeWid = QTreeWidget(self.scripts_frame_3)
         self.Mscripts_treeWid.setObjectName(u"Mscripts_treeWid")
-        self.Mscripts_treeWid.setFont(font1)
+        self.Mscripts_treeWid.setFont(font)
         self.Mscripts_treeWid.setFrameShape(QFrame.NoFrame)
         self.Mscripts_treeWid.setFrameShadow(QFrame.Raised)
         self.Mscripts_treeWid.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
@@ -1202,7 +1209,7 @@ class Ui_MainWindow(object):
         self.input_TreeWid = QTreeWidget(self.intput_treeWid_frame)
         self.input_TreeWid.setObjectName(u"input_TreeWid")
         self.input_TreeWid.setMinimumSize(QSize(200, 0))
-        self.input_TreeWid.setFont(font1)
+        self.input_TreeWid.setFont(font)
         self.input_TreeWid.setFrameShape(QFrame.NoFrame)
         self.input_TreeWid.setFrameShadow(QFrame.Sunken)
         self.input_TreeWid.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
@@ -1224,9 +1231,10 @@ class Ui_MainWindow(object):
         self.input_label = QLabel(self.input_label_frame)
         self.input_label.setObjectName(u"input_label")
         self.input_label.setMinimumSize(QSize(10, 0))
-        font12 = QFont()
-        font12.setPointSize(11)
-        self.input_label.setFont(font12)
+        font10 = QFont()
+        font10.setFamily(u"Segoe UI")
+        font10.setPointSize(11)
+        self.input_label.setFont(font10)
         self.input_label.setLayoutDirection(Qt.LeftToRight)
         self.input_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
@@ -1265,7 +1273,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_20.setContentsMargins(2, 0, 2, 2)
         self.text_type_edit = QTextEdit(self.text_type_frame)
         self.text_type_edit.setObjectName(u"text_type_edit")
-        self.text_type_edit.setFont(font1)
+        self.text_type_edit.setFont(font6)
         self.text_type_edit.setStyleSheet(u"border: 1px solid rgba(39, 44, 54, 0.5);")
         self.text_type_edit.setLineWrapColumnOrWidth(1)
 
@@ -1273,9 +1281,9 @@ class Ui_MainWindow(object):
 
         self.send_btn = QToolButton(self.text_type_frame)
         self.send_btn.setObjectName(u"send_btn")
-        icon13 = QIcon()
-        icon13.addFile(u":/20x20/icons/20x20/cil-cursor.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.send_btn.setIcon(icon13)
+        icon14 = QIcon()
+        icon14.addFile(u":/20x20/icons/20x20/cil-cursor.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.send_btn.setIcon(icon14)
 
         self.horizontalLayout_20.addWidget(self.send_btn)
 
@@ -1292,7 +1300,7 @@ class Ui_MainWindow(object):
         self.gridLayout_9.setContentsMargins(0, 5, 0, 5)
         self.dis_label = QLabel(self.dis_label_frame)
         self.dis_label.setObjectName(u"dis_label")
-        self.dis_label.setFont(font4)
+        self.dis_label.setFont(font3)
         self.dis_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_9.addWidget(self.dis_label, 0, 0, 1, 1)
@@ -1302,13 +1310,13 @@ class Ui_MainWindow(object):
 
         self.scrollArea = QScrollArea(self.discussion_frame)
         self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setFont(font1)
+        self.scrollArea.setFont(font)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.scrollArea.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
         self.scrollArea.setWidgetResizable(True)
         self.chat_area_widget = QWidget()
         self.chat_area_widget.setObjectName(u"chat_area_widget")
-        self.chat_area_widget.setGeometry(QRect(0, 0, 430, 592))
+        self.chat_area_widget.setGeometry(QRect(0, 0, 98, 28))
         self.chat_area_widget.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.chat_area_widget)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -1352,7 +1360,7 @@ class Ui_MainWindow(object):
         self.gridLayout_30.setContentsMargins(0, 8, 0, 8)
         self.label_39 = QLabel(self.frame_11)
         self.label_39.setObjectName(u"label_39")
-        self.label_39.setFont(font6)
+        self.label_39.setFont(font3)
         self.label_39.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_30.addWidget(self.label_39, 0, 0, 1, 1)
@@ -1405,7 +1413,7 @@ class Ui_MainWindow(object):
         self.gridLayout_34.setContentsMargins(0, 8, 0, 8)
         self.label_40 = QLabel(self.frame_39)
         self.label_40.setObjectName(u"label_40")
-        self.label_40.setFont(font6)
+        self.label_40.setFont(font3)
         self.label_40.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_34.addWidget(self.label_40, 0, 0, 1, 1)
@@ -1556,7 +1564,7 @@ class Ui_MainWindow(object):
         self.sh_up_Project = QComboBox(self.shot_upload_top_frame)
         self.sh_up_Project.addItem("")
         self.sh_up_Project.setObjectName(u"sh_up_Project")
-        self.sh_up_Project.setFont(font1)
+        self.sh_up_Project.setFont(font)
 
         self.horizontalLayout_3.addWidget(self.sh_up_Project)
 
@@ -1573,16 +1581,16 @@ class Ui_MainWindow(object):
         self.sh_file_btn.setObjectName(u"sh_file_btn")
         self.sh_file_btn.setEnabled(False)
         self.sh_file_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon14 = QIcon()
-        icon14.addFile(u":/16x16/icons/16x16/cil-paperclip.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.sh_file_btn.setIcon(icon14)
+        icon15 = QIcon()
+        icon15.addFile(u":/16x16/icons/16x16/cil-paperclip.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.sh_file_btn.setIcon(icon15)
         self.sh_file_btn.setIconSize(QSize(24, 24))
 
         self.horizontalLayout_3.addWidget(self.sh_file_btn)
 
         self.sh_selected_file_name = QLabel(self.shot_upload_top_frame)
         self.sh_selected_file_name.setObjectName(u"sh_selected_file_name")
-        self.sh_selected_file_name.setFont(font1)
+        self.sh_selected_file_name.setFont(font)
 
         self.horizontalLayout_3.addWidget(self.sh_selected_file_name)
 
@@ -1612,9 +1620,9 @@ class Ui_MainWindow(object):
         self.sh_upload_btn = QPushButton(self.shot_upload_top_frame)
         self.sh_upload_btn.setObjectName(u"sh_upload_btn")
         self.sh_upload_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon15 = QIcon()
-        icon15.addFile(u":/custom/icons/custom/addtodb.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.sh_upload_btn.setIcon(icon15)
+        icon16 = QIcon()
+        icon16.addFile(u":/custom/icons/custom/addtodb.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.sh_upload_btn.setIcon(icon16)
         self.sh_upload_btn.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_3.addWidget(self.sh_upload_btn)
@@ -1637,12 +1645,12 @@ class Ui_MainWindow(object):
         self.sh_import_progressBar.setEnabled(True)
         self.sh_import_progressBar.setMinimumSize(QSize(0, 20))
         self.sh_import_progressBar.setMaximumSize(QSize(16777215, 30))
-        font13 = QFont()
-        font13.setFamily(u"Nirmala UI")
-        font13.setPointSize(16)
-        font13.setBold(True)
-        font13.setWeight(75)
-        self.sh_import_progressBar.setFont(font13)
+        font11 = QFont()
+        font11.setFamily(u"Nirmala UI")
+        font11.setPointSize(16)
+        font11.setBold(True)
+        font11.setWeight(75)
+        self.sh_import_progressBar.setFont(font11)
         self.sh_import_progressBar.setAutoFillBackground(False)
         self.sh_import_progressBar.setStyleSheet(u"QProgressBar::chunk {\n"
 "	text-align: center;\n"
@@ -1775,16 +1783,16 @@ class Ui_MainWindow(object):
         self.gridLayout_44.setContentsMargins(0, 0, 0, 0)
         self.sel_all_shtTable_chkBox = QCheckBox(self.frame_44)
         self.sel_all_shtTable_chkBox.setObjectName(u"sel_all_shtTable_chkBox")
-        self.sel_all_shtTable_chkBox.setFont(font1)
+        self.sel_all_shtTable_chkBox.setFont(font)
 
         self.gridLayout_44.addWidget(self.sel_all_shtTable_chkBox, 1, 0, 1, 1)
 
         self.assign_leads_btn = QPushButton(self.frame_44)
         self.assign_leads_btn.setObjectName(u"assign_leads_btn")
         self.assign_leads_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon16 = QIcon()
-        icon16.addFile(u":/24x24/icons/24x24/cil-user-follow.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.assign_leads_btn.setIcon(icon16)
+        icon17 = QIcon()
+        icon17.addFile(u":/24x24/icons/24x24/cil-user-follow.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.assign_leads_btn.setIcon(icon17)
         self.assign_leads_btn.setIconSize(QSize(20, 20))
         self.assign_leads_btn.setFlat(True)
 
@@ -1798,7 +1806,7 @@ class Ui_MainWindow(object):
         sizePolicy4.setHeightForWidth(self.shot_search_lineEdit.sizePolicy().hasHeightForWidth())
         self.shot_search_lineEdit.setSizePolicy(sizePolicy4)
         self.shot_search_lineEdit.setMinimumSize(QSize(0, 34))
-        self.shot_search_lineEdit.setFont(font4)
+        self.shot_search_lineEdit.setFont(font3)
         self.shot_search_lineEdit.setFrame(True)
 
         self.gridLayout_44.addWidget(self.shot_search_lineEdit, 0, 0, 1, 2)
@@ -1818,7 +1826,7 @@ class Ui_MainWindow(object):
         self.stat_filter_cb.addItem("")
         self.stat_filter_cb.addItem("")
         self.stat_filter_cb.setObjectName(u"stat_filter_cb")
-        self.stat_filter_cb.setFont(font1)
+        self.stat_filter_cb.setFont(font)
 
         self.gridLayout_17.addWidget(self.stat_filter_cb, 7, 0, 1, 1)
 
@@ -1834,7 +1842,7 @@ class Ui_MainWindow(object):
         self.pro_filter_cb.addItem("")
         self.pro_filter_cb.addItem("")
         self.pro_filter_cb.setObjectName(u"pro_filter_cb")
-        self.pro_filter_cb.setFont(font1)
+        self.pro_filter_cb.setFont(font)
 
         self.gridLayout_17.addWidget(self.pro_filter_cb, 6, 0, 1, 1)
 
@@ -1856,16 +1864,16 @@ class Ui_MainWindow(object):
         self.apply_filter_btn = QPushButton(self.frame_45)
         self.apply_filter_btn.setObjectName(u"apply_filter_btn")
         self.apply_filter_btn.setMinimumSize(QSize(80, 30))
-        font14 = QFont()
-        font14.setFamily(u"Segoe UI")
-        font14.setPointSize(8)
-        font14.setBold(True)
-        font14.setWeight(75)
-        self.apply_filter_btn.setFont(font14)
+        font12 = QFont()
+        font12.setFamily(u"Segoe UI")
+        font12.setPointSize(8)
+        font12.setBold(True)
+        font12.setWeight(75)
+        self.apply_filter_btn.setFont(font12)
         self.apply_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon17 = QIcon()
-        icon17.addFile(u":/24x24/icons/24x24/cil-check-alt.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.apply_filter_btn.setIcon(icon17)
+        icon18 = QIcon()
+        icon18.addFile(u":/24x24/icons/24x24/cil-check-alt.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.apply_filter_btn.setIcon(icon18)
         self.apply_filter_btn.setIconSize(QSize(13, 13))
 
         self.gridLayout_29.addWidget(self.apply_filter_btn, 0, 0, 1, 1)
@@ -1920,7 +1928,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem67 = QTableWidgetItem()
         self.all_shots_tbWidget.setHorizontalHeaderItem(15, __qtablewidgetitem67)
         self.all_shots_tbWidget.setObjectName(u"all_shots_tbWidget")
-        self.all_shots_tbWidget.setFont(font1)
+        self.all_shots_tbWidget.setFont(font)
         self.all_shots_tbWidget.setFocusPolicy(Qt.NoFocus)
         self.all_shots_tbWidget.setFrameShape(QFrame.NoFrame)
         self.all_shots_tbWidget.setFrameShadow(QFrame.Sunken)
@@ -1970,7 +1978,7 @@ class Ui_MainWindow(object):
         self.task_search_lineEdit = QLineEdit(self.frame_5)
         self.task_search_lineEdit.setObjectName(u"task_search_lineEdit")
         self.task_search_lineEdit.setMinimumSize(QSize(0, 34))
-        self.task_search_lineEdit.setFont(font4)
+        self.task_search_lineEdit.setFont(font3)
         self.task_search_lineEdit.setStyleSheet(u"")
         self.task_search_lineEdit.setFrame(True)
 
@@ -1979,9 +1987,9 @@ class Ui_MainWindow(object):
         self.task_search_btn = QPushButton(self.frame_5)
         self.task_search_btn.setObjectName(u"task_search_btn")
         self.task_search_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon18 = QIcon()
-        icon18.addFile(u":/16x16/icons/16x16/cil-find-in-page.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.task_search_btn.setIcon(icon18)
+        icon19 = QIcon()
+        icon19.addFile(u":/16x16/icons/16x16/cil-find-in-page.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.task_search_btn.setIcon(icon19)
         self.task_search_btn.setIconSize(QSize(24, 24))
 
         self.horizontalLayout_8.addWidget(self.task_search_btn)
@@ -1992,7 +2000,7 @@ class Ui_MainWindow(object):
         self.t_pro_sel_cb = QComboBox(self.frame_5)
         self.t_pro_sel_cb.addItem("")
         self.t_pro_sel_cb.setObjectName(u"t_pro_sel_cb")
-        self.t_pro_sel_cb.setFont(font1)
+        self.t_pro_sel_cb.setFont(font)
 
         self.verticalLayout_23.addWidget(self.t_pro_sel_cb)
 
@@ -2000,7 +2008,7 @@ class Ui_MainWindow(object):
         self.t_status_sel_cb.addItem("")
         self.t_status_sel_cb.setObjectName(u"t_status_sel_cb")
         self.t_status_sel_cb.setMinimumSize(QSize(150, 0))
-        self.t_status_sel_cb.setFont(font1)
+        self.t_status_sel_cb.setFont(font)
 
         self.verticalLayout_23.addWidget(self.t_status_sel_cb)
 
@@ -2193,17 +2201,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setContentsMargins(11, -1, -1, -1)
         self.sr_shows_lbl = QLabel(self.frame_6)
         self.sr_shows_lbl.setObjectName(u"sr_shows_lbl")
-        font15 = QFont()
-        font15.setFamily(u"Segoe UI")
-        font15.setPointSize(59)
-        self.sr_shows_lbl.setFont(font15)
+        font13 = QFont()
+        font13.setFamily(u"Segoe UI")
+        font13.setPointSize(59)
+        self.sr_shows_lbl.setFont(font13)
         self.sr_shows_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_8.addWidget(self.sr_shows_lbl)
 
         self.label_21 = QLabel(self.frame_6)
         self.label_21.setObjectName(u"label_21")
-        self.label_21.setFont(font5)
+        self.label_21.setFont(font4)
         self.label_21.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_8.addWidget(self.label_21)
@@ -2237,14 +2245,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.sr_delta_lbl = QLabel(self.frame_30)
         self.sr_delta_lbl.setObjectName(u"sr_delta_lbl")
-        self.sr_delta_lbl.setFont(font15)
+        self.sr_delta_lbl.setFont(font13)
         self.sr_delta_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_15.addWidget(self.sr_delta_lbl)
 
         self.label_32 = QLabel(self.frame_30)
         self.label_32.setObjectName(u"label_32")
-        self.label_32.setFont(font5)
+        self.label_32.setFont(font4)
         self.label_32.setAlignment(Qt.AlignCenter)
         self.label_32.setWordWrap(True)
 
@@ -2275,14 +2283,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.sr_ach_mandays_lbl = QLabel(self.frame_29)
         self.sr_ach_mandays_lbl.setObjectName(u"sr_ach_mandays_lbl")
-        self.sr_ach_mandays_lbl.setFont(font15)
+        self.sr_ach_mandays_lbl.setFont(font13)
         self.sr_ach_mandays_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_14.addWidget(self.sr_ach_mandays_lbl)
 
         self.label_28 = QLabel(self.frame_29)
         self.label_28.setObjectName(u"label_28")
-        self.label_28.setFont(font5)
+        self.label_28.setFont(font4)
         self.label_28.setAlignment(Qt.AlignCenter)
         self.label_28.setWordWrap(True)
 
@@ -2315,14 +2323,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.sr_clients_lbl = QLabel(self.frame_4)
         self.sr_clients_lbl.setObjectName(u"sr_clients_lbl")
-        self.sr_clients_lbl.setFont(font15)
+        self.sr_clients_lbl.setFont(font13)
         self.sr_clients_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_7.addWidget(self.sr_clients_lbl)
 
         self.label = QLabel(self.frame_4)
         self.label.setObjectName(u"label")
-        self.label.setFont(font5)
+        self.label.setFont(font4)
         self.label.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_7.addWidget(self.label)
@@ -2352,14 +2360,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.sr_actmandays_lbl = QLabel(self.frame_10)
         self.sr_actmandays_lbl.setObjectName(u"sr_actmandays_lbl")
-        self.sr_actmandays_lbl.setFont(font15)
+        self.sr_actmandays_lbl.setFont(font13)
         self.sr_actmandays_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_13.addWidget(self.sr_actmandays_lbl)
 
         self.label_26 = QLabel(self.frame_10)
         self.label_26.setObjectName(u"label_26")
-        self.label_26.setFont(font5)
+        self.label_26.setFont(font4)
         self.label_26.setAlignment(Qt.AlignCenter)
         self.label_26.setWordWrap(True)
 
@@ -2386,22 +2394,22 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_13 = QLabel(self.frame_31)
         self.label_13.setObjectName(u"label_13")
-        font16 = QFont()
-        font16.setFamily(u"Segoe UI")
-        font16.setPointSize(13)
-        font16.setBold(True)
-        font16.setWeight(75)
-        self.label_13.setFont(font16)
+        font14 = QFont()
+        font14.setFamily(u"Segoe UI")
+        font14.setPointSize(13)
+        font14.setBold(True)
+        font14.setWeight(75)
+        self.label_13.setFont(font14)
         self.label_13.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_16.addWidget(self.label_13)
 
         self.sr_yts_lbl = QLabel(self.frame_31)
         self.sr_yts_lbl.setObjectName(u"sr_yts_lbl")
-        font17 = QFont()
-        font17.setFamily(u"Segoe UI")
-        font17.setPointSize(30)
-        self.sr_yts_lbl.setFont(font17)
+        font15 = QFont()
+        font15.setFamily(u"Segoe UI")
+        font15.setPointSize(30)
+        self.sr_yts_lbl.setFont(font15)
         self.sr_yts_lbl.setStyleSheet(u"color: rgb(85, 85, 255);")
         self.sr_yts_lbl.setAlignment(Qt.AlignCenter)
 
@@ -2418,14 +2426,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.label_18 = QLabel(self.frame_32)
         self.label_18.setObjectName(u"label_18")
-        self.label_18.setFont(font16)
+        self.label_18.setFont(font14)
         self.label_18.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_17.addWidget(self.label_18)
 
         self.sr_wip_lbl = QLabel(self.frame_32)
         self.sr_wip_lbl.setObjectName(u"sr_wip_lbl")
-        self.sr_wip_lbl.setFont(font17)
+        self.sr_wip_lbl.setFont(font15)
         self.sr_wip_lbl.setStyleSheet(u"color: rgb(255, 170, 0);")
         self.sr_wip_lbl.setAlignment(Qt.AlignCenter)
 
@@ -2442,14 +2450,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.label_20 = QLabel(self.frame_35)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setFont(font16)
+        self.label_20.setFont(font14)
         self.label_20.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_18.addWidget(self.label_20)
 
         self.sr_rtk_lbl = QLabel(self.frame_35)
         self.sr_rtk_lbl.setObjectName(u"sr_rtk_lbl")
-        self.sr_rtk_lbl.setFont(font17)
+        self.sr_rtk_lbl.setFont(font15)
         self.sr_rtk_lbl.setStyleSheet(u"color: rgb(222, 54, 20);")
         self.sr_rtk_lbl.setAlignment(Qt.AlignCenter)
 
@@ -2466,14 +2474,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
         self.label_19 = QLabel(self.frame_33)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setFont(font16)
+        self.label_19.setFont(font14)
         self.label_19.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_19.addWidget(self.label_19)
 
         self.sr_cmp_lbl = QLabel(self.frame_33)
         self.sr_cmp_lbl.setObjectName(u"sr_cmp_lbl")
-        self.sr_cmp_lbl.setFont(font17)
+        self.sr_cmp_lbl.setFont(font15)
         self.sr_cmp_lbl.setStyleSheet(u"color: rgb(85, 170, 0);")
         self.sr_cmp_lbl.setAlignment(Qt.AlignCenter)
 
@@ -2503,14 +2511,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.sr_shots_lbl = QLabel(self.frame_9)
         self.sr_shots_lbl.setObjectName(u"sr_shots_lbl")
-        self.sr_shots_lbl.setFont(font15)
+        self.sr_shots_lbl.setFont(font13)
         self.sr_shots_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_9.addWidget(self.sr_shots_lbl)
 
         self.label_24 = QLabel(self.frame_9)
         self.label_24.setObjectName(u"label_24")
-        self.label_24.setFont(font5)
+        self.label_24.setFont(font4)
         self.label_24.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_9.addWidget(self.label_24)
@@ -2531,7 +2539,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
         self.label_37 = QLabel(self.frame_36)
         self.label_37.setObjectName(u"label_37")
-        self.label_37.setFont(font17)
+        self.label_37.setFont(font15)
 
         self.horizontalLayout_39.addWidget(self.label_37)
 
@@ -2541,11 +2549,12 @@ class Ui_MainWindow(object):
 
         self.sr_download_btn = QPushButton(self.frame_36)
         self.sr_download_btn.setObjectName(u"sr_download_btn")
-        font18 = QFont()
-        font18.setPointSize(10)
-        font18.setBold(True)
-        font18.setWeight(75)
-        self.sr_download_btn.setFont(font18)
+        font16 = QFont()
+        font16.setFamily(u"MS Shell Dlg 2")
+        font16.setPointSize(10)
+        font16.setBold(True)
+        font16.setWeight(75)
+        self.sr_download_btn.setFont(font16)
         self.sr_download_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.sr_download_btn.setStyleSheet(u"QPushButton{\n"
 "padding:8px;\n"
@@ -2558,9 +2567,9 @@ class Ui_MainWindow(object):
 "QPushButton::pressed{\n"
 "	background-color: rgb(208, 111, 0);\n"
 "}")
-        icon19 = QIcon()
-        icon19.addFile(u":/20x20/icons/20x20/cil-arrow-bottom.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.sr_download_btn.setIcon(icon19)
+        icon20 = QIcon()
+        icon20.addFile(u":/20x20/icons/20x20/cil-arrow-bottom.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.sr_download_btn.setIcon(icon20)
 
         self.horizontalLayout_39.addWidget(self.sr_download_btn)
 
@@ -2581,7 +2590,7 @@ class Ui_MainWindow(object):
         self.old_pwd_le.setObjectName(u"old_pwd_le")
         self.old_pwd_le.setMinimumSize(QSize(0, 40))
         self.old_pwd_le.setMaximumSize(QSize(300, 16777215))
-        self.old_pwd_le.setFont(font4)
+        self.old_pwd_le.setFont(font3)
         self.old_pwd_le.setStyleSheet(u"")
         self.old_pwd_le.setEchoMode(QLineEdit.Password)
 
@@ -2591,7 +2600,7 @@ class Ui_MainWindow(object):
         self.new_pwd1_le.setObjectName(u"new_pwd1_le")
         self.new_pwd1_le.setMinimumSize(QSize(0, 40))
         self.new_pwd1_le.setMaximumSize(QSize(300, 16777215))
-        self.new_pwd1_le.setFont(font4)
+        self.new_pwd1_le.setFont(font3)
         self.new_pwd1_le.setEchoMode(QLineEdit.Password)
 
         self.verticalLayout_10.addWidget(self.new_pwd1_le)
@@ -2600,7 +2609,7 @@ class Ui_MainWindow(object):
         self.new_pwd2_le.setObjectName(u"new_pwd2_le")
         self.new_pwd2_le.setMinimumSize(QSize(0, 40))
         self.new_pwd2_le.setMaximumSize(QSize(300, 16777215))
-        self.new_pwd2_le.setFont(font4)
+        self.new_pwd2_le.setFont(font3)
         self.new_pwd2_le.setEchoMode(QLineEdit.Password)
 
         self.verticalLayout_10.addWidget(self.new_pwd2_le)
@@ -2608,7 +2617,10 @@ class Ui_MainWindow(object):
         self.change_butt = QPushButton(self.change_password_page)
         self.change_butt.setObjectName(u"change_butt")
         self.change_butt.setMaximumSize(QSize(300, 28))
-        self.change_butt.setFont(font4)
+        font17 = QFont()
+        font17.setFamily(u"MS Shell Dlg 2")
+        font17.setPointSize(12)
+        self.change_butt.setFont(font17)
         self.change_butt.setCursor(QCursor(Qt.PointingHandCursor))
         self.change_butt.setStyleSheet(u"background-color: rgb(85, 170, 255);")
 
@@ -2693,6 +2705,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.log_out_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Log Out", None))
 #endif // QT_CONFIG(tooltip)
+        self.toggle_pb.setText("")
 #if QT_CONFIG(tooltip)
         self.btn_minimize.setToolTip(QCoreApplication.translate("MainWindow", u"Minimize", None))
 #endif // QT_CONFIG(tooltip)
