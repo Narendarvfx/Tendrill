@@ -13,6 +13,9 @@ class Annotations_Folder(object):
     def addTask_Annotation_widget(self):
         self.ann_path = os.path.join(self.base_Path,self.shot_details['task_type'].lower(),'annotations')
         try:
+
+            # self.main_window.ui.Pscripts_treeWid.itemClicked.disconnect()
+
             for i in range(self.main_window.ui.taskann.count()):
                 self.main_window.ui.taskann.takeItem(i-1)
                 self.main_window.ui.taskann.clear()
@@ -24,7 +27,7 @@ class Annotations_Folder(object):
             self.ui_image_viewer.setViewMode(QtWidgets.QListWidget.IconMode)
             self.ui_image_viewer.setResizeMode(QtWidgets.QListWidget.Adjust)
             self.ui_image_viewer.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-            self.ui_image_viewer.setIconSize(QtCore.QSize(410, 400))
+            self.ui_image_viewer.setIconSize(QtCore.QSize(400, 350))
             self.ui_image_viewer.setMovement(QtWidgets.QListWidget.Static)
             print(self.ui_image_viewer.count())
             self.imgs = iter(os.listdir(self.ann_path))
@@ -35,7 +38,8 @@ class Annotations_Folder(object):
                 item = QtWidgets.QListWidgetItem(QtGui.QIcon(pixmap), name)
                 item.setData(QtCore.Qt.UserRole,img_path)
                 self.ui_image_viewer.addItem(item)
-            # self.ui_image_viewer.doubleClicked.connect(partial(Annotations_Folder.select_item, self.ui_image_viewer.currentIndex(), self.ui_image_viewer))
+            self.ui_image_viewer.doubleClicked.connect(partial(Annotations_Folder.select_item, self.ui_image_viewer.currentIndex(), self.ui_image_viewer))
+            # self.ui_image_viewer.doubleClicked.disconnect()
 
         except Exception as e:
             print ("ANNOTATIONs EXE::", e)
@@ -51,11 +55,15 @@ class Annotations_Folder(object):
             self.ui_feedback_viewer.setIconSize(QtCore.QSize(400, 400))
             self.ui_feedback_viewer.setMovement(QtWidgets.QListView.Static)
             self.ui_feedback_viewer.setModel(QtGui.QStandardItemModel())
+            try:
+                self.ui_feedback_viewer.doubleClicked.disconnect()
+            except:
+                print ("not disconnected")
             self.imgs = iter(os.listdir(self.ann_path))
             timer = QtCore.QTimer(self)
             timer.timeout.connect(lambda : Annotations_Folder.load(self,self.ui_feedback_viewer))
             timer.start(100)
-            # self.ui_feedback_viewer.doubleClicked.connect(lambda : Annotations_Folder.select_item(self, self.ui_feedback_viewer.currentIndex(), self.ui_feedback_viewer))
+            self.ui_feedback_viewer.doubleClicked.connect(lambda : Annotations_Folder.select_item(self, self.ui_feedback_viewer.currentIndex(), self.ui_feedback_viewer))
 
         except Exception as e:
             print ("ANNOTATION EXE::", e)
@@ -74,6 +82,7 @@ class Annotations_Folder(object):
 
     def select_item(self, index, obj):
         try:
+
             os.startfile(obj.model().itemData(index)[257])
 
         except Exception as e:

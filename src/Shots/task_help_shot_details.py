@@ -442,7 +442,7 @@ class Task_Help_Shot_Details(QTreeWidget):
                 msg.setText("Not Authorized to use the Selected Software \n Please contact IT Team \n ")
                 msg.setWindowTitle("Error")
                 msg.setIcon(QMessageBox.Critical)
-                msg.setStyleSheet("background-color: rgb(202,0,3,);color:'white'")
+                # msg.setStyleSheet("background-color: rgb(202,0,3,);color:'white'")
                 msg.exec_()
         except Exception as e:
             print(e)
@@ -453,7 +453,7 @@ class Task_Help_Shot_Details(QTreeWidget):
         msg.setText("No Software Found in this Work Station \n Please contact IT Team \n ")
         msg.setWindowTitle("Error")
         msg.setIcon(QMessageBox.Critical)
-        msg.setStyleSheet("background-color: rgb(202,0,3,);color:'white'")
+        # msg.setStyleSheet("background-color: rgb(202,0,3,);color:'white'")
         msg.exec_()
 
     def add_InputsTree_widget(self):
@@ -843,10 +843,10 @@ class Task_Help_Shot_Details(QTreeWidget):
         else:
             app = QtWidgets.QApplication.instance()
         w = QtWidgets.QWidget()
-        w.setWindowTitle("Oscarfx Studios")
+        w.setWindowTitle("Tendril")
         tray_icon = SystemTrayIcon(QtGui.QIcon(":/oscarfx/icons/oscarfx/icon.png"), w)
         tray_icon.show()
-        tray_icon.showMessage('OscarFX Pipeline', message)
+        tray_icon.showMessage('Tendril Pipeline', message)
         app.exec_()
 
     def fetchShot_Messages(self):

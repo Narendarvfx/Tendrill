@@ -251,10 +251,14 @@
     <file>icons/16x16/cil-zoom-out.png</file>
   </qresource>
   <qresource prefix="custom">
+    <file>icons/custom/demo.png</file>
+    <file>icons/custom/twotone_light_mode_white_24dp.png</file>
+    <file>icons/custom/twotone_dark_mode_white_24dp.png</file>
     <file>icons/custom/tendril_logo.jpg</file>
     <file>baseline_library_add_white_24dp.png</file>
     <file>icons/custom/addtodb.png</file>
     <file>icons/custom/tendril.png</file>
+    <file>icons/custom/round_tick.png</file>
     <file>icons/custom/baseline_file_upload_white_24dp.png</file>
     <file>icons/custom/baseline_lock_white_24dp.png</file>
     <file>icons/custom/baseline_account_circle_white_24dp.png</file>

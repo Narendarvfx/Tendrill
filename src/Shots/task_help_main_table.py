@@ -391,7 +391,7 @@ class TaskHelp_Main(object):
             msg.setText("No Shots are Selected \n")
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
-            msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+            # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
             msg.exec_()
 
     def assign_modal(self):

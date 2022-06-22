@@ -50,7 +50,7 @@ class UIFunctions(MainWindow):
             self.ui.btn_maximize_restore.setToolTip("Restore Down")
             self.ui.btn_maximize_restore.setIcon(QtGui.QIcon(u":/16x16/icons/16x16/cil-window-restore.png"))
             # self.ui.frame_top_btns.setStyleSheet("background-color: rgb(27, 29, 35)")
-            self.ui.frame_size_grip.hide()
+            # self.ui.frame_size_grip.hide()
         else:
             GLOBAL_STATE = 0
             self.showNormal()
@@ -59,7 +59,7 @@ class UIFunctions(MainWindow):
             self.ui.btn_maximize_restore.setToolTip("Maximize")
             self.ui.btn_maximize_restore.setIcon(QtGui.QIcon(u":/16x16/icons/16x16/cil-window-maximize.png"))
             # self.ui.frame_top_btns.setStyleSheet("background-color: rgba(27, 29, 35, 200)")
-            self.ui.frame_size_grip.show()
+            # self.ui.frame_size_grip.show()
 
     ## ==> RETURN STATUS
     def returStatus(self):
@@ -229,8 +229,8 @@ class UIFunctions(MainWindow):
         self.ui.frame_main.setGraphicsEffect(self.shadow)
 
         ## ==> RESIZE WINDOW
-        self.sizegrip = QSizeGrip(self.ui.frame_size_grip)
-        self.sizegrip.setStyleSheet("width: 20px; height: 20px; margin 0px; padding: 0px;")
+        # self.sizegrip = QSizeGrip(self.ui.frame_size_grip)
+        # self.sizegrip.setStyleSheet("width: 20px; height: 20px; margin 0px; padding: 0px;")
 
         ### ==> MINIMIZE
         self.ui.btn_minimize.clicked.connect(lambda: self.showMinimized())
