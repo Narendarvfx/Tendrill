@@ -35,8 +35,7 @@ from PySide2.QtGui import QIcon, QPen, QPainter, QBrush
 from PySide2.QtWebEngineWidgets import QWebEngineView
 from PySide2.QtWidgets import QMessageBox, QApplication, QMainWindow
 from win10toast import ToastNotifier
-# from PySide2.QtCharts import QChart, QChartView, QPieSeries, QPieSlice
-# from PySide2.QtGui import QPainter, QPen
+from PySide2.QtGui import QPainter, QPen
 import api
 from _globals import *
 from app_modules import *
@@ -67,6 +66,7 @@ class LoginWindow(QMainWindow):
         super(LoginWindow, self).__init__()
         self.login_ui = Ui_LoginWindow()
         self.login_ui.setupUi(self)
+
         # TODO: Change version before production build
         # self.login_ui.ver_lbl.setText("V15.5267")
         self.login_ui.password_le.returnPressed.connect(lambda: self.LoginClicked())
@@ -74,9 +74,10 @@ class LoginWindow(QMainWindow):
         self.login_ui.login_btn.clicked.connect(lambda: self.LoginClicked())
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        #TODO: Enable this code block before deploying to production to display login window
-        # self.show()
 
+        self.login_ui.frame.setStyleSheet("""QFrame {border:none}""")
+        #TODO: Enable this code block before deploying to production to display login window
+        self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
@@ -113,7 +114,7 @@ class LoginWindow(QMainWindow):
             'password': 'Tomato@123'
         }
         response = requests.post(url, data=artist, verify=False)
-        MainWindow(response.json())
+        # MainWindow(response.json())
 
     @Slot()
     def LoginClicked(self):
@@ -166,8 +167,8 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.frame_main.setStyleSheet("""QFrame {border:none}""")
         self.login_data = login_data
-
         self.employee_details = api.get_employee_data(login_data['id'])
         # self.logger.debug("LoggedIn Succesfully: {}".format(self.employee_details['fullName']))
         # self.permissions = api.rolePermissions(str(16))
@@ -192,11 +193,6 @@ class MainWindow(QMainWindow):
         ########################################################################
         ## START - WINDOW ATTRIBUTES
         ########################################################################
-
-        # app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2'))
-        # app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
-
-
 
         ## REMOVE ==> STANDARD TITLE BAR
         UIFunctions.removeTitleBar(True)
@@ -250,11 +246,9 @@ class MainWindow(QMainWindow):
         self.ui.all_shots_pb.hide()
         self.ui.shots_ingest_pb.hide()
         self.ui.my_task_pb.hide()
-
         role = self.employee_details['role']
         if role == "DATA I/O":
             self.ui.all_shots_pb.show()
-
             self.ui.projects_pb.show()
             self.ui.shots_ingest_pb.show()
             self.ui.stackedWidget.setCurrentWidget(self.ui.projects_page)
@@ -305,7 +299,7 @@ class MainWindow(QMainWindow):
 
         ## ==> MOVE WINDOW / MAXIMIZE / RESTORE
         ########################################################################
-        # self.ui.projects_pb.clicked()
+
         def moveWindow(event):
             # IF MAXIMIZED CHANGE TO NORMAL
             if UIFunctions.returStatus(self) == 1:
@@ -365,14 +359,14 @@ class MainWindow(QMainWindow):
         if self.ui.toggle_pb.isChecked():
 
             icon = QIcon()
-            icon.addFile(u":/24x24/C:/Users/admin/Downloads/2x/twotone_light_mode_white_24dp.png", QSize(),
+            icon.addFile(u":/custom/icons/custom/twotone_light_mode_white_24dp.png", QSize(),
                           QIcon.Normal, QIcon.Off)
             self.ui.toggle_pb.setIcon(icon)
             app.setStyleSheet(qdarkstyle.load_stylesheet(palette=DarkPalette))
         else:
 
             icon = QIcon()
-            icon.addFile(u":/24x24/C:/Users/admin/Downloads/2x/twotone_dark_mode_white_24dp.png", QSize(),
+            icon.addFile(u":/custom/icons/custom/twotone_dark_mode_white_24dp.png", QSize(),
                           QIcon.Normal, QIcon.Off)
             self.ui.toggle_pb.setIcon(icon)
             app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
@@ -390,26 +384,6 @@ class MainWindow(QMainWindow):
 
         return round(double_bytes, 2), tags[i]
 
-    def get_storage_space(self):
-        stats = shutil.disk_usage(r'\\172.168.1.250\ofxstorage')
-        total = self.convert_bytes(stats.total)
-        used = self.convert_bytes(stats.used)
-        free = self.convert_bytes(stats.free)
-        self.ui.storage_bar.setMaximum(total[0])
-        self.ui.storage_bar.setMinimum(0)
-        self.ui.storage_bar.setValue(used[0])
-
-        if self.ui.storage_bar.text() < "50%":
-            self.ui.storage_bar.setStyleSheet("""QProgressBar {background-color:white;color:black;border: 1px solid white;border-bottom-right-radius:5px;border-bottom-left-radius:5px}
-                QProgressBar::chunk {background-color: green;border-bottom-right-radius:5px;border-bottom-left-radius:5px}""")
-        if self.ui.storage_bar.text() >= "80%":
-            self.ui.storage_bar.setStyleSheet("""QProgressBar {background-color:white;color:white;border: 1px solid white;border-bottom-right-radius:5px;border-bottom-left-radius:5px}
-        QProgressBar::chunk {background-color: red;border-bottom-right-radius:5px;border-bottom-left-radius:5px}""")
-
-        self.ui.storage_bar.setToolTip(QCoreApplication.translate("MainWindow", u"Total: {} {}\n"
-                                                                             "Used: {} {}\n"
-                                                                             "Free: {} {}", None).format(total[0],total[1],used[0],used[1],free[0],free[1]))
-
     def processTextMessage(self, message):
         message_json = json.loads(message)
         value = self.ui.notification_btn.text()
@@ -418,8 +392,8 @@ class MainWindow(QMainWindow):
         # create an object to ToastNotifier class
         n = ToastNotifier()
 
-        n.show_toast("ShotBuzz", message_json['message'], duration=10,
-                     icon_path="D:/Native Design/Shot-Buzz/icons/oscarfx/icon.ico", threaded=True)
+        n.show_toast("TENDRILL", message_json['message'], duration=10
+                     , threaded=True)
         # self.tray_notify(message_json['message'])
 
     def tray_notify(self, message):
@@ -438,8 +412,6 @@ class MainWindow(QMainWindow):
         print("error code: {}".format(error_code))
         print(self.client.errorString())
 
-
-        ########################################################################
     ## MENUS ==> DYNAMIC MENUS FUNCTIONS
     ########################################################################
 

@@ -18,7 +18,7 @@ class Ui_LoginWindow(object):
     def setupUi(self, LoginWindow):
         if not LoginWindow.objectName():
             LoginWindow.setObjectName(u"LoginWindow")
-        LoginWindow.resize(719, 405)
+        LoginWindow.resize(722, 413)
         LoginWindow.setStyleSheet(u"QFrame{\n"
 "background-color: rgba(255, 255, 255,0);\n"
 "border:2px;\n"
@@ -56,25 +56,26 @@ class Ui_LoginWindow(object):
         self.line_5.setStyleSheet(u"background-color: rgb(127, 127, 127);")
         self.line_5.setFrameShape(QFrame.HLine)
         self.line_5.setFrameShadow(QFrame.Sunken)
-        self.layoutWidget_7 = QWidget(self.frame)
-        self.layoutWidget_7.setObjectName(u"layoutWidget_7")
-        self.layoutWidget_7.setGeometry(QRect(30, 40, 251, 42))
-        self.horizontalLayout_9 = QHBoxLayout(self.layoutWidget_7)
+        self.frame_7 = QFrame(self.frame)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setGeometry(QRect(30, 40, 251, 42))
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_7)
+        self.horizontalLayout_9.setSpacing(6)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.toolButton_6 = QToolButton(self.layoutWidget_7)
+        self.toolButton_6 = QToolButton(self.frame_7)
         self.toolButton_6.setObjectName(u"toolButton_6")
         self.toolButton_6.setEnabled(False)
         self.toolButton_6.setStyleSheet(u"border: 0px;\n"
+"background-color:none;\n"
 "")
         icon = QIcon()
         icon.addFile(u":/custom/icons/custom/baseline_account_circle_white_24dp.png", QSize(), QIcon.Normal, QIcon.Off)
         self.toolButton_6.setIcon(icon)
-        self.toolButton_6.setIconSize(QSize(25, 25))
+        self.toolButton_6.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_9.addWidget(self.toolButton_6)
 
-        self.username_le = QLineEdit(self.layoutWidget_7)
+        self.username_le = QLineEdit(self.frame_7)
         self.username_le.setObjectName(u"username_le")
         self.username_le.setMinimumSize(QSize(0, 40))
         self.username_le.setMaximumSize(QSize(16777215, 40))
@@ -89,25 +90,25 @@ class Ui_LoginWindow(object):
 
         self.horizontalLayout_9.addWidget(self.username_le)
 
-        self.layoutWidget_8 = QWidget(self.frame)
-        self.layoutWidget_8.setObjectName(u"layoutWidget_8")
-        self.layoutWidget_8.setGeometry(QRect(30, 100, 251, 42))
-        self.horizontalLayout_10 = QHBoxLayout(self.layoutWidget_8)
+        self.frame_8 = QFrame(self.frame)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setGeometry(QRect(30, 100, 251, 42))
+        self.horizontalLayout_10 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.toolButton_7 = QToolButton(self.layoutWidget_8)
+        self.toolButton_7 = QToolButton(self.frame_8)
         self.toolButton_7.setObjectName(u"toolButton_7")
         self.toolButton_7.setEnabled(False)
         self.toolButton_7.setStyleSheet(u"border: 0px;\n"
+"background-color:none;\n"
 "")
         icon1 = QIcon()
         icon1.addFile(u":/custom/icons/custom/baseline_lock_white_24dp.png", QSize(), QIcon.Normal, QIcon.Off)
         self.toolButton_7.setIcon(icon1)
-        self.toolButton_7.setIconSize(QSize(25, 25))
+        self.toolButton_7.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_10.addWidget(self.toolButton_7)
 
-        self.password_le = QLineEdit(self.layoutWidget_8)
+        self.password_le = QLineEdit(self.frame_8)
         self.password_le.setObjectName(u"password_le")
         self.password_le.setMinimumSize(QSize(0, 40))
         self.password_le.setMaximumSize(QSize(16777215, 40))
@@ -126,11 +127,12 @@ class Ui_LoginWindow(object):
         self.layoutWidget_9.setObjectName(u"layoutWidget_9")
         self.layoutWidget_9.setGeometry(QRect(30, 160, 251, 36))
         self.horizontalLayout_11 = QHBoxLayout(self.layoutWidget_9)
+        self.horizontalLayout_11.setSpacing(0)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.login_btn = QPushButton(self.layoutWidget_9)
         self.login_btn.setObjectName(u"login_btn")
-        self.login_btn.setMaximumSize(QSize(16777215, 30))
+        self.login_btn.setMaximumSize(QSize(16777215, 35))
         font2 = QFont()
         font2.setFamily(u"Myanmar Text")
         font2.setPointSize(8)
@@ -167,9 +169,10 @@ class Ui_LoginWindow(object):
         self.label.setGeometry(QRect(0, 0, 721, 411))
         self.label.setPixmap(QPixmap(u":/custom/icons/custom/Dark Full Hd Wallpaper.jpg"))
         self.label.setScaledContents(True)
+        self.label.setAlignment(Qt.AlignCenter)
         self.layoutWidget_10 = QWidget(self.centralwidget)
         self.layoutWidget_10.setObjectName(u"layoutWidget_10")
-        self.layoutWidget_10.setGeometry(QRect(60, 310, 254, 24))
+        self.layoutWidget_10.setGeometry(QRect(60, 310, 254, 20))
         self.horizontalLayout_12 = QHBoxLayout(self.layoutWidget_10)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)

@@ -48,30 +48,13 @@ class My_Task(object):
             self.main_window.ui.t_status_sel_cb.activated.disconnect()
             self.main_window.ui.task_search_btn.clicked.disconnect()
             self.main_window.ui.task_search_btn.clicked.disconnect()
-            self.main_window.ui.task_pending_tableWid.cellDoubleClicked.disconnect()
-            self.main_window.ui.task_completed_tableWid.cellDoubleClicked.disconnect()
+            self.main_window.ui.task_tableWid.cellDoubleClicked.disconnect()
         except:
             pass
+        Pending_Task(self)
         # self.main_window.ui.approved_btn.hide()
         # self.main_window.ui.retake_btn.hide()
         # self.main_window.ui.hold_btn.hide()
         # self.main_window.ui.client_retake_btn.hide()
         # self.main_window.ui.assign_btn.hide()
-        self.main_window.ui.task_tabWid.currentChanged.connect(lambda : self.taskTabClicked())
-        if self.main_window.ui.task_tabWid.currentIndex() == 0:
-            Pending_Task(self)
-        elif self.main_window.ui.task_tabWid.currentIndex() == 1:
-            Completed_Task(self)
-
-    def taskTabClicked(self):
-        currentIndex = self.main_window.ui.task_tabWid.currentIndex()
-        if currentIndex == 0:
-            self.main_window.ui.task_tabWid.setCurrentIndex(0)
-            Pending_Task(self)
-        elif currentIndex == 1:
-            self.main_window.ui.task_tabWid.setCurrentIndex(1)
-            Completed_Task(self)
-        elif currentIndex == 2:
-            self.main_window.ui.task_tabWid.setCurrentIndex(2)
-            Task_Help(self)
 

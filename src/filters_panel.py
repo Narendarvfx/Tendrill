@@ -28,9 +28,9 @@ class Filters_Panel_Modal(QObject):
             self.main_window.ui.clear_filter_btn.clicked.disconnect()
         except:
             pass
-        self.main_window.ui.set_default_btn.clicked.connect(lambda : self.set_defaults())
+        # self.main_window.ui.set_default_btn.clicked.connect(lambda : self.set_defaults())
         self.main_window.ui.apply_filter_btn.clicked.connect(lambda : self.apply_filters())
-        self.main_window.ui.clear_filter_btn.clicked.connect(lambda : self.clear_filters())
+        # self.main_window.ui.clear_filter_btn.clicked.connect(lambda : self.clear_filters())
         self.setup_filters()
 
     def setup_filters(self):

@@ -138,49 +138,21 @@ class Shot_Details(QTreeWidget):
         # self.main_window.ui.taskHelp_btn.hide()
         # self.main_window.ui.nuke_btn.hide()
         # self.main_window.ui.nukeX_btn.hide()
-        if self.main_window.employee_details['role'] == "HEAD QC":
-            self.main_window.ui.assign_btn.hide()
-        self.client = QtWebSockets.QWebSocket("", QtWebSockets.QWebSocketProtocol.Version13, None)
-        sockets_host = "{}{}/ws/projects/".format(api.config['SOCKETS']['host'], api.config['SOCKETS']['port'])
         if type == 'task':
             self.task_details = obj.task_details
             self.shot_details = obj.task_details['shot']
-            self.task_progressBarValue(self.task_details['art_percentage'])
-            self.task_counter = self.task_details['art_percentage']
+            # self.task_progressBarValue(self.task_details['art_percentage'])
+            # self.task_counter = self.task_details['art_percentage']
             status_code = obj.task_details['task_status']['code']
             status_color = obj.task_details['task_status']['color']
             bid_days = obj.task_details['assigned_bids']
             if obj.task_details['eta']:
                 eta = datetime.datetime.strptime(obj.task_details['eta'], '%Y-%m-%dT%H:%M:%S').strftime(
                     "%d-%m-%Y %H:%M")
-            if self.task_details['task_status']['code'] == "YTS":
-                self.main_window.ui.start_btn.show()
-            elif self.task_details['task_status']['code'] == "WIP" or self.task_details['task_status'][
-                'code'] == "IRT" or self.task_details['task_status']['code'] == "LRT" or \
-                    self.task_details['task_status']['code'] == "CRT":
-                if self.task_details['compiler'] == 2 or self.task_details['compiler'] == 0:
-                    self.main_window.ui.qc_btn.show()
-                else:
-                    self.main_window.ui.comp_btn.show()
 
         else:
             self.shot_details = obj.shot_details
-            if self.main_window.employee_details['role'] == "TEAM LEAD" or self.main_window.employee_details['role'] == "SUPERVISOR":
-                if self.shot_details['status']['code'] == "STQ" or self.shot_details['status']['code'] == "IRT" or \
-                        self.shot_details['status']['code'] == "CRT":
-                    self.main_window.ui.approved_btn.show()
-                    self.main_window.ui.retake_btn.show()
-            elif self.main_window.employee_details['role'] == "QC":
-                if self.shot_details['status']['code'] == "LAP":
-                    self.main_window.ui.approved_btn.show()
-                    self.main_window.ui.retake_btn.show()
-            elif self.main_window.employee_details['role'] == "PRODUCTION MANAGER":
-                self.main_window.ui.client_retake_btn.show()
-                self.main_window.ui.hold_btn.show()
-                if self.shot_details['status']['code'] == "QIP":
-                    self.main_window.ui.approved_btn.show()
-                    self.main_window.ui.retake_btn.show()
-
+            print(self.shot_details)
             status_code = obj.shot_details['status']['code']
             status_color = obj.shot_details['status']['color']
             bid_days = obj.shot_details['bid_days']

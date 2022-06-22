@@ -254,7 +254,7 @@ class Shots_Ingestion(object):
         cmd = f'Xcopy {default_folder_structure} {self.base_dir} /E /I'
         try:
             os.system(cmd)
-            print ("Folder structure Created")
+            print ("Folder structure Created {}".format(self.base_dir))
         except:
             print("Failed to create folder structure")
         # job_folders = [ 'comp', 'mm', 'paint', 'roto','scans']
@@ -298,10 +298,11 @@ class Shots_Ingestion(object):
         except Exception as e:
             print (e)
             pass
-        # try:
-        #     call(['robocopy', row_data['Elements Path'], os.path.join(self.base_dir, '_scans', 'elements'), "/S", "/MIR"])
-        # except Exception as e:
-        #     pass
+        try:
+            call(['robocopy', row_data['Annotation Path'], os.path.join(self.base_dir, 'paint', 'annotations'), "/S", "/MIR"])
+        except Exception as e:
+            print (e)
+            pass
 
     def copy_plates(self):
         log_date = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M')
