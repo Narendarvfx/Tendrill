@@ -1,6 +1,4 @@
-from src.MyTask.completed_task import Completed_Task
 from src.MyTask.pending_task import Pending_Task
-from src.MyTask.task_help import Task_Help
 
 
 class My_Task(object):
@@ -33,20 +31,12 @@ class My_Task(object):
             self.main_window.ui.Pscripts_treeWid.itemClicked.disconnect()
             self.main_window.ui.Rscripts_treeWid.itemClicked.disconnect()
             self.main_window.ui.Mscripts_treeWid.itemClicked.disconnect()
-            self.main_window.ui.Ppre_ren_treeWid.itemClicked.disconnect()
-            self.main_window.ui.Rpre_ren_treeWid.itemClicked.disconnect()
-            self.main_window.ui.Mpre_ren_treeWid.itemClicked.disconnect()
             self.main_window.ui.Poutput_treeWid.itemClicked.disconnect()
             self.main_window.ui.Routput_treeWid.itemClicked.disconnect()
             self.main_window.ui.Moutput_treeWid.itemClicked.disconnect()
-            self.main_window.ui.Pqc_treeWid.itemClicked.disconnect()
-            self.main_window.ui.Rqc_treeWid.itemClicked.disconnect()
-            self.main_window.ui.Mqc_treeWid.itemClicked.disconnect()
 
-            self.main_window.ui.t_cli_sel_cb.activated.disconnect()
             self.main_window.ui.t_pro_sel_cb.activated.disconnect()
             self.main_window.ui.t_status_sel_cb.activated.disconnect()
-            self.main_window.ui.task_search_btn.clicked.disconnect()
             self.main_window.ui.task_search_btn.clicked.disconnect()
             self.main_window.ui.task_tableWid.cellDoubleClicked.disconnect()
         except:
