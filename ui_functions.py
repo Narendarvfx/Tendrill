@@ -54,8 +54,8 @@ class UIFunctions(MainWindow):
         else:
             GLOBAL_STATE = 0
             self.showNormal()
-            self.resize(self.width()+1, self.height()+1)
-            self.ui.centralLayout.setContentsMargins(10, 10, 10, 10)
+            # self.resize(self.width()+1, self.height()+1)
+            # self.ui.centralLayout.setContentsMargins(10, 10, 10, 10)
             self.ui.btn_maximize_restore.setToolTip("Maximize")
             self.ui.btn_maximize_restore.setIcon(QtGui.QIcon(u":/16x16/icons/16x16/cil-window-maximize.png"))
             # self.ui.frame_top_btns.setStyleSheet("background-color: rgba(27, 29, 35, 200)")
@@ -75,8 +75,8 @@ class UIFunctions(MainWindow):
     def enableMaximumSize(self, width, height):
         if width != '' and height != '':
             self.setMaximumSize(QSize(width, height))
-            self.ui.frame_size_grip.hide()
-            self.ui.btn_maximize_restore.hide()
+            # self.ui.frame_size_grip.hide()
+            # self.ui.btn_maximize_restore.hide()
 
 
     ## ==> TOGGLE MENU

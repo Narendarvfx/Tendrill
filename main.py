@@ -66,7 +66,6 @@ class LoginWindow(QMainWindow):
         super(LoginWindow, self).__init__()
         self.login_ui = Ui_LoginWindow()
         self.login_ui.setupUi(self)
-
         # TODO: Change version before production build
         # self.login_ui.ver_lbl.setText("V15.5267")
         self.login_ui.password_le.returnPressed.connect(lambda: self.LoginClicked())
@@ -74,46 +73,44 @@ class LoginWindow(QMainWindow):
         self.login_ui.login_btn.clicked.connect(lambda: self.LoginClicked())
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
-        self.login_ui.frame.setStyleSheet("""QFrame {border:none}""")
         #TODO: Enable this code block before deploying to production to display login window
         self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
-        url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
-        supervisor = {
-            'username': 'supervisor',
-            'password': 'ofx@12345'
-        }
-        teamlead = {
-            'username': 'teamlead1',
-            'password': 'ofx@12345'
-        }
-        qc = {
-            'username': 'qc1',
-            'password': 'ofx@12345'
-        }
-        manager = {
-            'username': 'manager',
-            'password': 'ofx@12345'
-        }
-        artist = {
-            'username': 'artist1',
-            'password': 'Ofx@12345'
-        }
-        dataio = {
-            'username': 'dataio',
-            'password': 'ofx@12345'
-        }
-        user_data = {
-            'username': 'ganeshbabu.g',
-            'password': 'Ofx@1234'
-        }
-        my_data = {
-            'username': 'admin',
-            'password': 'Tomato@123'
-        }
-        response = requests.post(url, data=artist, verify=False)
+        # url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
+        # supervisor = {
+        #     'username': 'supervisor',
+        #     'password': 'ofx@12345'
+        # }
+        # teamlead = {
+        #     'username': 'teamlead1',
+        #     'password': 'ofx@12345'
+        # }
+        # qc = {
+        #     'username': 'qc1',
+        #     'password': 'ofx@12345'
+        # }
+        # manager = {
+        #     'username': 'manager',
+        #     'password': 'ofx@12345'
+        # }
+        # artist = {
+        #     'username': 'artist1',
+        #     'password': 'Ofx@12345'
+        # }
+        # dataio = {
+        #     'username': 'dataio',
+        #     'password': 'ofx@12345'
+        # }
+        # user_data = {
+        #     'username': 'ganeshbabu.g',
+        #     'password': 'Ofx@1234'
+        # }
+        # my_data = {
+        #     'username': 'admin',
+        #     'password': 'Tomato@123'
+        # }
+        # response = requests.post(url, data=artist, verify=False)
         # MainWindow(response.json())
 
     @Slot()
@@ -170,29 +167,11 @@ class MainWindow(QMainWindow):
         self.ui.frame_main.setStyleSheet("""QFrame {border:none}""")
         self.login_data = login_data
         self.employee_details = api.get_employee_data(login_data['id'])
-        # self.logger.debug("LoggedIn Succesfully: {}".format(self.employee_details['fullName']))
-        # self.permissions = api.rolePermissions(str(16))
+
         self.main_timer = QTimer()
-        # self.client = QtWebSockets.QWebSocket("", QtWebSockets.QWebSocketProtocol.Version13, None)
-        # self.sockets_host = "{}{}/ws/emp/".format(api.config['SOCKETS']['host'], api.config['SOCKETS']['port'])
-        # ws_Url = QUrl(self.sockets_host + str(self.employee_details['id'])+"/")
-        # # self.client.error.connect(self.error)
-        # # self.client.open(ws_Url)
-        # # self.client.textMessageReceived.connect(self.processTextMessage)
+
         self.team_lead = False
         self.team_lead_id =None
-        # my_logger = logging.getLogger('ShotBuzz')
-        # my_logger.setLevel(logging.INFO)
-        # handler = SysLogHandler(address=('192.168.10.15', 514))
-        # formatter = logging.Formatter(
-        #     'SB_Login: { "%(message)s", "%(lineno)d", "%(msecs)d ms" }')
-        #
-        # handler.formatter = formatter
-        # my_logger.addHandler(handler)
-        # my_logger.info("LoggedIn Succesfully: {}".format(self.employee_details['fullName']))
-        ########################################################################
-        ## START - WINDOW ATTRIBUTES
-        ########################################################################
 
         ## REMOVE ==> STANDARD TITLE BAR
         UIFunctions.removeTitleBar(True)
@@ -337,6 +316,7 @@ class MainWindow(QMainWindow):
         self.ui.pro_table.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         self.ui.shot_import_table.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         self.ui.team_tableWid.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        # self.ui.mytask_tableWid.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         ## ==> END ##
 
         ########################################################################
@@ -359,14 +339,14 @@ class MainWindow(QMainWindow):
         if self.ui.toggle_pb.isChecked():
 
             icon = QIcon()
-            icon.addFile(u":/custom/icons/custom/twotone_light_mode_white_24dp.png", QSize(),
+            icon.addFile(u":/custom/icons/custom/light_mode.png", QSize(),
                           QIcon.Normal, QIcon.Off)
             self.ui.toggle_pb.setIcon(icon)
             app.setStyleSheet(qdarkstyle.load_stylesheet(palette=DarkPalette))
         else:
 
             icon = QIcon()
-            icon.addFile(u":/custom/icons/custom/twotone_dark_mode_white_24dp.png", QSize(),
+            icon.addFile(u":/custom/icons/custom/dark_mode.png", QSize(),
                           QIcon.Normal, QIcon.Off)
             self.ui.toggle_pb.setIcon(icon)
             app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
@@ -383,30 +363,6 @@ class MainWindow(QMainWindow):
             bytes_number = bytes_number / 1024
 
         return round(double_bytes, 2), tags[i]
-
-    def processTextMessage(self, message):
-        message_json = json.loads(message)
-        value = self.ui.notification_btn.text()
-        final_val = int(value)+1
-        self.ui.notification_btn.setText(str(final_val))
-        # create an object to ToastNotifier class
-        n = ToastNotifier()
-
-        n.show_toast("TENDRILL", message_json['message'], duration=10
-                     , threaded=True)
-        # self.tray_notify(message_json['message'])
-
-    def tray_notify(self, message):
-        if not QtWidgets.QApplication.instance():
-            app = QtWidgets.QApplication(sys.argv)
-        else:
-            app = QtWidgets.QApplication.instance()
-        w = QtWidgets.QWidget()
-        w.setWindowTitle(" TENDRILL -  A Complete Pipeline Application")
-        tray_icon = SystemTrayIcon(QtGui.QIcon("D:/Native Design/Shot-Buzz/icons/oscarfx/png.png"), w)
-        tray_icon.show()
-        tray_icon.showMessage('Tendrill', message)
-        app.exec_()
 
     def error(self, error_code):
         print("error code: {}".format(error_code))
