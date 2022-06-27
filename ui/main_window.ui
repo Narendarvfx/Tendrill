@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1709</width>
+    <width>1615</width>
     <height>888</height>
    </rect>
   </property>
@@ -123,16 +123,16 @@
    </property>
    <layout class="QGridLayout" name="centralLayout">
     <property name="leftMargin">
-     <number>10</number>
+     <number>0</number>
     </property>
     <property name="topMargin">
-     <number>10</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>10</number>
+     <number>0</number>
     </property>
     <property name="bottomMargin">
-     <number>10</number>
+     <number>0</number>
     </property>
     <property name="horizontalSpacing">
      <number>7</number>
@@ -1474,7 +1474,7 @@ QPushButton:pressed {
                                     </property>
                                     <property name="maximumSize">
                                      <size>
-                                      <width>201</width>
+                                      <width>210</width>
                                       <height>16777215</height>
                                      </size>
                                     </property>
@@ -1500,47 +1500,6 @@ QPushButton:pressed {
                                      <property name="bottomMargin">
                                       <number>0</number>
                                      </property>
-                                     <item row="0" column="0">
-                                      <widget class="QFrame" name="frame">
-                                       <property name="minimumSize">
-                                        <size>
-                                         <width>200</width>
-                                         <height>150</height>
-                                        </size>
-                                       </property>
-                                       <property name="maximumSize">
-                                        <size>
-                                         <width>200</width>
-                                         <height>150</height>
-                                        </size>
-                                       </property>
-                                       <property name="frameShape">
-                                        <enum>QFrame::StyledPanel</enum>
-                                       </property>
-                                       <property name="frameShadow">
-                                        <enum>QFrame::Raised</enum>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="1" column="0">
-                                      <widget class="Line" name="line">
-                                       <property name="minimumSize">
-                                        <size>
-                                         <width>200</width>
-                                         <height>5</height>
-                                        </size>
-                                       </property>
-                                       <property name="maximumSize">
-                                        <size>
-                                         <width>200</width>
-                                         <height>5</height>
-                                        </size>
-                                       </property>
-                                       <property name="orientation">
-                                        <enum>Qt::Horizontal</enum>
-                                       </property>
-                                      </widget>
-                                     </item>
                                      <item row="2" column="0">
                                       <widget class="QLabel" name="label_17">
                                        <property name="font">
@@ -1564,17 +1523,291 @@ QPushButton:pressed {
                                          <pointsize>10</pointsize>
                                         </font>
                                        </property>
-                                       <property name="styleSheet">
-                                        <string notr="true">QLabel{
-	color: rgb(167, 167, 167);
-}</string>
-                                       </property>
                                        <property name="text">
                                         <string>Shot name</string>
                                        </property>
                                       </widget>
                                      </item>
-                                     <item row="3" column="0">
+                                     <item row="6" column="0">
+                                      <widget class="QLabel" name="label_27">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="cursor">
+                                        <cursorShape>ArrowCursor</cursorShape>
+                                       </property>
+                                       <property name="text">
+                                        <string>ETA:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="6" column="1">
+                                      <widget class="QLabel" name="eta_lbl">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>10</pointsize>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>eta</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="8" column="0">
+                                      <widget class="QLabel" name="label_29">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>Project:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="8" column="1">
+                                      <widget class="QLabel" name="projectName_lbl">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>10</pointsize>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>project</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="10" column="0">
+                                      <widget class="QLabel" name="label_30">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>Start Date:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="10" column="1">
+                                      <widget class="QLabel" name="startDate_lbl">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>10</pointsize>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>start date       </string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="12" column="0">
+                                      <widget class="QLabel" name="label_31">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>End Date:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="12" column="1">
+                                      <widget class="QLabel" name="endDate_lbl">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>10</pointsize>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>end date</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="14" column="0">
+                                      <widget class="QLabel" name="label_33">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>Total Bids:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="14" column="1">
+                                      <widget class="QLabel" name="totalBids_lbl">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>10</pointsize>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>total Bids</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="16" column="0">
+                                      <widget class="QLabel" name="label_34">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>Sequence:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="16" column="1">
+                                      <widget class="QLabel" name="seqName_lbl">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>10</pointsize>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>sequence</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="18" column="0">
+                                      <widget class="QLabel" name="label_35">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <italic>false</italic>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>Frame In:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="18" column="1">
+                                      <widget class="QLabel" name="frameIn_lbl">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>10</pointsize>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>frame in</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="20" column="0">
+                                      <widget class="QLabel" name="label_36">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>Frame Out:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="20" column="1">
+                                      <widget class="QLabel" name="frameOut_lbl">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>10</pointsize>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>frame out</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="22" column="0">
+                                      <widget class="QLabel" name="label_38">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>12</pointsize>
+                                         <weight>75</weight>
+                                         <bold>true</bold>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>Total:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="22" column="1">
+                                      <widget class="QLabel" name="totalFrames_lbl">
+                                       <property name="font">
+                                        <font>
+                                         <family>Segoe UI</family>
+                                         <pointsize>10</pointsize>
+                                        </font>
+                                       </property>
+                                       <property name="text">
+                                        <string>total</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item row="0" column="0" colspan="2">
+                                      <widget class="QFrame" name="frame">
+                                       <property name="minimumSize">
+                                        <size>
+                                         <width>200</width>
+                                         <height>150</height>
+                                        </size>
+                                       </property>
+                                       <property name="maximumSize">
+                                        <size>
+                                         <width>210</width>
+                                         <height>150</height>
+                                        </size>
+                                       </property>
+                                       <property name="frameShape">
+                                        <enum>QFrame::StyledPanel</enum>
+                                       </property>
+                                       <property name="frameShadow">
+                                        <enum>QFrame::Raised</enum>
+                                       </property>
+                                       <layout class="QGridLayout" name="gridLayout_24"/>
+                                      </widget>
+                                     </item>
+                                     <item row="4" column="0">
                                       <widget class="QLabel" name="label_22">
                                        <property name="font">
                                         <font>
@@ -1589,7 +1822,7 @@ QPushButton:pressed {
                                        </property>
                                       </widget>
                                      </item>
-                                     <item row="3" column="1">
+                                     <item row="4" column="1">
                                       <widget class="QPushButton" name="status_btn">
                                        <property name="sizePolicy">
                                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1608,9 +1841,6 @@ QPushButton:pressed {
                                        <property name="layoutDirection">
                                         <enum>Qt::LeftToRight</enum>
                                        </property>
-                                       <property name="styleSheet">
-                                        <string notr="true"/>
-                                       </property>
                                        <property name="text">
                                         <string>WIP</string>
                                        </property>
@@ -1619,287 +1849,22 @@ QPushButton:pressed {
                                        </property>
                                       </widget>
                                      </item>
-                                     <item row="5" column="0">
-                                      <widget class="QLabel" name="label_23">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
+                                     <item row="1" column="0" colspan="2">
+                                      <widget class="Line" name="line">
+                                       <property name="minimumSize">
+                                        <size>
+                                         <width>200</width>
+                                         <height>5</height>
+                                        </size>
                                        </property>
-                                       <property name="text">
-                                        <string>Client:</string>
+                                       <property name="maximumSize">
+                                        <size>
+                                         <width>210</width>
+                                         <height>5</height>
+                                        </size>
                                        </property>
-                                      </widget>
-                                     </item>
-                                     <item row="5" column="1">
-                                      <widget class="QLabel" name="clientName_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>client</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="7" column="0">
-                                      <widget class="QLabel" name="label_27">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="cursor">
-                                        <cursorShape>ArrowCursor</cursorShape>
-                                       </property>
-                                       <property name="text">
-                                        <string>ETA:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="7" column="1">
-                                      <widget class="QLabel" name="eta_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>eta</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="9" column="0">
-                                      <widget class="QLabel" name="label_29">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>Project:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="9" column="1">
-                                      <widget class="QLabel" name="projectName_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>project</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="11" column="0">
-                                      <widget class="QLabel" name="label_30">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>Start Date:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="11" column="1">
-                                      <widget class="QLabel" name="startDate_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>start date       </string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="13" column="0">
-                                      <widget class="QLabel" name="label_31">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>End Date:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="13" column="1">
-                                      <widget class="QLabel" name="endDate_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>end date</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="15" column="0">
-                                      <widget class="QLabel" name="label_33">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>Total Bids:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="15" column="1">
-                                      <widget class="QLabel" name="totalBids_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>total Bids</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="17" column="0">
-                                      <widget class="QLabel" name="label_34">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>Sequence:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="17" column="1">
-                                      <widget class="QLabel" name="seqName_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>sequence</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="19" column="0">
-                                      <widget class="QLabel" name="label_35">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <italic>false</italic>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>Frame In:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="19" column="1">
-                                      <widget class="QLabel" name="frameIn_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>frame in</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="21" column="0">
-                                      <widget class="QLabel" name="label_36">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>Frame Out:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="21" column="1">
-                                      <widget class="QLabel" name="frameOut_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>frame out</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="23" column="0">
-                                      <widget class="QLabel" name="label_38">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>12</pointsize>
-                                         <weight>75</weight>
-                                         <bold>true</bold>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>Total:</string>
-                                       </property>
-                                      </widget>
-                                     </item>
-                                     <item row="23" column="1">
-                                      <widget class="QLabel" name="totalFrames_lbl">
-                                       <property name="font">
-                                        <font>
-                                         <family>Segoe UI</family>
-                                         <pointsize>10</pointsize>
-                                        </font>
-                                       </property>
-                                       <property name="text">
-                                        <string>total</string>
+                                       <property name="orientation">
+                                        <enum>Qt::Horizontal</enum>
                                        </property>
                                       </widget>
                                      </item>
@@ -1921,7 +1886,7 @@ QPushButton:pressed {
                                      <enum>QTabWidget::Rounded</enum>
                                     </property>
                                     <property name="currentIndex">
-                                     <number>3</number>
+                                     <number>1</number>
                                     </property>
                                     <property name="iconSize">
                                      <size>
@@ -2174,7 +2139,7 @@ QPushButton:pressed {
                                                </font>
                                               </property>
                                               <property name="currentIndex">
-                                               <number>2</number>
+                                               <number>0</number>
                                               </property>
                                               <widget class="QWidget" name="paint_tab">
                                                <attribute name="title">
@@ -3055,194 +3020,6 @@ QPushButton:pressed {
                                              </widget>
                                             </item>
                                            </layout>
-                                          </widget>
-                                         </item>
-                                        </layout>
-                                       </widget>
-                                      </item>
-                                      <item row="0" column="1">
-                                       <widget class="QFrame" name="discussion_frame">
-                                        <property name="minimumSize">
-                                         <size>
-                                          <width>350</width>
-                                          <height>0</height>
-                                         </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                         <size>
-                                          <width>450</width>
-                                          <height>16777215</height>
-                                         </size>
-                                        </property>
-                                        <property name="frameShape">
-                                         <enum>QFrame::StyledPanel</enum>
-                                        </property>
-                                        <property name="frameShadow">
-                                         <enum>QFrame::Raised</enum>
-                                        </property>
-                                        <layout class="QGridLayout" name="gridLayout_8">
-                                         <property name="leftMargin">
-                                          <number>8</number>
-                                         </property>
-                                         <property name="topMargin">
-                                          <number>0</number>
-                                         </property>
-                                         <property name="rightMargin">
-                                          <number>8</number>
-                                         </property>
-                                         <property name="bottomMargin">
-                                          <number>0</number>
-                                         </property>
-                                         <property name="horizontalSpacing">
-                                          <number>7</number>
-                                         </property>
-                                         <item row="2" column="0">
-                                          <widget class="QFrame" name="text_type_frame">
-                                           <property name="maximumSize">
-                                            <size>
-                                             <width>16777215</width>
-                                             <height>60</height>
-                                            </size>
-                                           </property>
-                                           <property name="frameShape">
-                                            <enum>QFrame::StyledPanel</enum>
-                                           </property>
-                                           <property name="frameShadow">
-                                            <enum>QFrame::Raised</enum>
-                                           </property>
-                                           <layout class="QHBoxLayout" name="horizontalLayout_20">
-                                            <property name="spacing">
-                                             <number>3</number>
-                                            </property>
-                                            <property name="leftMargin">
-                                             <number>2</number>
-                                            </property>
-                                            <property name="topMargin">
-                                             <number>0</number>
-                                            </property>
-                                            <property name="rightMargin">
-                                             <number>2</number>
-                                            </property>
-                                            <property name="bottomMargin">
-                                             <number>2</number>
-                                            </property>
-                                            <item>
-                                             <widget class="QTextEdit" name="text_type_edit">
-                                              <property name="font">
-                                               <font>
-                                                <family>MS Shell Dlg 2</family>
-                                                <pointsize>10</pointsize>
-                                               </font>
-                                              </property>
-                                              <property name="styleSheet">
-                                               <string notr="true">border: 1px solid rgba(39, 44, 54, 0.5);</string>
-                                              </property>
-                                              <property name="lineWrapColumnOrWidth">
-                                               <number>1</number>
-                                              </property>
-                                              <property name="placeholderText">
-                                               <string>Type here...</string>
-                                              </property>
-                                             </widget>
-                                            </item>
-                                            <item>
-                                             <widget class="QToolButton" name="send_btn">
-                                              <property name="text">
-                                               <string/>
-                                              </property>
-                                              <property name="icon">
-                                               <iconset resource="../files.qrc">
-                                                <normaloff>:/20x20/icons/20x20/cil-cursor.png</normaloff>:/20x20/icons/20x20/cil-cursor.png</iconset>
-                                              </property>
-                                             </widget>
-                                            </item>
-                                           </layout>
-                                          </widget>
-                                         </item>
-                                         <item row="0" column="0">
-                                          <widget class="QFrame" name="dis_label_frame">
-                                           <property name="frameShape">
-                                            <enum>QFrame::NoFrame</enum>
-                                           </property>
-                                           <property name="frameShadow">
-                                            <enum>QFrame::Raised</enum>
-                                           </property>
-                                           <property name="lineWidth">
-                                            <number>1</number>
-                                           </property>
-                                           <layout class="QGridLayout" name="gridLayout_9">
-                                            <property name="leftMargin">
-                                             <number>0</number>
-                                            </property>
-                                            <property name="topMargin">
-                                             <number>5</number>
-                                            </property>
-                                            <property name="rightMargin">
-                                             <number>0</number>
-                                            </property>
-                                            <property name="bottomMargin">
-                                             <number>5</number>
-                                            </property>
-                                            <item row="0" column="0">
-                                             <widget class="QLabel" name="dis_label">
-                                              <property name="font">
-                                               <font>
-                                                <family>Segoe UI</family>
-                                                <pointsize>12</pointsize>
-                                               </font>
-                                              </property>
-                                              <property name="text">
-                                               <string>CHAT BOX</string>
-                                              </property>
-                                              <property name="alignment">
-                                               <set>Qt::AlignCenter</set>
-                                              </property>
-                                             </widget>
-                                            </item>
-                                           </layout>
-                                          </widget>
-                                         </item>
-                                         <item row="1" column="0">
-                                          <widget class="QScrollArea" name="scrollArea">
-                                           <property name="font">
-                                            <font>
-                                             <family>Segoe UI</family>
-                                             <pointsize>10</pointsize>
-                                            </font>
-                                           </property>
-                                           <property name="horizontalScrollBarPolicy">
-                                            <enum>Qt::ScrollBarAsNeeded</enum>
-                                           </property>
-                                           <property name="sizeAdjustPolicy">
-                                            <enum>QAbstractScrollArea::AdjustToContents</enum>
-                                           </property>
-                                           <property name="widgetResizable">
-                                            <bool>true</bool>
-                                           </property>
-                                           <widget class="QWidget" name="chat_area_widget">
-                                            <property name="geometry">
-                                             <rect>
-                                              <x>0</x>
-                                              <y>0</y>
-                                              <width>98</width>
-                                              <height>28</height>
-                                             </rect>
-                                            </property>
-                                            <property name="styleSheet">
-                                             <string notr="true"/>
-                                            </property>
-                                            <layout class="QVBoxLayout" name="verticalLayout">
-                                             <property name="leftMargin">
-                                              <number>0</number>
-                                             </property>
-                                             <property name="topMargin">
-                                              <number>0</number>
-                                             </property>
-                                             <property name="rightMargin">
-                                              <number>0</number>
-                                             </property>
-                                            </layout>
-                                           </widget>
                                           </widget>
                                          </item>
                                         </layout>
@@ -4990,8 +4767,17 @@ Border-radius: 10px;</string>
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
+                            <property name="sizeAdjustPolicy">
+                             <enum>QAbstractScrollArea::AdjustToContents</enum>
+                            </property>
                             <property name="editTriggers">
                              <set>QAbstractItemView::NoEditTriggers</set>
+                            </property>
+                            <property name="dragEnabled">
+                             <bool>false</bool>
+                            </property>
+                            <property name="dragDropOverwriteMode">
+                             <bool>false</bool>
                             </property>
                             <property name="alternatingRowColors">
                              <bool>true</bool>
@@ -5000,16 +4786,19 @@ Border-radius: 10px;</string>
                              <enum>QAbstractItemView::SelectRows</enum>
                             </property>
                             <property name="showGrid">
-                             <bool>false</bool>
+                             <bool>true</bool>
+                            </property>
+                            <property name="gridStyle">
+                             <enum>Qt::SolidLine</enum>
                             </property>
                             <property name="sortingEnabled">
                              <bool>true</bool>
                             </property>
                             <attribute name="horizontalHeaderCascadingSectionResizes">
-                             <bool>true</bool>
+                             <bool>false</bool>
                             </attribute>
                             <attribute name="horizontalHeaderStretchLastSection">
-                             <bool>true</bool>
+                             <bool>false</bool>
                             </attribute>
                             <attribute name="verticalHeaderVisible">
                              <bool>false</bool>
