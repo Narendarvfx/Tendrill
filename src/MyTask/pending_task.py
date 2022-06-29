@@ -98,7 +98,7 @@ class Pending_Task(object):
         action = menu.exec_(self.main_window.ui.mytask_tableWid.viewport().mapToGlobal(pos))
         try:
             if action == wip_action:
-                self.task_status_update("WIP")
+                self.wip_status_check("WIP")
             elif action == stq_action:
                 self.status_check("STQ")
             elif action == stc_action:
@@ -106,12 +106,25 @@ class Pending_Task(object):
         except Exception as e:
             pass
 
+
     def status_check(self, status):
         if self.task_details['shot']['status']['code'] == "WIP":
             self.task_status_update(status)
         else:
             msg = QMessageBox()
-            msg.setText("Shot not in progress\n")
+            msg.setText("Shot not in wip\n")
+            msg.setWindowTitle("Error")
+            msg.setIcon(QMessageBox.Critical)
+            # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+            msg.exec_()
+
+    def wip_status_check(self, status):
+        if self.task_details['shot']['status']['code'] == 'YTS' or self.task_details['shot']['status'][
+            'code'] == 'LRT' or self.task_details['shot']['status']['code'] == 'CRT':
+            self.task_status_update(status)
+        else:
+            msg = QMessageBox()
+            msg.setText("Shot is in QC or Approved and cannot be changed to WIP\n")
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
             # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")

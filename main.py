@@ -74,44 +74,44 @@ class LoginWindow(QMainWindow):
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         #TODO: Enable this code block before deploying to production to display login window
-        self.show()
+        # self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
-        # url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
-        # supervisor = {
-        #     'username': 'supervisor',
-        #     'password': 'ofx@12345'
-        # }
-        # teamlead = {
-        #     'username': 'teamlead1',
-        #     'password': 'ofx@12345'
-        # }
-        # qc = {
-        #     'username': 'qc1',
-        #     'password': 'ofx@12345'
-        # }
-        # manager = {
-        #     'username': 'manager',
-        #     'password': 'ofx@12345'
-        # }
-        # artist = {
-        #     'username': 'artist1',
-        #     'password': 'Ofx@12345'
-        # }
-        # dataio = {
-        #     'username': 'dataio',
-        #     'password': 'ofx@12345'
-        # }
-        # user_data = {
-        #     'username': 'ganeshbabu.g',
-        #     'password': 'Ofx@1234'
-        # }
-        # my_data = {
-        #     'username': 'admin',
-        #     'password': 'Tomato@123'
-        # }
-        # response = requests.post(url, data=artist, verify=False)
-        # MainWindow(response.json())
+        url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
+        supervisor = {
+            'username': 'supervisor',
+            'password': 'ofx@12345'
+        }
+        teamlead = {
+            'username': 'teamlead1',
+            'password': 'ofx@12345'
+        }
+        qc = {
+            'username': 'qc1',
+            'password': 'ofx@12345'
+        }
+        manager = {
+            'username': 'manager',
+            'password': 'ofx@12345'
+        }
+        artist = {
+            'username': 'artist1',
+            'password': 'Ofx@12345'
+        }
+        dataio = {
+            'username': 'dataio',
+            'password': 'ofx@12345'
+        }
+        user_data = {
+            'username': 'ganeshbabu.g',
+            'password': 'Ofx@1234'
+        }
+        my_data = {
+            'username': 'admin',
+            'password': 'Tomato@123'
+        }
+        response = requests.post(url, data=dataio, verify=False)
+        MainWindow(response.json())
 
     @Slot()
     def LoginClicked(self):

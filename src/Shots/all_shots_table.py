@@ -145,10 +145,16 @@ class All_Shots(object):
         font1 = QFont()
         font1.setPointSize(12)
         menu.setFont(font1)
+        assign_action = ''
+        approve_action = ''
+        reject_action = ''
+        edit_action = ''
         if self.role == 'TEAM LEAD' or self.role == 'SUPERVISOR' or self.role == 'QC':
-            assign_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Assign")
-            approve_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Approve")
-            reject_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Reject")
+            assign_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Assign")
+            approve_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Approve")
+            reject_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Reject")
+        elif self.role == 'DATA I/O':
+            edit_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Edit")
         team_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Team")
 
         action = menu.exec_(self.main_window.ui.all_shots_tbWidget.viewport().mapToGlobal(pos))
@@ -161,6 +167,8 @@ class All_Shots(object):
                 self.assign_modal()
             elif action == team_action:
                 self.team_list_modal()
+            elif action == edit_action:
+                self.shot_edit_modal()
         except Exception as e:
             pass
             # self.main_window.ui.all_shots_tbWidget.removeColumn(c)
@@ -205,7 +213,7 @@ class All_Shots(object):
                 'status': status
             }
         qm = QMessageBox()
-        result = qm.question(self.main_window, 'Shot Buzz Application', "Are you sure with {}".format(status), qm.Yes | qm.No)
+        result = qm.question(self.main_window, 'Tendrill Application', "Are you sure with {}".format(status), qm.Yes | qm.No)
         if result == qm.Yes:
             self.current_row = self.main_window.ui.all_shots_tbWidget.currentRow()
             column = self.main_window.ui.all_shots_tbWidget.currentColumn()
@@ -262,11 +270,15 @@ class All_Shots(object):
         self.role = self.main_window.employee_details['role']
         self.department = self.main_window.employee_details['department']
         if self.role == 'SUPERVISOR' or self.role == 'AST SUPERVISOR':
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
             G_DEPARTMENT_LIST.append(self.department)
             self.approve_status = "LAP"
             self.retake_status = "LRT"
         elif self.role == 'PRODUCTION MANAGER' or self.role == 'AST PRODUCTION MANAGER':
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
 
             G_DEPARTMENT_LIST.extend(['PAINT', 'ROTO', 'MM', 'COMP'])
@@ -280,6 +292,8 @@ class All_Shots(object):
             # self.main_window.ui.tl_sel_cb.hide()
             # self.main_window.ui.export_btn.hide()
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(0, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
             self.main_window.team_lead = True
             self.main_window.team_lead_id = self.main_window.employee_details['id']
@@ -291,6 +305,8 @@ class All_Shots(object):
             # self.main_window.ui.tl_sel_cb.hide()
             # self.main_window.ui.export_btn.hide()
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(0, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
             G_DEPARTMENT_LIST.append(self.department)
             self.approve_status = "IAP"
@@ -305,6 +321,7 @@ class All_Shots(object):
             # self.main_window.ui.cli_approve_btn.show()
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
+            self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
             G_DEPARTMENT_LIST.extend(['PAINT', 'ROTO', 'MM', 'COMP'])
         self._data = get_filtered_data(team_lead=self.main_window.team_lead, teamlead_id=self.main_window.team_lead_id)
         self.display_table(self._data)
@@ -418,7 +435,7 @@ class All_Shots(object):
                     self.artist = shots['artist']
             row_Item = QTableWidgetItem()
             row_Item.setData(1, shots)
-            row_Item.setText(shots['sequence']['project']['client']['name'])
+            row_Item.setText(shots['sequence']['project']['name'])
             checkbox = QtWidgets.QCheckBox()
             checkbox.setStyleSheet('QWidget{background-color:none}')
             self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 0, checkbox)
