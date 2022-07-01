@@ -16,6 +16,7 @@ class AlignDelegate(QtWidgets.QStyledItemDelegate):
         option.displayAlignment = QtCore.Qt.AlignCenter
 
 class Pending_Task(object):
+
     def __init__(self,instance):
         super(Pending_Task, self).__init__()
         self.main_window = instance.main_window
@@ -27,11 +28,14 @@ class Pending_Task(object):
             self.main_window.ui.mytask_tableWid.cellDoubleClicked.disconnect()
         except:
             pass
-        task_data = api.get_artist_shots(str(self.main_window.employee_details['id']))
-        self.task_filtered_data = [x for x in task_data if
+        self.task_data = api.get_artist_shots(str(self.main_window.employee_details['id']))
+        print(self.task_data)
+        self.task_filtered_data = [x for x in self.task_data if
                               (x['task_status']['code'] != "CAP" and x['task_status']['code'] != 'IAP' and
                                x['task_status']['code'] != 'HLD' and x['task_status']['code'] != 'OMT' and x['task_status']['code'] != 'IRT' and x['task_status']['code'] != 'LRT')]
-        self.pending_task_page(task_data)
+        self.pending_task_page(self.task_data)
+        # self.main_window.ui.refresh_btn.clicked.connect(lambda: self.pending_task_page(self.task_data))
+        self.main_window.ui.refresh_btn.clicked.connect(lambda: self.hai())
 
         self.projects = api.get_all_projects()
         self.main_window.ui.t_pro_sel_cb.clear()
@@ -60,6 +64,10 @@ class Pending_Task(object):
         delegate = AlignDelegate(self.main_window.ui.mytask_tableWid)
         for x in range(10):
             self.main_window.ui.mytask_tableWid.setItemDelegateForColumn(x, delegate)
+    def hai(self):
+        new_task_data = api.get_artist_shots(str(self.main_window.employee_details['id']))
+        self.pending_task_page(new_task_data)
+        print ("hai")
 
     def on_customContextMenuRequested(self, pos):
         it = self.main_window.ui.mytask_tableWid.itemAt(pos)
@@ -103,13 +111,17 @@ class Pending_Task(object):
                 self.status_check("STQ")
             elif action == stc_action:
                 self.status_check("STC")
+
+
         except Exception as e:
             pass
 
 
     def status_check(self, status):
+        print ('hwh')
         if self.task_details['shot']['status']['code'] == "WIP":
             self.task_status_update(status)
+
         else:
             msg = QMessageBox()
             msg.setText("Shot not in wip\n")
@@ -122,6 +134,7 @@ class Pending_Task(object):
         if self.task_details['shot']['status']['code'] == 'YTS' or self.task_details['shot']['status'][
             'code'] == 'LRT' or self.task_details['shot']['status']['code'] == 'CRT':
             self.task_status_update(status)
+            self.pending_task_page(self.task_data)
         else:
             msg = QMessageBox()
             msg.setText("Shot is in QC or Approved and cannot be changed to WIP\n")
@@ -135,7 +148,7 @@ class Pending_Task(object):
             'task_status': status
         }
         qm = QMessageBox()
-        result = qm.question(self.main_window , 'Tendrill Application', "Are you sure with {}".format(status), qm.Yes | qm.No)
+        result = qm.question(self.main_window , 'Tendrill Application', "Are you sure with status {}".format(status), qm.Yes | qm.No)
         if result == qm.Yes:
             response = api.updateTask(str(self.task_details['id']), data)
             if response.status_code == 201:
@@ -146,6 +159,8 @@ class Pending_Task(object):
                     api.update_ShotStatus(str(self.task_details['shot']['id']), shot_data)
                 if status == "STQ":
                     Versions.create_version(self)
+
+
 
 
 
@@ -354,6 +369,7 @@ class Pending_Task(object):
             progressBar.setStyleSheet(newStyleSheet)
             progressBar.setFont(QFont('Arial', 10))
             self.main_window.ui.mytask_tableWid.setItem(i, 9, QTableWidgetItem(str(eta)))
+
             
     def cellClicked(self):
         self.current_row = self.main_window.ui.mytask_tableWid.currentRow()

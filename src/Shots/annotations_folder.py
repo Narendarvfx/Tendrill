@@ -27,7 +27,7 @@ class Annotations_Folder(object):
             self.ui_image_viewer.setViewMode(QtWidgets.QListWidget.IconMode)
             self.ui_image_viewer.setResizeMode(QtWidgets.QListWidget.Adjust)
             self.ui_image_viewer.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-            self.ui_image_viewer.setIconSize(QtCore.QSize(400, 350))
+            self.ui_image_viewer.setIconSize(QtCore.QSize(380, 350))
             self.ui_image_viewer.setMovement(QtWidgets.QListWidget.Static)
             print(self.ui_image_viewer.count())
             self.imgs = iter(os.listdir(self.ann_path))
