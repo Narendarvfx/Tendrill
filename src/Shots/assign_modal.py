@@ -139,16 +139,16 @@ class Assign_Modal(QDialog):
             'shot': self.shot['id'],
             'artist': self.ui.sel_artists_cb.currentData(),
             'assigned_by': self.main_window.employee_details['id'],
-            'task_status': "YTS",
+            'task_status': "RTW",
             'assigned_bids': float(self.ui.shot_md_le.text()),
             'compiler': compiler,
             'eta': cb_date.isoformat()
         }
         response = api.assign_shot(post_data)
         if response.status_code == 201:
-            if self.shot['status']['code'] == "YTA" or self.shot['status']['code'] == 'ATL':
+            if self.shot['status']['code'] == "RTA" or self.shot['status']['code'] == 'WTS':
                 shot_status = {
-                    'status': "YTS",
+                    'status': "RTW",
                     'location': employee_details['location']
                 }
                 api.update_ShotStatus(str(self.shot['id']), shot_status)
@@ -221,7 +221,7 @@ class Assign_Modal(QDialog):
         tbWid.setFont(QFont('Cambria', 12, QFont.Bold))
         self.main_window.ui.team_tableWid.setItem(row_count, 0, tbWid)
         status_item = QTableWidgetItem()
-        status_item.setText(QCoreApplication.translate("MainWindow", "YTS", None))
+        status_item.setText(QCoreApplication.translate("MainWindow", "RTW", None))
         status_item.setForeground(QtGui.QColor('#B4B1AB'))
         status_item.setTextAlignment(Qt.AlignCenter)
         font = QFont()

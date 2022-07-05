@@ -63,9 +63,9 @@ class LeadAssignModal(QDialog):
                 post_response = api.post_lead_assignment(shot_data)
                 # self.create_permission()
                 if post_response.status_code == 201:
-                    if data['status']['code'] == "YTA":
+                    if data['status']['code'] == "RTA":
                         shot_status = {
-                            'status': "ATL"
+                            'status': "WTS"
                         }
                         api.update_ShotStatus(str(data['id']), shot_status)
 

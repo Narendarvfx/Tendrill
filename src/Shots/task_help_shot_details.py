@@ -145,9 +145,9 @@ class Task_Help_Shot_Details(QTreeWidget):
             if obj.task_details['eta']:
                 eta = datetime.datetime.strptime(obj.task_details['eta'], '%Y-%m-%dT%H:%M:%S').strftime(
                     "%d-%m-%Y %H:%M")
-            if self.task_details['status']['code'] == "YTS":
+            if self.task_details['status']['code'] == "RTW":
                 self.main_window.ui.start_btn.show()
-            elif self.task_details['status']['code'] == "WIP" or self.task_details['status'][
+            elif self.task_details['status']['code'] == "IP" or self.task_details['status'][
                 'code'] == "IRT" or self.task_details['status']['code'] == "HRT" or \
                     self.task_details['status']['code'] == "CRT":
                 if self.main_window.employee_details['role'] == "VFX ARTIST":
@@ -208,9 +208,9 @@ class Task_Help_Shot_Details(QTreeWidget):
         self.client.textMessageReceived.connect(self.processTextMessage)
         self.main_window.ui.assign_btn.clicked.connect(lambda: self.assignModal())
         self.main_window.ui.taskHelp_btn.clicked.connect(lambda: self.taskHelpModal())
-        self.main_window.ui.start_btn.clicked.connect(lambda: self.task_status_update("WIP"))
+        self.main_window.ui.start_btn.clicked.connect(lambda: self.task_status_update("IP"))
         self.main_window.ui.comp_btn.clicked.connect(lambda: self.task_status_update("STC"))
-        # self.main_window.ui.qc_btn.clicked.connect(lambda: self.task_status_update("STQ"))
+        # self.main_window.ui.qc_btn.clicked.connect(lambda: self.task_status_update("REW"))
         approve_status = ""
         retake_status = ""
         client_retake_status = ""
@@ -592,7 +592,7 @@ class Task_Help_Shot_Details(QTreeWidget):
                 }
                 if status != "STC":
                     api.update_ShotStatus(str(self.shot_details['id']), shot_data)
-                if status == "WIP":
+                if status == "IP":
                     self.main_window.ui.start_btn.hide()
                     config = configparser.ConfigParser()
 

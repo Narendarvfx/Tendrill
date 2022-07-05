@@ -10,9 +10,9 @@ def get_status_counts(all_shots):
     crt = 0
     for shot in all_shots:
         print(shot['status']['code'])
-        if shot['status']['code'] in ['YTA','ATL','YTS']:
+        if shot['status']['code'] in ['RTA','WTS','RTW']:
             yts += 1
-        elif shot['status']['code'] in ['WIP', 'STQ', 'QIP', 'IAP', 'IRT']:
+        elif shot['status']['code'] in ['IP', 'REW', 'QIP', 'IAP', 'IRT']:
            wip += 1
         elif shot['status']['code'] in ['CAP']:
             approved += 1
@@ -22,7 +22,7 @@ def get_status_counts(all_shots):
 
 def generate_report():
     user = getpass.getuser()
-    file_path = r"C:\Users\{}\Documents\ofx_reports".format(user)
+    file_path = r"C:\Users\{}\Documents\jvfx_reports".format(user)
     if not os.path.exists(file_path):
         os.makedirs(file_path)
     path = file_path + '\studio_report.xlsx'
@@ -43,8 +43,8 @@ def generate_report():
     worksheet.write('E1', 'ACHIEVED MANDAYS', bold)
     worksheet.write('F1', 'ACTUAL vs ACHIEVED', bold)
     worksheet.write('G1', 'PROGRESS', bold)
-    worksheet.write('H1', 'YTS', bold)
-    worksheet.write('I1', 'WIP', bold)
+    worksheet.write('H1', 'RTW', bold)
+    worksheet.write('I1', 'IP', bold)
     worksheet.write('J1', 'APPROVED', bold)
     worksheet.write('K1', 'RETAKES', bold)
     p = 1

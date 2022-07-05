@@ -202,13 +202,13 @@ class Shot_Details(QTreeWidget):
                 }
                 if status != "STC":
                     api.update_ShotStatus(str(self.shot_details['id']), shot_data)
-                if status == "WIP":
+                if status == "IP":
                     self.main_window.ui.start_btn.hide()
                     if self.task_details['compiler'] == 2 or self.task_details['compiler'] == 0:
                         self.main_window.ui.qc_btn.show()
                     else:
                         self.main_window.ui.comp_btn.show()
-                elif status == "STQ":
+                elif status == "REW":
                     self.main_window.ui.qc_btn.hide()
                     Versions.create_version(self)
                 elif status == "STC":

@@ -1,5 +1,5 @@
 import datetime
-
+from pprint import pprint
 from PySide2 import QtWidgets, QtCore
 from PySide2.QtCore import Qt, QSize
 from PySide2.QtGui import QFont, QPixmap, QIcon
@@ -35,7 +35,7 @@ class Pending_Task(object):
                                x['task_status']['code'] != 'HLD' and x['task_status']['code'] != 'OMT' and x['task_status']['code'] != 'IRT' and x['task_status']['code'] != 'LRT')]
         self.pending_task_page(self.task_data)
         # self.main_window.ui.refresh_btn.clicked.connect(lambda: self.pending_task_page(self.task_data))
-        self.main_window.ui.refresh_btn.clicked.connect(lambda: self.hai())
+
 
         self.projects = api.get_all_projects()
         self.main_window.ui.t_pro_sel_cb.clear()
@@ -47,8 +47,26 @@ class Pending_Task(object):
                                                                                         None, -1))
 
         self.status = api.get_all_status()
+        # self.status = [
+        #
+        #     {'code': 'RTW', 'color': '#E3BA41', 'id': 1, 'name': 'YET TO START'},
+        #     # {'code': 'YTA', 'color': '#FFC20D', 'id': 2, 'name': 'YET TO ASSIGN'},
+        #     {'code': 'IP', 'color': '#1B47E3', 'id': 3, 'name': 'WORK IN PROGRESS'},
+        #     {'code': 'STC', 'color': '#E38330', 'id': 4, 'name': 'SENT TO COMPILER'},
+        #     {'code': 'REW', 'color': '#2587E3', 'id': 5, 'name': 'SENT TO REVIEW'},
+        #     # {'code': 'WTS', 'color': '#E36889', 'id': 6, 'name': 'ASSIGNED TO TEAM LEAD'},
+        #     {'code': 'IAP', 'color': '#8AE330', 'id': 7, 'name': 'INTERNAL APPROVED'},
+        #     # {'code': 'CRT', 'color': '#E3450B', 'id': 8, 'name': 'CLIENT RETAKE'},
+        #     # {'code': 'IRT', 'color': '#E35115', 'id': 9, 'name': 'INTERNAL RETAKE'},
+        #     # {'code': 'DTC', 'color': '#E38330', 'id': 10, 'name': 'DELIVERED TO CLIENT'},
+        #     # {'code': 'CAP', 'color': '#00E156', 'id': 11, 'name': 'CLIENT APPROVED'},
+        #     {'code': 'LAP', 'color': '#7DE378', 'id': 12, 'name': 'LEAD APPROVED'},
+        #     {'code': 'LRT', 'color': '#E38330', 'id': 14, 'name': 'LEAD REJECTED'}
+        # ]
+        # pprint (self.status)
         self.main_window.ui.t_status_sel_cb.clear()
         self.main_window.ui.t_status_sel_cb.addItem("Select", None)
+        pprint (self.status)
         for s, status in enumerate(self.status):
             self.main_window.ui.t_status_sel_cb.addItem("", status['id'])
             self.main_window.ui.t_status_sel_cb.setItemText(s + 1,
@@ -64,10 +82,7 @@ class Pending_Task(object):
         delegate = AlignDelegate(self.main_window.ui.mytask_tableWid)
         for x in range(10):
             self.main_window.ui.mytask_tableWid.setItemDelegateForColumn(x, delegate)
-    def hai(self):
-        new_task_data = api.get_artist_shots(str(self.main_window.employee_details['id']))
-        self.pending_task_page(new_task_data)
-        print ("hai")
+
 
     def on_customContextMenuRequested(self, pos):
         it = self.main_window.ui.mytask_tableWid.itemAt(pos)
@@ -76,7 +91,7 @@ class Pending_Task(object):
         menu.setStyleSheet(u"QMenu {\n"
                            "background-color: #ABABAB; /* sets background of the menu */\n"
                            "border-radius: 5px;\n"
-                           "border: 1px solid black;\n"
+                           # "border: 1px solid black;\n"
                            "margin:2px;\n"
                            "}\n"
 
@@ -95,20 +110,20 @@ class Pending_Task(object):
         font1 = QFont()
         font1.setPointSize(12)
         menu.setFont(font1)
-        wip_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&WIP")
+        wip_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&IP")
         current_row = self.main_window.ui.mytask_tableWid.currentRow()
         self.task_details = self.main_window.ui.mytask_tableWid.item(current_row, 0).data(Qt.UserRole)
         if self.task_details['compiler'] == 2 or self.task_details['compiler'] == 0:
-            stq_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to QC")
+            stq_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to Review")
         else:
             stc_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to Compiler")
 
         action = menu.exec_(self.main_window.ui.mytask_tableWid.viewport().mapToGlobal(pos))
         try:
             if action == wip_action:
-                self.wip_status_check("WIP")
+                self.wip_status_check("IP")
             elif action == stq_action:
-                self.status_check("STQ")
+                self.status_check("REW")
             elif action == stc_action:
                 self.status_check("STC")
 
@@ -118,26 +133,26 @@ class Pending_Task(object):
 
 
     def status_check(self, status):
-        print ('hwh')
-        if self.task_details['shot']['status']['code'] == "WIP":
+
+        if self.task_details['shot']['status']['code'] == "IP":
             self.task_status_update(status)
 
         else:
             msg = QMessageBox()
-            msg.setText("Shot not in wip\n")
+            msg.setText("Shot not in ip\n")
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
             # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
             msg.exec_()
 
     def wip_status_check(self, status):
-        if self.task_details['shot']['status']['code'] == 'YTS' or self.task_details['shot']['status'][
+        if self.task_details['shot']['status']['code'] == 'RTW' or self.task_details['shot']['status'][
             'code'] == 'LRT' or self.task_details['shot']['status']['code'] == 'CRT':
             self.task_status_update(status)
             self.pending_task_page(self.task_data)
         else:
             msg = QMessageBox()
-            msg.setText("Shot is in QC or Approved and cannot be changed to WIP\n")
+            msg.setText("Shot is in QC or Approved and cannot be changed to IP\n")
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
             # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
@@ -157,7 +172,7 @@ class Pending_Task(object):
                 }
                 if status != "STC":
                     api.update_ShotStatus(str(self.task_details['shot']['id']), shot_data)
-                if status == "STQ":
+                if status == "REW":
                     Versions.create_version(self)
 
 
@@ -324,15 +339,24 @@ class Pending_Task(object):
             self.main_window.ui.mytask_tableWid.setItem(i, 6, QTableWidgetItem(str(_task['shot']['actual_end_frame']-_task['shot']['actual_start_frame'])))
             stWidget = QWidget();
             st_label = QLabel();
-            st_label.setMinimumSize(QSize(21, 21));
-            st_label.setMaximumSize(QSize(21, 21));
-            st_label.setStyleSheet("border-radius:10px;background-color:"+ _task['shot']['status']['color'])
-            st_label.setAlignment(Qt.AlignCenter)
+            st_label.setMinimumSize(QSize(24, 24));
+            icon_path = u":/custom/icons/custom/{}.png".format(_task['shot']['status']['code'])
+
+            pixmap = QPixmap(icon_path)
+            # pixmap.scaledToWidth(22)
+
+            st_label.setPixmap(pixmap)
+            # st_label.setStyleSheet(" background-color:"+ shots['status']['color'])
+            st_label.setAlignment(Qt.AlignRight)
+            st_label1 = QLabel();
+            st_label1.setMaximumSize(QSize(35, 35));
+
+
             st_label1 = QLabel();
             st_label1.setMaximumSize(QSize(35, 35));
             st_label1.setText(_task['shot']['status']['code'])
             font = QFont()
-            font.setPointSize(10)
+            font.setPointSize(5)
             font.setFamily('Arial')
             font.setBold(True)
             st_label1.setFont(font)
@@ -343,6 +367,10 @@ class Pending_Task(object):
             stLayout.setAlignment(Qt.AlignCenter);
             stLayout.setContentsMargins(0, 0, 0, 0);
             stWidget.setLayout(stLayout);
+            stWidget.setStyleSheet(
+                'QWidget{margin-top:2px;margin-bottom:2px;color:white;border-radius: 12px;background-color:' +
+                _task['shot']['status']['color'] + '}')
+
             stWidget.setToolTip(_task['shot']['status']['name'])
             self.main_window.ui.mytask_tableWid.setCellWidget(i, 7, stWidget)
             self.main_window.ui.mytask_tableWid.setItem(i, 8, QTableWidgetItem(str(_task['assigned_bids'])))

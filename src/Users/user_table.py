@@ -74,7 +74,7 @@ class All_Users(QMainWindow):
         self.display_table(users_data)
         data = self.generate_statistics(users_data)
         data = {
-            'Yts': 80,
+            'RTW': 80,
             "Pending": 30,
             "completed": 20
         }

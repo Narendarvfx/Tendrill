@@ -15,7 +15,7 @@ session = requests.Session()
 headers = {'Authorization': 'token {}'.format(token)}
 
 def get_data(dept):
-    status_list = "YTA|ATL|YTS|WIP|STC|STQ|IRT|IAP|CRT|LAP|LRT"
+    status_list = "RTA|WTS|RTW|IP|STC|REW|IRT|IAP|CRT|LAP|LRT"
     allShotsData = api.allShotsData(status_list, dept=dept)
 
     return allShotsData
@@ -61,7 +61,7 @@ def write_to_excel(workbook, worksheet, shots_data):
     worksheet.write('E1', 'TASK', bold)
     worksheet.write('F1', 'STATUS', bold)
     worksheet.write('G1', 'BID DAYS', bold)
-    worksheet.write('H1', 'WIP%', bold)
+    worksheet.write('H1', 'IP%', bold)
     worksheet.write('I1', 'DUE MANDAYS', bold)
     worksheet.write('J1', 'DUE DATE', bold)
     worksheet.write('K1', 'NOTES', bold)
@@ -77,11 +77,11 @@ def write_to_excel(workbook, worksheet, shots_data):
     row = 0
     for shot_data in shots_data:
         shot_status = shot_data['status']['code']
-        if shot_data['status']['code'] in ['YTA', 'ATL', 'YTS']:
-            shot_status = "YTS"
-        elif shot_data['status']['code'] in ['WIP', 'STC', 'LRT']:
-            shot_status = "WIP"
-        elif shot_data['status']['code'] in ['STQ', 'IRT', 'LAP']:
+        if shot_data['status']['code'] in ['RTA', 'WTS', 'RTW']:
+            shot_status = "RTW"
+        elif shot_data['status']['code'] in ['IP', 'STC', 'LRT']:
+            shot_status = "IP"
+        elif shot_data['status']['code'] in ['REW', 'IRT', 'LAP']:
             shot_status = "QC"
         elif shot_data['status']['code'] == "IAP":
             shot_status = "IAP"

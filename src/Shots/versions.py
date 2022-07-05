@@ -17,7 +17,7 @@ class Versions():
             'shot': self.shot_details['id'],
             'version': 'V%03d' % (version),
             'sent_by': self.main_window.employee_details['id'],
-            'status': "STQ"
+            'status': "REW"
         }
         api.postShotVersions(data)
         # shot_data = {

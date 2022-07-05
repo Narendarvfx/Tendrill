@@ -31,11 +31,11 @@ class Studio_Reports(object):
         pending_mandays = act_mandays - achived_mandays
         self.main_window.ui.sr_delta_lbl.setText(str(round(pending_mandays,2)))
 
-        yts_status = 'YTA|YTS|ATL'
+        yts_status = 'RTA|RTW|WTS'
         yts = api.allShotsData(yts_status)
         self.main_window.ui.sr_yts_lbl.setText(str(len(yts)))
 
-        wip_status = 'WIP|STQ|IRT'
+        wip_status = 'IP|REW|IRT'
         wip = api.allShotsData(wip_status)
         self.main_window.ui.sr_wip_lbl.setText(str(len(wip)))
 

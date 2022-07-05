@@ -61,6 +61,12 @@ class CheckableComboBox(QComboBox):
         else:
             item.setCheckState(QtCore.Qt.Unchecked)
 
+
+class AlignDelegate(QtWidgets.QStyledItemDelegate):
+    def initStyleOption(self, option, index):
+        super(AlignDelegate, self).initStyleOption(option, index)
+        option.displayAlignment = QtCore.Qt.AlignCenter
+
 class All_Shots(object):
     def __init__(self, obj):
         super(All_Shots, self).__init__()
@@ -109,6 +115,16 @@ class All_Shots(object):
         self.status_selected = []
         Filters_Panel_Modal(self)
         # self.main_window.ui.filter_btn.clicked.connect(self.filter_panel)
+        # for s, status in enumerate(self.status):
+        #     self.main_window.ui.t_status_sel_cb.addItem("", status['id'])
+        #     self.main_window.ui.t_status_sel_cb.setItemText(s + 1,
+        #                                                   QtWidgets.QApplication.translate("MainWindow", status['name'],
+        #                                                                                    None, -1))
+
+        delegate = AlignDelegate(self.main_window.ui.all_shots_tbWidget)
+        for x in range(10):
+            self.main_window.ui.all_shots_tbWidget.setItemDelegateForColumn(x, delegate)
+
 
     @Slot()
     def refresh_all(self):
@@ -126,7 +142,7 @@ class All_Shots(object):
         menu.setStyleSheet(u"QMenu {\n"
     "background-color: #ABABAB; /* sets background of the menu */\n"
                            "border-radius: 5px;\n"
-    "border: 1px solid black;\n"
+    # "border: 1px solid black;\n"
                            "margin:2px;\n"
 "}\n"
 
@@ -135,7 +151,7 @@ class All_Shots(object):
         "if you want menu color and menu item color to be different */\n"
     "background-color: transparent;\n"
                            "padding: 2px 25px 2px 2px;\n"
-    "border: 1px solid transparent;\n"
+    # "border: 1px solid transparent;\n"
 "}\n"
 
 "QMenu::item:selected { /* when user selects item using mouse or keyboard */\n"
@@ -177,24 +193,24 @@ class All_Shots(object):
         self.current_row = self.main_window.ui.all_shots_tbWidget.currentRow()
         shot_details = self.main_window.ui.all_shots_tbWidget.item(self.current_row, 1).data(1)
         if self.role == "TEAM LEAD" or self.role == "SUPERVISOR":
-            if shot_details['status']['code'] == "STQ":
+            if shot_details['status']['code'] == "REW":
                 self.shot_status_update(status)
             else:
                 msg = QMessageBox()
-                msg.setText("Shot not submitted Qc\n")
+                msg.setText("Shot was not submitted for rewview\n to perform this action\n")
                 msg.setWindowTitle("Error")
                 msg.setIcon(QMessageBox.Critical)
-                msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+                # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
                 msg.exec_()
         if self.role == "QC":
             if shot_details['status']['code'] == "LAP":
                 self.shot_status_update(status)
             else:
                 msg = QMessageBox()
-                msg.setText("Shot not submitted Qc\n")
+                msg.setText("Shot was not submitted for rewview\n to perform this action\n")
                 msg.setWindowTitle("Error")
                 msg.setIcon(QMessageBox.Critical)
-                msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
+                # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
                 msg.exec_()
 
     def shot_status_update(self, status):
@@ -445,15 +461,23 @@ class All_Shots(object):
             self.main_window.ui.all_shots_tbWidget.setItem(i, 4, QTableWidgetItem(shots['task_type']))
             stWidget = QWidget();
             st_label = QLabel();
-            st_label.setMinimumSize(QSize(21, 21));
-            st_label.setMaximumSize(QSize(21, 21));
-            st_label.setStyleSheet("border-radius:10px;background-color:"+ shots['status']['color'])
-            st_label.setAlignment(Qt.AlignCenter)
+            st_label.setMinimumSize(QSize(24, 24));
+            # st_label.setMaximumSize(QSize(32, 32));
+            icon_path = u":/custom/icons/custom/{}.png".format(shots['status']['code'])
+
+            pixmap = QPixmap(icon_path)
+            # pixmap.scaledToWidth(22)
+
+
+
+            st_label.setPixmap(pixmap)
+            # st_label.setStyleSheet(" background-color:"+ shots['status']['color'])
+            st_label.setAlignment(Qt.AlignRight)
             st_label1 = QLabel();
             st_label1.setMaximumSize(QSize(35, 35));
             st_label1.setText(shots['status']['code'])
             font = QFont()
-            font.setPointSize(10)
+            font.setPointSize(5)
             font.setFamily('Arial')
             font.setBold(True)
             st_label1.setFont(font)
@@ -464,6 +488,9 @@ class All_Shots(object):
             stLayout.setAlignment(Qt.AlignCenter);
             stLayout.setContentsMargins(0, 0, 0, 0);
             stWidget.setLayout(stLayout);
+            stWidget.setStyleSheet(
+                'QWidget{margin-top:2px;margin-bottom:2px;color:white;border-radius: 12px;background-color:' + shots['status'][
+                    'color'] + '}')
             stWidget.setToolTip(shots['status']['name'])
             self.main_window.ui.all_shots_tbWidget.setCellWidget(i, 5, stWidget)
             self.main_window.ui.all_shots_tbWidget.setItem(i, 6, QTableWidgetItem(self.artist))

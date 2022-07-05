@@ -217,7 +217,7 @@ class Shots_Ingestion(object):
                     'estimate_date': estimate_date,
                     'input_path': row_data['Input Path'],
                     'comments': row_data['Comments'],
-                    'status': "YTA"
+                    'status': "RTA"
                 }
                 try:
                     response = api.create_shots(shot_data)
