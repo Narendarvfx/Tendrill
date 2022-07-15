@@ -29,7 +29,7 @@ class Pending_Task(object):
         except:
             pass
         self.task_data = api.get_artist_shots(str(self.main_window.employee_details['id']))
-        print(self.task_data)
+        # print(self.task_data)
         self.task_filtered_data = [x for x in self.task_data if
                               (x['task_status']['code'] != "CAP" and x['task_status']['code'] != 'IAP' and
                                x['task_status']['code'] != 'HLD' and x['task_status']['code'] != 'OMT' and x['task_status']['code'] != 'IRT' and x['task_status']['code'] != 'LRT')]
@@ -47,26 +47,8 @@ class Pending_Task(object):
                                                                                         None, -1))
 
         self.status = api.get_all_status()
-        # self.status = [
-        #
-        #     {'code': 'RTW', 'color': '#E3BA41', 'id': 1, 'name': 'YET TO START'},
-        #     # {'code': 'YTA', 'color': '#FFC20D', 'id': 2, 'name': 'YET TO ASSIGN'},
-        #     {'code': 'IP', 'color': '#1B47E3', 'id': 3, 'name': 'WORK IN PROGRESS'},
-        #     {'code': 'STC', 'color': '#E38330', 'id': 4, 'name': 'SENT TO COMPILER'},
-        #     {'code': 'REW', 'color': '#2587E3', 'id': 5, 'name': 'SENT TO REVIEW'},
-        #     # {'code': 'WTS', 'color': '#E36889', 'id': 6, 'name': 'ASSIGNED TO TEAM LEAD'},
-        #     {'code': 'IAP', 'color': '#8AE330', 'id': 7, 'name': 'INTERNAL APPROVED'},
-        #     # {'code': 'CRT', 'color': '#E3450B', 'id': 8, 'name': 'CLIENT RETAKE'},
-        #     # {'code': 'IRT', 'color': '#E35115', 'id': 9, 'name': 'INTERNAL RETAKE'},
-        #     # {'code': 'DTC', 'color': '#E38330', 'id': 10, 'name': 'DELIVERED TO CLIENT'},
-        #     # {'code': 'CAP', 'color': '#00E156', 'id': 11, 'name': 'CLIENT APPROVED'},
-        #     {'code': 'LAP', 'color': '#7DE378', 'id': 12, 'name': 'LEAD APPROVED'},
-        #     {'code': 'LRT', 'color': '#E38330', 'id': 14, 'name': 'LEAD REJECTED'}
-        # ]
-        # pprint (self.status)
         self.main_window.ui.t_status_sel_cb.clear()
         self.main_window.ui.t_status_sel_cb.addItem("Select", None)
-        pprint (self.status)
         for s, status in enumerate(self.status):
             self.main_window.ui.t_status_sel_cb.addItem("", status['id'])
             self.main_window.ui.t_status_sel_cb.setItemText(s + 1,

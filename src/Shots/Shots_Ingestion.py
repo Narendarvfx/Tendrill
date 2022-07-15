@@ -167,7 +167,7 @@ class Shots_Ingestion(object):
         print("Finished")
 
     def updateProgressBar(self, val):
-        print("Update Val", val)
+
         self.main_window.ui.sh_import_progressBar.setValue(val)
 
     def get_zize(self, path):
@@ -221,7 +221,7 @@ class Shots_Ingestion(object):
                 }
                 try:
                     response = api.create_shots(shot_data)
-                    print(response.json())
+
                     shot_res_data = response.json()
                     if response.status_code == 201:
                         api.createShot_group({'name': shot_res_data['name'] + '_' + str(shot_res_data['id'])})

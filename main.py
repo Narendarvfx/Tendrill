@@ -135,7 +135,7 @@ class LoginWindow(QMainWindow):
         elif response.status_code == 200:
             self.login_data = response.json()
             self.employee_details = api.get_employee_data(self.login_data['id'])
-            print(self.employee_details)
+
             if self.employee_details['employement_status'] != "Active":
                 msg = QMessageBox()
                 msg.setText("Authorization not Allowed \n Please contact Pipeline Administrator ")

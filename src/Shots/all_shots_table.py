@@ -46,7 +46,7 @@ class CheckableComboBox(QComboBox):
 
     def hidePopup(self):
         if not self._changed:
-            print(self._changed)
+
             super(CheckableComboBox, self).hidePopup()
         self._changed = False
 
