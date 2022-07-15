@@ -74,7 +74,7 @@ class LoginWindow(QMainWindow):
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         #TODO: Enable this code block before deploying to production to display login window
-        self.show()
+        # self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
@@ -110,8 +110,8 @@ class LoginWindow(QMainWindow):
             'username': 'admin',
             'password': 'Tomato@123'
         }
-        response = requests.post(url, data=teamlead, verify=False)
-        # MainWindow(response.json())
+        response = requests.post(url, data=supervisor, verify=False)
+        MainWindow(response.json())
 
     @Slot()
     def LoginClicked(self):
