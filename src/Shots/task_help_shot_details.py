@@ -406,6 +406,7 @@ class Task_Help_Shot_Details(QTreeWidget):
             pass
 
     def launch_nukeX(self):
+        print ("in nukeX")
         config = configparser.ConfigParser()
 
         config['DEFAULT']['client'] = self.shot_details['sequence']['project']['client']
@@ -413,15 +414,15 @@ class Task_Help_Shot_Details(QTreeWidget):
         config['DEFAULT']['seq'] = self.shot_details['sequence']['name']
         config['DEFAULT']['shot'] = self.shot_details['name']
         config['DEFAULT']['dep'] = self.shot_details['task_type']
-        nk_dir = 'C:\\Users\\' + getpass.getuser() + '\\.nuke'
-        if not os.path.exists(nk_dir):
-            os.makedirs(nk_dir)
-        with open(nk_dir, 'w') as configfile:
-            config.write(configfile)
-            configfile.close()
-        # TODO: Open Nuke with read node containing the shot name
+        # nk_dir = 'C:\\Users\\' + getpass.getuser() + '\\.nuke'
+        # if not os.path.exists(nk_dir):
+        #     os.makedirs(nk_dir)
+        # with open(nk_dir, 'w') as configfile:
+        #     config.write(configfile)
+        #     configfile.close()
+        # # TODO: Open Nuke with read node containing the shot name
         try:
-            subprocess.Popen('\\\\172.168.1.250\\ofxbox\\Nuke11.3v4\\Nuke11.3.exe --nukex')
+            subprocess.Popen(r"P:\Nuke12.2.bat")
         except Exception as e:
             print(e)
             pass

@@ -428,6 +428,11 @@ class All_Shots(object):
         splash.showMessage("<p style='color:white'><h3>Loading...</h3></p>", Qt.AlignCenter | Qt.AlignCenter,
                            Qt.red)
         QApplication.processEvents()
+        header = self.main_window.ui.all_shots_tbWidget.horizontalHeader()
+        header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(6, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(7, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(9, QtWidgets.QHeaderView.Stretch)
         self.main_window.ui.all_shots_tbWidget.setRowCount(len(shots_data))
         self.main_window.ui.all_shots_tbWidget.cellDoubleClicked.connect(lambda: self.cellClicked())
         for i, shots in enumerate(shots_data):

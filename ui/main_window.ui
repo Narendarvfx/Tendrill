@@ -892,7 +892,7 @@ QPushButton:pressed {
                       </font>
                      </property>
                      <property name="currentIndex">
-                      <number>4</number>
+                      <number>5</number>
                      </property>
                      <widget class="QWidget" name="clients_page">
                       <layout class="QGridLayout" name="gridLayout_2">
@@ -4320,11 +4320,20 @@ QPushButton:pressed {
                                 <enum>QAbstractItemView::SelectRows</enum>
                                </property>
                                <property name="showGrid">
-                                <bool>false</bool>
+                                <bool>true</bool>
                                </property>
                                <property name="sortingEnabled">
                                 <bool>true</bool>
                                </property>
+                               <attribute name="horizontalHeaderCascadingSectionResizes">
+                                <bool>true</bool>
+                               </attribute>
+                               <attribute name="horizontalHeaderDefaultSectionSize">
+                                <number>120</number>
+                               </attribute>
+                               <attribute name="horizontalHeaderMinimumSectionSize">
+                                <number>60</number>
+                               </attribute>
                                <attribute name="horizontalHeaderStretchLastSection">
                                 <bool>true</bool>
                                </attribute>
@@ -4620,7 +4629,7 @@ border:none
 }</string>
                                   </property>
                                   <property name="currentIndex">
-                                   <number>0</number>
+                                   <number>3</number>
                                   </property>
                                   <property name="tabSpacing">
                                    <number>6</number>
@@ -4630,8 +4639,8 @@ border:none
                                     <rect>
                                      <x>0</x>
                                      <y>0</y>
-                                     <width>168</width>
-                                     <height>70</height>
+                                     <width>300</width>
+                                     <height>619</height>
                                     </rect>
                                    </property>
                                    <property name="minimumSize">
@@ -4722,8 +4731,8 @@ color: rgb(85, 170, 255);</string>
                                     <rect>
                                      <x>0</x>
                                      <y>0</y>
-                                     <width>83</width>
-                                     <height>306</height>
+                                     <width>300</width>
+                                     <height>619</height>
                                     </rect>
                                    </property>
                                    <property name="styleSheet">
@@ -4959,7 +4968,7 @@ color: rgb(85, 170, 255);</string>
                                      <x>0</x>
                                      <y>0</y>
                                      <width>314</width>
-                                     <height>68</height>
+                                     <height>602</height>
                                     </rect>
                                    </property>
                                    <property name="styleSheet">
@@ -5114,8 +5123,8 @@ Border-radius: 10px;</string>
                                     <rect>
                                      <x>0</x>
                                      <y>0</y>
-                                     <width>100</width>
-                                     <height>30</height>
+                                     <width>300</width>
+                                     <height>619</height>
                                     </rect>
                                    </property>
                                    <property name="styleSheet">
@@ -5207,7 +5216,7 @@ border:3px solid white
                                          </widget>
                                         </item>
                                         <item row="0" column="1">
-                                         <widget class="QPushButton" name="pushButton_3">
+                                         <widget class="QPushButton" name="nukeX_btn">
                                           <property name="minimumSize">
                                            <size>
                                             <width>65</width>
@@ -5306,7 +5315,7 @@ border:3px solid white
                                            <string/>
                                           </property>
                                           <property name="icon">
-                                           <iconset resource="C:/roto/stark_repo/stark_software/files.qrc">
+                                           <iconset>
                                             <normaloff>:/custom/icons/custom/maya-icon.png</normaloff>:/custom/icons/custom/maya-icon.png</iconset>
                                           </property>
                                           <property name="iconSize">
@@ -5343,7 +5352,7 @@ border:3px solid white
                                            <string/>
                                           </property>
                                           <property name="icon">
-                                           <iconset resource="C:/roto/stark_repo/stark_software/files.qrc">
+                                           <iconset>
                                             <normaloff>:/custom/icons/custom/blender_icon.png</normaloff>:/custom/icons/custom/blender_icon.png</iconset>
                                           </property>
                                           <property name="iconSize">
@@ -6473,7 +6482,6 @@ QPushButton::pressed{
  </widget>
  <resources>
   <include location="../files.qrc"/>
-  <include location="C:/roto/stark_repo/stark_software/files.qrc"/>
   <include location="C:/Users/admin/.designer/files.qrc"/>
  </resources>
  <connections/>

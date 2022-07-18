@@ -23,9 +23,9 @@ class Filters_Panel_Modal(QObject):
         self.main_window.ui.pro_filter_cb.wheelEvent = lambda event: None
         self.main_window.ui.stat_filter_cb.wheelEvent = lambda event: None
         try:
-            self.main_window.ui.set_default_btn.clicked.disconnect()
+            # self.main_window.ui.set_default_btn.clicked.disconnect()
             self.main_window.ui.apply_filter_btn.clicked.disconnect()
-            self.main_window.ui.clear_filter_btn.clicked.disconnect()
+            # self.main_window.ui.clear_filter_btn.clicked.disconnect()
         except:
             pass
         # self.main_window.ui.set_default_btn.clicked.connect(lambda : self.set_defaults())

@@ -1,5 +1,6 @@
 import datetime
 from pprint import pprint
+import subprocess
 from PySide2 import QtWidgets, QtCore
 from PySide2.QtCore import Qt, QSize
 from PySide2.QtGui import QFont, QPixmap, QIcon
@@ -59,11 +60,38 @@ class Pending_Task(object):
         self.sel_pro = None
         self.main_window.ui.t_pro_sel_cb.activated.connect(self.filterByProject)
         self.main_window.ui.t_status_sel_cb.activated.connect(self.filterByStatus)
+        self.main_window.ui.nukeX_btn.clicked.connect(self.launch_nukeX)
+
         self.main_window.ui.mytask_tableWid.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.main_window.ui.mytask_tableWid.customContextMenuRequested.connect(self.on_customContextMenuRequested)
         delegate = AlignDelegate(self.main_window.ui.mytask_tableWid)
         for x in range(10):
             self.main_window.ui.mytask_tableWid.setItemDelegateForColumn(x, delegate)
+
+
+
+    def launch_nukeX(self):
+        print ("in nukeX")
+
+
+        # config['DEFAULT']['client'] = self.shot_details['sequence']['project']['client']
+        # config['DEFAULT']['show'] = self.shot_details['sequence']['project']['name']
+        # config['DEFAULT']['seq'] = self.shot_details['sequence']['name']
+        # config['DEFAULT']['shot'] = self.shot_details['name']
+        # config['DEFAULT']['dep'] = self.shot_details['task_type']
+        # nk_dir = 'C:\\Users\\' + getpass.getuser() + '\\.nuke'
+        # if not os.path.exists(nk_dir):
+        #     os.makedirs(nk_dir)
+        # with open(nk_dir, 'w') as configfile:
+        #     config.write(configfile)
+        #     configfile.close()
+        # # TODO: Open Nuke with read node containing the shot name
+        try:
+            subprocess.Popen(r"P:\Nuke12.2.bat")
+        except Exception as e:
+            print(e)
+            pass
+
 
 
     def on_customContextMenuRequested(self, pos):

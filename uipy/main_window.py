@@ -1848,8 +1848,12 @@ class Ui_MainWindow(object):
         self.all_shots_tbWidget.setDragDropMode(QAbstractItemView.NoDragDrop)
         self.all_shots_tbWidget.setAlternatingRowColors(True)
         self.all_shots_tbWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
-        self.all_shots_tbWidget.setShowGrid(False)
-        self.all_shots_tbWidget.setSortingEnabled(False)
+        self.all_shots_tbWidget.setShowGrid(True)
+        self.all_shots_tbWidget.setSortingEnabled(True)
+        self.all_shots_tbWidget.horizontalHeader().setCascadingSectionResizes(True)
+        self.all_shots_tbWidget.horizontalHeader().setMinimumSectionSize(60)
+        self.all_shots_tbWidget.horizontalHeader().setDefaultSectionSize(120)
+        self.all_shots_tbWidget.horizontalHeader().setStretchLastSection(True)
         self.all_shots_tbWidget.verticalHeader().setVisible(False)
         self.all_shots_tbWidget.verticalHeader().setProperty("showSortIndicator", True)
 
@@ -1947,6 +1951,7 @@ class Ui_MainWindow(object):
 "}")
         self.filters = QWidget()
         self.filters.setObjectName(u"filters")
+        self.filters.setGeometry(QRect(0, 0, 300, 619))
         self.filters.setMinimumSize(QSize(0, 0))
         self.verticalLayout = QVBoxLayout(self.filters)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -1954,13 +1959,12 @@ class Ui_MainWindow(object):
         self.t_pro_sel_cb.addItem("")
         self.t_pro_sel_cb.setObjectName(u"t_pro_sel_cb")
         font14 = QFont()
-        font14.setFamily(u"Nueva Std")
-        font14.setPointSize(12)
+        font14.setFamily(u"Myriad Pro Light")
         font14.setBold(False)
         font14.setItalic(False)
-        font14.setWeight(9)
+        font14.setWeight(7)
         self.t_pro_sel_cb.setFont(font14)
-        self.t_pro_sel_cb.setStyleSheet(u"font: 75 12pt \"Nueva Std\";\n"
+        self.t_pro_sel_cb.setStyleSheet(u"font: 63 15t \"Myriad Pro Light\";\n"
 "color: rgb(85, 170, 255);")
 
         self.verticalLayout.addWidget(self.t_pro_sel_cb)
@@ -1970,7 +1974,7 @@ class Ui_MainWindow(object):
         self.t_status_sel_cb.setObjectName(u"t_status_sel_cb")
         self.t_status_sel_cb.setMinimumSize(QSize(150, 0))
         self.t_status_sel_cb.setFont(font14)
-        self.t_status_sel_cb.setStyleSheet(u"font: 75 12pt \"Nueva Std\";\n"
+        self.t_status_sel_cb.setStyleSheet(u"font: 63 15t \"Myriad Pro Light\";\n"
 "color: rgb(85, 170, 255);")
 
         self.verticalLayout.addWidget(self.t_status_sel_cb)
@@ -2201,13 +2205,13 @@ class Ui_MainWindow(object):
         self.frame_13.setStyleSheet(u"border:None;")
         self.frame_13.setFrameShape(QFrame.Box)
         self.frame_13.setFrameShadow(QFrame.Raised)
-        self.widget = QWidget(self.frame_13)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(0, 0, 301, 171))
-        self.gridLayout_8 = QGridLayout(self.widget)
+        self.layoutWidget = QWidget(self.frame_13)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(0, 0, 301, 171))
+        self.gridLayout_8 = QGridLayout(self.layoutWidget)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
         self.gridLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.pushButton = QPushButton(self.widget)
+        self.pushButton = QPushButton(self.layoutWidget)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setMinimumSize(QSize(65, 65))
         self.pushButton.setMaximumSize(QSize(70, 16777215))
@@ -2223,22 +2227,22 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.pushButton, 0, 0, 1, 1)
 
-        self.pushButton_3 = QPushButton(self.widget)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setMinimumSize(QSize(65, 65))
-        self.pushButton_3.setMaximumSize(QSize(70, 16777215))
-        self.pushButton_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_3.setStyleSheet(u"QPushButton::hover{\n"
+        self.nukeX_btn = QPushButton(self.layoutWidget)
+        self.nukeX_btn.setObjectName(u"nukeX_btn")
+        self.nukeX_btn.setMinimumSize(QSize(65, 65))
+        self.nukeX_btn.setMaximumSize(QSize(70, 16777215))
+        self.nukeX_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.nukeX_btn.setStyleSheet(u"QPushButton::hover{\n"
 "border:3px solid white\n"
 "}")
         icon23 = QIcon()
         icon23.addFile(u":/custom/icons/custom/nkX.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_3.setIcon(icon23)
-        self.pushButton_3.setIconSize(QSize(64, 64))
+        self.nukeX_btn.setIcon(icon23)
+        self.nukeX_btn.setIconSize(QSize(64, 64))
 
-        self.gridLayout_8.addWidget(self.pushButton_3, 0, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.nukeX_btn, 0, 1, 1, 1)
 
-        self.pushButton_4 = QPushButton(self.widget)
+        self.pushButton_4 = QPushButton(self.layoutWidget)
         self.pushButton_4.setObjectName(u"pushButton_4")
         self.pushButton_4.setMinimumSize(QSize(65, 65))
         self.pushButton_4.setMaximumSize(QSize(70, 16777215))
@@ -2253,7 +2257,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.pushButton_4, 0, 2, 1, 1)
 
-        self.pushButton_5 = QPushButton(self.widget)
+        self.pushButton_5 = QPushButton(self.layoutWidget)
         self.pushButton_5.setObjectName(u"pushButton_5")
         self.pushButton_5.setMinimumSize(QSize(65, 65))
         self.pushButton_5.setMaximumSize(QSize(70, 16777215))
@@ -2268,7 +2272,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.pushButton_5, 1, 0, 1, 1)
 
-        self.pushButton_6 = QPushButton(self.widget)
+        self.pushButton_6 = QPushButton(self.layoutWidget)
         self.pushButton_6.setObjectName(u"pushButton_6")
         self.pushButton_6.setMinimumSize(QSize(65, 65))
         self.pushButton_6.setMaximumSize(QSize(70, 16777215))
@@ -2283,7 +2287,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.pushButton_6, 1, 1, 1, 1)
 
-        self.pushButton_7 = QPushButton(self.widget)
+        self.pushButton_7 = QPushButton(self.layoutWidget)
         self.pushButton_7.setObjectName(u"pushButton_7")
         self.pushButton_7.setMinimumSize(QSize(65, 65))
         self.pushButton_7.setMaximumSize(QSize(70, 16777215))
@@ -2863,7 +2867,7 @@ class Ui_MainWindow(object):
         self.stackedWidget.setCurrentIndex(5)
         self.shot_details_tabWidget.setCurrentIndex(3)
         self.dep_tabWidget.setCurrentIndex(0)
-        self.toolBox.setCurrentIndex(0)
+        self.toolBox.setCurrentIndex(3)
         self.toolBox.layout().setSpacing(6)
 
 
@@ -3201,7 +3205,7 @@ class Ui_MainWindow(object):
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Completed", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.overviewdashboard), QCoreApplication.translate("MainWindow", u"OVERVIEW DASHBOARD", None))
         self.pushButton.setText("")
-        self.pushButton_3.setText("")
+        self.nukeX_btn.setText("")
         self.pushButton_4.setText("")
         self.pushButton_5.setText("")
         self.pushButton_6.setText("")
