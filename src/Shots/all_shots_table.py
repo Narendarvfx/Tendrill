@@ -356,6 +356,7 @@ class All_Shots(object):
     def disconnect_slots(self):
         try:
             self.main_window.ui.all_shots_tbWidget.customContextMenuRequested.disconnect()
+            self.main_window.ui.apply_filter_btn.clicked.disconnect()
             self.main_window.ui.refresh_btn.clicked.disconnect()
             # self.main_window.ui.tl_sel_cb.activated.disconnect()
             self.main_window.ui.all_shots_tbWidget.cellDoubleClicked.disconnect()
