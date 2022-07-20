@@ -13,39 +13,6 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 import files_rc
-from PySide2 import QtCore
-from PySide2.QtWidgets import QComboBox
-
-
-class CustomComboBox(QComboBox):
-    def __init__(self, parent=None):
-        super(CustomComboBox, self).__init__(parent)
-        self.view().pressed.connect(self.handleItemPressed)
-        self._changed = False
-
-    def handleItemPressed(self, index):
-        item = self.model().itemFromIndex(index)
-        if item.checkState() == QtCore.Qt.Checked:
-            item.setCheckState(QtCore.Qt.Unchecked)
-        else:
-            item.setCheckState(QtCore.Qt.Checked)
-        self._changed = True
-
-    def hidePopup(self):
-        if not self._changed:
-            super(CustomComboBox, self).hidePopup()
-        self._changed = False
-
-    def itemChecked(self, index):
-        item = self.model().item(index, self.modelColumn())
-        return item.checkState() == QtCore.Qt.Checked
-
-    def setItemChecked(self, index, checked=True):
-        item = self.model().item(index, self.modelColumn())
-        if checked:
-            item.setCheckState(QtCore.Qt.Checked)
-        else:
-            item.setCheckState(QtCore.Qt.Unchecked)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1732,7 +1699,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_17.addWidget(self.line_9, 5, 0, 1, 1)
 
-        self.stat_filter_cb = CustomComboBox(self.frame_43)
+        self.stat_filter_cb = QComboBox(self.frame_43)
         self.stat_filter_cb.addItem("")
         self.stat_filter_cb.addItem("")
         self.stat_filter_cb.addItem("")
@@ -1748,7 +1715,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_17.addWidget(self.line_14, 9, 0, 1, 1)
 
-        self.pro_filter_cb = CustomComboBox(self.frame_43)
+        self.pro_filter_cb = QComboBox(self.frame_43)
         self.pro_filter_cb.addItem("")
         self.pro_filter_cb.addItem("")
         self.pro_filter_cb.addItem("")
@@ -2207,26 +2174,10 @@ class Ui_MainWindow(object):
         self.frame_13.setFrameShadow(QFrame.Raised)
         self.layoutWidget = QWidget(self.frame_13)
         self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(0, 0, 301, 171))
+        self.layoutWidget.setGeometry(QRect(0, 0, 301, 209))
         self.gridLayout_8 = QGridLayout(self.layoutWidget)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
         self.gridLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.pushButton = QPushButton(self.layoutWidget)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(65, 65))
-        self.pushButton.setMaximumSize(QSize(70, 16777215))
-        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet(u"QPushButton::hover{\n"
-"border:3px solid white\n"
-"}")
-        icon22 = QIcon()
-        icon22.addFile(u":/custom/icons/custom/psd.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon22)
-        self.pushButton.setIconSize(QSize(64, 64))
-        self.pushButton.setFlat(True)
-
-        self.gridLayout_8.addWidget(self.pushButton, 0, 0, 1, 1)
-
         self.nukeX_btn = QPushButton(self.layoutWidget)
         self.nukeX_btn.setObjectName(u"nukeX_btn")
         self.nukeX_btn.setMinimumSize(QSize(65, 65))
@@ -2235,27 +2186,12 @@ class Ui_MainWindow(object):
         self.nukeX_btn.setStyleSheet(u"QPushButton::hover{\n"
 "border:3px solid white\n"
 "}")
-        icon23 = QIcon()
-        icon23.addFile(u":/custom/icons/custom/nkX.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.nukeX_btn.setIcon(icon23)
+        icon22 = QIcon()
+        icon22.addFile(u":/custom/icons/custom/nkX.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.nukeX_btn.setIcon(icon22)
         self.nukeX_btn.setIconSize(QSize(64, 64))
 
         self.gridLayout_8.addWidget(self.nukeX_btn, 0, 1, 1, 1)
-
-        self.pushButton_4 = QPushButton(self.layoutWidget)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setMinimumSize(QSize(65, 65))
-        self.pushButton_4.setMaximumSize(QSize(70, 16777215))
-        self.pushButton_4.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_4.setStyleSheet(u"QPushButton::hover{\n"
-"border:3px solid white\n"
-"}")
-        icon24 = QIcon()
-        icon24.addFile(u":/custom/icons/custom/sfx.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_4.setIcon(icon24)
-        self.pushButton_4.setIconSize(QSize(64, 64))
-
-        self.gridLayout_8.addWidget(self.pushButton_4, 0, 2, 1, 1)
 
         self.pushButton_5 = QPushButton(self.layoutWidget)
         self.pushButton_5.setObjectName(u"pushButton_5")
@@ -2265,12 +2201,43 @@ class Ui_MainWindow(object):
         self.pushButton_5.setStyleSheet(u"QPushButton::hover{\n"
 "border:3px solid white\n"
 "}")
-        icon25 = QIcon()
-        icon25.addFile(u":/custom/icons/custom/maya-icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_5.setIcon(icon25)
+        icon23 = QIcon()
+        icon23.addFile(u":/custom/icons/custom/maya-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_5.setIcon(icon23)
         self.pushButton_5.setIconSize(QSize(64, 64))
 
-        self.gridLayout_8.addWidget(self.pushButton_5, 1, 0, 1, 1)
+        self.gridLayout_8.addWidget(self.pushButton_5, 2, 0, 1, 1)
+
+        self.photoshop_btn = QPushButton(self.layoutWidget)
+        self.photoshop_btn.setObjectName(u"photoshop_btn")
+        self.photoshop_btn.setMinimumSize(QSize(65, 65))
+        self.photoshop_btn.setMaximumSize(QSize(70, 16777215))
+        self.photoshop_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.photoshop_btn.setStyleSheet(u"QPushButton::hover{\n"
+"border:3px solid white\n"
+"}")
+        icon24 = QIcon()
+        icon24.addFile(u":/custom/icons/custom/psd.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.photoshop_btn.setIcon(icon24)
+        self.photoshop_btn.setIconSize(QSize(64, 64))
+        self.photoshop_btn.setFlat(True)
+
+        self.gridLayout_8.addWidget(self.photoshop_btn, 0, 0, 1, 1)
+
+        self.shilloute_btn = QPushButton(self.layoutWidget)
+        self.shilloute_btn.setObjectName(u"shilloute_btn")
+        self.shilloute_btn.setMinimumSize(QSize(65, 65))
+        self.shilloute_btn.setMaximumSize(QSize(70, 16777215))
+        self.shilloute_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.shilloute_btn.setStyleSheet(u"QPushButton::hover{\n"
+"border:3px solid white\n"
+"}")
+        icon25 = QIcon()
+        icon25.addFile(u":/custom/icons/custom/sfx.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.shilloute_btn.setIcon(icon25)
+        self.shilloute_btn.setIconSize(QSize(64, 64))
+
+        self.gridLayout_8.addWidget(self.shilloute_btn, 0, 2, 1, 1)
 
         self.pushButton_6 = QPushButton(self.layoutWidget)
         self.pushButton_6.setObjectName(u"pushButton_6")
@@ -2285,28 +2252,31 @@ class Ui_MainWindow(object):
         self.pushButton_6.setIcon(icon26)
         self.pushButton_6.setIconSize(QSize(64, 64))
 
-        self.gridLayout_8.addWidget(self.pushButton_6, 1, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.pushButton_6, 2, 1, 1, 1)
 
-        self.pushButton_7 = QPushButton(self.layoutWidget)
-        self.pushButton_7.setObjectName(u"pushButton_7")
-        self.pushButton_7.setMinimumSize(QSize(65, 65))
-        self.pushButton_7.setMaximumSize(QSize(70, 16777215))
-        self.pushButton_7.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_7.setStyleSheet(u"QPushButton::hover{\n"
+        self.RV_btn = QPushButton(self.layoutWidget)
+        self.RV_btn.setObjectName(u"RV_btn")
+        self.RV_btn.setMinimumSize(QSize(65, 65))
+        self.RV_btn.setMaximumSize(QSize(70, 16777215))
+        self.RV_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.RV_btn.setStyleSheet(u"QPushButton::hover{\n"
 "border:3px solid white\n"
 "}")
-        self.pushButton_7.setIcon(icon15)
-        self.pushButton_7.setIconSize(QSize(64, 64))
+        icon27 = QIcon()
+        icon27.addFile(u":/custom/C:/Users/admin/Desktop/rv.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.RV_btn.setIcon(icon27)
+        self.RV_btn.setIconSize(QSize(64, 64))
+        self.RV_btn.setFlat(True)
 
-        self.gridLayout_8.addWidget(self.pushButton_7, 1, 2, 1, 1)
+        self.gridLayout_8.addWidget(self.RV_btn, 1, 0, 1, 1)
 
 
         self.gridLayout_47.addWidget(self.frame_13, 0, 0, 1, 1)
 
-        icon27 = QIcon()
-        icon27.addFile(u":/16x16/icons/16x16/cil-chevron-right.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon27.addFile(u":/16x16/icons/16x16/cil-chevron-bottom.png", QSize(), QIcon.Active, QIcon.On)
-        self.toolBox.addItem(self.dcc_tools, icon27, u"DCC $ DEV TOOLS")
+        icon28 = QIcon()
+        icon28.addFile(u":/16x16/icons/16x16/cil-chevron-right.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon28.addFile(u":/16x16/icons/16x16/cil-chevron-bottom.png", QSize(), QIcon.Active, QIcon.On)
+        self.toolBox.addItem(self.dcc_tools, icon28, u"DCC $ DEV TOOLS")
 
         self.gridLayout_35.addWidget(self.toolBox, 0, 0, 1, 1)
 
@@ -2763,9 +2733,9 @@ class Ui_MainWindow(object):
 "QPushButton::pressed{\n"
 "	background-color: rgb(208, 111, 0);\n"
 "}")
-        icon28 = QIcon()
-        icon28.addFile(u":/20x20/icons/20x20/cil-arrow-bottom.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.sr_download_btn.setIcon(icon28)
+        icon29 = QIcon()
+        icon29.addFile(u":/20x20/icons/20x20/cil-arrow-bottom.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.sr_download_btn.setIcon(icon29)
 
         self.horizontalLayout_39.addWidget(self.sr_download_btn)
 
@@ -3204,12 +3174,12 @@ class Ui_MainWindow(object):
         self.toolButton_3.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Completed", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.overviewdashboard), QCoreApplication.translate("MainWindow", u"OVERVIEW DASHBOARD", None))
-        self.pushButton.setText("")
         self.nukeX_btn.setText("")
-        self.pushButton_4.setText("")
         self.pushButton_5.setText("")
+        self.photoshop_btn.setText("")
+        self.shilloute_btn.setText("")
         self.pushButton_6.setText("")
-        self.pushButton_7.setText("")
+        self.RV_btn.setText("")
         self.toolBox.setItemText(self.toolBox.indexOf(self.dcc_tools), QCoreApplication.translate("MainWindow", u"DCC $ DEV TOOLS", None))
         ___qtablewidgetitem63 = self.mytask_tableWid.horizontalHeaderItem(0)
         ___qtablewidgetitem63.setText(QCoreApplication.translate("MainWindow", u"PROJECT", None));

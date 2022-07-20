@@ -5171,12 +5171,86 @@ Border-radius: 10px;</string>
                                          <x>0</x>
                                          <y>0</y>
                                          <width>301</width>
-                                         <height>171</height>
+                                         <height>209</height>
                                         </rect>
                                        </property>
                                        <layout class="QGridLayout" name="gridLayout_8">
+                                        <item row="0" column="1">
+                                         <widget class="QPushButton" name="nukeX_btn">
+                                          <property name="minimumSize">
+                                           <size>
+                                            <width>65</width>
+                                            <height>65</height>
+                                           </size>
+                                          </property>
+                                          <property name="maximumSize">
+                                           <size>
+                                            <width>70</width>
+                                            <height>16777215</height>
+                                           </size>
+                                          </property>
+                                          <property name="cursor">
+                                           <cursorShape>PointingHandCursor</cursorShape>
+                                          </property>
+                                          <property name="styleSheet">
+                                           <string notr="true">QPushButton::hover{
+border:3px solid white
+}</string>
+                                          </property>
+                                          <property name="text">
+                                           <string/>
+                                          </property>
+                                          <property name="icon">
+                                           <iconset resource="../files.qrc">
+                                            <normaloff>:/custom/icons/custom/nkX.png</normaloff>:/custom/icons/custom/nkX.png</iconset>
+                                          </property>
+                                          <property name="iconSize">
+                                           <size>
+                                            <width>64</width>
+                                            <height>64</height>
+                                           </size>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                        <item row="2" column="0">
+                                         <widget class="QPushButton" name="pushButton_5">
+                                          <property name="minimumSize">
+                                           <size>
+                                            <width>65</width>
+                                            <height>65</height>
+                                           </size>
+                                          </property>
+                                          <property name="maximumSize">
+                                           <size>
+                                            <width>70</width>
+                                            <height>16777215</height>
+                                           </size>
+                                          </property>
+                                          <property name="cursor">
+                                           <cursorShape>PointingHandCursor</cursorShape>
+                                          </property>
+                                          <property name="styleSheet">
+                                           <string notr="true">QPushButton::hover{
+border:3px solid white
+}</string>
+                                          </property>
+                                          <property name="text">
+                                           <string/>
+                                          </property>
+                                          <property name="icon">
+                                           <iconset>
+                                            <normaloff>:/custom/icons/custom/maya-icon.png</normaloff>:/custom/icons/custom/maya-icon.png</iconset>
+                                          </property>
+                                          <property name="iconSize">
+                                           <size>
+                                            <width>64</width>
+                                            <height>64</height>
+                                           </size>
+                                          </property>
+                                         </widget>
+                                        </item>
                                         <item row="0" column="0">
-                                         <widget class="QPushButton" name="pushButton">
+                                         <widget class="QPushButton" name="photoshop_btn">
                                           <property name="minimumSize">
                                            <size>
                                             <width>65</width>
@@ -5215,45 +5289,8 @@ border:3px solid white
                                           </property>
                                          </widget>
                                         </item>
-                                        <item row="0" column="1">
-                                         <widget class="QPushButton" name="nukeX_btn">
-                                          <property name="minimumSize">
-                                           <size>
-                                            <width>65</width>
-                                            <height>65</height>
-                                           </size>
-                                          </property>
-                                          <property name="maximumSize">
-                                           <size>
-                                            <width>70</width>
-                                            <height>16777215</height>
-                                           </size>
-                                          </property>
-                                          <property name="cursor">
-                                           <cursorShape>PointingHandCursor</cursorShape>
-                                          </property>
-                                          <property name="styleSheet">
-                                           <string notr="true">QPushButton::hover{
-border:3px solid white
-}</string>
-                                          </property>
-                                          <property name="text">
-                                           <string/>
-                                          </property>
-                                          <property name="icon">
-                                           <iconset resource="../files.qrc">
-                                            <normaloff>:/custom/icons/custom/nkX.png</normaloff>:/custom/icons/custom/nkX.png</iconset>
-                                          </property>
-                                          <property name="iconSize">
-                                           <size>
-                                            <width>64</width>
-                                            <height>64</height>
-                                           </size>
-                                          </property>
-                                         </widget>
-                                        </item>
                                         <item row="0" column="2">
-                                         <widget class="QPushButton" name="pushButton_4">
+                                         <widget class="QPushButton" name="shilloute_btn">
                                           <property name="minimumSize">
                                            <size>
                                             <width>65</width>
@@ -5289,44 +5326,7 @@ border:3px solid white
                                           </property>
                                          </widget>
                                         </item>
-                                        <item row="1" column="0">
-                                         <widget class="QPushButton" name="pushButton_5">
-                                          <property name="minimumSize">
-                                           <size>
-                                            <width>65</width>
-                                            <height>65</height>
-                                           </size>
-                                          </property>
-                                          <property name="maximumSize">
-                                           <size>
-                                            <width>70</width>
-                                            <height>16777215</height>
-                                           </size>
-                                          </property>
-                                          <property name="cursor">
-                                           <cursorShape>PointingHandCursor</cursorShape>
-                                          </property>
-                                          <property name="styleSheet">
-                                           <string notr="true">QPushButton::hover{
-border:3px solid white
-}</string>
-                                          </property>
-                                          <property name="text">
-                                           <string/>
-                                          </property>
-                                          <property name="icon">
-                                           <iconset>
-                                            <normaloff>:/custom/icons/custom/maya-icon.png</normaloff>:/custom/icons/custom/maya-icon.png</iconset>
-                                          </property>
-                                          <property name="iconSize">
-                                           <size>
-                                            <width>64</width>
-                                            <height>64</height>
-                                           </size>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item row="1" column="1">
+                                        <item row="2" column="1">
                                          <widget class="QPushButton" name="pushButton_6">
                                           <property name="minimumSize">
                                            <size>
@@ -5363,8 +5363,8 @@ border:3px solid white
                                           </property>
                                          </widget>
                                         </item>
-                                        <item row="1" column="2">
-                                         <widget class="QPushButton" name="pushButton_7">
+                                        <item row="1" column="0">
+                                         <widget class="QPushButton" name="RV_btn">
                                           <property name="minimumSize">
                                            <size>
                                             <width>65</width>
@@ -5390,13 +5390,16 @@ border:3px solid white
                                           </property>
                                           <property name="icon">
                                            <iconset resource="../files.qrc">
-                                            <normaloff>:/custom/icons/custom/addtodb.png</normaloff>:/custom/icons/custom/addtodb.png</iconset>
+                                            <normaloff>:/custom/C:/Users/admin/Desktop/rv.png</normaloff>:/custom/C:/Users/admin/Desktop/rv.png</iconset>
                                           </property>
                                           <property name="iconSize">
                                            <size>
                                             <width>64</width>
                                             <height>64</height>
                                            </size>
+                                          </property>
+                                          <property name="flat">
+                                           <bool>true</bool>
                                           </property>
                                          </widget>
                                         </item>
@@ -6482,7 +6485,6 @@ QPushButton::pressed{
  </widget>
  <resources>
   <include location="../files.qrc"/>
-  <include location="C:/Users/admin/.designer/files.qrc"/>
  </resources>
  <connections/>
 </ui>

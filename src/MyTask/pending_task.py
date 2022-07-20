@@ -61,6 +61,9 @@ class Pending_Task(object):
         self.main_window.ui.t_pro_sel_cb.activated.connect(self.filterByProject)
         self.main_window.ui.t_status_sel_cb.activated.connect(self.filterByStatus)
         self.main_window.ui.nukeX_btn.clicked.connect(self.launch_nukeX)
+        self.main_window.ui.photoshop_btn.clicked.connect(self.launch_photoshop)
+        self.main_window.ui.shilloute_btn.clicked.connect(self.launch_shilloute)
+        self.main_window.ui.RV_btn.clicked.connect(self.launch_rv)
 
         self.main_window.ui.mytask_tableWid.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.main_window.ui.mytask_tableWid.customContextMenuRequested.connect(self.on_customContextMenuRequested)
@@ -71,9 +74,6 @@ class Pending_Task(object):
 
 
     def launch_nukeX(self):
-        print ("in nukeX")
-
-
         # config['DEFAULT']['client'] = self.shot_details['sequence']['project']['client']
         # config['DEFAULT']['show'] = self.shot_details['sequence']['project']['name']
         # config['DEFAULT']['seq'] = self.shot_details['sequence']['name']
@@ -91,6 +91,29 @@ class Pending_Task(object):
         except Exception as e:
             print(e)
             pass
+
+    def launch_photoshop(self):
+        try:
+            subprocess.Popen(r"C:\Program Files\Adobe\Adobe Photoshop CS6 (64 Bit)\Photoshop.exe")
+        except Exception as e:
+            print(e)
+            pass
+
+    def launch_shilloute(self):
+        try:
+            subprocess.Popen(r"C:\Program Files\SilhouetteFX\Silhouette v5.2\Silhouette.exe")
+        except Exception as e:
+            print(e)
+            pass
+
+    def launch_rv(self):
+        try:
+            subprocess.Popen(r"C:\Program Files\Shotgun\RV-7.1.1\bin\rv.exe")
+        except Exception as e:
+            print(e)
+            pass
+
+
 
 
 
@@ -120,13 +143,13 @@ class Pending_Task(object):
         font1 = QFont()
         font1.setPointSize(12)
         menu.setFont(font1)
-        wip_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&IP")
+        wip_action = menu.addAction(QIcon(":/custom/icons/custom/IP.png"), "&IP")
         current_row = self.main_window.ui.mytask_tableWid.currentRow()
         self.task_details = self.main_window.ui.mytask_tableWid.item(current_row, 0).data(Qt.UserRole)
-        if self.task_details['compiler'] == 2 or self.task_details['compiler'] == 0:
-            stq_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to Review")
-        else:
-            stc_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to Compiler")
+        # if self.task_details['compiler'] == 2 or self.task_details['compiler'] == 0:
+        #     stq_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to Review")
+        # else:
+        stq_action = menu.addAction(QIcon(":/custom/icons/custom/REW.png"), "& Submit to Review")
 
         action = menu.exec_(self.main_window.ui.mytask_tableWid.viewport().mapToGlobal(pos))
         try:
@@ -134,8 +157,8 @@ class Pending_Task(object):
                 self.wip_status_check("IP")
             elif action == stq_action:
                 self.status_check("REW")
-            elif action == stc_action:
-                self.status_check("STC")
+            # elif action == stc_action:
+            #     self.status_check("STC")
 
 
         except Exception as e:
@@ -200,13 +223,6 @@ class Pending_Task(object):
         self.pending_task_page(data)
 
     def reset_filters(self):
-        # self.main_window.ui.t_cli_sel_cb.clear()
-        # self.main_window.ui.t_cli_sel_cb.addItem("Select", None)
-        # for c, client in enumerate(self.clients):
-        #     self.main_window.ui.t_cli_sel_cb.addItem("", client['id'])
-        #     self.main_window.ui.t_cli_sel_cb.setItemText(c + 1,
-        #                                                   QtWidgets.QApplication.translate("MainWindow", client['name'],
-        #                                                                                    None, -1))
 
         self.main_window.ui.t_pro_sel_cb.clear()
         self.main_window.ui.t_pro_sel_cb.addItem("Select", None)
@@ -291,26 +307,31 @@ class Pending_Task(object):
 
 
     def filterByStatus(self, index):
+        print (index)
         try:
             self.main_window.ui.shot_search_lineEdit.clear()
         except:
             pass
         self.sel_status = self.main_window.ui.t_status_sel_cb.itemData(index)
+        print (self.sel_status)
         all_shots = self.task_filtered_data
         data = []
         # if self.sel_cli_id is not None:
         if self.sel_pro is not None:
             for shots in all_shots:
+
                 if shots['shot']['sequence']['project']['id'] == self.sel_pro and shots['task_status']['id'] == self.sel_status:
                     data.append(shots)
         else:
             for shots in all_shots:
+
                 if shots['task_status']['id'] == self.sel_status:
                     data.append(shots)
-
+        print (data)
         self.pending_task_page(data)
 
     def pending_task_page(self, task_filtered_data):
+
         try:
             self.main_window.ui.mytask_tableWid.cellDoubleClicked.disconnect()
         except:

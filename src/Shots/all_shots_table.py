@@ -140,7 +140,7 @@ class All_Shots(object):
 
         menu = QtWidgets.QMenu()
         menu.setStyleSheet(u"QMenu {\n"
-    "background-color: #ABABAB; /* sets background of the menu */\n"
+    "background-color: rgb(120, 120, 120); /* sets background of the menu */\n"
                            "border-radius: 5px;\n"
     # "border: 1px solid black;\n"
                            "margin:2px;\n"
@@ -151,11 +151,11 @@ class All_Shots(object):
         "if you want menu color and menu item color to be different */\n"
     "background-color: transparent;\n"
                            "padding: 2px 25px 2px 2px;\n"
-    # "border: 1px solid transparent;\n"
+    "border: 1px solid transparent;\n"
 "}\n"
 
 "QMenu::item:selected { /* when user selects item using mouse or keyboard */\n"
-    "background-color: rgba(100, 100, 100, 150);\n"
+    "background-color: rgba(50, 50, 50, 50);\n"
                            "border-color: darkblue;\n"
 "}")
         font1 = QFont()
@@ -165,10 +165,15 @@ class All_Shots(object):
         approve_action = ''
         reject_action = ''
         edit_action = ''
-        if self.role == 'TEAM LEAD' or self.role == 'SUPERVISOR' or self.role == 'QC':
-            assign_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Assign")
-            approve_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Approve")
-            reject_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Reject")
+        if self.role == 'TEAM LEAD':
+            assign_action = menu.addAction(QIcon(":/custom/icons/custom/RTA.png"), "&  Assign")
+            approve_action = menu.addAction(QIcon(":/custom/icons/custom/LAP.png"), "&  Approve")
+            reject_action = menu.addAction(QIcon(":/custom/icons/custom/LRT.png"), "&  Reject")
+
+        if self.role == 'SUPERVISOR':
+            assign_action = menu.addAction(QIcon(":/custom/icons/custom/RTA.png"), "&  Assign")
+            approve_action = menu.addAction(QIcon(":/custom/icons/custom/IAP.png"), "&  Approve")
+            reject_action = menu.addAction(QIcon(":/custom/icons/custom/IRT.png"), "&  Reject")
         elif self.role == 'DATA I/O':
             edit_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"),"&Edit")
         team_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Team")
@@ -192,42 +197,45 @@ class All_Shots(object):
     def status_check(self, status):
         self.current_row = self.main_window.ui.all_shots_tbWidget.currentRow()
         shot_details = self.main_window.ui.all_shots_tbWidget.item(self.current_row, 1).data(1)
-        if self.role == "TEAM LEAD" or self.role == "SUPERVISOR":
+        if self.role == "TEAM LEAD" :
             if shot_details['status']['code'] == "REW":
                 self.shot_status_update(status)
             else:
                 msg = QMessageBox()
-                msg.setText("Shot was not submitted for rewview\n to perform this action\n")
+                msg.setText("please submit for rewview\n to perform this action\n")
                 msg.setWindowTitle("Error")
                 msg.setIcon(QMessageBox.Critical)
                 # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
                 msg.exec_()
-        if self.role == "QC":
+        if self.role == "SUPERVISOR":
             if shot_details['status']['code'] == "LAP":
                 self.shot_status_update(status)
             else:
                 msg = QMessageBox()
-                msg.setText("Shot was not submitted for rewview\n to perform this action\n")
+                msg.setText("Shot was not approved from LEAD\n ")
                 msg.setWindowTitle("Error")
                 msg.setIcon(QMessageBox.Critical)
                 # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
                 msg.exec_()
 
     def shot_status_update(self, status):
-        if status == "IAP":
-            modal = OutputPathModal(self)
-            if modal.exec_():
-                output_path = modal.get_output_path()
-                data = {
-                    'status': status,
-                    'output_path': output_path
-                }
-            else:
-                pass
-        else:
-            data = {
-                'status': status
-            }
+        # if status == "IAP":
+        #     modal = OutputPathModal(self)
+        #     if modal.exec_():
+        #         output_path = modal.get_output_path()
+        #         data = {
+        #             'status': status,
+        #             'output_path': output_path
+        #         }
+        #     else:
+        #         pass
+        # else:
+        #     data = {
+        #         'status': status
+        #     }
+        data = {
+            'status': status
+        }
         qm = QMessageBox()
         result = qm.question(self.main_window, 'Tendrill Application', "Are you sure with {}".format(status), qm.Yes | qm.No)
         if result == qm.Yes:
@@ -285,13 +293,13 @@ class All_Shots(object):
         self.hold_status = ""
         self.role = self.main_window.employee_details['role']
         self.department = self.main_window.employee_details['department']
-        if self.role == 'SUPERVISOR' or self.role == 'AST SUPERVISOR':
+        if self.role == 'SUPERVISOR':
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
             G_DEPARTMENT_LIST.append(self.department)
-            self.approve_status = "LAP"
-            self.retake_status = "LRT"
+            self.approve_status = "IAP"
+            self.retake_status = "IRT"
         elif self.role == 'PRODUCTION MANAGER' or self.role == 'AST PRODUCTION MANAGER':
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
@@ -315,20 +323,7 @@ class All_Shots(object):
             self.main_window.team_lead_id = self.main_window.employee_details['id']
             self.approve_status = "LAP"
             self.retake_status = "LRT"
-        elif self.role == 'QC':
-            self.main_window.ui.assign_leads_btn.hide()
-            self.main_window.ui.sel_all_shtTable_chkBox.hide()
-            # self.main_window.ui.tl_sel_cb.hide()
-            # self.main_window.ui.export_btn.hide()
-            self.main_window.ui.all_shots_tbWidget.setColumnHidden(0, True)
-            self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
-            self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
-            self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
-            G_DEPARTMENT_LIST.append(self.department)
-            self.approve_status = "IAP"
-            self.retake_status = "IRT"
-            self.client_retake_status = "CRT"
-            self.hold_status = "HLD"
+
         elif self.role == 'DATA I/O':
             self.main_window.ui.assign_leads_btn.hide()
             # self.main_window.ui.download_btn.show()

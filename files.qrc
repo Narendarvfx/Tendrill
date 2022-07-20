@@ -251,6 +251,9 @@
     <file>icons/16x16/cil-zoom-out.png</file>
   </qresource>
   <qresource prefix="custom">
+    <file>icons/custom/maya.jpg</file>
+    <file>C:/Users/admin/Desktop/rv.png</file>
+    <file>C:/Users/admin/Downloads/maya-icon-png-6.jpg</file>
     <file>icons/custom/RTW.png</file>
     <file>icons/custom/WTS.png</file>
     <file>icons/custom/IP.png</file>

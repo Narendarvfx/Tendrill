@@ -110,7 +110,7 @@ class LoginWindow(QMainWindow):
             'username': 'admin',
             'password': 'Tomato@123'
         }
-        response = requests.post(url, data=artist, verify=False)
+        response = requests.post(url, data=supervisor, verify=False)
         # MainWindow(response.json())
 
     @Slot()
