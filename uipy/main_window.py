@@ -13,6 +13,39 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 import files_rc
+from PySide2 import QtCore
+from PySide2.QtWidgets import QComboBox
+
+
+class CustomComboBox(QComboBox):
+    def __init__(self, parent=None):
+        super(CustomComboBox, self).__init__(parent)
+        self.view().pressed.connect(self.handleItemPressed)
+        self._changed = False
+
+    def handleItemPressed(self, index):
+        item = self.model().itemFromIndex(index)
+        if item.checkState() == QtCore.Qt.Checked:
+            item.setCheckState(QtCore.Qt.Unchecked)
+        else:
+            item.setCheckState(QtCore.Qt.Checked)
+        self._changed = True
+
+    def hidePopup(self):
+        if not self._changed:
+            super(CustomComboBox, self).hidePopup()
+        self._changed = False
+
+    def itemChecked(self, index):
+        item = self.model().item(index, self.modelColumn())
+        return item.checkState() == QtCore.Qt.Checked
+
+    def setItemChecked(self, index, checked=True):
+        item = self.model().item(index, self.modelColumn())
+        if checked:
+            item.setCheckState(QtCore.Qt.Checked)
+        else:
+            item.setCheckState(QtCore.Qt.Unchecked)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1699,7 +1732,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_17.addWidget(self.line_9, 5, 0, 1, 1)
 
-        self.stat_filter_cb = QComboBox(self.frame_43)
+        self.stat_filter_cb = CustomComboBox(self.frame_43)
         self.stat_filter_cb.addItem("")
         self.stat_filter_cb.addItem("")
         self.stat_filter_cb.addItem("")
@@ -1715,7 +1748,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_17.addWidget(self.line_14, 9, 0, 1, 1)
 
-        self.pro_filter_cb = QComboBox(self.frame_43)
+        self.pro_filter_cb = CustomComboBox(self.frame_43)
         self.pro_filter_cb.addItem("")
         self.pro_filter_cb.addItem("")
         self.pro_filter_cb.addItem("")
