@@ -179,13 +179,12 @@ class Pending_Task(object):
             msg.exec_()
 
     def wip_status_check(self, status):
-        if self.task_details['shot']['status']['code'] == 'RTW' or self.task_details['shot']['status'][
-            'code'] == 'LRT' or self.task_details['shot']['status']['code'] == 'CRT':
+        if self.task_details['shot']['status']['code'] in ['RTW', 'LRT', 'CRT', 'IRT']:
             self.task_status_update(status)
             self.pending_task_page(self.task_data)
         else:
             msg = QMessageBox()
-            msg.setText("Shot is in QC or Approved and cannot be changed to IP\n")
+            msg.setText("you cannot change the status from {} to IP\n".format(status))
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
             # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")

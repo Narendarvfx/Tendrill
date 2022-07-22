@@ -104,7 +104,7 @@ class LoginWindow(QMainWindow):
         }
         user_data = {
             'username': 'ganeshbabu.g',
-            'password': 'Ofx@1234'
+            'password': 'ofx@1234'
         }
         my_data = {
             'username': 'admin',

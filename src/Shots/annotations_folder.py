@@ -11,16 +11,8 @@ class Annotations_Folder(object):
 
 
     def addTask_Annotation_widget(self):
-        try:
-            self.ann_path = os.path.join(self.base_Path, self.shot_details['task_type'].lower(), 'annotations')
-            # self.main_window.ui.Pscripts_treeWid.itemClicked.disconnect()
 
-            for i in range(self.main_window.ui.taskann.count()):
-                self.main_window.ui.taskann.takeItem(i-1)
-                self.main_window.ui.taskann.clear()
-        except Exception as e:
-            # print ("EXCEPTION in MODEL>>>>>>>", e)
-            pass
+        self.ann_path = os.path.join(self.base_Path, self.shot_details['task_type'].lower(), 'annotations')
 
         try:
             self.ui_image_viewer = self.main_window.ui.taskann
@@ -29,8 +21,8 @@ class Annotations_Folder(object):
             self.ui_image_viewer.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
             self.ui_image_viewer.setIconSize(QtCore.QSize(380, 350))
             self.ui_image_viewer.setMovement(QtWidgets.QListWidget.Static)
-            print(self.ui_image_viewer.count())
             self.imgs = iter(os.listdir(self.ann_path))
+            self.ui_image_viewer.doubleClicked.disconnect()
             for img in self.imgs:
                 img_path = os.path.join(self.ann_path, img)
                 pixmap = QtGui.QPixmap(img_path)
@@ -38,8 +30,8 @@ class Annotations_Folder(object):
                 item = QtWidgets.QListWidgetItem(QtGui.QIcon(pixmap), name)
                 item.setData(QtCore.Qt.UserRole,img_path)
                 self.ui_image_viewer.addItem(item)
-            self.ui_image_viewer.doubleClicked.connect(partial(Annotations_Folder.select_item, self.ui_image_viewer.currentIndex(), self.ui_image_viewer))
-            # self.ui_image_viewer.doubleClicked.disconnect()
+            self.ui_image_viewer.doubleClicked.connect(lambda :Annotations_Folder.select_item(self, self.ui_image_viewer.currentIndex(), self.ui_image_viewer))
+
 
         except Exception as e:
             # print ("ANNOTATIONs EXE::", e)
@@ -83,9 +75,10 @@ class Annotations_Folder(object):
 
     def select_item(self, index, obj):
         try:
+
             os.startfile(obj.model().itemData(index)[257])
 
-        except Exception as e:
-            pass
+        except:
+            os.startfile(obj.model().itemData(index)[256])
             # print (e)
             # print ('unable to load the file')
