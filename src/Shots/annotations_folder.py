@@ -15,6 +15,14 @@ class Annotations_Folder(object):
         self.ann_path = os.path.join(self.base_Path, self.shot_details['task_type'].lower(), 'annotations')
 
         try:
+            for i in range(self.main_window.ui.taskann.count()):
+                self.main_window.ui.taskann.takeItem(i-1)
+                self.main_window.ui.taskann.clear()
+        except Exception as e:
+            print (e)
+            pass
+
+        try:
             self.ui_image_viewer = self.main_window.ui.taskann
             self.ui_image_viewer.setViewMode(QtWidgets.QListWidget.IconMode)
             self.ui_image_viewer.setResizeMode(QtWidgets.QListWidget.Adjust)
