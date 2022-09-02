@@ -570,7 +570,7 @@ def date_difference(date1, date2):
 
 if __name__ == '__main__':
     status_today = str(datetime.date.today().day) + '-' + str(datetime.date.today().month) + '-' + str(datetime.date.today().year)
-    ex_date = '30-06-2022'
+    ex_date = '30-07-2022'
     status_days_left = int(date_difference(ex_date, status_today))
     print ('Tendril Demo will be Expired on ',ex_date)
     print (status_days_left)

@@ -23,7 +23,7 @@ class Filters_Panel_Modal(QObject):
         self.main_window.ui.pro_filter_cb.wheelEvent = lambda event: None
         self.main_window.ui.stat_filter_cb.wheelEvent = lambda event: None
         try:
-            # self.main_window.ui.set_default_btn.clicked.disconnect()
+            self.main_window.ui.set_default_btn.clicked.disconnect()
             self.main_window.ui.apply_filter_btn.clicked.disconnect()
             # self.main_window.ui.clear_filter_btn.clicked.disconnect()
         except:
@@ -180,7 +180,7 @@ class Filters_Panel_Modal(QObject):
         font.setPointSize(10)
         font.setBold(True)
         msg = QMessageBox()
-        msg.setText("Whola!.. Filters Set to Defaults")
+        msg.setText("Success!.. Filters Set to Defaults")
         msg.setWindowTitle("Success")
         msg.setIcon(QMessageBox.Information)
         # msg.setStyleSheet("background-color: rgb(64, 139, 88);color:'white'")

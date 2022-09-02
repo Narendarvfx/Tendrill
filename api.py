@@ -6,8 +6,8 @@ import urllib3
 
 urllib3.disable_warnings()
 config = configparser.ConfigParser()
-
-config.read(r'P:\Repo_Settings\settings.ini')
+# TODO: Change config file location while building
+config.read(r'D:\Repo_Settings\settings.ini')
 
 base_url = "{}{}".format(config['API']['hostname'], config['API']['port'])
 token = config['API']['token']
