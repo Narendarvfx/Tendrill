@@ -442,6 +442,10 @@ class All_Shots(object):
             if shots['eta']:
                 eta = datetime.datetime.strptime(shots['eta'], '%Y-%m-%dT%H:%M:%S')
                 eta_item.setData(Qt.DisplayRole, QDate(eta.year, eta.month, eta.day))
+            startdate_item = QTableWidgetItem();
+            if shots['start_date']:
+                eta = datetime.datetime.strptime(shots['start_date'], '%Y-%m-%dT%H:%M:%S')
+                startdate_item.setData(Qt.DisplayRole, QDate(eta.year, eta.month, eta.day))
             try:
                 if shots['team_lead']:
                     self.team_lead = shots['team_lead']
@@ -503,6 +507,7 @@ class All_Shots(object):
             bid_item.setText(str(shots['bid_days']))
             bid_item.setTextAlignment(Qt.AlignCenter)
             self.main_window.ui.all_shots_tbWidget.setItem(i, 11, bid_item)
+            # self.main_window.ui.all_shots_tbWidget.setItem(i, 12, startdate_item)
             self.main_window.ui.all_shots_tbWidget.setItem(i, 12, eta_item)
             self.aWidget = QWidget();
             self.assign_label = QLabel();

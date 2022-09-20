@@ -41,12 +41,17 @@ class Assign_Modal(QDialog):
         self.shot = instance.main_window.ui.all_shots_tbWidget.item(self.current_row, 1).data(1)
         self.artist_data = api.getArtlistByShotId(self.shot['id'])
         self.ui.shot_detail_lb.setText(self.shot['name'])
+        self.startdateEdit = self.ui.start_date
+        self.startdateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
+        self.startdateEdit.setCalendarPopup(True)
+        self.startdateEdit.setDisplayFormat("dd-MM-yyyy")
+        print ("sfga")
         self.dateEdit = self.ui.eta_date
         self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
         self.dateEdit.setCalendarPopup(True)
         self.dateEdit.setDisplayFormat("dd-MM-yyyy")
-        self.timeEdit = self.ui.eta_time
-        self.timeEdit.setTime(QtCore.QTime(18, 45, 0, 0))
+        # self.timeEdit = self.ui.eta_time
+        # self.timeEdit.setTime(QtCore.QTime(18, 45, 0, 0))
         self.all_artists = api.getAllArtists()
         self.artist_data = api.getArtlistByShotId(self.shot['id'])
         existing_artists = []
@@ -58,10 +63,10 @@ class Assign_Modal(QDialog):
 
         grade_level = api.getGrades()
 
-        for level in grade_level:
-            self.ui.sel_art_level_cb.addItem(level['name'], level['id'])
-
-        self.ui.sel_art_level_cb.activated.connect(self.grade_level_filter)
+        # for level in grade_level:
+        #     self.ui.sel_art_level_cb.addItem(level['name'], level['id'])
+        #
+        # self.ui.sel_art_level_cb.activated.connect(self.grade_level_filter)
 
         if self.main_window.employee_details['role'] == "TEAM LEAD":
             for artist in self.all_artists:
@@ -118,8 +123,11 @@ class Assign_Modal(QDialog):
     ## Saves data using post method
     def post_assign(self):
         date = datetime.date(self.dateEdit.date().year(),self.dateEdit.date().month(),self.dateEdit.date().day())
-        time = datetime.time(self.ui.eta_time.time().hour(),self.ui.eta_time.time().minute())
+        print ('HELO@', date.isoformat())
+        time = datetime.time(15, 00)
+        startdate = datetime.date(self.startdateEdit.date().year(),self.startdateEdit.date().month(),self.startdateEdit.date().day())
         cb_date = datetime.datetime.combine(date,time)
+        st_date = datetime.datetime.combine(startdate,time)
         self.artist_data = api.getArtlistByShotId(self.shot['id'])
         compiler = 0;
         employee_details = api.get_employee_data(str(self.ui.sel_artists_cb.currentData()))
@@ -143,6 +151,7 @@ class Assign_Modal(QDialog):
             'assigned_bids': float(self.ui.shot_md_le.text()),
             'compiler': compiler,
             'eta': cb_date.isoformat()
+            # 'start_date': st_date.isoformat()
         }
         response = api.assign_shot(post_data)
         if response.status_code == 201:

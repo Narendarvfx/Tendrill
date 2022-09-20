@@ -116,8 +116,8 @@ class LoginWindow(QMainWindow):
     @Slot()
     def LoginClicked(self):
         userName = self.login_ui.username_le.text()
-        ##TODO: Enable below before deploying to Production
-        # userName = getpass.getuser()
+        #TODO: Enable below before deploying to Production
+        #userName = getpass.getuser()
         passWord = self.login_ui.password_le.text()
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
         data = {
@@ -570,7 +570,7 @@ def date_difference(date1, date2):
 
 if __name__ == '__main__':
     status_today = str(datetime.date.today().day) + '-' + str(datetime.date.today().month) + '-' + str(datetime.date.today().year)
-    ex_date = '30-07-2022'
+    ex_date = '30-10-2022'
     status_days_left = int(date_difference(ex_date, status_today))
     print ('Tendril Demo will be Expired on ',ex_date)
     print (status_days_left)

@@ -26,63 +26,7 @@ class Ui_Lead_Assign_Dialog(object):
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.frame = QFrame(Lead_Assign_Dialog)
         self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"QFrame{\n"
-"background-color: rgb(40, 44, 52);\n"
-"border:2px solid rgba(255, 170, 0, 0.5);\n"
-"border-radius:10px\n"
-"}\n"
-"QLabel{\n"
-"color: rgb(212, 212, 212);\n"
-"border:none\n"
-"}\n"
-"QPushButton{\n"
-"	color: rgb(216, 216, 216);\n"
-"background-color: rgb(58, 64, 76);\n"
-"border:1px solid  rgb(97, 97, 97);\n"
-"border-radius:3px;\n"
-"padding-left:10px;\n"
-"padding-right:10px;\n"
-"padding-top:5px;\n"
-"padding-bottom:5px;\n"
-"}\n"
-"QPushButton::hover{\n"
-"	background-color: rgb(62, 68, 81);\n"
-"}\n"
-"QPushButton::pressed{\n"
-"	background-color: rgb(52, 57, 68);\n"
-"}\n"
-"/* COMBOBOX */\n"
-"QComboBox{\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding: 5px;\n"
-"	padding-left: 10px;\n"
-"	color: rgb(212, 212, 212);\n"
-"}\n"
-"QComboBox:hover{\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"}\n"
-"QComboBox::drop-down {\n"
-"	subcontrol-origin: padding;\n"
-"	subcontrol-position: top right;\n"
-"	width: 25px; \n"
-"	border-left-width: 3px;\n"
-"	border-left"
-                        "-color: rgba(39, 44, 54, 150);\n"
-"	border-left-style: solid;\n"
-"	border-top-right-radius: 3px;\n"
-"	border-bottom-right-radius: 3px;	\n"
-"	background-image: url(:/16x16/icons/16x16/cil-arrow-bottom.png);\n"
-"	background-position: center;\n"
-"	background-repeat: no-reperat;\n"
-" }\n"
-"QComboBox QAbstractItemView {\n"
-"	color: rgb(85, 170, 255);	\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 10px;\n"
-"	selection-background-color: rgb(39, 44, 54);\n"
-"}")
+        self.frame.setStyleSheet(u"")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_2 = QGridLayout(self.frame)
@@ -146,6 +90,6 @@ class Ui_Lead_Assign_Dialog(object):
         self.lead_assign_btn.setText(QCoreApplication.translate("Lead_Assign_Dialog", u"Assign", None))
         self.sel_lead_cb.setItemText(0, QCoreApplication.translate("Lead_Assign_Dialog", u"Select Lead", None))
 
-        self.label.setText(QCoreApplication.translate("Lead_Assign_Dialog", u"Lead Assignments", None))
+        self.label.setText(QCoreApplication.translate("Lead_Assign_Dialog", u"Assign to Lead ", None))
     # retranslateUi
 

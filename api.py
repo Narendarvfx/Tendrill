@@ -12,6 +12,7 @@ config.read(r'P:\Repo_Settings\settings.ini')
 base_url = "{}{}".format(config['API']['hostname'], config['API']['port'])
 token = config['API']['token']
 
+
 session = requests.Session()
 
 def getUserById(userId):
@@ -274,8 +275,10 @@ def getGrades():
 
 def assign_shot(post_data):
     assign_shot_url = base_url + '/api/production/mytask/'
+
     response = session.post(assign_shot_url, post_data, headers={'Authorization': 'token {}'.format(token)},
                             verify=False)
+    print (response)
     return response
 
 

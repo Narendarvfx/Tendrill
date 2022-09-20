@@ -1,6 +1,7 @@
 import datetime
 from pprint import pprint
 import subprocess
+import os
 from PySide2 import QtWidgets, QtCore
 from PySide2.QtCore import Qt, QSize
 from PySide2.QtGui import QFont, QPixmap, QIcon
@@ -8,6 +9,8 @@ from PySide2.QtWidgets import QTableWidgetItem, QApplication, QProgressBar, QHBo
     QWidget, QLabel, QMessageBox
 
 import api
+# from src.MyTask.build_shot_template import build_shot
+
 from src.Shots.shot_details import Shot_Details
 from src.Shots.versions import Versions
 
@@ -87,7 +90,12 @@ class Pending_Task(object):
         #     configfile.close()
         # # TODO: Open Nuke with read node containing the shot name
         try:
-            subprocess.Popen(r"P:\Nuke12.2.bat")
+            nuke_ver = r"C:\Program files\Nuke13.0v1\Nuke13.0.exe"
+
+            print ('launching nuke x, please wait')
+            cmd = f'"{nuke_ver}"'
+            subprocess.Popen(cmd)
+
         except Exception as e:
             print(e)
             pass
@@ -146,10 +154,26 @@ class Pending_Task(object):
         wip_action = menu.addAction(QIcon(":/custom/icons/custom/IP.png"), "&IP")
         current_row = self.main_window.ui.mytask_tableWid.currentRow()
         self.task_details = self.main_window.ui.mytask_tableWid.item(current_row, 0).data(Qt.UserRole)
+        task_details = self.task_details['shot']
+        # pprint(task_details)
+        self.prj = task_details['sequence']['project']['name']
+        self.seq = task_details['sequence']['name']
+        self.shot = task_details['name']
+        self.dept = task_details['task_type'].lower()
+        self.local_drive = 'C'
+        self.server = 'J'
+        self.startframe = task_details['actual_start_frame']
+        self.endframe = task_details['actual_end_frame']
+
+
+
+
+
         # if self.task_details['compiler'] == 2 or self.task_details['compiler'] == 0:
         #     stq_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to Review")
         # else:
         stq_action = menu.addAction(QIcon(":/custom/icons/custom/REW.png"), "& Submit to Review")
+        shot_build = menu.addAction(QIcon(":/custom/icons/custom/nk.png"), "& Shot Build")
 
         action = menu.exec_(self.main_window.ui.mytask_tableWid.viewport().mapToGlobal(pos))
         try:
@@ -157,8 +181,9 @@ class Pending_Task(object):
                 self.wip_status_check("IP")
             elif action == stq_action:
                 self.status_check("REW")
-            # elif action == stc_action:
-            #     self.status_check("STC")
+            elif action == shot_build:
+                if self.build_shot_template():
+                    self.status_check("IP")
 
 
         except Exception as e:
@@ -177,6 +202,20 @@ class Pending_Task(object):
             msg.setIcon(QMessageBox.Critical)
             # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
             msg.exec_()
+
+    def build_shot_template(self):
+        shot_dir = f'{self.local_drive}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/scripts/nuke/'
+        plate_dir = f'{self.server}:/{self.prj}/{self.seq}/{self.shot}/scans/plates/'
+        denoise_dir = f'{self.server}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/denoise/'
+        final_out = f'{self.local_drive}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/final_renders/'
+        shot_name = f'{self.shot}_{self.dept}_v001_01.nk'
+        print (">>>>>>>>>>>>", 'opening nuke')
+
+        nuke_ver = r"C:\Program files\Nuke13.0v1\Nuke13.0.exe"
+        python_scrip_path= r"P:\Tendrill\build_shot_template.py"
+        cmd = f'"{nuke_ver}" -t {python_scrip_path} {self.prj} {shot_dir} {shot_name} {plate_dir} {denoise_dir} {self.startframe} {self.endframe} {final_out}'
+        os.system(cmd)
+        subprocess.Popen(r'explorer /select,"{}"'.format(shot_dir))
 
     def wip_status_check(self, status):
         if self.task_details['shot']['status']['code'] in ['RTW', 'LRT', 'CRT', 'IRT']:

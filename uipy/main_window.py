@@ -2320,8 +2320,8 @@ class Ui_MainWindow(object):
         self.gridLayout_23.addWidget(self.frame_5, 0, 3, 1, 1)
 
         self.mytask_tableWid = QTableWidget(self.frame_23)
-        if (self.mytask_tableWid.columnCount() < 10):
-            self.mytask_tableWid.setColumnCount(10)
+        if (self.mytask_tableWid.columnCount() < 11):
+            self.mytask_tableWid.setColumnCount(11)
         __qtablewidgetitem68 = QTableWidgetItem()
         self.mytask_tableWid.setHorizontalHeaderItem(0, __qtablewidgetitem68)
         __qtablewidgetitem69 = QTableWidgetItem()
@@ -2342,6 +2342,8 @@ class Ui_MainWindow(object):
         self.mytask_tableWid.setHorizontalHeaderItem(8, __qtablewidgetitem76)
         __qtablewidgetitem77 = QTableWidgetItem()
         self.mytask_tableWid.setHorizontalHeaderItem(9, __qtablewidgetitem77)
+        __qtablewidgetitem78 = QTableWidgetItem()
+        self.mytask_tableWid.setHorizontalHeaderItem(10, __qtablewidgetitem78)
         self.mytask_tableWid.setObjectName(u"mytask_tableWid")
         self.mytask_tableWid.setFrameShape(QFrame.Box)
         self.mytask_tableWid.setFrameShadow(QFrame.Raised)
@@ -3233,7 +3235,9 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem71 = self.mytask_tableWid.horizontalHeaderItem(8)
         ___qtablewidgetitem71.setText(QCoreApplication.translate("MainWindow", u"BIDS", None));
         ___qtablewidgetitem72 = self.mytask_tableWid.horizontalHeaderItem(9)
-        ___qtablewidgetitem72.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
+        ___qtablewidgetitem72.setText(QCoreApplication.translate("MainWindow", u"START DATE", None));
+        ___qtablewidgetitem73 = self.mytask_tableWid.horizontalHeaderItem(10)
+        ___qtablewidgetitem73.setText(QCoreApplication.translate("MainWindow", u"ETA", None));
         self.sr_shows_lbl.setText(QCoreApplication.translate("MainWindow", u"N/A", None))
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"Total Shows", None))
         self.sr_delta_lbl.setText(QCoreApplication.translate("MainWindow", u"N/A", None))

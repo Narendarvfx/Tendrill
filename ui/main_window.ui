@@ -5389,7 +5389,7 @@ border:3px solid white
                                            <string/>
                                           </property>
                                           <property name="icon">
-                                           <iconset resource="../files.qrc">
+                                           <iconset>
                                             <normaloff>:/custom/C:/Users/admin/Desktop/rv.png</normaloff>:/custom/C:/Users/admin/Desktop/rv.png</iconset>
                                           </property>
                                           <property name="iconSize">
@@ -5504,6 +5504,11 @@ border:3px solid white
                             <column>
                              <property name="text">
                               <string>BIDS</string>
+                             </property>
+                            </column>
+                            <column>
+                             <property name="text">
+                              <string>START DATE</string>
                              </property>
                             </column>
                             <column>
