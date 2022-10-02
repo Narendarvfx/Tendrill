@@ -32,15 +32,18 @@ if not os.path.exists(shot_dir):
     # Adjusting mov read node knobs
     input_file= glob.glob('{}/*.exr'.format(input))
     # print("###",input_file)
-    input_final =input_file[0].replace('\\','/')
-    print(">>>>",input_final)
+
     #set input
     if input_file:
+        input_final = input_file[0].replace('\\', '/')
+        print(">>>>", input_final)
         n = nuke.toNode("input")
         n["file"].setValue(input_final)
         n["frame_mode"].setValue("start at")
         n["frame"].setValue(first_frame)
         n["last"].setValue(int(last_frame))
+    else:
+        print (f'unable to find the plate sequence in the given path \n {input} ')
 
     # set input
     denoise_file = glob.glob('{}/*.exr'.format(denoise))
@@ -52,6 +55,8 @@ if not os.path.exists(shot_dir):
         denoise_n["frame_mode"].setValue("start at")
         denoise_n["frame"].setValue(first_frame)
         denoise_n["last"].setValue(int(last_frame))
+    else:
+        print (f'unable to find the denoise sequence in the given path \n {denoise} ')
 
     # resolution = str(width + " " + height + " " + "ingestionResolution")
     # nuke.addFormat(resolution)

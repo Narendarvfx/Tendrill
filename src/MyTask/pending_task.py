@@ -90,7 +90,7 @@ class Pending_Task(object):
         #     configfile.close()
         # # TODO: Open Nuke with read node containing the shot name
         try:
-            nuke_ver = r"C:\Program files\Nuke13.0v1\Nuke13.0.exe"
+            nuke_ver = r"C:\Program files\Nuke13.0v2\Nuke13.0.exe"
 
             print ('launching nuke x, please wait')
             cmd = f'"{nuke_ver}"'
@@ -211,7 +211,7 @@ class Pending_Task(object):
         shot_name = f'{self.shot}_{self.dept}_v001_01.nk'
         print (">>>>>>>>>>>>", 'opening nuke')
 
-        nuke_ver = r"C:\Program files\Nuke13.0v1\Nuke13.0.exe"
+        nuke_ver = r"C:\Program files\Nuke13.0v2\Nuke13.0.exe"
         python_scrip_path= r"P:\Tendrill\build_shot_template.py"
         cmd = f'"{nuke_ver}" -t {python_scrip_path} {self.prj} {shot_dir} {shot_name} {plate_dir} {denoise_dir} {self.startframe} {self.endframe} {final_out}'
         os.system(cmd)
