@@ -326,10 +326,6 @@ class All_Shots(object):
 
         elif self.role == 'DATA I/O':
             self.main_window.ui.assign_leads_btn.hide()
-            # self.main_window.ui.download_btn.show()
-            # self.main_window.ui.dtc_btn.show()
-            # self.main_window.ui.cli_retake_btn.show()
-            # self.main_window.ui.cli_approve_btn.show()
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(13, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(14, True)
             self.main_window.ui.all_shots_tbWidget.setColumnHidden(15, True)
