@@ -243,13 +243,12 @@ class Shots_Ingestion(object):
         # self.main_window.ui.shot_import_table.()
 
     def create_directories(self, cli_name=None, pro_name=None, current_seq_name=None, shotName=None, row_data=None):
-        print ("HELLO")
         self.base_dir = ""
         self.row_data = ""
         self.base_dir = os.path.join(self.config['STORAGE']['storage_url'], pro_name, current_seq_name, shotName)
         self.row_data = row_data
-        print (self.base_dir)
         os.makedirs(self.base_dir, exist_ok=True)
+
         default_folder_structure = r'P:\Tendrill\folder_structure'
         cmd = f"robocopy /e /COPY:DATSO {default_folder_structure} {self.base_dir} /MIR"
         try:
@@ -257,7 +256,6 @@ class Shots_Ingestion(object):
             print ("Folder structure Created {}".format(self.base_dir))
         except:
             print("Failed to create folder structure")
-
         try:
             call(['robocopy', row_data['Input Path'], os.path.join(self.base_dir, 'scans', 'plates'), "/S", "/MIR"])
         except Exception as e:

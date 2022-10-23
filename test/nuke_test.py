@@ -15,3 +15,30 @@
 #     print(req)
 # except Exception as e:
 #     print(e)
+import subprocess, os
+shot_dir =r'C:\jfx\KIS\BOO_GKB\BOO_GKB_0080_fg01_v002\paint\scripts\nuke\BOO_GKB_0080_fg01_v002_paint_v001_01.nk'
+nuke = r"C:\Program Files\Nuke13.0v2\Nuke13.0.exe"
+cmd = '"{}" {}'.format(nuke, shot_dir)
+# os.system(cmd)
+
+default_folder_structure = r'P:\Tendrill\folder_structure\{}'.format('paint')
+base_dir = r'C:\KIS\BOO_GKB\BOO_GKB_0080_fg01_v002\paint'
+
+
+cmd = f"robocopy /e  {default_folder_structure} {base_dir} /MIR"
+
+try:
+    a = os.system(cmd)
+    print (a)
+
+except Exception as e:
+    print (e)
+    print("Failed to create folder structure")
+#
+# try:
+#     call(['robocopy', row_data['Input Path'], os.path.join(self.base_dir, 'scans', 'plates'), "/S", "/MIR"])
+# except Exception as e:
+#     print(e)
+#     pass
+
+# subprocess.Popen(r'explorer /select,"{}"'.format(shot_dir))

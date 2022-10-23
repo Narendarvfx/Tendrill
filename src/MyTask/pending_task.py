@@ -204,18 +204,24 @@ class Pending_Task(object):
             msg.exec_()
 
     def build_shot_template(self):
-        shot_dir = f'{self.local_drive}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/scripts/nuke/'
+
+        shot_dir = f'{self.local_drive}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}'
         plate_dir = f'{self.server}:/{self.prj}/{self.seq}/{self.shot}/scans/plates/'
         denoise_dir = f'{self.server}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/denoise/'
         final_out = f'{self.local_drive}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/final_renders/'
         shot_name = f'{self.shot}_{self.dept}_v001_01.nk'
-        print (">>>>>>>>>>>>", 'opening nuke')
+
 
         nuke_ver = r"C:\Program files\Nuke13.0v2\Nuke13.0.exe"
         python_scrip_path= r"P:\Tendrill\build_shot_template.py"
         cmd = f'"{nuke_ver}" -t {python_scrip_path} {self.prj} {shot_dir} {shot_name} {plate_dir} {denoise_dir} {self.startframe} {self.endframe} {final_out}'
+        print ('@@@@>>',cmd)
         os.system(cmd)
-        subprocess.Popen(r'explorer /select,"{}"'.format(shot_dir))
+        shotbuild_file_path = os.path.join(shot_dir, "scripts","nuke", shot_name)
+        if os.path.join(shot_dir, shot_name):
+            launch_script_cmd = f'"{nuke_ver}" {shotbuild_file_path}'
+            os.system(launch_script_cmd)
+            subprocess.Popen(r'explorer /select,"{}"'.format(shot_dir))
 
     def wip_status_check(self, status):
         if self.task_details['shot']['status']['code'] in ['RTW', 'LRT', 'CRT', 'IRT']:
