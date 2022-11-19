@@ -15,7 +15,7 @@ final_out = sys.argv[8]
 
 # def build_shot(project,shot_dir,shot_name,input, denoise, first_frame, last_frame,final_out):
 paint_shot_dir = shot_dir + '/scripts/nuke/'
-print(paint_shot_dir)
+
 file_path = posixpath.join(paint_shot_dir, shot_name)
 
 if not os.path.exists(paint_shot_dir):
