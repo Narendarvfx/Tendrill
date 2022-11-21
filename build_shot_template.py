@@ -53,13 +53,15 @@ if not os.path.exists(paint_shot_dir):
             n["file"].setValue(input_final)
             n["frame_mode"].setValue("start at")
             n["frame"].setValue(first_frame)
+            n['first'].setValue(int(first_frame))
             n["last"].setValue(int(last_frame))
+            n['origfirst'].setValue(int(first_frame))
+            n["origlast"].setValue(int(last_frame))
         else:
             print (f'unable to find the plate sequence in the given path \n {input} ')
 
         # set input
         denoise_file = glob.glob('{}/*.exr'.format(denoise))
-        print (">>>>",denoise_file)
         if denoise_file:
             denoise_n = nuke.toNode("denoise_input")
             denoise_input_final = input_file[0].replace('\\', '/')
@@ -76,17 +78,16 @@ if not os.path.exists(paint_shot_dir):
         n = nuke.toNode("Write1")
         n["channels"].setValue("rgba")
         output_file = os.path.splitext("{}/{}".format(final_out, shot_name))[0]+".%04d.exr"
-        print(output_file)
+
         n["file"].setValue(output_file)
 
 
 
-        print("?>>",os.path.join(paint_shot_dir, shot_name))
         nuke.scriptSave("{}/{}".format(paint_shot_dir, shot_name))
         nuke.scriptClose(templatefile)
 
     else:
-        print ('Unable to find the template')
+        print('Unable to find shot build template\n please inform your production to create {} template'.format(project))
 
 else:
     print ("shot build was already created")

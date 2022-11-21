@@ -2,6 +2,7 @@ import datetime
 from pprint import pprint
 import subprocess
 import os
+from _globals import NUKE_VERSION, LOCAL_DRIVE
 from PySide2 import QtWidgets, QtCore
 from PySide2.QtCore import Qt, QSize
 from PySide2.QtGui import QFont, QPixmap, QIcon
@@ -90,7 +91,7 @@ class Pending_Task(object):
         #     configfile.close()
         # # TODO: Open Nuke with read node containing the shot name
         try:
-            nuke_ver = r"C:\Program files\Nuke13.0v2\Nuke13.0.exe"
+            nuke_ver = NUKE_VERSION
 
             print ('launching nuke x, please wait')
             cmd = f'"{nuke_ver}"'
@@ -160,7 +161,7 @@ class Pending_Task(object):
         self.seq = task_details['sequence']['name']
         self.shot = task_details['name']
         self.dept = task_details['task_type'].lower()
-        self.local_drive = 'C'
+        self.local_drive = LOCAL_DRIVE
         self.server = 'J'
         self.startframe = task_details['actual_start_frame']
         self.endframe = task_details['actual_end_frame']
@@ -212,7 +213,8 @@ class Pending_Task(object):
         shot_name = f'{self.shot}_{self.dept}_v001_01.nk'
 
 
-        nuke_ver = r"C:\Program files\Nuke13.0v2\Nuke13.0.exe"
+        # nuke_ver = r"C:\Program files\Nuke13.0v2\Nuke13.0.exe"
+        nuke_ver = NUKE_VERSION
         python_scrip_path= r"P:\Tendrill\build_shot_template.py"
         cmd = f'"{nuke_ver}" -t {python_scrip_path} {self.prj} {shot_dir} {shot_name} {plate_dir} {denoise_dir} {self.startframe} {self.endframe} {final_out}'
         print ('@@@@>>',cmd)
