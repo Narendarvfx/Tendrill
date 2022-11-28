@@ -1,5 +1,4 @@
 import datetime
-from pprint import pprint
 import subprocess
 import os
 from _globals import NUKE_VERSION, LOCAL_DRIVE
@@ -131,7 +130,7 @@ class Pending_Task(object):
         if it is None: return
         menu = QtWidgets.QMenu()
         menu.setStyleSheet(u"QMenu {\n"
-                           "background-color: #ABABAB; /* sets background of the menu */\n"
+                           "background-color: grey;\n"
                            "border-radius: 5px;\n"
                            # "border: 1px solid black;\n"
                            "margin:2px;\n"
@@ -146,7 +145,7 @@ class Pending_Task(object):
                            "}\n"
 
                            "QMenu::item:selected { /* when user selects item using mouse or keyboard */\n"
-                           "background-color: rgba(100, 100, 100, 150);\n"
+                           "background-color: grey;\n"
                            "border-color: darkblue;\n"
                            "}")
         font1 = QFont()
@@ -197,41 +196,45 @@ class Pending_Task(object):
             self.task_status_update(status)
 
         else:
-            msg = QMessageBox()
-            msg.setText("Shot not in ip\n")
-            msg.setWindowTitle("Error")
-            msg.setIcon(QMessageBox.Critical)
-            # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
-            msg.exec_()
+            self.message('shot was not in "IP" status')
 
     def build_shot_template(self):
-
         shot_dir = f'{self.local_drive}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}'
         plate_dir = f'{self.server}:/{self.prj}/{self.seq}/{self.shot}/scans/plates/'
         denoise_dir = f'{self.server}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/denoise/'
         final_out = f'{self.local_drive}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/final_renders/'
         shot_name = f'{self.shot}_{self.dept}_v001_01.nk'
 
+        nuke_ver = r"C:\Program files\Nuke13.0v1\Nuke13.0.exe"
 
-        # nuke_ver = r"C:\Program files\Nuke13.0v2\Nuke13.0.exe"
-        nuke_ver = NUKE_VERSION
         python_scrip_path= r"P:\Tendrill\build_shot_template.py"
         cmd = f'"{nuke_ver}" -t {python_scrip_path} {self.prj} {shot_dir} {shot_name} {plate_dir} {denoise_dir} {self.startframe} {self.endframe} {final_out}'
-        print ('@@@@>>',cmd)
+        print ('EXECUTING THE COMMAND  : ',cmd)
         os.system(cmd)
+
         shotbuild_file_path = os.path.join(shot_dir, "scripts","nuke", shot_name)
+        print("SHOT CREATED AT ", shotbuild_file_path)
+        self.message("Shot build has been done\n click on 'ok' to launch it nuke")
         if os.path.join(shot_dir, shot_name):
+            print("OPENING NUKE SCRIPT FILE PLEASE WAIT...")
             launch_script_cmd = f'"{nuke_ver}" {shotbuild_file_path}'
             os.system(launch_script_cmd)
-            subprocess.Popen(r'explorer /select,"{}"'.format(shot_dir))
+
+    def message(self,text):
+        msg = QMessageBox()
+        msg.setText(text)
+        msg.setWindowTitle('tendril')
+        msg.setIcon(QMessageBox.Critical)
+        msg.exec_()
 
     def wip_status_check(self, status):
+        print (status)
         if self.task_details['shot']['status']['code'] in ['RTW', 'LRT', 'CRT', 'IRT']:
             self.task_status_update(status)
             self.pending_task_page(self.task_data)
         else:
             msg = QMessageBox()
-            msg.setText("you cannot change the status from {} to IP\n".format(status))
+            msg.setText("you cannot change the status from {} to IP\n".format(self.task_details['shot']['status']['code']))
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
             # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
@@ -242,7 +245,7 @@ class Pending_Task(object):
             'task_status': status
         }
         qm = QMessageBox()
-        result = qm.question(self.main_window , 'Tendrill Application', "Are you sure with status {}".format(status), qm.Yes | qm.No)
+        result = qm.question(self.main_window , 'Tendrill Application', "Current status will be updated to {}".format(status), qm.Yes | qm.No)
         if result == qm.Yes:
             response = api.updateTask(str(self.task_details['id']), data)
             if response.status_code == 201:
@@ -253,9 +256,6 @@ class Pending_Task(object):
                     api.update_ShotStatus(str(self.task_details['shot']['id']), shot_data)
                 if status == "REW":
                     Versions.create_version(self)
-
-
-
 
 
     def perform_search(self):

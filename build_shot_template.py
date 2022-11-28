@@ -13,7 +13,16 @@ first_frame = sys.argv[6]
 last_frame = sys.argv[7]
 final_out = sys.argv[8]
 
-# def build_shot(project,shot_dir,shot_name,input, denoise, first_frame, last_frame,final_out):
+# project = 'KIS'
+# shot_dir = r'D:/KIS/RTRB/RTRB_023_020_fg01_v002/paint'
+# shot_name = r'RTRB_023_020_fg01_v002_paint_v001_01.nk'
+# input = r'J:\out/'
+# denoise = r'J:\out/'
+# first_frame = '993'
+# last_frame = '1082'
+# final_out = r'D:/KIS/RTRB/RTRB_023_020_fg01_v002/paint/final_renders/'
+#
+# print (project,shot_dir,shot_name,input, denoise, first_frame, last_frame,final_out)
 paint_shot_dir = shot_dir + '/scripts/nuke/'
 
 file_path = posixpath.join(paint_shot_dir, shot_name)
@@ -21,7 +30,7 @@ file_path = posixpath.join(paint_shot_dir, shot_name)
 if not os.path.exists(paint_shot_dir):
     default_folder_structure = r'P:\Tendrill\folder_structure\{}'.format('paint')
     base_dir = shot_dir
-    cmd = f"robocopy /e  {default_folder_structure} {base_dir} /MIR"
+    cmd = f"robocopy /e {default_folder_structure} {base_dir} /MIR"
 
     try:
         os.system(cmd)
@@ -48,7 +57,6 @@ if not os.path.exists(paint_shot_dir):
         #set input
         if input_file:
             input_final = input_file[0].replace('\\', '/')
-
             n = nuke.toNode("input")
             n["file"].setValue(input_final)
             n["frame_mode"].setValue("start at")
@@ -81,8 +89,6 @@ if not os.path.exists(paint_shot_dir):
 
         n["file"].setValue(output_file)
 
-
-
         nuke.scriptSave("{}/{}".format(paint_shot_dir, shot_name))
         nuke.scriptClose(templatefile)
 
@@ -91,5 +97,6 @@ if not os.path.exists(paint_shot_dir):
 
 else:
     print ("shot build was already created")
+
 
 
