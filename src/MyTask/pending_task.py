@@ -1,5 +1,7 @@
 import datetime
-
+import subprocess
+import os
+from _globals import NUKE_VERSION, LOCAL_DRIVE
 from PySide2 import QtWidgets, QtCore
 from PySide2.QtCore import Qt, QSize
 from PySide2.QtGui import QFont, QPixmap, QIcon
@@ -7,6 +9,8 @@ from PySide2.QtWidgets import QTableWidgetItem, QApplication, QProgressBar, QHBo
     QWidget, QLabel, QMessageBox
 
 import api
+# from src.MyTask.build_shot_template import build_shot
+
 from src.Shots.shot_details import Shot_Details
 from src.Shots.versions import Versions
 
@@ -16,6 +20,7 @@ class AlignDelegate(QtWidgets.QStyledItemDelegate):
         option.displayAlignment = QtCore.Qt.AlignCenter
 
 class Pending_Task(object):
+
     def __init__(self,instance):
         super(Pending_Task, self).__init__()
         self.main_window = instance.main_window
@@ -27,11 +32,14 @@ class Pending_Task(object):
             self.main_window.ui.mytask_tableWid.cellDoubleClicked.disconnect()
         except:
             pass
-        task_data = api.get_artist_shots(str(self.main_window.employee_details['id']))
-        self.task_filtered_data = [x for x in task_data if
+        self.task_data = api.get_artist_shots(str(self.main_window.employee_details['id']))
+        # print(self.task_data)
+        self.task_filtered_data = [x for x in self.task_data if
                               (x['task_status']['code'] != "CAP" and x['task_status']['code'] != 'IAP' and
                                x['task_status']['code'] != 'HLD' and x['task_status']['code'] != 'OMT' and x['task_status']['code'] != 'IRT' and x['task_status']['code'] != 'LRT')]
-        self.pending_task_page(task_data)
+        self.pending_task_page(self.task_data)
+        # self.main_window.ui.refresh_btn.clicked.connect(lambda: self.pending_task_page(self.task_data))
+
 
         self.projects = api.get_all_projects()
         self.main_window.ui.t_pro_sel_cb.clear()
@@ -55,20 +63,76 @@ class Pending_Task(object):
         self.sel_pro = None
         self.main_window.ui.t_pro_sel_cb.activated.connect(self.filterByProject)
         self.main_window.ui.t_status_sel_cb.activated.connect(self.filterByStatus)
+        self.main_window.ui.nukeX_btn.clicked.connect(self.launch_nukeX)
+        self.main_window.ui.photoshop_btn.clicked.connect(self.launch_photoshop)
+        self.main_window.ui.shilloute_btn.clicked.connect(self.launch_shilloute)
+        self.main_window.ui.RV_btn.clicked.connect(self.launch_rv)
+
         self.main_window.ui.mytask_tableWid.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.main_window.ui.mytask_tableWid.customContextMenuRequested.connect(self.on_customContextMenuRequested)
         delegate = AlignDelegate(self.main_window.ui.mytask_tableWid)
         for x in range(10):
             self.main_window.ui.mytask_tableWid.setItemDelegateForColumn(x, delegate)
 
+
+
+    def launch_nukeX(self):
+        # config['DEFAULT']['client'] = self.shot_details['sequence']['project']['client']
+        # config['DEFAULT']['show'] = self.shot_details['sequence']['project']['name']
+        # config['DEFAULT']['seq'] = self.shot_details['sequence']['name']
+        # config['DEFAULT']['shot'] = self.shot_details['name']
+        # config['DEFAULT']['dep'] = self.shot_details['task_type']
+        # nk_dir = 'C:\\Users\\' + getpass.getuser() + '\\.nuke'
+        # if not os.path.exists(nk_dir):
+        #     os.makedirs(nk_dir)
+        # with open(nk_dir, 'w') as configfile:
+        #     config.write(configfile)
+        #     configfile.close()
+        # # TODO: Open Nuke with read node containing the shot name
+        try:
+            nuke_ver = NUKE_VERSION
+
+            print ('launching nuke x, please wait')
+            cmd = f'"{nuke_ver}"'
+            subprocess.Popen(cmd)
+
+        except Exception as e:
+            print(e)
+            pass
+
+    def launch_photoshop(self):
+        try:
+            subprocess.Popen(r"C:\Program Files\Adobe\Adobe Photoshop CS6 (64 Bit)\Photoshop.exe")
+        except Exception as e:
+            print(e)
+            pass
+
+    def launch_shilloute(self):
+        try:
+            subprocess.Popen(r"C:\Program Files\SilhouetteFX\Silhouette v5.2\Silhouette.exe")
+        except Exception as e:
+            print(e)
+            pass
+
+    def launch_rv(self):
+        try:
+            subprocess.Popen(r"C:\Program Files\Shotgun\RV-7.1.1\bin\rv.exe")
+        except Exception as e:
+            print(e)
+            pass
+
+
+
+
+
     def on_customContextMenuRequested(self, pos):
         it = self.main_window.ui.mytask_tableWid.itemAt(pos)
         if it is None: return
         menu = QtWidgets.QMenu()
         menu.setStyleSheet(u"QMenu {\n"
-                           "background-color: #ABABAB; /* sets background of the menu */\n"
+                           "background-color: grey;\n"
                            "border-radius: 5px;\n"
-                           "border: 1px solid black;\n"
+                           # "border: 1px solid black;\n"
                            "margin:2px;\n"
                            "}\n"
 
@@ -81,37 +145,96 @@ class Pending_Task(object):
                            "}\n"
 
                            "QMenu::item:selected { /* when user selects item using mouse or keyboard */\n"
-                           "background-color: rgba(100, 100, 100, 150);\n"
+                           "background-color: grey;\n"
                            "border-color: darkblue;\n"
                            "}")
         font1 = QFont()
         font1.setPointSize(12)
         menu.setFont(font1)
-        wip_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&WIP")
+        wip_action = menu.addAction(QIcon(":/custom/icons/custom/IP.png"), "&IP")
         current_row = self.main_window.ui.mytask_tableWid.currentRow()
         self.task_details = self.main_window.ui.mytask_tableWid.item(current_row, 0).data(Qt.UserRole)
-        if self.task_details['compiler'] == 2 or self.task_details['compiler'] == 0:
-            stq_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to QC")
-        else:
-            stc_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to Compiler")
+        task_details = self.task_details['shot']
+        # pprint(task_details)
+        self.prj = task_details['sequence']['project']['name']
+        self.seq = task_details['sequence']['name']
+        self.shot = task_details['name']
+        self.dept = task_details['task_type'].lower()
+        self.local_drive = LOCAL_DRIVE
+        self.server = 'J'
+        self.startframe = task_details['actual_start_frame']
+        self.endframe = task_details['actual_end_frame']
+
+
+
+
+
+        # if self.task_details['compiler'] == 2 or self.task_details['compiler'] == 0:
+        #     stq_action = menu.addAction(QIcon(":/custom/icons/custom/tick_icon.png"), "&Submit to Review")
+        # else:
+        stq_action = menu.addAction(QIcon(":/custom/icons/custom/REW.png"), "& Submit to Review")
+        shot_build = menu.addAction(QIcon(":/custom/icons/custom/nk.png"), "& Shot Build")
 
         action = menu.exec_(self.main_window.ui.mytask_tableWid.viewport().mapToGlobal(pos))
         try:
             if action == wip_action:
-                self.task_status_update("WIP")
+                self.wip_status_check("IP")
             elif action == stq_action:
-                self.status_check("STQ")
-            elif action == stc_action:
-                self.status_check("STC")
+                self.status_check("REW")
+            elif action == shot_build:
+                if self.build_shot_template():
+                    self.status_check("IP")
+
+
         except Exception as e:
             pass
 
+
     def status_check(self, status):
-        if self.task_details['shot']['status']['code'] == "WIP":
+
+        if self.task_details['shot']['status']['code'] == "IP":
             self.task_status_update(status)
+
+        else:
+            self.message('shot was not in "IP" status')
+
+    def build_shot_template(self):
+        shot_dir = f'{self.local_drive}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}'
+        plate_dir = f'{self.server}:/{self.prj}/{self.seq}/{self.shot}/scans/plates/'
+        denoise_dir = f'{self.server}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/denoise/'
+        final_out = f'{self.local_drive}:/{self.prj}/{self.seq}/{self.shot}/{self.dept}/final_renders/'
+        shot_name = f'{self.shot}_{self.dept}_v001_01.nk'
+
+        nuke_ver = r"C:\Program files\Nuke13.0v1\Nuke13.0.exe"
+
+        python_scrip_path= r"P:\Tendrill\build_shot_template.py"
+        cmd = f'"{nuke_ver}" -t {python_scrip_path} {self.prj} {shot_dir} {shot_name} {plate_dir} {denoise_dir} {self.startframe} {self.endframe} {final_out}'
+        print ('EXECUTING THE COMMAND  : ',cmd)
+        os.system(cmd)
+
+        shotbuild_file_path = os.path.join(shot_dir, "scripts","nuke", shot_name)
+        print("SHOT CREATED AT ", shotbuild_file_path)
+        self.message("Shot build has been done\n click on 'ok' to launch it nuke")
+        if os.path.join(shot_dir, shot_name):
+            print("OPENING NUKE SCRIPT FILE PLEASE WAIT...")
+            launch_script_cmd = f'"{nuke_ver}" {shotbuild_file_path}'
+            os.system(launch_script_cmd)
+
+    def message(self,text):
+        msg = QMessageBox()
+        msg.setText(text)
+        msg.setWindowTitle('tendril')
+        msg.setIcon(QMessageBox.Critical)
+        msg.exec_()
+
+    def wip_status_check(self, status):
+        print (status)
+        if self.task_details['shot']['status']['code'] in ['RTW', 'LRT', 'CRT', 'IRT']:
+            self.task_status_update(status)
+            self.pending_task_page(self.task_data)
         else:
             msg = QMessageBox()
-            msg.setText("Shot not in progress\n")
+            msg.setText("you cannot change the status from {} to IP\n".format(self.task_details['shot']['status']['code']))
             msg.setWindowTitle("Error")
             msg.setIcon(QMessageBox.Critical)
             # msg.setStyleSheet("background-color: rgb(202,0,3);color:'white'")
@@ -122,7 +245,7 @@ class Pending_Task(object):
             'task_status': status
         }
         qm = QMessageBox()
-        result = qm.question(self.main_window , 'Tendrill Application', "Are you sure with {}".format(status), qm.Yes | qm.No)
+        result = qm.question(self.main_window , 'Tendrill Application', "Current status will be updated to {}".format(status), qm.Yes | qm.No)
         if result == qm.Yes:
             response = api.updateTask(str(self.task_details['id']), data)
             if response.status_code == 201:
@@ -131,9 +254,8 @@ class Pending_Task(object):
                 }
                 if status != "STC":
                     api.update_ShotStatus(str(self.task_details['shot']['id']), shot_data)
-                if status == "STQ":
+                if status == "REW":
                     Versions.create_version(self)
-
 
 
     def perform_search(self):
@@ -147,13 +269,6 @@ class Pending_Task(object):
         self.pending_task_page(data)
 
     def reset_filters(self):
-        # self.main_window.ui.t_cli_sel_cb.clear()
-        # self.main_window.ui.t_cli_sel_cb.addItem("Select", None)
-        # for c, client in enumerate(self.clients):
-        #     self.main_window.ui.t_cli_sel_cb.addItem("", client['id'])
-        #     self.main_window.ui.t_cli_sel_cb.setItemText(c + 1,
-        #                                                   QtWidgets.QApplication.translate("MainWindow", client['name'],
-        #                                                                                    None, -1))
 
         self.main_window.ui.t_pro_sel_cb.clear()
         self.main_window.ui.t_pro_sel_cb.addItem("Select", None)
@@ -238,26 +353,31 @@ class Pending_Task(object):
 
 
     def filterByStatus(self, index):
+        print (index)
         try:
             self.main_window.ui.shot_search_lineEdit.clear()
         except:
             pass
         self.sel_status = self.main_window.ui.t_status_sel_cb.itemData(index)
+        print (self.sel_status)
         all_shots = self.task_filtered_data
         data = []
         # if self.sel_cli_id is not None:
         if self.sel_pro is not None:
             for shots in all_shots:
+
                 if shots['shot']['sequence']['project']['id'] == self.sel_pro and shots['task_status']['id'] == self.sel_status:
                     data.append(shots)
         else:
             for shots in all_shots:
+
                 if shots['task_status']['id'] == self.sel_status:
                     data.append(shots)
-
+        print (data)
         self.pending_task_page(data)
 
     def pending_task_page(self, task_filtered_data):
+
         try:
             self.main_window.ui.mytask_tableWid.cellDoubleClicked.disconnect()
         except:
@@ -296,15 +416,24 @@ class Pending_Task(object):
             self.main_window.ui.mytask_tableWid.setItem(i, 6, QTableWidgetItem(str(_task['shot']['actual_end_frame']-_task['shot']['actual_start_frame'])))
             stWidget = QWidget();
             st_label = QLabel();
-            st_label.setMinimumSize(QSize(21, 21));
-            st_label.setMaximumSize(QSize(21, 21));
-            st_label.setStyleSheet("border-radius:10px;background-color:"+ _task['shot']['status']['color'])
-            st_label.setAlignment(Qt.AlignCenter)
+            st_label.setMinimumSize(QSize(24, 24));
+            icon_path = u":/custom/icons/custom/{}.png".format(_task['shot']['status']['code'])
+
+            pixmap = QPixmap(icon_path)
+            # pixmap.scaledToWidth(22)
+
+            st_label.setPixmap(pixmap)
+            # st_label.setStyleSheet(" background-color:"+ shots['status']['color'])
+            st_label.setAlignment(Qt.AlignRight)
+            st_label1 = QLabel();
+            st_label1.setMaximumSize(QSize(35, 35));
+
+
             st_label1 = QLabel();
             st_label1.setMaximumSize(QSize(35, 35));
             st_label1.setText(_task['shot']['status']['code'])
             font = QFont()
-            font.setPointSize(10)
+            font.setPointSize(5)
             font.setFamily('Arial')
             font.setBold(True)
             st_label1.setFont(font)
@@ -315,6 +444,10 @@ class Pending_Task(object):
             stLayout.setAlignment(Qt.AlignCenter);
             stLayout.setContentsMargins(0, 0, 0, 0);
             stWidget.setLayout(stLayout);
+            stWidget.setStyleSheet(
+                'QWidget{margin-top:2px;margin-bottom:2px;color:white;border-radius: 12px;background-color:' +
+                _task['shot']['status']['color'] + '}')
+
             stWidget.setToolTip(_task['shot']['status']['name'])
             self.main_window.ui.mytask_tableWid.setCellWidget(i, 7, stWidget)
             self.main_window.ui.mytask_tableWid.setItem(i, 8, QTableWidgetItem(str(_task['assigned_bids'])))
@@ -341,6 +474,7 @@ class Pending_Task(object):
             progressBar.setStyleSheet(newStyleSheet)
             progressBar.setFont(QFont('Arial', 10))
             self.main_window.ui.mytask_tableWid.setItem(i, 9, QTableWidgetItem(str(eta)))
+
             
     def cellClicked(self):
         self.current_row = self.main_window.ui.mytask_tableWid.currentRow()

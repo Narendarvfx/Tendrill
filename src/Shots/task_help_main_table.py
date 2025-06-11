@@ -76,7 +76,7 @@ class TaskHelp_Main(object):
         # self.role = self.main_window.role
         department = self.main_window.employee_details['department']
         if role == 'TEAM LEAD':
-            lead_shots = api.get_lead_shots(str(self.main_window.employee_details['id']), "ATL")
+            lead_shots = api.get_lead_shots(str(self.main_window.employee_details['id']), "WTS")
             for shots in lead_shots:
                 if shots['shot']['status']['code'] != "CAP" and shots['shot']['status']['code'] != 'IAP' and \
                         shots['shot']['status']['code'] != 'HLD' and shots['shot']['status']['code'] != 'OMT' and shots['shot']['status']['code'] != 'DTC':

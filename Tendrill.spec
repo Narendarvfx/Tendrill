@@ -33,4 +33,5 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                upx_exclude=[],
-               name='Tendrill_V01.0.2')
+               name='Tendrill_V01.1.9')
+

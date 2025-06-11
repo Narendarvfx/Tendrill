@@ -103,7 +103,7 @@ class Task_Help_Assign_Modal(QDialog):
             'parent': self.task_help_details['id'],
             'assigned_to': self.ui.sel_artists_cb.currentData(),
             'assigned_by': self.main_window.employee_details['id'],
-            'status': "YTS",
+            'status': "RTW",
             'bid_days': float(self.ui.shot_md_le.text()),
             'eta': cb_date.isoformat()
         }
@@ -111,9 +111,9 @@ class Task_Help_Assign_Modal(QDialog):
         # if per == True:
         response = api.assign_TaskHelp(post_data)
         if response.status_code == 201:
-            if self.task_help_details['status']['code'] == "YTA" or self.task_help_details['status']['code'] == 'ATL':
+            if self.task_help_details['status']['code'] == "RTA" or self.task_help_details['status']['code'] == 'WTS':
                 shot_status = {
-                    'status': "YTS"
+                    'status': "RTW"
                 }
                 api.update_ParentStatus(str(self.task_help_details['id']), shot_status)
             self.close()
@@ -185,7 +185,7 @@ class Task_Help_Assign_Modal(QDialog):
         tbWid.setFont(QFont('Cambria', 12, QFont.Bold))
         self.main_window.ui.team_tableWid.setItem(row_count, 0, tbWid)
         status_item = QTableWidgetItem()
-        status_item.setText(QCoreApplication.translate("MainWindow", "YTS", None))
+        status_item.setText(QCoreApplication.translate("MainWindow", "RTW", None))
         status_item.setForeground(QtGui.QColor('#B4B1AB'))
         status_item.setTextAlignment(Qt.AlignCenter)
         font = QFont()

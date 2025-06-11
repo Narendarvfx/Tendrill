@@ -167,7 +167,7 @@ class Shots_Ingestion(object):
         print("Finished")
 
     def updateProgressBar(self, val):
-        print("Update Val", val)
+
         self.main_window.ui.sh_import_progressBar.setValue(val)
 
     def get_zize(self, path):
@@ -217,11 +217,11 @@ class Shots_Ingestion(object):
                     'estimate_date': estimate_date,
                     'input_path': row_data['Input Path'],
                     'comments': row_data['Comments'],
-                    'status': "YTA"
+                    'status': "RTA"
                 }
                 try:
                     response = api.create_shots(shot_data)
-                    print(response.json())
+
                     shot_res_data = response.json()
                     if response.status_code == 201:
                         api.createShot_group({'name': shot_res_data['name'] + '_' + str(shot_res_data['id'])})
@@ -243,56 +243,19 @@ class Shots_Ingestion(object):
         # self.main_window.ui.shot_import_table.()
 
     def create_directories(self, cli_name=None, pro_name=None, current_seq_name=None, shotName=None, row_data=None):
-        print ("HELLO")
         self.base_dir = ""
         self.row_data = ""
         self.base_dir = os.path.join(self.config['STORAGE']['storage_url'], pro_name, current_seq_name, shotName)
         self.row_data = row_data
-        print (self.base_dir)
         os.makedirs(self.base_dir, exist_ok=True)
+
         default_folder_structure = r'P:\Tendrill\folder_structure'
-        cmd = f'Xcopy {default_folder_structure} {self.base_dir} /E /I'
+        cmd = f"robocopy /e /COPY:DATSO {default_folder_structure} {self.base_dir} /MIR"
         try:
             os.system(cmd)
             print ("Folder structure Created {}".format(self.base_dir))
         except:
             print("Failed to create folder structure")
-        # job_folders = [ 'comp', 'mm', 'paint', 'roto','scans']
-        # for jb_folder in job_folders:
-        #     os.makedirs(os.path.join(self.base_dir,jb_folder), exist_ok=True)
-        # scan_folders = ['elements', 'mov', 'plates', 'proxy']
-        # for scn_folder in scan_folders:
-        #     os.makedirs(os.path.join(self.base_dir, '_scans',scn_folder), exist_ok=True)
-        # general_folders = ['cp', 'internal_denoise', 'mattes', 'output', 'pre_renders', 'qc', 'qt', 'scripts', 'sv',
-        #                    'qc\\internal_retake']
-        # for gnrl_folder in general_folders:
-        #     os.makedirs(os.path.join(self.base_dir, '_comp', gnrl_folder), exist_ok=True)
-        #     os.makedirs(os.path.join(self.base_dir, '_paint', gnrl_folder), exist_ok=True)
-        #     os.makedirs(os.path.join(self.base_dir, '_roto', gnrl_folder), exist_ok=True)
-        #     os.makedirs(os.path.join(self.base_dir, '_mm', gnrl_folder), exist_ok=True)
-        #
-        # scripts_folders = ['3de', 'maya', 'mocha', 'nk', 'psd', 'rv', 'sfx']
-        # for scrpt_folder in scripts_folders:
-        #     os.makedirs(os.path.join(self.base_dir,'_comp', 'scripts', scrpt_folder), exist_ok=True)
-        #     os.makedirs(os.path.join(self.base_dir, '_paint', 'scripts', scrpt_folder), exist_ok=True)
-        #     os.makedirs(os.path.join(self.base_dir, '_roto', 'scripts', scrpt_folder), exist_ok=True)
-        #     os.makedirs(os.path.join(self.base_dir, '_mm', 'scripts', scrpt_folder), exist_ok=True)
-        #
-        # dep_folders = ['_paint', '_roto', '_comp', '_mm']
-        # for dep_folder in dep_folders:
-        #     os.makedirs(os.path.join(self.base_dir, '_feedback', dep_folder), exist_ok=True)
-        #     os.makedirs(os.path.join(self.base_dir, '_forsubmission', dep_folder), exist_ok=True)
-
-        # try:
-        #     worker = Worker(self.create_permission_groups)  # Any other args, kwargs are passed to the run function
-        #     self.threadpool.start(worker)
-        # except Exception as e:
-        #     pass
-        # try:
-        #     worker = Worker(self.copy_plates)  # Any other args, kwargs are passed to the run function
-        #     self.threadpool.start(worker)
-        # except Exception as e:
-        #     pass
         try:
             call(['robocopy', row_data['Input Path'], os.path.join(self.base_dir, 'scans', 'plates'), "/S", "/MIR"])
         except Exception as e:

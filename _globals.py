@@ -21,3 +21,9 @@ FILTERS_FOLDER = r"P:/Tendrill_configs/"+userName
 if not os.path.exists(FILTERS_FOLDER):
     os.makedirs(FILTERS_FOLDER)
 FILTERS_FILE = FILTERS_FOLDER+"\\filters.yml"
+
+
+NUKE_VERSION = r"C:\Program files\Nuke13.0v2\Nuke13.0.exe"
+# NUKE_VERSION = r"P:\Nuke13.1.bat"
+
+LOCAL_DRIVE = 'D'

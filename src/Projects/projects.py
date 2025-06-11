@@ -85,7 +85,7 @@ class Projects(object):
             data = {
                 'name': modal.getProName(),
                 'client': "2",
-                'status': 'YTS'
+                'status': 'RTW'
             }
             post_data = api.save_project(data)
             if post_data.status_code == 201:

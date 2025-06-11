@@ -77,47 +77,47 @@ class LoginWindow(QMainWindow):
         self.show()
 
         # #  ##TODO: Comment this code block before deploying to production
-        # url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
-        # supervisor = {
-        #     'username': 'supervisor',
-        #     'password': 'ofx@12345'
-        # }
-        # teamlead = {
-        #     'username': 'teamlead1',
-        #     'password': 'ofx@12345'
-        # }
-        # qc = {
-        #     'username': 'qc1',
-        #     'password': 'ofx@12345'
-        # }
-        # manager = {
-        #     'username': 'manager',
-        #     'password': 'ofx@12345'
-        # }
-        # artist = {
-        #     'username': 'artist1',
-        #     'password': 'Ofx@12345'
-        # }
-        # dataio = {
-        #     'username': 'dataio',
-        #     'password': 'ofx@12345'
-        # }
-        # user_data = {
-        #     'username': 'ganeshbabu.g',
-        #     'password': 'Ofx@1234'
-        # }
-        # my_data = {
-        #     'username': 'admin',
-        #     'password': 'Tomato@123'
-        # }
-        # response = requests.post(url, data=artist, verify=False)
+        url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
+        supervisor = {
+            'username': 'supervisor',
+            'password': 'ofx@12345'
+        }
+        teamlead = {
+            'username': 'teamlead1',
+            'password': 'ofx@12345'
+        }
+        qc = {
+            'username': 'qc1',
+            'password': 'ofx@12345'
+        }
+        manager = {
+            'username': 'manager',
+            'password': 'ofx@12345'
+        }
+        artist = {
+            'username': 'artist1',
+            'password': 'Ofx@12345'
+        }
+        dataio = {
+            'username': 'dataio',
+            'password': 'ofx@12345'
+        }
+        user_data = {
+            'username': 'ganeshbabu.g',
+            'password': 'ofx@1234'
+        }
+        my_data = {
+            'username': 'admin',
+            'password': 'Tomato@123'
+        }
+        response = requests.post(url, data=artist, verify=False)
         # MainWindow(response.json())
 
     @Slot()
     def LoginClicked(self):
         userName = self.login_ui.username_le.text()
-        ##TODO: Enable below before deploying to Production
-        # userName = getpass.getuser()
+        #TODO: Enable below before deploying to Production
+        #userName = getpass.getuser()
         passWord = self.login_ui.password_le.text()
         url = "{}{}/api/auth/".format(api.config['API']['hostname'], api.config['API']['port'])
         data = {
@@ -135,7 +135,7 @@ class LoginWindow(QMainWindow):
         elif response.status_code == 200:
             self.login_data = response.json()
             self.employee_details = api.get_employee_data(self.login_data['id'])
-            print(self.employee_details)
+
             if self.employee_details['employement_status'] != "Active":
                 msg = QMessageBox()
                 msg.setText("Authorization not Allowed \n Please contact Pipeline Administrator ")
@@ -570,7 +570,7 @@ def date_difference(date1, date2):
 
 if __name__ == '__main__':
     status_today = str(datetime.date.today().day) + '-' + str(datetime.date.today().month) + '-' + str(datetime.date.today().year)
-    ex_date = '30-06-2022'
+    ex_date = '30-12-2022'
     status_days_left = int(date_difference(ex_date, status_today))
     print ('Tendril Demo will be Expired on ',ex_date)
     print (status_days_left)
@@ -579,14 +579,12 @@ if __name__ == '__main__':
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
         QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
 
-        app.setStyleSheet(qdarkstyle.load_stylesheet(palette=LightPalette))
+        app.setStyleSheet(qdarkstyle.load_stylesheet(palette=DarkPalette))
         window = LoginWindow()
 
         sys.exit(app.exec_())
     else:
         print ('Tendril Demo version is expired')
         v = input()
-        #w = QWidget()
-        #QMessageBox.information(w, "Message", "Oops ...  Stark Demo version is expired ..!!!")
         sys.exit()
 

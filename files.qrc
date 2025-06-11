@@ -251,6 +251,22 @@
     <file>icons/16x16/cil-zoom-out.png</file>
   </qresource>
   <qresource prefix="custom">
+    <file>icons/custom/maya.jpg</file>
+    <file>C:/Users/admin/Desktop/rv.png</file>
+    <file>C:/Users/admin/Downloads/maya-icon-png-6.jpg</file>
+    <file>icons/custom/RTW.png</file>
+    <file>icons/custom/WTS.png</file>
+    <file>icons/custom/IP.png</file>
+    <file>icons/custom/DTC.png</file>
+    <file>icons/custom/CRT.png</file>
+    <file>icons/custom/IRT.png</file>
+    <file>icons/custom/LRT.png</file>
+    <file>icons/custom/CAP.png</file>
+    <file>icons/custom/LAP.png</file>
+    <file>icons/custom/IAP.png</file>
+    <file>icons/custom/STC.png</file>
+    <file>icons/custom/RTA.png</file>
+    <file>icons/custom/REW.png</file>
     <file>icons/custom/light_mode.png</file>
     <file>icons/custom/dark_mode.png</file>
     <file>icons/custom/tendril_logo.jpg</file>

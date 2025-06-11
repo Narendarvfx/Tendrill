@@ -53,14 +53,16 @@ class Team_List_Modal(QDialog):
             button_group.addButton(checkbox)
             if data['compiler'] == 2:
                 checkbox.setChecked(True)
-            checkbox.setStyleSheet(
-                "QRadioButton::indicator {border: 3px solid rgb(52, 59, 72);width: 15px;height: 15px;border-radius: 10px;background: rgb(44, 49, 60);}QRadioButton::indicator:hover {border: 3px solid rgb(58, 66, 81);}QRadioButton::indicator:checked {background: 3px solid rgb(255, 170, 0);border: 3px solid rgb(52, 59, 72);	}")
+            # checkbox.setStyleSheet(
+            #     "QRadioButton::indicator {width: 15px;height: 15px;border-radius: 10px;background: rgb(44, 49, 60);}QRadioButton::indicator:hover {border: 3px solid rgb(58, 66, 81);}QRadioButton::indicator:checked {background: 3px solid rgb(255, 170, 0);border: 3px solid rgb(52, 59, 72);	}")
             self.ui.team_tabWid.setCellWidget(i, 2, checkbox)
             lWidget = QWidget();
             l_label = QLabel();
-            l_label.setMaximumSize(QSize(32, 32));
+            l_label.setMaximumSize(QSize(32, 132));
             l_label.setScaledContents(True);
-            l_label.setPixmap(QPixmap(":/custom/icons/custom/tick_icon.png"));
+
+            l_label.setPixmap(QPixmap(":/custom/icons/custom/STC.png"));
+            l_label.setToolTip('click to update')
             lLayout = QHBoxLayout(lWidget);
             lLayout.addWidget(l_label);
             lLayout.setAlignment(Qt.AlignCenter);

@@ -98,7 +98,7 @@ class TaskHelp_Modal(QDialog):
             'shot': self.shot['id'],
             'task_type': self.ui.sel_type_cb.currentIndex(),
             'requested_by': self.main_window.employee_details['id'],
-            'status': "YTA",
+            'status': "RTA",
             'bid_days': float(self.ui.shot_md_le.text()),
             # 'eta': cb_date.isoformat()
         }
@@ -108,9 +108,9 @@ class TaskHelp_Modal(QDialog):
         # if per == True:
         #     response = api.assign_shot(post_data)
         #     if response.status_code == 201:
-        #         if self.shot['status']['code'] == "YTA" or self.shot['status']['code'] == 'ATL':
+        #         if self.shot['status']['code'] == "RTA" or self.shot['status']['code'] == 'WTS':
         #             shot_status = {
-        #                 'status': "YTS"
+        #                 'status': "RTW"
         #             }
         #             api.update_ShotStatus(str(self.shot['id']), shot_status)
         #         self.close()
